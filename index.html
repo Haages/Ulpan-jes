@@ -846,6 +846,415 @@ function toonFase5b() {
 }
 
 // ══════════════════════════════════════════════════════════════
+// MODULE J: Spelletjes-engine + 7 spelletjes
+// ══════════════════════════════════════════════════════════════
+
+const SRS_GEWICHTEN = {
+  memory:        0.5,
+  vertaalkeuze:  0.6,
+  woordzoeker:   0.4,
+  wordle:        0.7,
+  zinsbouwer:    0.8,
+  'shoresh-sort': 0.6,
+  dialoogpuzzel: 0.7,
+};
+
+const SPEL_MINIMUMS = {
+  memory:        { woorden: 6,  les: 2 },
+  vertaalkeuze:  { woorden: 8,  les: 2 },
+  woordzoeker:   { woorden: 10, les: 3 },
+  wordle:        { woorden: 10, les: 3 },
+  zinsbouwer:    { zinnen: 5,   les: 4 },
+  'shoresh-sort': { groepen: 2, les: 7 },
+  dialoogpuzzel: { zinnen: 10,  les: 8 },
+};
+
+/**
+ * Geeft bekende woorden uit spelletjes_database.json voor het huidige lesniveau.
+ * @param {number} lesNummer - Huidig lesnummer
+ * @returns {Array<Object>} Woorden met id, he, nl, uitspraak, shoresh etc.
+ */
+function getSpelWoorden(lesNummer) {
+  if (!SPEL_DB) return [];
+  const bekendSet = new Set(
+    (VOCAB_DB.bekendNaLes[String(Math.min(lesNummer, MAX_LES))] || [])
+      .map(w => stripNikud(w).toLowerCase())
+  );
+  return SPEL_DB.woorden.filter(w =>
+    bekendSet.has(stripNikud(w.he_clean).toLowerCase())
+  );
+}
+
+/**
+ * Geeft memory-paren terug die passen bij het lesniveau.
+ * @param {number} lesNummer - Huidig lesnummer
+ * @param {number} aantalParen - Gewenst aantal paren
+ * @returns {Array<Object>} Memory-paren
+ */
+function getMemoryParen(lesNummer, aantalParen = 6) {
+  if (!SPEL_DB) return [];
+  const bekendSet = new Set(
+    (VOCAB_DB.bekendNaLes[String(Math.min(lesNummer, MAX_LES))] || [])
+      .map(w => stripNikud(w).toLowerCase())
+  );
+  const geschikt = SPEL_DB.memory_paren.filter(p =>
+    bekendSet.has(stripNikud(p.he).toLowerCase())
+  );
+  return kiesWillekeurig(geschikt, aantalParen);
+}
+
+/**
+ * Registreert een spelresultaat in localStorage.
+ * @param {number} woordId - ID van het woord
+ * @param {string} spelType - Type spelletje
+ * @param {boolean} correct - Of het antwoord correct was
+ */
+function registreerSpelResultaat(woordId, spelType, correct) {
+  const sleutel = `${OPSLAG_PREFIXEN.spelScore}${woordId}`;
+  const score = Opslag.laad(sleutel, { correct: 0, fout: 0 });
+  if (correct) score.correct++; else score.fout++;
+  Opslag.slaOp(sleutel, score);
+  AppLogger.debug('Spel', `${spelType}: woord ${woordId} ${correct ? 'correct' : 'fout'}`);
+}
+
+/**
+ * Rendert het spelletjesmenu met beschikbare en vergrendelde spellen.
+ * @param {number} lesNummer - Huidig lesnummer
+ */
+function renderSpelletjesMenu(lesNummer) {
+  const menu = document.getElementById('games-menu');
+  if (!menu) return;
+
+  const spellen = [
+    { id: 'memory',        naam: 'Memory',        icon: '🃏', beschrijving: 'Vind Hebreeuws-Nederlands paren' },
+    { id: 'vertaalkeuze',  naam: 'Vertaalkeuze',  icon: '🔤', beschrijving: 'Kies de juiste vertaling' },
+    { id: 'woordzoeker',   naam: 'Woordzoeker',   icon: '🔍', beschrijving: 'Vind woorden in het raster' },
+    { id: 'wordle',        naam: 'Wordle',         icon: '📝', beschrijving: 'Raad het Hebreeuwse woord' },
+    { id: 'zinsbouwer',    naam: 'Zinsbouwer',     icon: '🧱', beschrijving: 'Bouw de zin in de juiste volgorde' },
+    { id: 'shoresh-sort',  naam: 'Shoresh-sort',   icon: '🌳', beschrijving: 'Sorteer woorden op woordwortel' },
+    { id: 'dialoogpuzzel', naam: 'Dialoogpuzzel',  icon: '💬', beschrijving: 'Leg de dialoog in de juiste volgorde' },
+  ];
+
+  menu.innerHTML = `
+    <div class="p-6">
+      <div class="flex items-center gap-4 mb-6">
+        <button onclick="renderStartScherm(); toonScherm('screen-start')"
+                class="text-2xl text-gray-400">←</button>
+        <h2 class="text-xl font-bold">Spelletjes</h2>
+      </div>
+      <div class="space-y-3">
+        ${spellen.map(s => {
+          const min = SPEL_MINIMUMS[s.id];
+          const beschikbaar = lesNummer >= min.les;
+          return `
+            <button ${beschikbaar ? `onclick="openSpelletje('${s.id}')"` : 'disabled'}
+                    class="w-full flex items-center gap-4 p-4 rounded-xl text-left
+                           ${beschikbaar ? 'bg-white shadow-sm hover:shadow-md' : 'bg-gray-100 opacity-50'}">
+              <span class="text-3xl">${s.icon}</span>
+              <div>
+                <div class="font-semibold">${s.naam}</div>
+                <div class="text-sm text-gray-500">
+                  ${beschikbaar ? s.beschrijving : `Beschikbaar vanaf les ${min.les}`}
+                </div>
+              </div>
+            </button>`;
+        }).join('')}
+      </div>
+    </div>`;
+}
+
+/**
+ * Opent een specifiek spelletje.
+ * @param {string} spelId - ID van het spelletje
+ */
+function openSpelletje(spelId) {
+  const les = huidigeLes();
+
+  // Verberg menu, toon game-div
+  document.getElementById('games-menu').classList.add('hidden');
+  document.querySelectorAll('[id^="game-"]').forEach(el => el.classList.add('hidden'));
+
+  if (spelId === 'memory') startMemory(les);
+  else if (spelId === 'vertaalkeuze') startVertaalkeuze(les);
+  else toonToast(`${spelId} wordt binnenkort beschikbaar`, 'info');
+}
+
+/**
+ * Gaat terug naar het spelletjesmenu.
+ */
+function terugNaarSpelMenu() {
+  document.querySelectorAll('[id^="game-"]').forEach(el => el.classList.add('hidden'));
+  document.getElementById('games-menu').classList.remove('hidden');
+  renderSpelletjesMenu(huidigeLes());
+}
+
+// ── Spelletje 1: Memory ─────────────────────────────────────
+
+const MEMORY_CONFIG = { AANTAL_PAREN: 6, TOON_TIJD_MS: 1000, ANIMATIE_MS: 300 };
+let memoryStaat = null;
+
+/**
+ * Start een nieuw Memory-spel.
+ * @param {number} lesNummer - Huidig lesnummer
+ */
+function startMemory(lesNummer) {
+  const paren = getMemoryParen(lesNummer, MEMORY_CONFIG.AANTAL_PAREN);
+  if (paren.length < 3) {
+    toonToast('Niet genoeg woorden voor Memory', 'warning');
+    terugNaarSpelMenu();
+    return;
+  }
+
+  // Maak kaartjes: voor elk paar een HE-kaart en een NL-kaart
+  const kaartjes = [];
+  paren.forEach((paar, i) => {
+    kaartjes.push({
+      id: `he_${i}`, paarId: i, inhoud: paar.he, type: 'he',
+      uitspraak: paar.uitspraak, woordId: paar.id, omgedraaid: false, gevonden: false
+    });
+    kaartjes.push({
+      id: `nl_${i}`, paarId: i, inhoud: paar.nl, type: 'nl',
+      uitspraak: paar.uitspraak, woordId: paar.id, omgedraaid: false, gevonden: false
+    });
+  });
+
+  // Schud kaartjes
+  for (let i = kaartjes.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [kaartjes[i], kaartjes[j]] = [kaartjes[j], kaartjes[i]];
+  }
+
+  memoryStaat = {
+    kaartjes,
+    eersteKeuze: null,
+    tweedeKeuze: null,
+    bezig: false,
+    aantalPogingen: 0,
+    aantalGevonden: 0,
+    totaalParen: paren.length,
+  };
+
+  document.getElementById('game-memory').classList.remove('hidden');
+  renderMemoryBord();
+}
+
+/**
+ * Rendert het Memory-bord.
+ */
+function renderMemoryBord() {
+  const bord = document.getElementById('memory-bord');
+  if (!bord) return;
+
+  bord.innerHTML = memoryStaat.kaartjes.map(k => `
+    <div onclick="klikMemoryKaartje('${k.id}')"
+         class="w-20 h-20 flex items-center justify-center rounded-xl cursor-pointer
+                text-center text-sm font-semibold select-none transition-all
+                ${k.gevonden ? 'bg-green-100 border-2 border-green-400' :
+                  k.omgedraaid ? 'bg-white border-2 border-blue-400 shadow-md' :
+                  'bg-blue-600 text-blue-600 hover:bg-blue-500'}">
+      ${k.omgedraaid || k.gevonden ?
+        (k.type === 'he' ?
+          `<span class="font-hebrew text-lg" dir="rtl" lang="he">${k.inhoud}</span>` :
+          `<span class="text-xs">${k.inhoud}</span>`) :
+        '<span class="text-white text-2xl">?</span>'}
+    </div>
+  `).join('');
+
+  document.getElementById('memory-scores').textContent =
+    `Pogingen: ${memoryStaat.aantalPogingen} | Gevonden: ${memoryStaat.aantalGevonden}/${memoryStaat.totaalParen}`;
+}
+
+/**
+ * Verwerkt een klik op een Memory-kaartje.
+ * @param {string} kaartId - ID van het geklikte kaartje
+ */
+function klikMemoryKaartje(kaartId) {
+  if (memoryStaat.bezig) return;
+
+  const kaart = memoryStaat.kaartjes.find(k => k.id === kaartId);
+  if (!kaart || kaart.omgedraaid || kaart.gevonden) return;
+
+  kaart.omgedraaid = true;
+  renderMemoryBord();
+
+  if (!memoryStaat.eersteKeuze) {
+    memoryStaat.eersteKeuze = kaart;
+    return;
+  }
+
+  // Tweede kaart omgedraaid
+  memoryStaat.tweedeKeuze = kaart;
+  memoryStaat.bezig = true;
+  memoryStaat.aantalPogingen++;
+
+  const match = memoryStaat.eersteKeuze.paarId === memoryStaat.tweedeKeuze.paarId;
+
+  setTimeout(() => {
+    if (match) {
+      memoryStaat.eersteKeuze.gevonden = true;
+      memoryStaat.tweedeKeuze.gevonden = true;
+      memoryStaat.aantalGevonden++;
+      registreerSpelResultaat(kaart.woordId, 'memory', true);
+      AudioManager.spreekUit(kaart.type === 'he' ? kaart.inhoud : memoryStaat.eersteKeuze.inhoud, 'vrouw');
+    } else {
+      memoryStaat.eersteKeuze.omgedraaid = false;
+      memoryStaat.tweedeKeuze.omgedraaid = false;
+      registreerSpelResultaat(kaart.woordId, 'memory', false);
+    }
+
+    memoryStaat.eersteKeuze = null;
+    memoryStaat.tweedeKeuze = null;
+    memoryStaat.bezig = false;
+    renderMemoryBord();
+
+    if (memoryStaat.aantalGevonden === memoryStaat.totaalParen) {
+      toonMemoryEinde();
+    }
+  }, match ? MEMORY_CONFIG.ANIMATIE_MS : MEMORY_CONFIG.TOON_TIJD_MS);
+}
+
+/**
+ * Toont het einde-scherm van Memory.
+ */
+function toonMemoryEinde() {
+  const einde = document.getElementById('memory-einde');
+  if (!einde) return;
+  einde.classList.remove('hidden');
+  einde.innerHTML = `
+    <div class="p-4">
+      <p class="text-xl font-bold text-green-700 mb-2">🎉 Alle paren gevonden!</p>
+      <p class="text-gray-600 mb-4">${memoryStaat.aantalPogingen} pogingen</p>
+      <button onclick="terugNaarSpelMenu()" class="px-6 py-2 bg-blue-600 text-white rounded-xl">
+        ← Terug naar spelletjes
+      </button>
+    </div>`;
+}
+
+// ── Spelletje 2: Vertaalkeuze ───────────────────────────────
+
+const VERTAAL_CONFIG = { AANTAL_VRAGEN: 10, AANTAL_KEUZES: 3, FEEDBACK_MS: 800 };
+let vertaalStaat = null;
+
+/**
+ * Start een nieuw Vertaalkeuze-spel.
+ * @param {number} lesNummer - Huidig lesnummer
+ */
+function startVertaalkeuze(lesNummer) {
+  const woorden = getSpelWoorden(lesNummer);
+  if (woorden.length < VERTAAL_CONFIG.AANTAL_KEUZES) {
+    toonToast('Niet genoeg woorden voor Vertaalkeuze', 'warning');
+    terugNaarSpelMenu();
+    return;
+  }
+
+  // Maak vragen: kies N woorden, voor elk 3 keuzes (1 correct + 2 afleiders van hetzelfde soort)
+  const vraagWoorden = kiesWillekeurig(woorden, Math.min(VERTAAL_CONFIG.AANTAL_VRAGEN, woorden.length));
+  const vragen = vraagWoorden.map(juist => {
+    const zelfdesoort = woorden.filter(w => w.soort === juist.soort && w.id !== juist.id);
+    const afleiders = kiesWillekeurig(
+      zelfdesoort.length >= 2 ? zelfdesoort : woorden.filter(w => w.id !== juist.id),
+      VERTAAL_CONFIG.AANTAL_KEUZES - 1
+    );
+    const keuzes = kiesWillekeurig([juist, ...afleiders], VERTAAL_CONFIG.AANTAL_KEUZES);
+    return { juist, keuzes };
+  });
+
+  vertaalStaat = {
+    vragen,
+    huidigeVraag: 0,
+    aantalCorrect: 0,
+  };
+
+  document.getElementById('game-vertaalkeuze').classList.remove('hidden');
+  renderVertaalkeuze();
+}
+
+/**
+ * Rendert de huidige Vertaalkeuze-vraag.
+ */
+function renderVertaalkeuze() {
+  const container = document.getElementById('vertaal-container');
+  if (!container) return;
+  const { vragen, huidigeVraag, aantalCorrect } = vertaalStaat;
+
+  if (huidigeVraag >= vragen.length) {
+    toonVertaalEinde();
+    return;
+  }
+
+  const vraag = vragen[huidigeVraag];
+
+  container.innerHTML = `
+    <div class="text-center">
+      <p class="text-sm text-gray-500 mb-2">Vraag ${huidigeVraag + 1}/${vragen.length}</p>
+      <div class="font-hebrew text-4xl mb-6 p-4 bg-blue-50 rounded-xl"
+           dir="rtl" lang="he">${vraag.juist.he}</div>
+      <p class="text-sm text-gray-600 mb-4">Kies de juiste Nederlandse vertaling</p>
+      <div class="space-y-3">
+        ${vraag.keuzes.map(k => `
+          <button onclick="kiesVertaalAntwoord(${k.id}, ${vraag.juist.id})"
+                  class="vertaal-btn w-full p-4 border-2 border-gray-200 rounded-xl text-left
+                         hover:border-blue-400 transition-colors bg-white"
+                  data-id="${k.id}">
+            ${k.nl}
+          </button>
+        `).join('')}
+      </div>
+      <p class="text-sm text-gray-400 mt-4">Score: ${aantalCorrect}/${huidigeVraag}</p>
+    </div>`;
+}
+
+/**
+ * Verwerkt een antwoord in Vertaalkeuze.
+ * @param {number} gekozenId - ID van het gekozen woord
+ * @param {number} juistId - ID van het correcte woord
+ */
+function kiesVertaalAntwoord(gekozenId, juistId) {
+  const correct = gekozenId === juistId;
+  if (correct) vertaalStaat.aantalCorrect++;
+  registreerSpelResultaat(juistId, 'vertaalkeuze', correct);
+
+  // Visuele feedback
+  document.querySelectorAll('.vertaal-btn').forEach(btn => {
+    btn.disabled = true;
+    btn.style.pointerEvents = 'none';
+    const id = parseInt(btn.dataset.id);
+    if (id === juistId) btn.classList.add('bg-green-100', 'border-green-500');
+    else if (id === gekozenId && !correct) btn.classList.add('bg-red-100', 'border-red-500');
+  });
+
+  setTimeout(() => {
+    vertaalStaat.huidigeVraag++;
+    renderVertaalkeuze();
+  }, VERTAAL_CONFIG.FEEDBACK_MS);
+}
+
+/**
+ * Toont het einde-scherm van Vertaalkeuze.
+ */
+function toonVertaalEinde() {
+  const container = document.getElementById('vertaal-container');
+  if (!container) return;
+  const { aantalCorrect, vragen } = vertaalStaat;
+  const pct = Math.round((aantalCorrect / vragen.length) * 100);
+
+  container.innerHTML = `
+    <div class="text-center p-4">
+      <p class="text-xl font-bold ${pct >= 70 ? 'text-green-700' : 'text-orange-600'} mb-2">
+        ${pct >= 70 ? '🎉 Goed gedaan!' : '💪 Blijf oefenen!'}
+      </p>
+      <p class="text-3xl font-bold mb-2">${pct}%</p>
+      <p class="text-gray-600 mb-6">${aantalCorrect} van ${vragen.length} correct</p>
+      <div class="space-y-3">
+        <button onclick="startVertaalkeuze(huidigeLes())"
+                class="w-full py-3 bg-blue-600 text-white rounded-xl">Opnieuw spelen</button>
+        <button onclick="terugNaarSpelMenu()"
+                class="w-full py-3 bg-gray-200 text-gray-700 rounded-xl">← Terug naar spelletjes</button>
+      </div>
+    </div>`;
+}
+
+// ══════════════════════════════════════════════════════════════
 // MODULE L: UI-controller (navigatie, schermwissels)
 // ══════════════════════════════════════════════════════════════
 
@@ -880,6 +1289,7 @@ if (new URLSearchParams(window.location.search).has('test')) {
 async function runAllTests() {
   console.group('🧪 Ulpan Jes — Tests');
   const tests = [
+    testDatabasesGeladen,
     testStripNikud,
     testSRSBerekening,
     testGetNieuweWoorden,
@@ -894,6 +1304,24 @@ async function runAllTests() {
   console.log(`\n${geslaagd === tests.length ? '✅' : '❌'} ${geslaagd}/${tests.length}`);
   console.groupEnd();
   toonTestRapport(resultaten);
+}
+
+async function testDatabasesGeladen() {
+  const naam = 'Alle databases geladen';
+  try {
+    if (!VOCAB_DB?.woorden || VOCAB_DB.woorden.length < 200)
+      throw new Error(`VOCAB_DB: ${VOCAB_DB?.woorden?.length} woorden`);
+    if (!MUZIEK_DB?.liederen || MUZIEK_DB.liederen.length !== 105)
+      throw new Error(`MUZIEK_DB: ${MUZIEK_DB?.liederen?.length} liedjes`);
+    if (!SPEL_DB?.woorden) throw new Error('SPEL_DB ontbreekt');
+    if (!OEFEN_DB?.zinnen || OEFEN_DB.zinnen.length < 50)
+      throw new Error(`OEFEN_DB: ${OEFEN_DB?.zinnen?.length} zinnen`);
+    console.log(`✅ ${naam}`);
+    return { ok: true, naam };
+  } catch(fout) {
+    console.error(`❌ ${naam}:`, fout.message);
+    return { ok: false, naam, fout: fout.message };
+  }
 }
 
 async function testStripNikud() {
@@ -1000,17 +1428,22 @@ document.addEventListener('DOMContentLoaded', async () => {
   AppLogger.info('App', `${APP_NAAM} ${APP_VERSIE} start`);
   await laadAlleDatabases();
 
-  // Toon simpel startscherm met les-knop
+  // Toon startscherm met les-knop en navigatie
   const les = huidigeLes();
   document.getElementById('screen-start').innerHTML = `
     <div class="min-h-screen bg-gradient-to-b from-blue-50 to-white p-6 flex flex-col items-center justify-center">
       <h1 class="text-2xl font-bold text-blue-800 mb-8">${APP_NAAM}</h1>
       <button onclick="startLes(${les}); toonScherm('screen-lesson')"
-              class="px-8 py-4 bg-blue-600 text-white rounded-xl text-lg font-semibold hover:bg-blue-700">
+              class="w-full max-w-xs px-8 py-4 bg-blue-600 text-white rounded-xl text-lg font-semibold hover:bg-blue-700 mb-4">
         Les ${les} starten →
+      </button>
+      <button onclick="renderSpelletjesMenu(huidigeLes()); toonScherm('screen-games')"
+              class="w-full max-w-xs px-8 py-3 bg-purple-600 text-white rounded-xl font-semibold hover:bg-purple-700">
+        🎮 Spelletjes
       </button>
     </div>`;
 
+  renderSpelletjesMenu(les);
   AppLogger.info('App', 'Klaar');
 });
   </script>
