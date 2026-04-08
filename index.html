@@ -149,6 +149,41 @@ function woordSoortNaam(soort) {
   return NAMEN[soort] || soort;
 }
 
+// Teller voor afwisseling Avri/Hila bij infinitieven
+let _spreekAfwisselTeller = 0;
+
+/**
+ * Bepaalt de juiste stem (man/vrouw) voor een woord en spreekt het uit.
+ * Logica:
+ *   - nl bevat "(mannelijk)" → Avri
+ *   - nl bevat "(vrouwelijk)" → Hila
+ *   - infinitief (begint met ל) → wissel af Avri/Hila
+ *   - voornaamwoord: אתה/הוא → Avri, את/היא → Hila, אני → wissel af
+ *   - overig → vrouw (Hila) als standaard
+ * @param {Object} woord - Woordobject met he_clean, nl, soort
+ * @returns {Promise<boolean>} true bij succes
+ */
+function spreekWoordUit(woord) {
+  const nl = woord.nl || '';
+  const he = stripNikud(woord.he_clean || '');
+
+  let stem = 'vrouw'; // standaard Hila
+
+  if (nl.includes('(mannelijk)')) {
+    stem = 'man';
+  } else if (nl.includes('(vrouwelijk)')) {
+    stem = 'vrouw';
+  } else if (nl.includes('(infinitief)') || he.startsWith('ל')) {
+    stem = (_spreekAfwisselTeller++ % 2 === 0) ? 'man' : 'vrouw';
+  } else if (woord.soort === 'vw') {
+    if (he === 'אתה' || he === 'הוא') stem = 'man';
+    else if (he === 'את' || he === 'היא') stem = 'vrouw';
+    else if (he === 'אני') stem = (_spreekAfwisselTeller++ % 2 === 0) ? 'man' : 'vrouw';
+  }
+
+  return AudioManager.spreekUit(woord.he_clean, stem);
+}
+
 /**
  * Geeft het huidige lesnummer van de leerder.
  * @returns {number} Huidig lesnummer (1-19)
@@ -602,7 +637,7 @@ async function toonFase1() {
 
     // Spreek 3x voor met pauze
     for (let herhaling = 0; herhaling < 3; herhaling++) {
-      await AudioManager.spreekUit(woord.he_clean, 'vrouw');
+      await spreekWoordUit(woord);
       await new Promise(r => setTimeout(r, 800));
     }
     await new Promise(r => setTimeout(r, 500));
@@ -649,7 +684,7 @@ async function toonFase2() {
     `;
 
     window.fase2Volgende = toonVolgend;
-    await AudioManager.spreekUit(woord.he_clean, 'vrouw');
+    await spreekWoordUit(woord);
   };
 
   toonVolgend();
@@ -700,7 +735,7 @@ async function toonFase3() {
     };
     window.fase3Volgende = toonVolgend;
 
-    await AudioManager.spreekUit(woord.he_clean, 'vrouw');
+    await spreekWoordUit(woord);
   };
 
   toonVolgend();
@@ -748,7 +783,7 @@ function toonFase3b() {
     `;
 
     window.fase3bVolgende = toonVolgend;
-    AudioManager.spreekUit(woord.he_clean, 'vrouw');
+    spreekWoordUit(woord);
   };
 
   toonVolgend();
@@ -805,20 +840,18 @@ async function toonFase4() {
 }
 
 /**
- * Fase 5a: Consolidatie via een kort verhaaltje of dialoog.
- * UITSLUITEND bekende woorden — geen enkel onbekend woord.
- * Avri en Hila spreken samen — dialogische presentatie.
+ * Fase 5a: Consolidatie — overzicht geleerde woorden.
  * Succeservaring aan het einde van elke les.
+ * Klik op woord = uitspreken met juiste stem via spreekWoordUit().
  */
 function toonFase5a() {
   const les       = window.huidigeLesData.lesNummer;
   const container = document.getElementById('les-fase-container');
+  const woorden   = window.huidigeLesData.nieuweWoorden;
 
   // Sla voortgang op
   Opslag.slaOp(`${OPSLAG_PREFIXEN.voortgang}${les}`,
     { voltooid: true, datum: new Date().toISOString() });
-
-  const woorden = window.huidigeLesData.nieuweWoorden;
 
   container.innerHTML = `
     <div class="min-h-screen flex flex-col p-6">
@@ -826,26 +859,11 @@ function toonFase5a() {
       <div class="text-center mb-6">
         <p class="text-3xl font-bold text-green-700">🎉</p>
         <p class="text-xl font-bold text-green-700 mt-2">Les ${les} voltooid!</p>
-        <p class="text-sm text-gray-500 mt-1">
-          ${woorden.length} nieuwe woorden geleerd
-        </p>
+        <p class="text-sm text-gray-500 mt-1">${woorden.length} nieuwe woorden geleerd</p>
       </div>
-
-      <!-- Overzicht nieuwe woorden -->
-      <div class="space-y-2 mb-6 max-w-md mx-auto w-full">
-        ${woorden.map(w => `
-          <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg"
-               onclick="AudioManager.spreekUit('${stripNikud(w.he_clean)}', 'vrouw')">
-            <span class="font-hebrew text-xl" dir="rtl" lang="he">${w.he_clean}</span>
-            <span class="text-gray-500 text-sm">${w.uitspraak}</span>
-            <span class="text-gray-700 text-sm">${w.nl}</span>
-          </div>
-        `).join('')}
-      </div>
-
-      <!-- Navigatie -->
+      <div class="space-y-2 mb-6 max-w-md mx-auto w-full" id="fase5a-woorden"></div>
       <div class="grid grid-cols-2 gap-3 max-w-md mx-auto w-full mt-auto">
-        <button onclick="toonScherm('screen-games')"
+        <button onclick="renderSpelletjesMenu(huidigeLes()); toonScherm('screen-games')"
                 class="py-3 bg-purple-600 text-white rounded-xl font-semibold">
           🎮 Spelletjes
         </button>
@@ -854,8 +872,16 @@ function toonFase5a() {
           Volgende les →
         </button>
       </div>
-    </div>
-  `;
+    </div>`;
+
+  // Render woorden met klikbare TTS via spreekWoordUit
+  document.getElementById('fase5a-woorden').innerHTML = woorden.map((w, i) => `
+    <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg cursor-pointer"
+         onclick="spreekWoordUit(window.huidigeLesData.nieuweWoorden[${i}])">
+      <span class="font-hebrew text-xl" dir="rtl" lang="he">${w.he_clean}</span>
+      <span class="text-gray-500 text-sm">${w.uitspraak}</span>
+      <span class="text-gray-700 text-sm">${w.nl}</span>
+    </div>`).join('');
 }
 
 /**
@@ -1942,7 +1968,7 @@ function shoreshKlikBak(shoresh) {
   if (correct) {
     shoreshStaat.gesorteerd[shoresh].push(woord);
     registreerSpelResultaat(woord.id, 'shoresh-sort', true);
-    AudioManager.spreekUit(woord.he_clean, 'vrouw');
+    spreekWoordUit(woord);
   } else {
     toonToast('Dat woord hoort bij een andere shoresh', 'warning');
     registreerSpelResultaat(woord.id, 'shoresh-sort', false);
