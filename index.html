@@ -930,10 +930,10 @@ async function testSRSBerekening() {
 async function testGetNieuweWoorden() {
   const naam = 'getNieuweWoorden()';
   try {
-    const nieuw = getNieuweWoorden(2);
+    const nieuw = getNieuweWoorden(1);
     if (!Array.isArray(nieuw)) throw new Error('Geen array');
-    if (nieuw.length === 0) throw new Error('Les 2 heeft geen nieuwe woorden');
-    console.log(`✅ ${naam} — les 2: ${nieuw.length} nieuwe woorden`);
+    if (nieuw.length === 0) throw new Error('Les 1 heeft geen nieuwe woorden');
+    console.log(`✅ ${naam} — les 1: ${nieuw.length} nieuwe woorden`);
     return { ok: true, naam };
   } catch(fout) {
     console.error(`❌ ${naam}:`, fout.message);
