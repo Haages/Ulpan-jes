@@ -554,11 +554,31 @@ function toonFase(faseNummer) {
  * Leerder hoort + ziet Nederlandse betekenis. Geen Hebreeuws schrift prominent.
  * Geslachtsindicator altijd als onderdeel van de auditieve presentatie.
  * Geen productie gevraagd — affectieve filter laag houden.
+ * Vereist Azure API-sleutel — zonder audio heeft deze fase geen zin.
  */
 async function toonFase1() {
   const woorden   = window.huidigeLesData.nieuweWoorden;
   const container = document.getElementById('les-fase-container');
   if (!container) return;
+
+  // Controleer of TTS beschikbaar is
+  if (!window.AZURE_API_SLEUTEL) {
+    container.innerHTML = `
+      <div class="min-h-screen flex flex-col items-center justify-center p-6">
+        <div class="text-5xl mb-6">🔇</div>
+        <h2 class="text-xl font-bold text-gray-800 mb-4 text-center">Audio niet beschikbaar</h2>
+        <p class="text-gray-600 text-center mb-8">
+          Configureer eerst je Azure API-sleutel via Instellingen.
+          Zonder audio kan de les niet worden gestart.
+        </p>
+        <button onclick="renderInstellingenScherm(); toonScherm('screen-settings')"
+                class="px-8 py-3 bg-blue-600 text-white rounded-xl text-lg hover:bg-blue-700">
+          ⚙️ Naar Instellingen
+        </button>
+      </div>
+    `;
+    return;
+  }
 
   container.innerHTML = `
     <div class="min-h-screen bg-blue-50 flex flex-col items-center justify-center p-6">
@@ -576,7 +596,6 @@ async function toonFase1() {
     document.getElementById('fase1-voortgang').textContent =
       `${i + 1} / ${woorden.length}`;
 
-    // Toon Nederlandse betekenis — Hebreeuws schrift nog niet prominent
     document.getElementById('fase1-woord').innerHTML = `
       <div class="text-4xl mb-3">🔊</div>
       <div class="text-2xl font-semibold mb-2">${woord.nl}</div>
