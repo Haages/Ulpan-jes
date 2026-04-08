@@ -79,9 +79,6 @@
 // MODULE A: Constanten en configuratie
 // ══════════════════════════════════════════════════════════════
 
-// ── Azure API-sleutel — vul hier in of stel in via Instellingen ──
-// window.AZURE_API_SLEUTEL = 'PLAK_HIER_JE_SLEUTEL';
-
 const APP_VERSIE        = '1.0.0';
 const APP_NAAM          = 'Ulpan Jes';
 const AZURE_REGIO       = 'eastus';
@@ -2347,7 +2344,8 @@ function renderStartScherm() {
 function renderInstellingenScherm() {
   const container = document.getElementById('screen-settings');
   if (!container) return;
-  const inst = Opslag.laad(OPSLAG_PREFIXEN.instellingen, { stem: 'vrouw', tekstGrootte: 'normaal', apiSleutel: '' });
+  const opgeslagenSleutel = localStorage.getItem('ujes_azure_key') || '';
+  const inst = Opslag.laad(OPSLAG_PREFIXEN.instellingen, { stem: 'vrouw' });
 
   container.innerHTML = `
     <div class="min-h-screen bg-white p-6 max-w-md mx-auto">
@@ -2360,33 +2358,26 @@ function renderInstellingenScherm() {
       <div class="space-y-6">
         <!-- Azure API-sleutel -->
         <div>
-          <label class="block text-sm font-medium text-gray-700 mb-2">Azure TTS API-sleutel</label>
-          <input type="password" id="inst-api-key" value="${inst.apiSleutel || ''}"
-                 class="w-full p-3 border rounded-lg" placeholder="Voer Azure API-sleutel in"
-                 onchange="slaInstellingenOp()">
-          <p class="text-xs text-gray-400 mt-1">Nodig voor spraakfunctie (Azure Cognitive Services)</p>
+          <label class="block text-sm font-medium text-gray-700 mb-2">Azure API-sleutel</label>
+          <input type="password" id="inst-api-key" value="${opgeslagenSleutel}"
+                 class="w-full p-3 border rounded-lg" placeholder="Plak je Azure Key 1 hier">
+          <p class="text-xs text-gray-400 mt-1">portal.azure.com → ivriet-speech → Keys and Endpoint → Key 1</p>
         </div>
 
         <!-- Stem -->
         <div>
-          <label class="block text-sm font-medium text-gray-700 mb-2">Voorkeursstem</label>
-          <select id="inst-stem" class="w-full p-3 border rounded-lg"
-                  onchange="slaInstellingenOp()">
+          <label class="block text-sm font-medium text-gray-700 mb-2">Standaardstem</label>
+          <select id="inst-stem" class="w-full p-3 border rounded-lg">
             <option value="vrouw" ${inst.stem === 'vrouw' ? 'selected' : ''}>Hila (vrouw)</option>
             <option value="man" ${inst.stem === 'man' ? 'selected' : ''}>Avri (man)</option>
           </select>
         </div>
 
-        <!-- Tekstgrootte -->
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-2">Tekstgrootte</label>
-          <select id="inst-tekstgrootte" class="w-full p-3 border rounded-lg"
-                  onchange="slaInstellingenOp()">
-            <option value="klein" ${inst.tekstGrootte === 'klein' ? 'selected' : ''}>Klein</option>
-            <option value="normaal" ${inst.tekstGrootte === 'normaal' ? 'selected' : ''}>Normaal</option>
-            <option value="groot" ${inst.tekstGrootte === 'groot' ? 'selected' : ''}>Groot</option>
-          </select>
-        </div>
+        <!-- Opslaan -->
+        <button onclick="slaInstellingenOp()"
+                class="w-full py-3 bg-blue-600 text-white rounded-xl text-lg font-semibold hover:bg-blue-700">
+          Opslaan
+        </button>
 
         <!-- Test spraak -->
         <button onclick="AudioManager.spreekUit('שלום, אני מדברת עברית', document.getElementById('inst-stem').value === 'man' ? 'man' : 'vrouw')"
@@ -2404,13 +2395,20 @@ function renderInstellingenScherm() {
 
 /**
  * Slaat de instellingen op.
+ * Azure sleutel in localStorage als 'ujes_azure_key'.
+ * Stem in OPSLAG_PREFIXEN.instellingen.
  */
 function slaInstellingenOp() {
-  const stem = document.getElementById('inst-stem')?.value || 'vrouw';
-  const tekstGrootte = document.getElementById('inst-tekstgrootte')?.value || 'normaal';
   const apiSleutel = document.getElementById('inst-api-key')?.value || '';
-  Opslag.slaOp(OPSLAG_PREFIXEN.instellingen, { stem, tekstGrootte, apiSleutel });
-  if (apiSleutel) window.AZURE_API_SLEUTEL = apiSleutel;
+  const stem = document.getElementById('inst-stem')?.value || 'vrouw';
+
+  // Sla Azure sleutel op als losse key
+  localStorage.setItem('ujes_azure_key', apiSleutel);
+  window.AZURE_API_SLEUTEL = apiSleutel || null;
+
+  // Sla stem op
+  Opslag.slaOp(OPSLAG_PREFIXEN.instellingen, { stem });
+
   toonToast('Instellingen opgeslagen', 'success');
 }
 
@@ -2646,9 +2644,8 @@ function toonTestRapport(resultaten) {
 document.addEventListener('DOMContentLoaded', async () => {
   AppLogger.info('App', `${APP_NAAM} ${APP_VERSIE} start`);
 
-  // Laad opgeslagen API-sleutel
-  const inst = Opslag.laad(OPSLAG_PREFIXEN.instellingen, {});
-  if (inst.apiSleutel) window.AZURE_API_SLEUTEL = inst.apiSleutel;
+  // Laad opgeslagen Azure API-sleutel
+  window.AZURE_API_SLEUTEL = localStorage.getItem('ujes_azure_key') || null;
 
   // Forceer font laden vóór UI rendering
   try {
