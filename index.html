@@ -2595,6 +2595,18 @@ function toonTestRapport(resultaten) {
 document.addEventListener('DOMContentLoaded', async () => {
   AppLogger.info('App', `${APP_NAAM} ${APP_VERSIE} start`);
 
+  // Forceer font laden vóór UI rendering
+  try {
+    const font = new FontFace('GveretLevin',
+      "url('GveretLevinAlefAlefAlef-Regular.woff2') format('woff2'), " +
+      "url('GveretLevinAlefAlefAlef-Regular.woff') format('woff')");
+    const loaded = await font.load();
+    document.fonts.add(loaded);
+    AppLogger.info('Font', 'GveretLevin geladen');
+  } catch(e) {
+    AppLogger.warn('Font', 'GveretLevin laden mislukt', e.message);
+  }
+
   await laadAlleDatabases();
 
   renderStartScherm();
