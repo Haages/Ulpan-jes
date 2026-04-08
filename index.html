@@ -181,13 +181,11 @@ function spreekWoordUit(woord) {
     else if (he === 'אני') stem = (_spreekAfwisselTeller++ % 2 === 0) ? 'man' : 'vrouw';
   }
 
-  // Voornaamwoorden: gebruik SSML phoneme tag voor correcte uitspraak
-  // Azure TTS leest את als "et" (objectmarkeerder) i.p.v. "at" (voornaamwoord)
-  if (woord.soort === 'vw' && woord.uitspraak) {
-    return AudioManager.spreekUitMetFonetiek(woord.he_clean, woord.uitspraak, stem);
-  }
+  // Als het woord een uitspraak heeft in de database — gebruik die altijd
+  // Dit voorkomt TTS-fouten zoals את → "et" i.p.v. "at"
+  const tekst = woord.uitspraak ? woord.uitspraak : stripNikud(woord.he_clean);
 
-  return AudioManager.spreekUit(woord.he_clean, stem);
+  return AudioManager.spreekUit(tekst, stem);
 }
 
 /**
