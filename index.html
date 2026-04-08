@@ -848,7 +848,8 @@ function faseWordImage() {
 }
 
 async function fasePractice() {
-  const zinnen = OEFEN_DB ? OEFEN_DB.zinnen.filter(z => parseInt(z.les) === window.huidigeLesData.lesNummer).sort((a,b) => (a.niveau||99) - (b.niveau||99)) : [];
+  const lesNr = Number(window.huidigeLesData.lesNummer);
+  const zinnen = OEFEN_DB ? OEFEN_DB.zinnen.filter(z => Number(z.les) === lesNr).sort((a,b) => (a.niveau||99) - (b.niveau||99)) : [];
   const C = document.getElementById('les-fase-container');
   let idx = 0;
   if (zinnen.length === 0) { toonFase(6); return; }
@@ -871,7 +872,14 @@ async function fasePractice() {
     </div>`;
     window._f5Next = () => { idx++; show(); };
     window._f5Back = () => { if(idx>0){idx--;show();} };
-    await AudioManager.spreekUit(he, 'vrouw');
+    // Bepaal stem op basis van eerste woord van de zin
+    const eersteWoord = he.split(/\s+/)[0].replace(/[\u0591-\u05C7]/g, '');
+    const manWoorden = ['אני', 'אתה', 'הוא', 'צריך', 'רוצה'];
+    const vrouwWoorden = ['את', 'היא', 'צריכה'];
+    let zinStem = manWoorden.includes(eersteWoord) ? 'man' :
+                  vrouwWoorden.includes(eersteWoord) ? 'vrouw' :
+                  (idx % 2 === 0) ? 'man' : 'vrouw';
+    await AudioManager.spreekUit(he, zinStem);
   };
   show();
 }
