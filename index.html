@@ -675,7 +675,7 @@ function startLes(lesNummer) {
   StreakManager.registreerActiviteit();
   Opslag.slaOp(OPSLAG_PREFIXEN.huidigeLes, lesNummer);
 
-  AppLogger.info('Les', `Les ${lesNummer} gestart`, `${nieuweWoorden.length} nieuwe woorden`);
+  AppLogger.info('Les', `Lesson ${lesNummer} gestart`, `${nieuweWoorden.length} nieuwe woorden`);
   toonFase(1);
 }
 
@@ -720,7 +720,7 @@ async function toonFase1() {
 
     container.innerHTML = `
       <div class="min-h-screen bg-blue-50 flex flex-col items-center justify-center p-6">
-        <p class="text-sm text-gray-500 mb-1">Lesson ${window.huidigeLesData.lesNummer} — Phase 1 of 5 — Listening</p>
+        <p class="text-sm text-gray-500 mb-1">Lesson ${window.huidigeLesData.lesNummer} — Phase 1 of 7 — Listening</p>
         <p class="text-gray-600 mb-6 text-center">
           Listen and understand. You don't need to do anything yet.
         </p>
@@ -779,7 +779,7 @@ async function toonFase2() {
     container.innerHTML = `
       <div class="min-h-screen flex flex-col items-center justify-center p-6">
         <p class="text-sm text-gray-500 mb-4">
-          Lesson ${window.huidigeLesData.lesNummer} — Phase 2 of 5 — Look and repeat (${idx + 1}/${woorden.length})
+          Lesson ${window.huidigeLesData.lesNummer} — Phase 2 of 7 — Look and repeat (${idx + 1}/${woorden.length})
         </p>
         <div class="text-6xl font-bold mb-1" dir="rtl" lang="he"
              style="font-family: Arial, sans-serif;">${woord.he_clean}</div>
@@ -830,7 +830,7 @@ async function toonFase3() {
     container.innerHTML = `
       <div class="min-h-screen flex flex-col items-center justify-center p-6">
         <p class="text-sm text-gray-500 mb-4">
-          Lesson ${window.huidigeLesData.lesNummer} — Phase 3 of 5 — Understanding (${idx + 1}/${woorden.length})
+          Lesson ${window.huidigeLesData.lesNummer} — Phase 3 of 7 — Understanding (${idx + 1}/${woorden.length})
         </p>
         <div class="font-hebrew text-6xl mb-4" dir="rtl" lang="he">${woord.he}</div>
         <div class="text-2xl text-blue-600 mb-6">${woord.uitspraak}</div>
@@ -888,7 +888,7 @@ function toonFase3b() {
     container.innerHTML = `
       <div class="min-h-screen flex flex-col items-center justify-center p-6">
         <p class="text-sm text-gray-500 mb-4">
-          Lesson ${window.huidigeLesData.lesNummer} — Phase 3b of 5 — Word image (${idx + 1}/${woorden.length})
+          Lesson ${window.huidigeLesData.lesNummer} — Phase 4 of 7 — Word image (${idx + 1}/${woorden.length})
         </p>
         <div class="font-hebrew text-7xl mb-2 tracking-wider"
              dir="rtl" lang="he">${woord.he}</div>
@@ -896,7 +896,7 @@ function toonFase3b() {
         <div class="text-gray-700 mb-4">${woord.nl}</div>
         ${woord.shoresh ? `
           <div class="bg-orange-50 border border-orange-200 rounded-lg p-3 mb-6 text-center">
-            <p class="text-xs text-orange-600 mb-1" dir="rtl" lang="he">שורש / woordwortel</p>
+            <p class="text-xs text-orange-600 mb-1" dir="rtl" lang="he">שורש / word root</p>
             <p class="font-hebrew text-2xl text-orange-700"
                dir="rtl" lang="he">${woord.shoresh}</p>
           </div>
@@ -955,7 +955,7 @@ async function toonFase4() {
     container.innerHTML = `
       <div class="min-h-screen flex flex-col items-center justify-center p-6">
         <p class="text-sm text-gray-500 mb-4">
-          Lesson ${window.huidigeLesData.lesNummer} — Phase 4 of 5 — Practice sentences (${zinIndex}/${zinnen.length})
+          Lesson ${window.huidigeLesData.lesNummer} — Phase 5 of 7 — Practice sentences (${zinIndex}/${zinnen.length})
         </p>
         ${enCue ? `<p class="text-lg text-gray-700 mb-4 text-center">${enCue}</p>` : ''}
         <div class="font-hebrew text-2xl text-right leading-relaxed mb-4
@@ -1001,23 +1001,17 @@ function toonFase5a() {
 
   container.innerHTML = `
     <div class="min-h-screen flex flex-col p-6">
-      <p class="text-sm text-gray-500 mb-2 text-center">Lesson ${window.huidigeLesData.lesNummer} — Phase 5 of 5 — Consolidation</p>
+      <p class="text-sm text-gray-500 mb-2 text-center">Lesson ${window.huidigeLesData.lesNummer} — Phase 6 of 7 — Story</p>
       <div class="text-center mb-6">
         <p class="text-3xl font-bold text-green-700">🎉</p>
-        <p class="text-xl font-bold text-green-700 mt-2">Les ${les} voltooid!</p>
+        <p class="text-xl font-bold text-green-700 mt-2">Lesson ${les} complete!</p>
         <p class="text-sm text-gray-500 mt-1">${woorden.length} new words learned</p>
       </div>
       <div class="space-y-2 mb-6 max-w-md mx-auto w-full" id="fase5a-woorden"></div>
-      <div class="grid grid-cols-2 gap-3 max-w-md mx-auto w-full mt-auto">
-        <button onclick="renderGamesMenu(huidigeLes()); toonScherm('screen-games')"
-                class="py-3 bg-purple-600 text-white rounded-xl font-semibold">
-          🎮 Games
-        </button>
-        <button onclick="startLes(${les + 1}); toonScherm('screen-lesson')"
-                class="py-3 bg-blue-600 text-white rounded-xl font-semibold">
-          Next lesson →
-        </button>
-      </div>
+      <button onclick="toonFase('5b')"
+              class="w-full max-w-md mx-auto py-3 bg-blue-600 text-white rounded-xl font-semibold mt-auto">
+        Continue to Music →
+      </button>
     </div>`;
 
   // Render woorden met klikbare TTS via spreekWoordUit
@@ -1036,23 +1030,44 @@ function toonFase5a() {
  * Als geen geschikt liedje beschikbaar is: terugval naar fase 5a.
  */
 function toonFase5b() {
-  const les = window.huidigeLesData.lesNummer;
+  const les       = window.huidigeLesData.lesNummer;
+  const container = document.getElementById('les-fase-container');
+  let liedHTML = '';
 
-  // Zoek geschikt liedje voor dit lesniveau
-  if (!MUZIEK_DB) {
-    toonFase5a();
-    return;
+  if (MUZIEK_DB) {
+    const geschikt = MUZIEK_DB.liederen.filter(l =>
+      l.vanaf_les !== 'gimel' && parseInt(l.vanaf_les) <= les
+    );
+    if (geschikt.length > 0) {
+      const lied = kiesWillekeurig(geschikt, 1)[0];
+      liedHTML = `
+        <div class="bg-purple-50 rounded-xl p-4 mb-6 text-center">
+          <p class="text-sm text-purple-600 mb-2">🎵 Suggested song</p>
+          <p class="font-hebrew text-2xl mb-1" dir="rtl" lang="he">${lied.he}</p>
+          <p class="text-gray-600 text-sm">${lied.artiest}</p>
+          <button onclick="openMuziekLes(${lied.id})"
+                  class="mt-3 px-4 py-2 bg-purple-600 text-white rounded-lg text-sm">
+            Open song
+          </button>
+        </div>`;
+    }
   }
 
-  const geschikt = MUZIEK_DB.liederen.filter(l => l.groep <= Math.ceil(les / 2));
-  if (geschikt.length === 0) {
-    toonFase5a();
-    return;
-  }
-
-  const lied = kiesWillekeurig(geschikt, 1)[0];
-  // openMusicLes wordt geïmplementeerd in Module K
-  toonFase5a();
+  container.innerHTML = `
+    <div class="min-h-screen flex flex-col p-6">
+      <p class="text-sm text-gray-500 mb-4 text-center">Lesson ${les} — Phase 7 of 7 — Music</p>
+      ${liedHTML || '<p class="text-gray-400 text-center mb-6">No songs available for this level yet.</p>'}
+      <div class="grid grid-cols-2 gap-3 max-w-md mx-auto w-full mt-auto">
+        <button onclick="renderGamesMenu(huidigeLes()); toonScherm('screen-games')"
+                class="py-3 bg-purple-600 text-white rounded-xl font-semibold">
+          🎮 Games
+        </button>
+        <button onclick="startLes(${les + 1}); toonScherm('screen-lesson')"
+                class="py-3 bg-blue-600 text-white rounded-xl font-semibold">
+          Next lesson →
+        </button>
+      </div>
+    </div>`;
 }
 
 // ══════════════════════════════════════════════════════════════
@@ -2470,26 +2485,24 @@ function renderStartScherm() {
         </div>
       </div>
 
-      <!-- Dagelijkse les -->
+      <!-- Lesson picker -->
       <div class="bg-white rounded-2xl shadow-sm p-6 mb-4">
-        <p class="text-sm text-gray-500 mb-1">Today</p>
-        <div class="flex items-center gap-3 mb-4">
-          <h2 class="text-xl font-bold">Lesson</h2>
-          <select id="les-kiezer" class="border rounded-lg px-3 py-2 text-lg font-bold"
-                  onchange="document.getElementById('start-les-btn').onclick = () => { startLes(parseInt(this.value)); toonScherm('screen-lesson'); }">
-            ${Array.from({length: les}, (_, i) => i + 1).map(n =>
-              `<option value="${n}" ${n === les ? 'selected' : ''}>Lesson ${n}</option>`
-            ).join('')}
-          </select>
+        <p class="text-sm text-gray-500 mb-3">Choose a lesson</p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          ${Array.from({length: les}, (_, i) => i + 1).map(n =>
+            `<button onclick="document.getElementById('start-les-btn').dataset.les=${n}; document.querySelectorAll('.les-btn').forEach(b=>b.classList.remove('bg-blue-600','text-white')); document.querySelectorAll('.les-btn').forEach(b=>b.classList.add('bg-gray-100','text-gray-700')); this.classList.remove('bg-gray-100','text-gray-700'); this.classList.add('bg-blue-600','text-white');"
+                    class="les-btn w-10 h-10 rounded-lg font-bold ${n === les ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-700'}">${n}</button>`
+          ).join('')}
         </div>
-        <button id="start-les-btn" onclick="startLes(${les}); toonScherm('screen-lesson')"
+        <button id="start-les-btn" data-les="${les}"
+                onclick="startLes(parseInt(this.dataset.les)); toonScherm('screen-lesson')"
                 class="w-full py-4 bg-blue-600 text-white rounded-xl text-lg font-semibold
                        hover:bg-blue-700 transition-colors">
           Start lesson →
         </button>
       </div>
 
-      <!-- Herhaling -->
+      <!-- Review -->
       ${teHerhalen > 0 ? `
       <div class="bg-yellow-50 border border-yellow-200 rounded-2xl p-4 mb-4">
         <p class="font-semibold text-yellow-800">📚 ${teHerhalen} words to review</p>
@@ -2500,7 +2513,7 @@ function renderStartScherm() {
         </button>
       </div>` : ''}
 
-      <!-- Navigatie -->
+      <!-- Navigation -->
       <div class="grid grid-cols-4 gap-2 mt-6">
         ${[
           { icon: '🎮', label: 'Games', actie: "renderGamesMenu(huidigeLes()); toonScherm('screen-games')" },
@@ -2693,8 +2706,8 @@ async function testGetBekendWoorden() {
   try {
     const les1 = getBekendWoorden(1);
     const les2 = getBekendWoorden(2);
-    if (les1.length === 0) throw new Error('Les 1: 0 woorden');
-    if (les2.length <= les1.length) throw new Error('Les 2 niet groter dan les 1');
+    if (les1.length === 0) throw new Error('Lesson 1: 0 woorden');
+    if (les2.length <= les1.length) throw new Error('Lesson 2 niet groter dan les 1');
     console.log(`✅ ${naam} — les 1: ${les1.length}, les 2: ${les2.length}`);
     return { ok: true, naam };
   } catch(fout) {
@@ -2708,7 +2721,7 @@ async function testGetNieuweWoorden() {
   try {
     const nieuw = getNieuweWoorden(1);
     if (!Array.isArray(nieuw)) throw new Error('Geen array');
-    if (nieuw.length < 1) throw new Error(`Les 1 heeft geen nieuwe woorden`);
+    if (nieuw.length < 1) throw new Error(`Lesson 1 heeft geen nieuwe woorden`);
     console.log(`✅ ${naam} — les 1: ${nieuw.length} nieuwe woorden`);
     return { ok: true, naam };
   } catch(fout) {
