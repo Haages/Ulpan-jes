@@ -880,17 +880,27 @@ function faseMusic() {
   const les = window.huidigeLesData.lesNummer;
   const C = document.getElementById('les-fase-container');
   Opslag.slaOp(`${OPSLAG_PREFIXEN.voortgang}${les}`, { voltooid: true, datum: new Date().toISOString() });
+  const muziekVids = { 1: 'dYJBBr9dOhY' };
+  const muziekVid = muziekVids[les] || 'dYJBBr9dOhY';
   let liedHTML = '';
   if (MUZIEK_DB) {
     const geschikt = MUZIEK_DB.liederen.filter(l => l.vanaf_les !== 'gimel' && parseInt(l.vanaf_les) <= les);
     if (geschikt.length > 0) {
       const lied = kiesWillekeurig(geschikt, 1)[0];
-      liedHTML = `<div class="bg-purple-50 rounded-xl p-4 mb-6 text-center"><p class="text-sm text-purple-600 mb-2">🎵 Suggested song</p><p class="font-hebrew text-2xl mb-1" dir="rtl" lang="he">${lied.he}</p><p class="text-gray-600 text-sm">${lied.artiest}</p><button onclick="openMuziekLes(${lied.id})" class="mt-3 px-4 py-2 bg-purple-600 text-white rounded-lg text-sm">Open song</button></div>`;
+      liedHTML = `<div class="bg-purple-50 rounded-xl p-4 mb-4 text-center">
+        <p class="text-sm text-purple-600 mb-1">🎵 ${lied.artiest}</p>
+        <p class="font-hebrew text-xl" dir="rtl" lang="he">${lied.he}</p>
+        <button onclick="openMuziekLes(${lied.id})" class="mt-2 px-4 py-2 bg-purple-600 text-white rounded-lg text-sm">Open lyrics</button>
+      </div>`;
     }
   }
   C.innerHTML = `<div class="min-h-screen flex flex-col p-6">
     ${faseKop(6, 'Music')}
-    ${liedHTML || '<p class="text-gray-400 text-center mb-6">No songs available for this level yet.</p>'}
+    <div class="w-full max-w-md mx-auto mb-4" style="aspect-ratio:16/9;">
+      <iframe src="https://www.youtube.com/embed/${muziekVid}" class="w-full h-full rounded-xl"
+              frameborder="0" allowfullscreen></iframe>
+    </div>
+    ${liedHTML}
     <button onclick="toonFase(7)" class="w-full max-w-md mx-auto py-3 bg-blue-600 text-white rounded-xl font-semibold mt-auto">Continue to Video →</button>
   </div>`;
 }
@@ -902,8 +912,10 @@ function faseVideo() {
   const vid = vids[les] || 'Z1q3NW5Hs3M';
   C.innerHTML = `<div class="min-h-screen flex flex-col p-6">
     ${faseKop(7, 'Video')}
-    <div class="w-full max-w-md mx-auto mb-6" style="aspect-ratio:16/9;">
-      <iframe src="https://www.youtube.com/embed/${vid}" class="w-full h-full rounded-xl" frameborder="0" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+    <p class="text-gray-600 text-center mb-4">Watch and learn</p>
+    <div class="w-full max-w-md mx-auto mb-6">
+      <iframe width="100%" height="300" src="https://www.youtube.com/embed/${vid}"
+              frameborder="0" allowfullscreen class="rounded-xl"></iframe>
     </div>
     <button onclick="toonFase(8)" class="w-full max-w-md mx-auto py-3 bg-blue-600 text-white rounded-xl font-semibold mt-auto">Continue to Word list →</button>
   </div>`;
@@ -915,14 +927,27 @@ function faseWordList() {
   const C = document.getElementById('les-fase-container');
   C.innerHTML = `<div class="min-h-screen flex flex-col p-6">
     ${faseKop(8, 'Word list')}
-    <div class="text-center mb-4"><p class="text-xl font-bold text-green-700">🎉 Lesson ${les} complete!</p><p class="text-sm text-gray-500 mt-1">${W.length} new words</p></div>
+    <div class="text-center mb-4">
+      <p class="text-xl font-bold text-green-700">🎉 Lesson ${les} complete!</p>
+      <p class="text-sm text-gray-500 mt-1">${W.length} new words</p>
+    </div>
     <div class="space-y-2 mb-6 max-w-md mx-auto w-full" id="f8w"></div>
-    <div class="grid grid-cols-2 gap-3 max-w-md mx-auto w-full mt-auto">
-      <button onclick="renderGamesMenu(huidigeLes()); toonScherm('screen-games')" class="py-3 bg-purple-600 text-white rounded-xl font-semibold">🎮 Games</button>
-      <button onclick="startLes(${les + 1}); toonScherm('screen-lesson')" class="py-3 bg-blue-600 text-white rounded-xl font-semibold">Next lesson →</button>
+    <div class="space-y-3 max-w-md mx-auto w-full mt-auto">
+      <button onclick="renderStartScherm(); toonScherm('screen-start')"
+              class="w-full py-3 bg-green-600 text-white rounded-xl font-semibold">✓ Complete lesson</button>
+      <button onclick="startLes(${les + 1}); toonScherm('screen-lesson')"
+              class="w-full py-3 bg-blue-600 text-white rounded-xl font-semibold">Next lesson →</button>
+      <button onclick="renderGamesMenu(huidigeLes()); toonScherm('screen-games')"
+              class="w-full py-3 bg-purple-100 text-purple-700 rounded-xl font-semibold">🎮 Games</button>
     </div>
   </div>`;
-  document.getElementById('f8w').innerHTML = W.map((w, i) => `<div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg cursor-pointer" onclick="AudioManager.stop(); spreekWoordUit(window.huidigeLesData.nieuweWoorden[${i}])"><span class="text-xl font-bold" dir="rtl" lang="he" style="font-family:Arial,sans-serif;">${w.he_clean}</span><span class="text-gray-500 text-sm">${w.uitspraak}</span><span class="text-gray-700 text-sm">${w.en || w.nl}</span></div>`).join('');
+  document.getElementById('f8w').innerHTML = W.map((w, i) => `
+    <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg cursor-pointer"
+         onclick="AudioManager.stop(); spreekWoordUit(window.huidigeLesData.nieuweWoorden[${i}])">
+      <span class="text-xl font-bold" dir="rtl" lang="he" style="font-family:Arial,sans-serif;">${w.he_clean}</span>
+      <span class="text-gray-500 text-sm">${w.uitspraak}</span>
+      <span class="text-gray-700 text-sm">${w.en || w.nl}</span>
+    </div>`).join('');
 }
 
 const SRS_GEWICHTEN = {
