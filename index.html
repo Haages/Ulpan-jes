@@ -797,7 +797,9 @@ function toonFase3b() {
  * Alle zinnen worden door Hila uitgesproken.
  */
 async function toonFase4() {
-  const zinnen    = getBekendZinnen(window.huidigeLesData.lesNummer, 5);
+  const zinnen    = OEFEN_DB ? OEFEN_DB.zinnen
+    .filter(z => parseInt(z.les) === window.huidigeLesData.lesNummer)
+    .sort((a, b) => (a.niveau || 99) - (b.niveau || 99)) : [];
   const container = document.getElementById('les-fase-container');
   let zinIndex    = 0;
 
