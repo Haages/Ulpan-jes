@@ -181,10 +181,16 @@ function bepaalStem(woord) {
  * @returns {Promise<boolean>}
  */
 async function spreekWoordUit(woord) {
-  // Woorden met twee vormen (m/v) — spreek beide uit
+  // Fix 1: את als voornaamwoord — stuur met nikud zodat Azure "at" zegt
+  if (woord.he_clean === 'את' && woord.soort === 'vw') {
+    return AudioManager.spreekUit('אַת', 'vrouw');
+  }
+
+  // Fix 2: Woorden met twee vormen (m/v) — beide direct na elkaar, klaar daarna
   if (woord.uitspraak && woord.uitspraak.includes('/')) {
     await AudioManager.spreekUit(woord.he, 'man');
-    return AudioManager.spreekUit(woord.he, 'vrouw');
+    await AudioManager.spreekUit(woord.he, 'vrouw');
+    return true;
   }
 
   // Alle andere woorden — stuur Hebreeuwse tekst naar Azure
