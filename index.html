@@ -446,6 +446,85 @@ const SRSEngine = {
 };
 
 // ══════════════════════════════════════════════════════════════
+// MODULE N: Testmodule (alleen actief bij ?test=true)
+// ══════════════════════════════════════════════════════════════
+
+if (new URLSearchParams(window.location.search).has('test')) {
+  document.addEventListener('DOMContentLoaded', async () => {
+    await new Promise(r => setTimeout(r, 1500));
+    await runAllTests();
+  });
+}
+
+async function runAllTests() {
+  console.group('🧪 Ulpan Jes — Tests');
+  const tests = [
+    testStripNikud,
+    testSRSBerekening,
+  ];
+
+  const resultaten = [];
+  for (const test of tests) resultaten.push(await test());
+
+  const geslaagd = resultaten.filter(r => r.ok).length;
+  console.log(`\n${geslaagd === tests.length ? '✅' : '❌'} ${geslaagd}/${tests.length}`);
+  console.groupEnd();
+  toonTestRapport(resultaten);
+}
+
+async function testStripNikud() {
+  const naam = 'stripNikud()';
+  try {
+    if (stripNikud('שָׁלוֹם') !== 'שלום') throw new Error('Nikud niet verwijderd');
+    if (stripNikud('') !== '') throw new Error('Lege string fout');
+    if (stripNikud(null) !== '') throw new Error('null fout');
+    console.log(`✅ ${naam}`);
+    return { ok: true, naam };
+  } catch(fout) {
+    console.error(`❌ ${naam}:`, fout.message);
+    return { ok: false, naam, fout: fout.message };
+  }
+}
+
+async function testSRSBerekening() {
+  const naam = 'SRS SM-2 berekening';
+  try {
+    const begin = { interval: 1, easiness: 2.5, repetitions: 0 };
+    const na5   = SRSEngine.berekenNieuwInterval(begin, 5);
+    if (na5.repetitions !== 1) throw new Error('Repetitions na correct fout');
+    if (na5.interval < 1) throw new Error('Interval < 1');
+    const na0   = SRSEngine.berekenNieuwInterval(na5, 0);
+    if (na0.repetitions !== 0) throw new Error('Reset na fout werkt niet');
+    console.log(`✅ ${naam}`);
+    return { ok: true, naam };
+  } catch(fout) {
+    console.error(`❌ ${naam}:`, fout.message);
+    return { ok: false, naam, fout: fout.message };
+  }
+}
+
+function toonTestRapport(resultaten) {
+  const geslaagd = resultaten.filter(r => r.ok).length;
+  const rapport  = document.createElement('div');
+  rapport.className = 'fixed top-0 left-0 right-0 z-50 bg-white border-b shadow-lg ' +
+                      'p-4 text-sm font-mono overflow-y-auto max-h-64';
+  rapport.innerHTML = `
+    <div class="flex justify-between items-center mb-2">
+      <strong>🧪 ${geslaagd}/${resultaten.length} tests geslaagd</strong>
+      <button onclick="this.parentElement.parentElement.remove()"
+              class="text-gray-400 px-2">✕</button>
+    </div>
+    ${resultaten.map(r => `
+      <div class="${r.ok ? 'text-green-700' : 'text-red-600'}">
+        ${r.ok ? '✅' : '❌'} ${r.naam}
+        ${r.fout ? `<span class="text-xs text-gray-500 ml-2">— ${r.fout}</span>` : ''}
+      </div>
+    `).join('')}
+  `;
+  document.body.prepend(rapport);
+}
+
+// ══════════════════════════════════════════════════════════════
 // APP START
 // ══════════════════════════════════════════════════════════════
 document.addEventListener('DOMContentLoaded', () => laadAlleDatabases());
