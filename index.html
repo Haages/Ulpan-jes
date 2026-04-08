@@ -188,8 +188,8 @@ async function spreekWoordUit(woord) {
 
   // Fix 2: Woorden met twee vormen (m/v) — beide direct na elkaar, klaar daarna
   if (woord.uitspraak && woord.uitspraak.includes('/')) {
-    await AudioManager.spreekUit(woord.he_clean, 'man');
-    await AudioManager.spreekUit(woord.he_clean, 'vrouw');
+    await AudioManager.spreekUit(woord.he, 'man');
+    await AudioManager.spreekUit(woord.he_v || woord.he, 'vrouw');
     return true;
   }
 
