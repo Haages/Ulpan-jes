@@ -154,16 +154,27 @@ const _woordStemCache = {};
 let _afwisselTeller = 0;
 
 /**
- * Bepaalt de juiste stem (man/vrouw) voor een woord en spreekt het uit.
- * Stuurt altijd de Hebreeuwse tekst (he_clean) naar Azure — nooit fonetiek.
- * De stem wordt per woord bepaald en gecached zodat herhalingen dezelfde stem gebruiken.
- * @param {Object} woord - Woordobject met he_clean, nl, soort
- * @returns {Promise<boolean>} true bij succes
+ * Bepaalt de juiste stem voor een woord en spreekt het uit.
+ * - Voornaamwoorden (soort==='vw'): stuur uitspraak als tekst (niet he_clean)
+ *   zodat Azure את als "at" uitspreekt, niet als "et"
+ * - Woorden met "/" in uitspraak: twee vormen, eerst Avri dan Hila
+ * - Stem wordt gecached per woord zodat herhalingen dezelfde stem gebruiken
+ * @param {Object} woord - Woordobject
+ * @returns {Promise<boolean>}
  */
-function spreekWoordUit(woord) {
+async function spreekWoordUit(woord) {
   const he = stripNikud(woord.he_clean || '');
+  const uitspraak = woord.uitspraak || '';
 
-  // Check cache — zelfde woord krijgt altijd dezelfde stem
+  // Woorden met "/" in uitspraak: twee vormen, eerst Avri dan Hila
+  if (uitspraak.includes('/')) {
+    const delen = uitspraak.split('/').map(d => d.trim());
+    await AudioManager.spreekUit(delen[0], 'man');
+    await new Promise(r => setTimeout(r, 400));
+    return AudioManager.spreekUit(delen[1], 'vrouw');
+  }
+
+  // Bepaal stem (gecached per woord)
   if (!_woordStemCache[he]) {
     const nl = woord.nl || '';
     let stem = 'vrouw';
@@ -183,8 +194,11 @@ function spreekWoordUit(woord) {
     _woordStemCache[he] = stem;
   }
 
-  // Stuur altijd Hebreeuwse tekst naar Azure — nooit fonetiek
-  return AudioManager.spreekUit(woord.he_clean, _woordStemCache[he]);
+  // Voornaamwoorden: stuur uitspraak als tekst (niet he_clean)
+  // Azure leest את als "et" (objectmarkeerder) i.p.v. "at" (voornaamwoord)
+  const tekst = (woord.soort === 'vw' && uitspraak) ? uitspraak : woord.he_clean;
+
+  return AudioManager.spreekUit(tekst, _woordStemCache[he]);
 }
 
 /**
@@ -402,7 +416,6 @@ const AudioManager = {
     try {
       this.bezig = true;
       AppLogger.debug('TTS', 'SSML', ssml);
-      console.log('[TTS] SSML:', ssml);
       const resp = await fetch(this.AZURE_ENDPOINT, {
         method: 'POST',
         headers: {
@@ -720,6 +733,8 @@ async function toonFase2() {
     }
     const woord = woorden[woordIndex++];
 
+    const betekenis = woord.en || woord.nl;
+
     container.innerHTML = `
       <div class="min-h-screen flex flex-col items-center justify-center p-6">
         <p class="text-sm text-gray-500 mb-4">
@@ -727,10 +742,14 @@ async function toonFase2() {
         </p>
         <div class="font-hebrew text-6xl mb-3" dir="rtl" lang="he">${woord.he}</div>
         <div class="text-2xl text-blue-600 mb-1">${woord.uitspraak}</div>
-        <div class="text-xl text-gray-700 mb-2">${woord.nl}</div>
-        <div class="text-sm text-gray-400 mb-8">
-          ${woord.soort === 'ww' ? `<span dir="rtl" lang="he">שורש: ${woord.shoresh || '—'}</span>` : ''}
+        <div class="text-xl text-gray-700 mb-2">${betekenis}</div>
+        <div class="text-sm text-gray-400 mb-4">
+          ${woord.soort === 'ww' && woord.shoresh ? `<span dir="rtl" lang="he">שורש: ${woord.shoresh}</span>` : ''}
         </div>
+        <button onclick="spreekWoordUit(window.huidigeLesData.nieuweWoorden[${woordIndex - 1}])"
+                class="px-6 py-2 bg-gray-100 text-gray-700 rounded-lg mb-4 hover:bg-gray-200">
+          🔊 Nogmaals beluisteren
+        </button>
         <p class="text-gray-500 text-sm mb-4">Spreek na zodra je het hoort</p>
         <button onclick="fase2Volgende()"
                 class="px-8 py-3 bg-blue-600 text-white rounded-xl text-lg

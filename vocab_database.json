@@ -8,7 +8,8 @@
       "uitspraak": "ani",
       "nl": "ik",
       "soort": "vw",
-      "shoresh": null
+      "shoresh": null,
+      "en": "I"
     },
     {
       "id": 2,
@@ -18,7 +19,8 @@
       "uitspraak": "ata",
       "nl": "jij (mannelijk)",
       "soort": "vw",
-      "shoresh": null
+      "shoresh": null,
+      "en": "you (m)"
     },
     {
       "id": 3,
@@ -28,7 +30,8 @@
       "uitspraak": "at",
       "nl": "jij (vrouwelijk)",
       "soort": "vw",
-      "shoresh": null
+      "shoresh": null,
+      "en": "you (f)"
     },
     {
       "id": 4,
@@ -38,7 +41,8 @@
       "uitspraak": "rotze / rotza",
       "nl": "willen (mannelijk/vrouwelijk)",
       "soort": "ww",
-      "shoresh": "ר-צ-ה"
+      "shoresh": "ר-צ-ה",
+      "en": "to want"
     },
     {
       "id": 5,
@@ -48,7 +52,8 @@
       "uitspraak": "tzarich",
       "nl": "moeten (mannelijk)",
       "soort": "ww",
-      "shoresh": "צ-ר-כ"
+      "shoresh": "צ-ר-כ",
+      "en": "need (m)"
     },
     {
       "id": 6,
@@ -58,7 +63,8 @@
       "uitspraak": "tzricha",
       "nl": "moeten (vrouwelijk)",
       "soort": "ww",
-      "shoresh": "צ-ר-כ"
+      "shoresh": "צ-ר-כ",
+      "en": "need (f)"
     },
     {
       "id": 7,
@@ -68,7 +74,8 @@
       "uitspraak": "lilmod",
       "nl": "leren (infinitief)",
       "soort": "ww",
-      "shoresh": "ל-מ-ד"
+      "shoresh": "ל-מ-ד",
+      "en": "to learn"
     },
     {
       "id": 8,
@@ -78,7 +85,8 @@
       "uitspraak": "leshalem",
       "nl": "betalen (infinitief)",
       "soort": "ww",
-      "shoresh": "ש-ל-ם"
+      "shoresh": "ש-ל-ם",
+      "en": "to pay"
     },
     {
       "id": 9,
@@ -88,7 +96,8 @@
       "uitspraak": "ledaber",
       "nl": "spreken (infinitief)",
       "soort": "ww",
-      "shoresh": "ד-ב-ר"
+      "shoresh": "ד-ב-ר",
+      "en": "to speak"
     },
     {
       "id": 10,
@@ -98,7 +107,8 @@
       "uitspraak": "mi",
       "nl": "wie",
       "soort": "vrg",
-      "shoresh": null
+      "shoresh": null,
+      "en": "who"
     },
     {
       "id": 11,
@@ -108,7 +118,8 @@
       "uitspraak": "ma",
       "nl": "wat",
       "soort": "vrg",
-      "shoresh": null
+      "shoresh": null,
+      "en": "what"
     },
     {
       "id": 12,
@@ -118,7 +129,8 @@
       "uitspraak": "lo",
       "nl": "niet/nee",
       "soort": "bw",
-      "shoresh": null
+      "shoresh": null,
+      "en": "not/no"
     },
     {
       "id": 13,
@@ -128,7 +140,8 @@
       "uitspraak": "ivrit",
       "nl": "Hebreeuws",
       "soort": "zn",
-      "shoresh": null
+      "shoresh": null,
+      "en": "Hebrew"
     },
     {
       "id": 14,
