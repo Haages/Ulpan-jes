@@ -181,7 +181,13 @@ function spreekWoordUit(woord) {
     else if (he === 'אני') stem = (_spreekAfwisselTeller++ % 2 === 0) ? 'man' : 'vrouw';
   }
 
-  return AudioManager.spreekUit(woord.he_clean, stem);
+  // Voornaamwoorden: stuur fonetische uitspraak i.p.v. Hebreeuws
+  // om TTS-fouten te voorkomen (bijv. את → "et" i.p.v. "at")
+  const tekst = woord.soort === 'vw' && woord.uitspraak
+    ? woord.uitspraak
+    : woord.he_clean;
+
+  return AudioManager.spreekUit(tekst, stem);
 }
 
 /**
