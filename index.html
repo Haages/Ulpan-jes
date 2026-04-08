@@ -976,6 +976,8 @@ function openSpelletje(spelId) {
 
   if (spelId === 'memory') startMemory(les);
   else if (spelId === 'vertaalkeuze') startVertaalkeuze(les);
+  else if (spelId === 'woordzoeker') startWoordzoeker(les);
+  else if (spelId === 'wordle') startWordle(les);
   else toonToast(`${spelId} wordt binnenkort beschikbaar`, 'info');
 }
 
@@ -1252,6 +1254,387 @@ function toonVertaalEinde() {
                 class="w-full py-3 bg-gray-200 text-gray-700 rounded-xl">← Terug naar spelletjes</button>
       </div>
     </div>`;
+}
+
+// ── Spelletje 3: Woordzoeker ─────────────────────────────────
+
+const ZOEKER_CONFIG = { RASTERGROOTTE: 8, AANTAL_WOORDEN: 6, RICHTINGEN: [[0,1],[1,0],[1,1]] };
+const HE_LETTERS = 'אבגדהוזחטיכלמנסעפצקרשת';
+let zoekerStaat = null;
+
+/**
+ * Start een nieuw Woordzoeker-spel.
+ * @param {number} lesNummer - Huidig lesnummer
+ */
+function startWoordzoeker(lesNummer) {
+  const woorden = getSpelWoorden(lesNummer)
+    .filter(w => stripNikud(w.he_clean).length >= 2 && stripNikud(w.he_clean).length <= 6);
+  if (woorden.length < ZOEKER_CONFIG.AANTAL_WOORDEN) {
+    toonToast('Niet genoeg woorden voor Woordzoeker', 'warning');
+    terugNaarSpelMenu();
+    return;
+  }
+
+  const gekozen = kiesWillekeurig(woorden, ZOEKER_CONFIG.AANTAL_WOORDEN);
+  const grootte = ZOEKER_CONFIG.RASTERGROOTTE;
+
+  // Leeg raster
+  const raster = Array.from({ length: grootte }, () => Array(grootte).fill(''));
+
+  // Plaats woorden in het raster
+  const geplaatst = [];
+  for (const w of gekozen) {
+    const letters = stripNikud(w.he_clean).split('').reverse(); // RTL → omkeren voor plaatsing
+    const placed = plaatsWoordInRaster(raster, letters, grootte);
+    if (placed) {
+      geplaatst.push({ ...w, letters, cellen: placed });
+    }
+  }
+
+  // Vul lege cellen met willekeurige Hebreeuwse letters
+  for (let r = 0; r < grootte; r++) {
+    for (let k = 0; k < grootte; k++) {
+      if (!raster[r][k]) raster[r][k] = HE_LETTERS[Math.floor(Math.random() * HE_LETTERS.length)];
+    }
+  }
+
+  zoekerStaat = {
+    raster,
+    woorden: geplaatst,
+    gevonden: new Set(),
+    selectie: [],
+  };
+
+  document.getElementById('game-woordzoeker').classList.remove('hidden');
+  renderWoordzoeker();
+}
+
+/**
+ * Probeert een woord op een willekeurige plek in het raster te plaatsen.
+ * @param {Array<Array<string>>} raster
+ * @param {Array<string>} letters
+ * @param {number} grootte
+ * @returns {Array<{r:number,k:number}>|null} Celposities of null
+ */
+function plaatsWoordInRaster(raster, letters, grootte) {
+  const richtingen = ZOEKER_CONFIG.RICHTINGEN;
+  // Probeer 50x een willekeurige positie en richting
+  for (let poging = 0; poging < 50; poging++) {
+    const richting = richtingen[Math.floor(Math.random() * richtingen.length)];
+    const [dr, dk] = richting;
+    const startR = Math.floor(Math.random() * grootte);
+    const startK = Math.floor(Math.random() * grootte);
+
+    // Check of het woord past
+    let past = true;
+    const cellen = [];
+    for (let i = 0; i < letters.length; i++) {
+      const r = startR + i * dr;
+      const k = startK + i * dk;
+      if (r < 0 || r >= grootte || k < 0 || k >= grootte) { past = false; break; }
+      if (raster[r][k] && raster[r][k] !== letters[i]) { past = false; break; }
+      cellen.push({ r, k });
+    }
+
+    if (past) {
+      cellen.forEach((cel, i) => { raster[cel.r][cel.k] = letters[i]; });
+      return cellen;
+    }
+  }
+  return null;
+}
+
+/**
+ * Rendert het Woordzoeker-raster en de woordenlijst.
+ */
+function renderWoordzoeker() {
+  const rasterEl = document.getElementById('zoeker-raster');
+  const lijstEl = document.getElementById('zoeker-woordenlijst');
+  if (!rasterEl || !lijstEl) return;
+  const { raster, woorden, gevonden } = zoekerStaat;
+  const grootte = ZOEKER_CONFIG.RASTERGROOTTE;
+
+  // Markeer gevonden cellen
+  const gevondenCellen = new Set();
+  woorden.forEach(w => {
+    if (gevonden.has(stripNikud(w.he_clean)) && w.cellen) {
+      w.cellen.forEach(c => gevondenCellen.add(`${c.r},${c.k}`));
+    }
+  });
+
+  // Markeer geselecteerde cellen
+  const selectieSet = new Set(zoekerStaat.selectie.map(c => `${c.r},${c.k}`));
+
+  rasterEl.innerHTML = `
+    <div class="grid grid-cols-8 gap-1" dir="rtl">
+      ${raster.map((rij, r) =>
+        rij.map((letter, k) => {
+          const key = `${r},${k}`;
+          const isGevonden = gevondenCellen.has(key);
+          const isSelected = selectieSet.has(key);
+          return `<button onclick="klikZoekerCel(${r},${k})"
+                    class="w-9 h-9 flex items-center justify-center font-hebrew text-lg rounded
+                           ${isGevonden ? 'bg-green-200 text-green-800' :
+                             isSelected ? 'bg-blue-200 text-blue-800' :
+                             'bg-white hover:bg-gray-100'} border"
+                    dir="rtl" lang="he">${letter}</button>`;
+        }).join('')
+      ).join('')}
+    </div>`;
+
+  lijstEl.innerHTML = woorden.map(w => {
+    const key = stripNikud(w.he_clean);
+    const found = gevonden.has(key);
+    return `<div class="flex justify-between p-2 rounded ${found ? 'bg-green-50 line-through' : 'bg-white'}">
+      <span class="font-hebrew" dir="rtl" lang="he">${w.he_clean}</span>
+      <span class="text-sm text-gray-500">${w.nl}</span>
+    </div>`;
+  }).join('');
+
+  if (gevonden.size === woorden.length) {
+    lijstEl.innerHTML += `
+      <div class="text-center mt-4">
+        <p class="text-xl font-bold text-green-700 mb-3">🎉 Alle woorden gevonden!</p>
+        <button onclick="terugNaarSpelMenu()" class="px-6 py-2 bg-blue-600 text-white rounded-xl">
+          ← Terug naar spelletjes
+        </button>
+      </div>`;
+  }
+}
+
+/**
+ * Verwerkt een klik op een cel in het Woordzoeker-raster.
+ * @param {number} r - Rij
+ * @param {number} k - Kolom
+ */
+function klikZoekerCel(r, k) {
+  zoekerStaat.selectie.push({ r, k });
+  controleerZoekerSelectie();
+  renderWoordzoeker();
+}
+
+/**
+ * Controleert of de huidige selectie een woord vormt.
+ */
+function controleerZoekerSelectie() {
+  const sel = zoekerStaat.selectie;
+  if (sel.length < 2) return;
+
+  const geselecteerdeLetters = sel.map(c => zoekerStaat.raster[c.r][c.k]).join('');
+
+  for (const w of zoekerStaat.woorden) {
+    const key = stripNikud(w.he_clean);
+    if (zoekerStaat.gevonden.has(key)) continue;
+    const woordLetters = key.split('').reverse().join(''); // Omgekeerd want raster is RTL-geplaatst
+    if (geselecteerdeLetters === woordLetters || geselecteerdeLetters === key) {
+      zoekerStaat.gevonden.add(key);
+      registreerSpelResultaat(w.id, 'woordzoeker', true);
+      AudioManager.spreekUit(w.he_clean, 'vrouw');
+      zoekerStaat.selectie = [];
+      return;
+    }
+  }
+
+  // Als selectie langer is dan langste woord, reset
+  const maxLen = Math.max(...zoekerStaat.woorden.map(w => stripNikud(w.he_clean).length));
+  if (sel.length >= maxLen) {
+    zoekerStaat.selectie = [];
+  }
+}
+
+// ── Spelletje 4: Wordle-variant ─────────────────────────────
+
+const WORDLE_CONFIG = { MAX_POGINGEN: 6 };
+const HE_KEYBOARD = [
+  ['ק','ר','א','ט','ו','ן','מ','פ'],
+  ['ש','ד','ג','כ','ע','י','ח','ל'],
+  ['ז','ס','ב','ה','נ','ת','צ'],
+];
+let wordleStaat = null;
+
+/**
+ * Start een nieuw Wordle-spel.
+ * @param {number} lesNummer - Huidig lesnummer
+ */
+function startWordle(lesNummer) {
+  // Alleen werkwoorden (soort='ww') met 3-5 letters
+  const woorden = getSpelWoorden(lesNummer)
+    .filter(w => w.soort === 'ww' && stripNikud(w.he_clean).length >= 3 && stripNikud(w.he_clean).length <= 5);
+  if (woorden.length < 1) {
+    toonToast('Niet genoeg werkwoorden voor Wordle', 'warning');
+    terugNaarSpelMenu();
+    return;
+  }
+
+  const doelwoord = kiesWillekeurig(woorden, 1)[0];
+  const doelLetters = stripNikud(doelwoord.he_clean).split('');
+
+  wordleStaat = {
+    doelwoord,
+    doelLetters,
+    woordLengte: doelLetters.length,
+    pogingen: [],
+    huidigeInvoer: [],
+    klaar: false,
+    toetsStatus: {}, // letter → 'correct' | 'aanwezig' | 'afwezig'
+  };
+
+  document.getElementById('game-wordle').classList.remove('hidden');
+  renderWordle();
+}
+
+/**
+ * Rendert het Wordle-spelbord en keyboard.
+ */
+function renderWordle() {
+  const container = document.getElementById('wordle-container');
+  if (!container) return;
+  const { doelwoord, woordLengte, pogingen, huidigeInvoer, klaar, toetsStatus } = wordleStaat;
+
+  // Pogingen-raster
+  let rasterHTML = '';
+  for (let p = 0; p < WORDLE_CONFIG.MAX_POGINGEN; p++) {
+    let rijHTML = '';
+    for (let l = 0; l < woordLengte; l++) {
+      let letter = '';
+      let kleur = 'border-gray-300 bg-white';
+
+      if (p < pogingen.length) {
+        // Eerder ingevoerde poging — toon met kleuren
+        letter = pogingen[p].letters[l];
+        const status = pogingen[p].status[l];
+        if (status === 'correct') kleur = 'bg-green-500 text-white border-green-500';
+        else if (status === 'aanwezig') kleur = 'bg-yellow-400 text-white border-yellow-400';
+        else kleur = 'bg-gray-400 text-white border-gray-400';
+      } else if (p === pogingen.length && l < huidigeInvoer.length) {
+        // Huidige invoer
+        letter = huidigeInvoer[l];
+        kleur = 'border-blue-400 bg-blue-50';
+      }
+
+      rijHTML += `<div class="w-12 h-12 border-2 ${kleur} rounded flex items-center justify-center
+                       font-hebrew text-xl font-bold" dir="rtl" lang="he">${letter}</div>`;
+    }
+    rasterHTML += `<div class="flex gap-1 justify-center mb-1" dir="rtl">${rijHTML}</div>`;
+  }
+
+  // Hint
+  const hintHTML = klaar ? '' : `<p class="text-sm text-gray-500 mb-2 text-center">
+    ${doelwoord.nl} — ${woordLengte} letters</p>`;
+
+  // Keyboard
+  let keyboardHTML = HE_KEYBOARD.map(rij =>
+    `<div class="flex gap-1 justify-center mb-1">${rij.map(letter => {
+      const status = toetsStatus[letter] || '';
+      const kleur = status === 'correct' ? 'bg-green-500 text-white' :
+                    status === 'aanwezig' ? 'bg-yellow-400 text-white' :
+                    status === 'afwezig' ? 'bg-gray-300 text-gray-500' :
+                    'bg-gray-100 hover:bg-gray-200';
+      return `<button onclick="wordleToets('${letter}')"
+                class="w-8 h-10 rounded font-hebrew text-sm ${kleur}"
+                dir="rtl" lang="he">${letter}</button>`;
+    }).join('')}</div>`
+  ).join('');
+
+  // Functietoetsen
+  keyboardHTML += `<div class="flex gap-2 justify-center mt-1">
+    <button onclick="wordleToets('WISSEN')" class="px-4 py-2 bg-red-100 text-red-700 rounded text-sm">← Wissen</button>
+    <button onclick="wordleToets('ENTER')" class="px-4 py-2 bg-blue-600 text-white rounded text-sm">Enter ✓</button>
+  </div>`;
+
+  // Resultaat
+  let resultaatHTML = '';
+  if (klaar) {
+    const gewonnen = pogingen.some(p => p.status.every(s => s === 'correct'));
+    resultaatHTML = `<div class="text-center mt-4 p-4 rounded-xl ${gewonnen ? 'bg-green-50' : 'bg-red-50'}">
+      <p class="text-lg font-bold ${gewonnen ? 'text-green-700' : 'text-red-700'} mb-1">
+        ${gewonnen ? '🎉 Correct!' : '💪 Volgende keer beter!'}
+      </p>
+      <p class="font-hebrew text-2xl mb-1" dir="rtl" lang="he">${doelwoord.he_clean}</p>
+      <p class="text-gray-600 text-sm mb-3">${doelwoord.uitspraak} — ${doelwoord.nl}</p>
+      <div class="flex gap-2 justify-center">
+        <button onclick="startWordle(huidigeLes())" class="px-4 py-2 bg-blue-600 text-white rounded-xl text-sm">Opnieuw</button>
+        <button onclick="terugNaarSpelMenu()" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-xl text-sm">← Terug</button>
+      </div>
+    </div>`;
+  }
+
+  container.innerHTML = `
+    <div class="text-center">
+      <p class="text-sm text-gray-500 mb-2">Wordle — raad het werkwoord</p>
+      ${hintHTML}
+      <div class="mb-4">${rasterHTML}</div>
+      ${klaar ? '' : `<div class="mb-2">${keyboardHTML}</div>`}
+      ${resultaatHTML}
+    </div>`;
+}
+
+/**
+ * Verwerkt een toetsaanslag in Wordle.
+ * @param {string} toets - Hebreeuwse letter, 'ENTER' of 'WISSEN'
+ */
+function wordleToets(toets) {
+  if (wordleStaat.klaar) return;
+
+  if (toets === 'WISSEN') {
+    wordleStaat.huidigeInvoer.pop();
+  } else if (toets === 'ENTER') {
+    if (wordleStaat.huidigeInvoer.length !== wordleStaat.woordLengte) return;
+    wordleEvalueer();
+  } else {
+    if (wordleStaat.huidigeInvoer.length < wordleStaat.woordLengte) {
+      wordleStaat.huidigeInvoer.push(toets);
+    }
+  }
+
+  renderWordle();
+}
+
+/**
+ * Evalueert de huidige Wordle-invoer.
+ */
+function wordleEvalueer() {
+  const { doelLetters, huidigeInvoer, pogingen, toetsStatus, doelwoord } = wordleStaat;
+  const status = [];
+
+  // Stap 1: markeer correcte posities
+  const doelKopie = [...doelLetters];
+  for (let i = 0; i < huidigeInvoer.length; i++) {
+    if (huidigeInvoer[i] === doelLetters[i]) {
+      status[i] = 'correct';
+      doelKopie[i] = null;
+    }
+  }
+
+  // Stap 2: markeer aanwezige maar verkeerd geplaatste letters
+  for (let i = 0; i < huidigeInvoer.length; i++) {
+    if (status[i]) continue;
+    const idx = doelKopie.indexOf(huidigeInvoer[i]);
+    if (idx !== -1) {
+      status[i] = 'aanwezig';
+      doelKopie[idx] = null;
+    } else {
+      status[i] = 'afwezig';
+    }
+  }
+
+  // Update toetsstatus
+  huidigeInvoer.forEach((letter, i) => {
+    const huidigeStatus = toetsStatus[letter];
+    if (status[i] === 'correct') toetsStatus[letter] = 'correct';
+    else if (status[i] === 'aanwezig' && huidigeStatus !== 'correct') toetsStatus[letter] = 'aanwezig';
+    else if (!huidigeStatus) toetsStatus[letter] = 'afwezig';
+  });
+
+  pogingen.push({ letters: [...huidigeInvoer], status });
+  wordleStaat.huidigeInvoer = [];
+
+  // Check of gewonnen of verloren
+  const gewonnen = status.every(s => s === 'correct');
+  if (gewonnen || pogingen.length >= WORDLE_CONFIG.MAX_POGINGEN) {
+    wordleStaat.klaar = true;
+    registreerSpelResultaat(doelwoord.id, 'wordle', gewonnen);
+  }
 }
 
 // ══════════════════════════════════════════════════════════════
