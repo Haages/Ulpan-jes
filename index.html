@@ -181,13 +181,13 @@ function spreekWoordUit(woord) {
     else if (he === 'אני') stem = (_spreekAfwisselTeller++ % 2 === 0) ? 'man' : 'vrouw';
   }
 
-  // Voornaamwoorden: stuur fonetische uitspraak i.p.v. Hebreeuws
-  // om TTS-fouten te voorkomen (bijv. את → "et" i.p.v. "at")
-  const tekst = woord.soort === 'vw' && woord.uitspraak
-    ? woord.uitspraak
-    : woord.he_clean;
+  // Voornaamwoorden: gebruik SSML phoneme tag voor correcte uitspraak
+  // Azure TTS leest את als "et" (objectmarkeerder) i.p.v. "at" (voornaamwoord)
+  if (woord.soort === 'vw' && woord.uitspraak) {
+    return AudioManager.spreekUitMetFonetiek(woord.he_clean, woord.uitspraak, stem);
+  }
 
-  return AudioManager.spreekUit(tekst, stem);
+  return AudioManager.spreekUit(woord.he_clean, stem);
 }
 
 /**
@@ -434,6 +434,57 @@ const AudioManager = {
       this.bezig = false;
       AppLogger.error('TTS', 'Azure TTS mislukt', fout);
       return false;
+    }
+  },
+
+  /**
+   * Spreekt een Hebreeuws woord uit met expliciete fonetische uitspraak.
+   * Gebruikt SSML phoneme tag zodat Azure de correcte uitspraak gebruikt.
+   * @param {string} hebreeuws - Hebreeuwse tekst
+   * @param {string} fonetiek - Fonetische uitspraak (bijv. "at", "ata")
+   * @param {string} stem - 'man' of 'vrouw'
+   * @returns {Promise<boolean>}
+   */
+  async spreekUitMetFonetiek(hebreeuws, fonetiek, stem = 'vrouw') {
+    const stemNaam   = stem === 'man' ? TTS_STEM_MAN : TTS_STEM_VROUW;
+    const apiSleutel = window.AZURE_API_SLEUTEL || null;
+    if (!apiSleutel) return false;
+
+    const ssml = `<speak version='1.0' xml:lang='he-IL'>
+      <voice name='${stemNaam}'>
+        <phoneme alphabet="x-microsoft-sapi" ph="${fonetiek}">${stripNikud(hebreeuws)}</phoneme>
+      </voice>
+    </speak>`;
+
+    try {
+      this.bezig = true;
+      const resp = await fetch(this.AZURE_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Ocp-Apim-Subscription-Key': apiSleutel,
+          'Content-Type': 'application/ssml+xml',
+          'X-Microsoft-OutputFormat': 'audio-16khz-128kbitrate-mono-mp3',
+        },
+        body: ssml,
+      });
+
+      if (!resp.ok) throw new Error(`Azure TTS HTTP ${resp.status}`);
+
+      const blob  = await resp.blob();
+      const url   = URL.createObjectURL(blob);
+      const audio = new Audio(url);
+      await new Promise((resolve, reject) => {
+        audio.onended = resolve;
+        audio.onerror = reject;
+        audio.play();
+      });
+      URL.revokeObjectURL(url);
+      this.bezig = false;
+      return true;
+    } catch(fout) {
+      this.bezig = false;
+      // Fallback naar gewone uitspraak
+      return this.spreekUit(hebreeuws, stem);
     }
   }
 };
