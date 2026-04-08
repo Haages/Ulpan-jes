@@ -173,7 +173,7 @@ function spreekWoordUit(woord) {
     stem = 'man';
   } else if (nl.includes('(vrouwelijk)')) {
     stem = 'vrouw';
-  } else if (nl.includes('(infinitief)') || he.startsWith('ל')) {
+  } else if (nl.includes('(infinitief)')) {
     stem = (_spreekAfwisselTeller++ % 2 === 0) ? 'man' : 'vrouw';
   } else if (woord.soort === 'vw') {
     if (he === 'אתה' || he === 'הוא') stem = 'man';
