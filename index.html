@@ -667,7 +667,7 @@ async function toonFase2() {
     container.innerHTML = `
       <div class="min-h-screen flex flex-col items-center justify-center p-6">
         <p class="text-sm text-gray-500 mb-4">
-          Fase 2 van 7 — Herhalen (${woordIndex}/${woorden.length})
+          Fase 2 van 7 — Kijken en herhalen (${woordIndex}/${woorden.length})
         </p>
         <div class="font-hebrew text-6xl mb-3" dir="rtl" lang="he">${woord.he}</div>
         <div class="text-2xl text-blue-600 mb-1">${woord.uitspraak}</div>
@@ -749,9 +749,15 @@ async function toonFase3() {
  * Dual Coding: auditief geheugenspoor + visuele verankering.
  */
 function toonFase3b() {
-  const woorden   = window.huidigeLesData.nieuweWoorden;
+  // Alleen woorden met een shoresh tonen in fase 3b
+  const woorden   = window.huidigeLesData.nieuweWoorden.filter(w => w.shoresh);
   const container = document.getElementById('les-fase-container');
   let woordIndex  = 0;
+
+  if (woorden.length === 0) {
+    toonFase(4);
+    return;
+  }
 
   const toonVolgend = () => {
     if (woordIndex >= woorden.length) {
