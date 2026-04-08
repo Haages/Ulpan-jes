@@ -245,10 +245,17 @@ function getBekendWoorden(lesNummer) {
  * @returns {Array<Object>} Nieuwe woorden voor deze les
  */
 function getNieuweWoorden(lesNummer) {
-  const huidig  = getBekendWoorden(lesNummer);
-  const vorige  = lesNummer > 1 ? getBekendWoorden(lesNummer - 1) : [];
-  const vorigeIds = new Set(vorige.map(w => w.id));
-  return huidig.filter(w => !vorigeIds.has(w.id));
+  if (!VOCAB_DB) return [];
+  // Les 1: geen vorige les, retourneer direct woorden met les === '1'
+  if (lesNummer <= 1) {
+    return VOCAB_DB.woorden.filter(w => w.les === '1');
+  }
+  // Les N>1: vergelijk bekendNaLes[N] met bekendNaLes[N-1]
+  const huidig = getBekendWoorden(lesNummer);
+  const vorigeSet = new Set(
+    (VOCAB_DB.bekendNaLes[String(lesNummer - 1)] || []).map(w => stripNikud(w).toLowerCase())
+  );
+  return huidig.filter(w => !vorigeSet.has(stripNikud(w.he_clean).toLowerCase()));
 }
 
 /**
@@ -2288,7 +2295,7 @@ function renderStartScherm() {
           { icon: '🎮', label: 'Spelletjes', actie: "renderSpelletjesMenu(huidigeLes()); toonScherm('screen-games')" },
           { icon: '🎵', label: 'Muziek',     actie: "renderMuziekLijst()" },
           { icon: '📊', label: 'Voortgang',  actie: "toonScherm('screen-progress')" },
-          { icon: '⚙️', label: 'Instellingen', actie: "toonScherm('screen-settings')" },
+          { icon: '⚙️', label: 'Instellingen', actie: "renderInstellingenScherm(); toonScherm('screen-settings')" },
         ].map(nav => `
           <button onclick="${nav.actie}"
                   class="flex flex-col items-center p-3 bg-white rounded-xl shadow-sm
@@ -2300,6 +2307,68 @@ function renderStartScherm() {
       </div>
     </div>
   `;
+}
+
+/**
+ * Rendert het instellingenscherm.
+ */
+function renderInstellingenScherm() {
+  const container = document.getElementById('screen-settings');
+  if (!container) return;
+  const inst = Opslag.laad(OPSLAG_PREFIXEN.instellingen, { stem: 'vrouw', tekstGrootte: 'normaal' });
+
+  container.innerHTML = `
+    <div class="min-h-screen bg-white p-6 max-w-md mx-auto">
+      <div class="flex items-center gap-4 mb-6">
+        <button onclick="renderStartScherm(); toonScherm('screen-start')"
+                class="text-2xl text-gray-400">←</button>
+        <h2 class="text-xl font-bold">Instellingen</h2>
+      </div>
+
+      <div class="space-y-6">
+        <!-- Stem -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">Voorkeursstem</label>
+          <select id="inst-stem" class="w-full p-3 border rounded-lg"
+                  onchange="slaInstellingenOp()">
+            <option value="vrouw" ${inst.stem === 'vrouw' ? 'selected' : ''}>Hila (vrouw)</option>
+            <option value="man" ${inst.stem === 'man' ? 'selected' : ''}>Avri (man)</option>
+          </select>
+        </div>
+
+        <!-- Tekstgrootte -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">Tekstgrootte</label>
+          <select id="inst-tekstgrootte" class="w-full p-3 border rounded-lg"
+                  onchange="slaInstellingenOp()">
+            <option value="klein" ${inst.tekstGrootte === 'klein' ? 'selected' : ''}>Klein</option>
+            <option value="normaal" ${inst.tekstGrootte === 'normaal' ? 'selected' : ''}>Normaal</option>
+            <option value="groot" ${inst.tekstGrootte === 'groot' ? 'selected' : ''}>Groot</option>
+          </select>
+        </div>
+
+        <!-- Test spraak -->
+        <button onclick="AudioManager.spreekUit('שלום, אני מדברת עברית', document.getElementById('inst-stem').value === 'man' ? 'man' : 'vrouw')"
+                class="w-full py-3 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200">
+          🔊 Test spraak
+        </button>
+
+        <!-- Versie -->
+        <div class="text-center text-sm text-gray-400 mt-8">
+          ${APP_NAAM} ${APP_VERSIE}
+        </div>
+      </div>
+    </div>`;
+}
+
+/**
+ * Slaat de instellingen op.
+ */
+function slaInstellingenOp() {
+  const stem = document.getElementById('inst-stem')?.value || 'vrouw';
+  const tekstGrootte = document.getElementById('inst-tekstgrootte')?.value || 'normaal';
+  Opslag.slaOp(OPSLAG_PREFIXEN.instellingen, { stem, tekstGrootte });
+  toonToast('Instellingen opgeslagen', 'success');
 }
 
 // ══════════════════════════════════════════════════════════════
