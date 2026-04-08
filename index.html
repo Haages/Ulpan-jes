@@ -401,6 +401,8 @@ const AudioManager = {
 
     try {
       this.bezig = true;
+      AppLogger.debug('TTS', 'SSML', ssml);
+      console.log('[TTS] SSML:', ssml);
       const resp = await fetch(this.AZURE_ENDPOINT, {
         method: 'POST',
         headers: {
