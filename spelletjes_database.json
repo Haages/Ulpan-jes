@@ -1,0 +1,3891 @@
+{
+  "meta": {
+    "versie": "1.0",
+    "datum": "2026-04",
+    "totaal_woorden": 251,
+    "beschrijving": "Ivriet Cursus — spelletjes woordendatabase"
+  },
+  "woorden": [
+    {
+      "id": 1,
+      "les": "1",
+      "he": "אני",
+      "he_clean": "אני",
+      "uitspraak": "ani",
+      "nl": "ik",
+      "soort": "vw",
+      "categorie": "personen",
+      "shoresh": null
+    },
+    {
+      "id": 2,
+      "les": "1",
+      "he": "אתה",
+      "he_clean": "אתה",
+      "uitspraak": "ata",
+      "nl": "jij (m)",
+      "soort": "vw",
+      "categorie": "personen",
+      "shoresh": null
+    },
+    {
+      "id": 3,
+      "les": "1",
+      "he": "את",
+      "he_clean": "את",
+      "uitspraak": "at",
+      "nl": "jij (v)",
+      "soort": "vw",
+      "categorie": "personen",
+      "shoresh": null
+    },
+    {
+      "id": 4,
+      "les": "1",
+      "he": "הוא",
+      "he_clean": "הוא",
+      "uitspraak": "hu",
+      "nl": "hij",
+      "soort": "vw",
+      "categorie": "personen",
+      "shoresh": null
+    },
+    {
+      "id": 5,
+      "les": "1",
+      "he": "היא",
+      "he_clean": "היא",
+      "uitspraak": "hi",
+      "nl": "zij",
+      "soort": "vw",
+      "categorie": "personen",
+      "shoresh": null
+    },
+    {
+      "id": 6,
+      "les": "1",
+      "he": "ללמוד",
+      "he_clean": "ללמוד",
+      "uitspraak": "lilmod",
+      "nl": "leren, studeren",
+      "soort": "ww",
+      "categorie": "Pa'al",
+      "shoresh": "ל-מ-ד"
+    },
+    {
+      "id": 7,
+      "les": "1",
+      "he": "צריך / צריכה",
+      "he_clean": "צריך",
+      "uitspraak": "tzarich / tzricha",
+      "nl": "nodig hebben, moeten (m/v)",
+      "soort": "ww",
+      "categorie": "chunk",
+      "shoresh": null
+    },
+    {
+      "id": 8,
+      "les": "1",
+      "he": "לשלם",
+      "he_clean": "לשלם",
+      "uitspraak": "leshalem",
+      "nl": "betalen",
+      "soort": "ww",
+      "categorie": "Pi'el",
+      "shoresh": "ש-ל-מ"
+    },
+    {
+      "id": 9,
+      "les": "1",
+      "he": "לדבר",
+      "he_clean": "לדבר",
+      "uitspraak": "ledaber",
+      "nl": "spreken",
+      "soort": "ww",
+      "categorie": "Pi'el",
+      "shoresh": "ד-ב-ר"
+    },
+    {
+      "id": 10,
+      "les": "1",
+      "he": "מי",
+      "he_clean": "מי",
+      "uitspraak": "mi",
+      "nl": "wie",
+      "soort": "vrg",
+      "categorie": "vraagwoorden",
+      "shoresh": null
+    },
+    {
+      "id": 11,
+      "les": "1",
+      "he": "מה",
+      "he_clean": "מה",
+      "uitspraak": "ma",
+      "nl": "wat",
+      "soort": "vrg",
+      "categorie": "vraagwoorden",
+      "shoresh": null
+    },
+    {
+      "id": 12,
+      "les": "1",
+      "he": "כמה",
+      "he_clean": "כמה",
+      "uitspraak": "kama",
+      "nl": "hoeveel",
+      "soort": "vrg",
+      "categorie": "vraagwoorden",
+      "shoresh": null
+    },
+    {
+      "id": 13,
+      "les": "1",
+      "he": "שקל",
+      "he_clean": "שקל",
+      "uitspraak": "shekel",
+      "nl": "sjekel (geldeenheid)",
+      "soort": "zn",
+      "categorie": "geld",
+      "shoresh": null
+    },
+    {
+      "id": 14,
+      "les": "1",
+      "he": "עברית",
+      "he_clean": "עברית",
+      "uitspraak": "ivrit",
+      "nl": "Hebreeuws",
+      "soort": "zn",
+      "categorie": "taal",
+      "shoresh": null
+    },
+    {
+      "id": 15,
+      "les": "2",
+      "he": "הוא",
+      "he_clean": "הוא",
+      "uitspraak": "hu",
+      "nl": "hij",
+      "soort": "vw",
+      "categorie": "personen",
+      "shoresh": null
+    },
+    {
+      "id": 16,
+      "les": "2",
+      "he": "היא",
+      "he_clean": "היא",
+      "uitspraak": "hi",
+      "nl": "zij",
+      "soort": "vw",
+      "categorie": "personen",
+      "shoresh": null
+    },
+    {
+      "id": 17,
+      "les": "2",
+      "he": "יכול / יכולה",
+      "he_clean": "יכול",
+      "uitspraak": "yachol / yechola",
+      "nl": "kunnen (m/v)",
+      "soort": "ww",
+      "categorie": "פועל עזר",
+      "shoresh": null
+    },
+    {
+      "id": 18,
+      "les": "2",
+      "he": "ו...לא",
+      "he_clean": "ו...לא",
+      "uitspraak": "ve...lo",
+      "nl": "maar niet / en niet",
+      "soort": "vgw",
+      "categorie": "verbinding",
+      "shoresh": null
+    },
+    {
+      "id": 19,
+      "les": "2",
+      "he": "אבל",
+      "he_clean": "אבל",
+      "uitspraak": "aval",
+      "nl": "maar",
+      "soort": "vgw",
+      "categorie": "verbinding",
+      "shoresh": null
+    },
+    {
+      "id": 20,
+      "les": "2",
+      "he": "לא",
+      "he_clean": "לא",
+      "uitspraak": "lo",
+      "nl": "niet",
+      "soort": "bw",
+      "categorie": "negatie",
+      "shoresh": null
+    },
+    {
+      "id": 21,
+      "les": "2",
+      "he": "אפס",
+      "he_clean": "אפס",
+      "uitspraak": "efes",
+      "nl": "nul",
+      "soort": "getal",
+      "categorie": "getallen",
+      "shoresh": null
+    },
+    {
+      "id": 22,
+      "les": "2",
+      "he": "אחת",
+      "he_clean": "אחת",
+      "uitspraak": "achat",
+      "nl": "één (v)",
+      "soort": "getal",
+      "categorie": "getallen",
+      "shoresh": null
+    },
+    {
+      "id": 23,
+      "les": "2",
+      "he": "שתיים",
+      "he_clean": "שתיים",
+      "uitspraak": "shtayim",
+      "nl": "twee (v)",
+      "soort": "getal",
+      "categorie": "getallen",
+      "shoresh": null
+    },
+    {
+      "id": 24,
+      "les": "2",
+      "he": "שלוש",
+      "he_clean": "שלוש",
+      "uitspraak": "shalosh",
+      "nl": "drie (v)",
+      "soort": "getal",
+      "categorie": "getallen",
+      "shoresh": null
+    },
+    {
+      "id": 25,
+      "les": "2",
+      "he": "ארבע",
+      "he_clean": "ארבע",
+      "uitspraak": "arba",
+      "nl": "vier (v)",
+      "soort": "getal",
+      "categorie": "getallen",
+      "shoresh": null
+    },
+    {
+      "id": 26,
+      "les": "2",
+      "he": "חמש",
+      "he_clean": "חמש",
+      "uitspraak": "chamesh",
+      "nl": "vijf (v)",
+      "soort": "getal",
+      "categorie": "getallen",
+      "shoresh": null
+    },
+    {
+      "id": 27,
+      "les": "3",
+      "he": "לקבל",
+      "he_clean": "לקבל",
+      "uitspraak": "lekabel",
+      "nl": "ontvangen, accepteren",
+      "soort": "ww",
+      "categorie": "Pi'el",
+      "shoresh": "ק-ב-ל"
+    },
+    {
+      "id": 28,
+      "les": "3",
+      "he": "איפה",
+      "he_clean": "איפה",
+      "uitspraak": "eifo",
+      "nl": "waar",
+      "soort": "vrg",
+      "categorie": "vraagwoorden",
+      "shoresh": null
+    },
+    {
+      "id": 29,
+      "les": "3",
+      "he": "מתי",
+      "he_clean": "מתי",
+      "uitspraak": "matai",
+      "nl": "wanneer",
+      "soort": "vrg",
+      "categorie": "vraagwoorden",
+      "shoresh": null
+    },
+    {
+      "id": 30,
+      "les": "3",
+      "he": "פה",
+      "he_clean": "פה",
+      "uitspraak": "po",
+      "nl": "hier",
+      "soort": "bw",
+      "categorie": "plaats",
+      "shoresh": null
+    },
+    {
+      "id": 31,
+      "les": "3",
+      "he": "שם",
+      "he_clean": "שם",
+      "uitspraak": "sham",
+      "nl": "daar",
+      "soort": "bw",
+      "categorie": "plaats",
+      "shoresh": null
+    },
+    {
+      "id": 32,
+      "les": "3",
+      "he": "בבית",
+      "he_clean": "בבית",
+      "uitspraak": "babayit",
+      "nl": "thuis",
+      "soort": "bw",
+      "categorie": "plaats",
+      "shoresh": null
+    },
+    {
+      "id": 33,
+      "les": "3",
+      "he": "באולפן",
+      "he_clean": "באולפן",
+      "uitspraak": "be'ulpan",
+      "nl": "in het ulpan",
+      "soort": "bw",
+      "categorie": "plaats",
+      "shoresh": null
+    },
+    {
+      "id": 34,
+      "les": "3",
+      "he": "בבנק",
+      "he_clean": "בבנק",
+      "uitspraak": "babank",
+      "nl": "in de bank",
+      "soort": "bw",
+      "categorie": "plaats",
+      "shoresh": null
+    },
+    {
+      "id": 35,
+      "les": "3",
+      "he": "היום",
+      "he_clean": "היום",
+      "uitspraak": "hayom",
+      "nl": "vandaag",
+      "soort": "bw",
+      "categorie": "tijd",
+      "shoresh": null
+    },
+    {
+      "id": 36,
+      "les": "3",
+      "he": "מחר",
+      "he_clean": "מחר",
+      "uitspraak": "machar",
+      "nl": "morgen",
+      "soort": "bw",
+      "categorie": "tijd",
+      "shoresh": null
+    },
+    {
+      "id": 37,
+      "les": "3",
+      "he": "אוהב / אוהבת",
+      "he_clean": "אוהב",
+      "uitspraak": "ohev / ohevet",
+      "nl": "houden van (m/v)",
+      "soort": "ww",
+      "categorie": "Pa'al",
+      "shoresh": null
+    },
+    {
+      "id": 38,
+      "les": "3",
+      "he": "רק",
+      "he_clean": "רק",
+      "uitspraak": "rak",
+      "nl": "alleen, slechts",
+      "soort": "bw",
+      "categorie": "beperking",
+      "shoresh": null
+    },
+    {
+      "id": 39,
+      "les": "4",
+      "he": "זה",
+      "he_clean": "זה",
+      "uitspraak": "ze",
+      "nl": "dit, dat, het",
+      "soort": "vw",
+      "categorie": "verwijzing",
+      "shoresh": null
+    },
+    {
+      "id": 40,
+      "les": "4",
+      "he": "זה טוב",
+      "he_clean": "זה",
+      "uitspraak": "ze tov",
+      "nl": "het is goed",
+      "soort": "uitdr",
+      "categorie": "uitdrukkingen",
+      "shoresh": null
+    },
+    {
+      "id": 41,
+      "les": "4",
+      "he": "זה קשה",
+      "he_clean": "זה",
+      "uitspraak": "ze kashe",
+      "nl": "het is moeilijk",
+      "soort": "uitdr",
+      "categorie": "uitdrukkingen",
+      "shoresh": null
+    },
+    {
+      "id": 42,
+      "les": "4",
+      "he": "יותר",
+      "he_clean": "יותר",
+      "uitspraak": "yoter",
+      "nl": "meer, -er",
+      "soort": "bw",
+      "categorie": "vergelijking",
+      "shoresh": null
+    },
+    {
+      "id": 43,
+      "les": "4",
+      "he": "יותר טוב",
+      "he_clean": "יותר",
+      "uitspraak": "yoter tov",
+      "nl": "beter",
+      "soort": "bn",
+      "categorie": "vergelijking",
+      "shoresh": null
+    },
+    {
+      "id": 44,
+      "les": "4",
+      "he": "יותר קשה",
+      "he_clean": "יותר",
+      "uitspraak": "yoter kashe",
+      "nl": "moeilijker",
+      "soort": "bn",
+      "categorie": "vergelijking",
+      "shoresh": null
+    },
+    {
+      "id": 45,
+      "les": "4",
+      "he": "טוב",
+      "he_clean": "טוב",
+      "uitspraak": "tov",
+      "nl": "goed",
+      "soort": "bn",
+      "categorie": "eigenschappen",
+      "shoresh": null
+    },
+    {
+      "id": 46,
+      "les": "4",
+      "he": "קשה",
+      "he_clean": "קשה",
+      "uitspraak": "kashe",
+      "nl": "moeilijk, zwaar",
+      "soort": "bn",
+      "categorie": "eigenschappen",
+      "shoresh": null
+    },
+    {
+      "id": 47,
+      "les": "4",
+      "he": "פשוט",
+      "he_clean": "פשוט",
+      "uitspraak": "pashut",
+      "nl": "eenvoudig",
+      "soort": "bn",
+      "categorie": "eigenschappen",
+      "shoresh": null
+    },
+    {
+      "id": 48,
+      "les": "4",
+      "he": "יותר פשוט",
+      "he_clean": "יותר",
+      "uitspraak": "yoter pashut",
+      "nl": "eenvoudiger",
+      "soort": "bn",
+      "categorie": "vergelijking",
+      "shoresh": null
+    },
+    {
+      "id": 49,
+      "les": "4",
+      "he": "את",
+      "he_clean": "את",
+      "uitspraak": "et",
+      "nl": "directe objectmarkeerder",
+      "soort": "vz",
+      "categorie": "grammatica",
+      "shoresh": null
+    },
+    {
+      "id": 50,
+      "les": "4",
+      "he": "כסף",
+      "he_clean": "כסף",
+      "uitspraak": "kesef",
+      "nl": "geld",
+      "soort": "zn",
+      "categorie": "geld",
+      "shoresh": null
+    },
+    {
+      "id": 51,
+      "les": "4",
+      "he": "לקבל",
+      "he_clean": "לקבל",
+      "uitspraak": "lekabel",
+      "nl": "krijgen, ontvangen",
+      "soort": "ww",
+      "categorie": "Pi'el",
+      "shoresh": "ק-ב-ל"
+    },
+    {
+      "id": 52,
+      "les": "4",
+      "he": "כי",
+      "he_clean": "כי",
+      "uitspraak": "ki",
+      "nl": "omdat, want",
+      "soort": "vgw",
+      "categorie": "verbinding",
+      "shoresh": null
+    },
+    {
+      "id": 53,
+      "les": "4",
+      "he": "למה",
+      "he_clean": "למה",
+      "uitspraak": "lama",
+      "nl": "waarom",
+      "soort": "vrg",
+      "categorie": "vraagwoorden",
+      "shoresh": null
+    },
+    {
+      "id": 54,
+      "les": "5",
+      "he": "יודע / יודעת",
+      "he_clean": "יודע",
+      "uitspraak": "yode'a / yoda'at",
+      "nl": "weten, kennen (m/v)",
+      "soort": "ww",
+      "categorie": "Pa'al",
+      "shoresh": null
+    },
+    {
+      "id": 55,
+      "les": "5",
+      "he": "שומע / שומעת",
+      "he_clean": "שומע",
+      "uitspraak": "shome'a / shoma'at",
+      "nl": "horen (m/v)",
+      "soort": "ww",
+      "categorie": "Pa'al",
+      "shoresh": null
+    },
+    {
+      "id": 56,
+      "les": "5",
+      "he": "שום דבר",
+      "he_clean": "שום",
+      "uitspraak": "shum davar",
+      "nl": "niets",
+      "soort": "uitdr",
+      "categorie": "negatie",
+      "shoresh": null
+    },
+    {
+      "id": 57,
+      "les": "5",
+      "he": "דבר",
+      "he_clean": "דבר",
+      "uitspraak": "davar",
+      "nl": "zaak, ding",
+      "soort": "zn",
+      "categorie": "algemeen",
+      "shoresh": null
+    },
+    {
+      "id": 58,
+      "les": "5",
+      "he": "גם",
+      "he_clean": "גם",
+      "uitspraak": "gam",
+      "nl": "ook",
+      "soort": "bw",
+      "categorie": "toevoeging",
+      "shoresh": null
+    },
+    {
+      "id": 59,
+      "les": "5",
+      "he": "עכשיו",
+      "he_clean": "עכשיו",
+      "uitspraak": "achshav",
+      "nl": "nu",
+      "soort": "bw",
+      "categorie": "tijd",
+      "shoresh": null
+    },
+    {
+      "id": 60,
+      "les": "5",
+      "he": "דירה",
+      "he_clean": "דירה",
+      "uitspraak": "dira",
+      "nl": "appartement",
+      "soort": "zn",
+      "categorie": "wonen",
+      "shoresh": null
+    },
+    {
+      "id": 61,
+      "les": "5",
+      "he": "עבודה",
+      "he_clean": "עבודה",
+      "uitspraak": "avoda",
+      "nl": "werk, baan",
+      "soort": "zn",
+      "categorie": "werk",
+      "shoresh": null
+    },
+    {
+      "id": 62,
+      "les": "5",
+      "he": "לחפש",
+      "he_clean": "לחפש",
+      "uitspraak": "lechapes",
+      "nl": "zoeken",
+      "soort": "ww",
+      "categorie": "Pi'el",
+      "shoresh": "ח-פ-ש"
+    },
+    {
+      "id": 63,
+      "les": "6",
+      "he": "לסגור",
+      "he_clean": "לסגור",
+      "uitspraak": "lisgoor",
+      "nl": "sluiten",
+      "soort": "ww",
+      "categorie": "Pa'al",
+      "shoresh": "ס-ג-ר"
+    },
+    {
+      "id": 64,
+      "les": "6",
+      "he": "תמיד",
+      "he_clean": "תמיד",
+      "uitspraak": "tamid",
+      "nl": "altijd",
+      "soort": "bw",
+      "categorie": "tijd",
+      "shoresh": null
+    },
+    {
+      "id": 65,
+      "les": "6",
+      "he": "או",
+      "he_clean": "או",
+      "uitspraak": "o",
+      "nl": "of",
+      "soort": "vgw",
+      "categorie": "keuze",
+      "shoresh": null
+    },
+    {
+      "id": 66,
+      "les": "6",
+      "he": "הכל",
+      "he_clean": "הכל",
+      "uitspraak": "hakol",
+      "nl": "alles",
+      "soort": "vw",
+      "categorie": "hoeveelheid",
+      "shoresh": null
+    },
+    {
+      "id": 67,
+      "les": "6",
+      "he": "לחשוב",
+      "he_clean": "לחשוב",
+      "uitspraak": "lachshov",
+      "nl": "denken, overwegen",
+      "soort": "ww",
+      "categorie": "Pa'al",
+      "shoresh": "ח-ש-ב"
+    },
+    {
+      "id": 68,
+      "les": "6",
+      "he": "על זה",
+      "he_clean": "על",
+      "uitspraak": "al ze",
+      "nl": "erover, daarover",
+      "soort": "uitdr",
+      "categorie": "voorzetsels",
+      "shoresh": null
+    },
+    {
+      "id": 69,
+      "les": "6",
+      "he": "אפשר",
+      "he_clean": "אפשר",
+      "uitspraak": "efshar",
+      "nl": "het is mogelijk, men kan",
+      "soort": "uitdr",
+      "categorie": "mogelijkheid",
+      "shoresh": null
+    },
+    {
+      "id": 70,
+      "les": "6",
+      "he": "צריך",
+      "he_clean": "צריך",
+      "uitspraak": "tzarich",
+      "nl": "het is nodig, men moet",
+      "soort": "uitdr",
+      "categorie": "noodzaak",
+      "shoresh": null
+    },
+    {
+      "id": 71,
+      "les": "6",
+      "he": "כן",
+      "he_clean": "כן",
+      "uitspraak": "ken",
+      "nl": "ja",
+      "soort": "bw",
+      "categorie": "bevestiging",
+      "shoresh": null
+    },
+    {
+      "id": 72,
+      "les": "6",
+      "he": "שש",
+      "he_clean": "שש",
+      "uitspraak": "shesh",
+      "nl": "zes (v)",
+      "soort": "getal",
+      "categorie": "getallen",
+      "shoresh": null
+    },
+    {
+      "id": 73,
+      "les": "6",
+      "he": "שבע",
+      "he_clean": "שבע",
+      "uitspraak": "sheva",
+      "nl": "zeven (v)",
+      "soort": "getal",
+      "categorie": "getallen",
+      "shoresh": null
+    },
+    {
+      "id": 74,
+      "les": "6",
+      "he": "שמונה",
+      "he_clean": "שמונה",
+      "uitspraak": "shmone",
+      "nl": "acht",
+      "soort": "getal",
+      "categorie": "getallen",
+      "shoresh": null
+    },
+    {
+      "id": 75,
+      "les": "6",
+      "he": "תשע",
+      "he_clean": "תשע",
+      "uitspraak": "tesha",
+      "nl": "negen (v)",
+      "soort": "getal",
+      "categorie": "getallen",
+      "shoresh": null
+    },
+    {
+      "id": 76,
+      "les": "6",
+      "he": "עשר",
+      "he_clean": "עשר",
+      "uitspraak": "eser",
+      "nl": "tien (v)",
+      "soort": "getal",
+      "categorie": "getallen",
+      "shoresh": null
+    },
+    {
+      "id": 77,
+      "les": "7",
+      "he": "כל יום",
+      "he_clean": "כל",
+      "uitspraak": "kol yom",
+      "nl": "elke dag",
+      "soort": "uitdr",
+      "categorie": "tijd",
+      "shoresh": null
+    },
+    {
+      "id": 78,
+      "les": "7",
+      "he": "כל שבוע",
+      "he_clean": "כל",
+      "uitspraak": "kol shavua",
+      "nl": "elke week",
+      "soort": "uitdr",
+      "categorie": "tijd",
+      "shoresh": null
+    },
+    {
+      "id": 79,
+      "les": "7",
+      "he": "כל חודש",
+      "he_clean": "כל",
+      "uitspraak": "kol chodesh",
+      "nl": "elke maand",
+      "soort": "uitdr",
+      "categorie": "tijd",
+      "shoresh": null
+    },
+    {
+      "id": 80,
+      "les": "7",
+      "he": "כל שנה",
+      "he_clean": "כל",
+      "uitspraak": "kol shana",
+      "nl": "elk jaar",
+      "soort": "uitdr",
+      "categorie": "tijd",
+      "shoresh": null
+    },
+    {
+      "id": 81,
+      "les": "7",
+      "he": "יום",
+      "he_clean": "יום",
+      "uitspraak": "yom",
+      "nl": "dag",
+      "soort": "zn",
+      "categorie": "tijd",
+      "shoresh": null
+    },
+    {
+      "id": 82,
+      "les": "7",
+      "he": "שבוע",
+      "he_clean": "שבוע",
+      "uitspraak": "shavua",
+      "nl": "week",
+      "soort": "zn",
+      "categorie": "tijd",
+      "shoresh": null
+    },
+    {
+      "id": 83,
+      "les": "7",
+      "he": "חודש",
+      "he_clean": "חודש",
+      "uitspraak": "chodesh",
+      "nl": "maand",
+      "soort": "zn",
+      "categorie": "tijd",
+      "shoresh": null
+    },
+    {
+      "id": 84,
+      "les": "7",
+      "he": "שנה",
+      "he_clean": "שנה",
+      "uitspraak": "shana",
+      "nl": "jaar",
+      "soort": "zn",
+      "categorie": "tijd",
+      "shoresh": null
+    },
+    {
+      "id": 85,
+      "les": "7",
+      "he": "לשקול",
+      "he_clean": "לשקול",
+      "uitspraak": "lishkol",
+      "nl": "wegen, overwegen",
+      "soort": "ww",
+      "categorie": "Pa'al",
+      "shoresh": null
+    },
+    {
+      "id": 86,
+      "les": "7",
+      "he": "לגמור",
+      "he_clean": "לגמור",
+      "uitspraak": "ligmor",
+      "nl": "beëindigen, klaar zijn",
+      "soort": "ww",
+      "categorie": "Pa'al",
+      "shoresh": "ג-מ-ר"
+    },
+    {
+      "id": 87,
+      "les": "7",
+      "he": "לחזור",
+      "he_clean": "לחזור",
+      "uitspraak": "lachazor",
+      "nl": "terugkeren",
+      "soort": "ww",
+      "categorie": "Pa'al",
+      "shoresh": null
+    },
+    {
+      "id": 88,
+      "les": "7",
+      "he": "לחזור על",
+      "he_clean": "לחזור",
+      "uitspraak": "lachazor al",
+      "nl": "herhalen",
+      "soort": "ww",
+      "categorie": "Pa'al",
+      "shoresh": null
+    },
+    {
+      "id": 89,
+      "les": "7",
+      "he": "עד",
+      "he_clean": "עד",
+      "uitspraak": "ad",
+      "nl": "tot, totdat",
+      "soort": "vz",
+      "categorie": "tijd/ruimte",
+      "shoresh": null
+    },
+    {
+      "id": 90,
+      "les": "7",
+      "he": "מ...עד",
+      "he_clean": "מ...עד",
+      "uitspraak": "me...ad",
+      "nl": "van...tot",
+      "soort": "vz",
+      "categorie": "tijd/ruimte",
+      "shoresh": null
+    },
+    {
+      "id": 91,
+      "les": "8",
+      "he": "לשבת",
+      "he_clean": "לשבת",
+      "uitspraak": "lashevet",
+      "nl": "zitten, wonen",
+      "soort": "ww",
+      "categorie": "Pa'al Pe-Yod",
+      "shoresh": "י-ש-ב"
+    },
+    {
+      "id": 92,
+      "les": "8",
+      "he": "לקחת",
+      "he_clean": "לקחת",
+      "uitspraak": "lakachat",
+      "nl": "nemen",
+      "soort": "ww",
+      "categorie": "Pa'al",
+      "shoresh": "ל-ק-ח"
+    },
+    {
+      "id": 93,
+      "les": "8",
+      "he": "כמה זמן",
+      "he_clean": "כמה",
+      "uitspraak": "kama zman",
+      "nl": "hoe lang",
+      "soort": "vrg",
+      "categorie": "vraagwoorden",
+      "shoresh": null
+    },
+    {
+      "id": 94,
+      "les": "8",
+      "he": "זמן",
+      "he_clean": "זמן",
+      "uitspraak": "zman",
+      "nl": "tijd",
+      "soort": "zn",
+      "categorie": "tijd",
+      "shoresh": null
+    },
+    {
+      "id": 95,
+      "les": "8",
+      "he": "אף אחד (לא)",
+      "he_clean": "אף",
+      "uitspraak": "af echad (lo)",
+      "nl": "niemand",
+      "soort": "uitdr",
+      "categorie": "negatie",
+      "shoresh": null
+    },
+    {
+      "id": 96,
+      "les": "8",
+      "he": "לעבוד",
+      "he_clean": "לעבוד",
+      "uitspraak": "la'avod",
+      "nl": "werken",
+      "soort": "ww",
+      "categorie": "Pa'al",
+      "shoresh": "ע-ב-ד"
+    },
+    {
+      "id": 97,
+      "les": "8",
+      "he": "לאכול",
+      "he_clean": "לאכול",
+      "uitspraak": "le'echol",
+      "nl": "eten",
+      "soort": "ww",
+      "categorie": "Pa'al Pe-Alef",
+      "shoresh": "א-כ-ל"
+    },
+    {
+      "id": 98,
+      "les": "8",
+      "he": "לנסוע",
+      "he_clean": "לנסוע",
+      "uitspraak": "linso'a",
+      "nl": "reizen, rijden",
+      "soort": "ww",
+      "categorie": "Pa'al Pe-Nun",
+      "shoresh": "נ-ס-ע"
+    },
+    {
+      "id": 99,
+      "les": "9",
+      "he": "להזיז",
+      "he_clean": "להזיז",
+      "uitspraak": "lehaziz",
+      "nl": "bewegen (trans.)",
+      "soort": "ww",
+      "categorie": "Hif'il",
+      "shoresh": null
+    },
+    {
+      "id": 100,
+      "les": "9",
+      "he": "לסלוח",
+      "he_clean": "לסלוח",
+      "uitspraak": "lisloch",
+      "nl": "vergeven",
+      "soort": "ww",
+      "categorie": "Pa'al",
+      "shoresh": "ס-ל-ח"
+    },
+    {
+      "id": 101,
+      "les": "9",
+      "he": "הכי",
+      "he_clean": "הכי",
+      "uitspraak": "hachi",
+      "nl": "het meest, super",
+      "soort": "bw",
+      "categorie": "superlativus",
+      "shoresh": null
+    },
+    {
+      "id": 102,
+      "les": "9",
+      "he": "מצד אחד",
+      "he_clean": "מצד",
+      "uitspraak": "mitzad echad",
+      "nl": "enerzijds",
+      "soort": "uitdr",
+      "categorie": "vergelijking",
+      "shoresh": null
+    },
+    {
+      "id": 103,
+      "les": "9",
+      "he": "מצד שני",
+      "he_clean": "מצד",
+      "uitspraak": "mitzad sheni",
+      "nl": "anderzijds",
+      "soort": "uitdr",
+      "categorie": "vergelijking",
+      "shoresh": null
+    },
+    {
+      "id": 104,
+      "les": "9",
+      "he": "ימינה",
+      "he_clean": "ימינה",
+      "uitspraak": "yamina",
+      "nl": "rechtsaf",
+      "soort": "bw",
+      "categorie": "richting",
+      "shoresh": null
+    },
+    {
+      "id": 105,
+      "les": "9",
+      "he": "שמאלה",
+      "he_clean": "שמאלה",
+      "uitspraak": "smola",
+      "nl": "linksaf",
+      "soort": "bw",
+      "categorie": "richting",
+      "shoresh": null
+    },
+    {
+      "id": 106,
+      "les": "9",
+      "he": "ישר",
+      "he_clean": "ישר",
+      "uitspraak": "yashar",
+      "nl": "rechtdoor",
+      "soort": "bw",
+      "categorie": "richting",
+      "shoresh": null
+    },
+    {
+      "id": 107,
+      "les": "10",
+      "he": "לפנות ימינה",
+      "he_clean": "לפנות",
+      "uitspraak": "lifnot yamina",
+      "nl": "rechtsaf slaan",
+      "soort": "uitdr",
+      "categorie": "richting",
+      "shoresh": null
+    },
+    {
+      "id": 108,
+      "les": "10",
+      "he": "לפנות שמאלה",
+      "he_clean": "לפנות",
+      "uitspraak": "lifnot smola",
+      "nl": "linksaf slaan",
+      "soort": "uitdr",
+      "categorie": "richting",
+      "shoresh": null
+    },
+    {
+      "id": 109,
+      "les": "10",
+      "he": "בדרך כלל",
+      "he_clean": "בדרך",
+      "uitspraak": "bederech klal",
+      "nl": "gewoonlijk",
+      "soort": "bw",
+      "categorie": "frequentie",
+      "shoresh": null
+    },
+    {
+      "id": 110,
+      "les": "10",
+      "he": "היה לי",
+      "he_clean": "היה",
+      "uitspraak": "haya li",
+      "nl": "ik had",
+      "soort": "uitdr",
+      "categorie": "bezit verleden",
+      "shoresh": null
+    },
+    {
+      "id": 111,
+      "les": "10",
+      "he": "אין לי",
+      "he_clean": "אין",
+      "uitspraak": "ein li",
+      "nl": "ik heb niet",
+      "soort": "uitdr",
+      "categorie": "bezit heden",
+      "shoresh": null
+    },
+    {
+      "id": 112,
+      "les": "10",
+      "he": "יש לי",
+      "he_clean": "יש",
+      "uitspraak": "yesh li",
+      "nl": "ik heb",
+      "soort": "uitdr",
+      "categorie": "bezit heden",
+      "shoresh": null
+    },
+    {
+      "id": 113,
+      "les": "10",
+      "he": "יש",
+      "he_clean": "יש",
+      "uitspraak": "yesh",
+      "nl": "er is",
+      "soort": "uitdr",
+      "categorie": "bestaan",
+      "shoresh": null
+    },
+    {
+      "id": 114,
+      "les": "10",
+      "he": "אין",
+      "he_clean": "אין",
+      "uitspraak": "ein",
+      "nl": "er is niet",
+      "soort": "uitdr",
+      "categorie": "bestaan",
+      "shoresh": null
+    },
+    {
+      "id": 115,
+      "les": "10",
+      "he": "כמה עולה",
+      "he_clean": "כמה",
+      "uitspraak": "kama ole",
+      "nl": "hoeveel kost het",
+      "soort": "uitdr",
+      "categorie": "prijs",
+      "shoresh": null
+    },
+    {
+      "id": 116,
+      "les": "11",
+      "he": "לתת",
+      "he_clean": "לתת",
+      "uitspraak": "latet",
+      "nl": "geven",
+      "soort": "ww",
+      "categorie": "Pa'al Pe-Nun",
+      "shoresh": "נ-ת-נ"
+    },
+    {
+      "id": 117,
+      "les": "11",
+      "he": "לעזור",
+      "he_clean": "לעזור",
+      "uitspraak": "la'azor",
+      "nl": "helpen",
+      "soort": "ww",
+      "categorie": "Pa'al",
+      "shoresh": "ע-ז-ר"
+    },
+    {
+      "id": 118,
+      "les": "11",
+      "he": "לשמוע",
+      "he_clean": "לשמוע",
+      "uitspraak": "lishmo'a",
+      "nl": "horen",
+      "soort": "ww",
+      "categorie": "Pa'al",
+      "shoresh": "ש-מ-ע"
+    },
+    {
+      "id": 119,
+      "les": "11",
+      "he": "לומר",
+      "he_clean": "לומר",
+      "uitspraak": "lomar",
+      "nl": "zeggen",
+      "soort": "ww",
+      "categorie": "Pa'al Pe-Alef",
+      "shoresh": "א-מ-ר"
+    },
+    {
+      "id": 120,
+      "les": "11",
+      "he": "אתמול",
+      "he_clean": "אתמול",
+      "uitspraak": "etmol",
+      "nl": "gisteren",
+      "soort": "bw",
+      "categorie": "tijd",
+      "shoresh": null
+    },
+    {
+      "id": 121,
+      "les": "11",
+      "he": "כבר",
+      "he_clean": "כבר",
+      "uitspraak": "kvar",
+      "nl": "al, reeds",
+      "soort": "bw",
+      "categorie": "tijd",
+      "shoresh": null
+    },
+    {
+      "id": 122,
+      "les": "11",
+      "he": "עדיין",
+      "he_clean": "עדיין",
+      "uitspraak": "adayin",
+      "nl": "nog steeds",
+      "soort": "bw",
+      "categorie": "tijd",
+      "shoresh": null
+    },
+    {
+      "id": 123,
+      "les": "11",
+      "he": "עדיין לא",
+      "he_clean": "עדיין",
+      "uitspraak": "adayin lo",
+      "nl": "nog niet",
+      "soort": "bw",
+      "categorie": "tijd",
+      "shoresh": null
+    },
+    {
+      "id": 124,
+      "les": "11",
+      "he": "לפני",
+      "he_clean": "לפני",
+      "uitspraak": "lifnei",
+      "nl": "voor, geleden",
+      "soort": "vz",
+      "categorie": "tijd/ruimte",
+      "shoresh": null
+    },
+    {
+      "id": 125,
+      "les": "11",
+      "he": "אחרי",
+      "he_clean": "אחרי",
+      "uitspraak": "acharei",
+      "nl": "na",
+      "soort": "vz",
+      "categorie": "tijd/ruimte",
+      "shoresh": null
+    },
+    {
+      "id": 126,
+      "les": "12",
+      "he": "לסדר",
+      "he_clean": "לסדר",
+      "uitspraak": "lesader",
+      "nl": "ordenen, regelen",
+      "soort": "ww",
+      "categorie": "Pi'el",
+      "shoresh": "ס-ד-ר"
+    },
+    {
+      "id": 127,
+      "les": "12",
+      "he": "לבדוק",
+      "he_clean": "לבדוק",
+      "uitspraak": "livdok",
+      "nl": "controleren",
+      "soort": "ww",
+      "categorie": "Pa'al",
+      "shoresh": "ב-ד-ק"
+    },
+    {
+      "id": 128,
+      "les": "12",
+      "he": "לפתוח",
+      "he_clean": "לפתוח",
+      "uitspraak": "liftoch",
+      "nl": "openen",
+      "soort": "ww",
+      "categorie": "Pa'al",
+      "shoresh": "פ-ת-ח"
+    },
+    {
+      "id": 129,
+      "les": "12",
+      "he": "לסגור",
+      "he_clean": "לסגור",
+      "uitspraak": "lisgoor",
+      "nl": "sluiten",
+      "soort": "ww",
+      "categorie": "Pa'al",
+      "shoresh": "ס-ג-ר"
+    },
+    {
+      "id": 130,
+      "les": "12",
+      "he": "להתחיל",
+      "he_clean": "להתחיל",
+      "uitspraak": "lehatchil",
+      "nl": "beginnen",
+      "soort": "ww",
+      "categorie": "Hif'il",
+      "shoresh": "ח-ל-ל"
+    },
+    {
+      "id": 131,
+      "les": "12",
+      "he": "להמשיך",
+      "he_clean": "להמשיך",
+      "uitspraak": "lehamshich",
+      "nl": "doorgaan",
+      "soort": "ww",
+      "categorie": "Hif'il",
+      "shoresh": "מ-ש-כ"
+    },
+    {
+      "id": 132,
+      "les": "12",
+      "he": "לשלוח",
+      "he_clean": "לשלוח",
+      "uitspraak": "lishloch",
+      "nl": "sturen",
+      "soort": "ww",
+      "categorie": "Pa'al",
+      "shoresh": null
+    },
+    {
+      "id": 133,
+      "les": "12",
+      "he": "לכתוב",
+      "he_clean": "לכתוב",
+      "uitspraak": "lichtov",
+      "nl": "schrijven",
+      "soort": "ww",
+      "categorie": "Pa'al",
+      "shoresh": "כ-ת-ב"
+    },
+    {
+      "id": 134,
+      "les": "12",
+      "he": "מכתב",
+      "he_clean": "מכתב",
+      "uitspraak": "michtav",
+      "nl": "brief",
+      "soort": "zn",
+      "categorie": "communicatie",
+      "shoresh": null
+    },
+    {
+      "id": 135,
+      "les": "12",
+      "he": "אי אפשר",
+      "he_clean": "אי",
+      "uitspraak": "i efshar",
+      "nl": "het is onmogelijk",
+      "soort": "uitdr",
+      "categorie": "onmogelijkheid",
+      "shoresh": null
+    },
+    {
+      "id": 136,
+      "les": "12",
+      "he": "אל",
+      "he_clean": "אל",
+      "uitspraak": "al",
+      "nl": "niet! (gebod)",
+      "soort": "bw",
+      "categorie": "verbod",
+      "shoresh": null
+    },
+    {
+      "id": 137,
+      "les": "12",
+      "he": "בזמן",
+      "he_clean": "בזמן",
+      "uitspraak": "bazman",
+      "nl": "op tijd",
+      "soort": "bw",
+      "categorie": "tijd",
+      "shoresh": null
+    },
+    {
+      "id": 138,
+      "les": "12",
+      "he": "לא בזמן",
+      "he_clean": "לא",
+      "uitspraak": "lo bazman",
+      "nl": "niet op tijd",
+      "soort": "bw",
+      "categorie": "tijd",
+      "shoresh": null
+    },
+    {
+      "id": 139,
+      "les": "12",
+      "he": "דחוף",
+      "he_clean": "דחוף",
+      "uitspraak": "dachuf",
+      "nl": "dringend",
+      "soort": "bn",
+      "categorie": "eigenschappen",
+      "shoresh": null
+    },
+    {
+      "id": 140,
+      "les": "12",
+      "he": "חשוב",
+      "he_clean": "חשוב",
+      "uitspraak": "chashuv",
+      "nl": "belangrijk",
+      "soort": "bn",
+      "categorie": "eigenschappen",
+      "shoresh": null
+    },
+    {
+      "id": 141,
+      "les": "13",
+      "he": "להסכים",
+      "he_clean": "להסכים",
+      "uitspraak": "lehaskim",
+      "nl": "instemmen, akkoord gaan",
+      "soort": "ww",
+      "categorie": "Hif'il",
+      "shoresh": "ס-כ-מ"
+    },
+    {
+      "id": 142,
+      "les": "13",
+      "he": "להגיע",
+      "he_clean": "להגיע",
+      "uitspraak": "lehagi'a",
+      "nl": "aankomen, bereiken",
+      "soort": "ww",
+      "categorie": "Hif'il Pe-Nun",
+      "shoresh": "נ-ג-ע"
+    },
+    {
+      "id": 143,
+      "les": "13",
+      "he": "להזמין",
+      "he_clean": "להזמין",
+      "uitspraak": "lehazmin",
+      "nl": "uitnodigen, bestellen",
+      "soort": "ww",
+      "categorie": "Hif'il",
+      "shoresh": "ז-מ-נ"
+    },
+    {
+      "id": 144,
+      "les": "13",
+      "he": "לצאת",
+      "he_clean": "לצאת",
+      "uitspraak": "latzet",
+      "nl": "uitgaan, vertrekken",
+      "soort": "ww",
+      "categorie": "Pa'al Pe-Yod",
+      "shoresh": "י-צ-א"
+    },
+    {
+      "id": 145,
+      "les": "13",
+      "he": "ללכת",
+      "he_clean": "ללכת",
+      "uitspraak": "lalechet",
+      "nl": "gaan, lopen",
+      "soort": "ww",
+      "categorie": "Pa'al",
+      "shoresh": "ה-ל-כ"
+    },
+    {
+      "id": 146,
+      "les": "13",
+      "he": "לרדת",
+      "he_clean": "לרדת",
+      "uitspraak": "laredet",
+      "nl": "dalen, naar beneden gaan",
+      "soort": "ww",
+      "categorie": "Pa'al Pe-Yod",
+      "shoresh": "י-ר-ד"
+    },
+    {
+      "id": 147,
+      "les": "13",
+      "he": "בגלל",
+      "he_clean": "בגלל",
+      "uitspraak": "biglal",
+      "nl": "vanwege, omdat",
+      "soort": "vz",
+      "categorie": "reden",
+      "shoresh": null
+    },
+    {
+      "id": 148,
+      "les": "13",
+      "he": "בגלל הגשם",
+      "he_clean": "בגלל",
+      "uitspraak": "biglal hageshem",
+      "nl": "vanwege de regen",
+      "soort": "uitdr",
+      "categorie": "reden",
+      "shoresh": null
+    },
+    {
+      "id": 149,
+      "les": "13",
+      "he": "לצאת מהבית",
+      "he_clean": "לצאת",
+      "uitspraak": "latzet mhabayit",
+      "nl": "het huis verlaten",
+      "soort": "uitdr",
+      "categorie": "beweging",
+      "shoresh": "י-צ-א"
+    },
+    {
+      "id": 150,
+      "les": "13",
+      "he": "הגיע הזמן",
+      "he_clean": "הגיע",
+      "uitspraak": "higi'a hazman",
+      "nl": "het is hoog tijd",
+      "soort": "uitdr",
+      "categorie": "tijd",
+      "shoresh": null
+    },
+    {
+      "id": 151,
+      "les": "13",
+      "he": "מחיר",
+      "he_clean": "מחיר",
+      "uitspraak": "mechir",
+      "nl": "prijs",
+      "soort": "zn",
+      "categorie": "geld",
+      "shoresh": null
+    },
+    {
+      "id": 152,
+      "les": "13",
+      "he": "גשם",
+      "he_clean": "גשם",
+      "uitspraak": "geshem",
+      "nl": "regen",
+      "soort": "zn",
+      "categorie": "weer",
+      "shoresh": null
+    },
+    {
+      "id": 153,
+      "les": "13",
+      "he": "שלג",
+      "he_clean": "שלג",
+      "uitspraak": "sheleg",
+      "nl": "sneeuw",
+      "soort": "zn",
+      "categorie": "weer",
+      "shoresh": null
+    },
+    {
+      "id": 154,
+      "les": "14",
+      "he": "להסביר",
+      "he_clean": "להסביר",
+      "uitspraak": "lehasbir",
+      "nl": "uitleggen",
+      "soort": "ww",
+      "categorie": "Hif'il",
+      "shoresh": "ס-ב-ר"
+    },
+    {
+      "id": 155,
+      "les": "14",
+      "he": "להתחיל",
+      "he_clean": "להתחיל",
+      "uitspraak": "lehatchil",
+      "nl": "beginnen",
+      "soort": "ww",
+      "categorie": "Hif'il",
+      "shoresh": "ח-ל-ל"
+    },
+    {
+      "id": 156,
+      "les": "14",
+      "he": "להמשיך",
+      "he_clean": "להמשיך",
+      "uitspraak": "lehamshich",
+      "nl": "doorgaan",
+      "soort": "ww",
+      "categorie": "Hif'il",
+      "shoresh": "מ-ש-כ"
+    },
+    {
+      "id": 157,
+      "les": "14",
+      "he": "אם אני הבנתי אותך נכון",
+      "he_clean": "אם",
+      "uitspraak": "im ani hevanti otcha nachon",
+      "nl": "als ik je goed begrijp",
+      "soort": "uitdr",
+      "categorie": "begrip",
+      "shoresh": null
+    },
+    {
+      "id": 158,
+      "les": "14",
+      "he": "נכון",
+      "he_clean": "נכון",
+      "uitspraak": "nachon",
+      "nl": "juist, correct",
+      "soort": "bn",
+      "categorie": "eigenschappen",
+      "shoresh": null
+    },
+    {
+      "id": 159,
+      "les": "14",
+      "he": "לא נכון",
+      "he_clean": "לא",
+      "uitspraak": "lo nachon",
+      "nl": "onjuist",
+      "soort": "bn",
+      "categorie": "eigenschappen",
+      "shoresh": null
+    },
+    {
+      "id": 160,
+      "les": "14",
+      "he": "אני א...",
+      "he_clean": "אני",
+      "uitspraak": "ani a...",
+      "nl": "ik zal... (toekomst)",
+      "soort": "uitdr",
+      "categorie": "grammatica",
+      "shoresh": null
+    },
+    {
+      "id": 161,
+      "les": "14",
+      "he": "בעצמי",
+      "he_clean": "בעצמי",
+      "uitspraak": "be'atzmi",
+      "nl": "zelf, door mijzelf",
+      "soort": "bw",
+      "categorie": "zelfstandigheid",
+      "shoresh": null
+    },
+    {
+      "id": 162,
+      "les": "14",
+      "he": "בעצמו",
+      "he_clean": "בעצמו",
+      "uitspraak": "be'atzmo",
+      "nl": "zelf (m)",
+      "soort": "bw",
+      "categorie": "zelfstandigheid",
+      "shoresh": null
+    },
+    {
+      "id": 163,
+      "les": "14",
+      "he": "בעצמה",
+      "he_clean": "בעצמה",
+      "uitspraak": "be'atzmah",
+      "nl": "zelf (v)",
+      "soort": "bw",
+      "categorie": "zelfstandigheid",
+      "shoresh": null
+    },
+    {
+      "id": 164,
+      "les": "15",
+      "he": "להכניס",
+      "he_clean": "להכניס",
+      "uitspraak": "lehachnis",
+      "nl": "binnenbrengen",
+      "soort": "ww",
+      "categorie": "Hif'il",
+      "shoresh": "כ-נ-ס"
+    },
+    {
+      "id": 165,
+      "les": "15",
+      "he": "להמתין",
+      "he_clean": "להמתין",
+      "uitspraak": "lehametin",
+      "nl": "wachten",
+      "soort": "ww",
+      "categorie": "Hif'il",
+      "shoresh": "מ-ת-נ"
+    },
+    {
+      "id": 166,
+      "les": "15",
+      "he": "להציע",
+      "he_clean": "להציע",
+      "uitspraak": "lehatzi'a",
+      "nl": "voorstellen, aanbieden",
+      "soort": "ww",
+      "categorie": "Hif'il Pe-Yod",
+      "shoresh": null
+    },
+    {
+      "id": 167,
+      "les": "15",
+      "he": "להחזיר",
+      "he_clean": "להחזיר",
+      "uitspraak": "lehachazir",
+      "nl": "teruggeven, terugsturen",
+      "soort": "ww",
+      "categorie": "Hif'il",
+      "shoresh": "ח-ז-ר"
+    },
+    {
+      "id": 168,
+      "les": "15",
+      "he": "להבטיח",
+      "he_clean": "להבטיח",
+      "uitspraak": "lehavti'ach",
+      "nl": "beloven",
+      "soort": "ww",
+      "categorie": "Hif'il",
+      "shoresh": "ב-ט-ח"
+    },
+    {
+      "id": 169,
+      "les": "15",
+      "he": "להצליח",
+      "he_clean": "להצליח",
+      "uitspraak": "lehatzliach",
+      "nl": "slagen, lukken",
+      "soort": "ww",
+      "categorie": "Hif'il",
+      "shoresh": "צ-ל-ח"
+    },
+    {
+      "id": 170,
+      "les": "15",
+      "he": "בהצלחה",
+      "he_clean": "בהצלחה",
+      "uitspraak": "behatzlacha",
+      "nl": "veel succes",
+      "soort": "uitdr",
+      "categorie": "wens",
+      "shoresh": null
+    },
+    {
+      "id": 171,
+      "les": "15",
+      "he": "הצלחה",
+      "he_clean": "הצלחה",
+      "uitspraak": "hatzlacha",
+      "nl": "succes",
+      "soort": "zn",
+      "categorie": "abstract",
+      "shoresh": null
+    },
+    {
+      "id": 172,
+      "les": "15",
+      "he": "הבטחה",
+      "he_clean": "הבטחה",
+      "uitspraak": "havtacha",
+      "nl": "belofte",
+      "soort": "zn",
+      "categorie": "abstract",
+      "shoresh": null
+    },
+    {
+      "id": 173,
+      "les": "15",
+      "he": "אנחנו",
+      "he_clean": "אנחנו",
+      "uitspraak": "anachnu",
+      "nl": "wij",
+      "soort": "vw",
+      "categorie": "personen",
+      "shoresh": null
+    },
+    {
+      "id": 174,
+      "les": "15",
+      "he": "הם / הן",
+      "he_clean": "הם",
+      "uitspraak": "hem / hen",
+      "nl": "zij (m/v)",
+      "soort": "vw",
+      "categorie": "personen",
+      "shoresh": null
+    },
+    {
+      "id": 175,
+      "les": "15",
+      "he": "אתם / אתן",
+      "he_clean": "אתם",
+      "uitspraak": "atem / aten",
+      "nl": "jullie (m/v)",
+      "soort": "vw",
+      "categorie": "personen",
+      "shoresh": null
+    },
+    {
+      "id": 176,
+      "les": "16",
+      "he": "להרגיש",
+      "he_clean": "להרגיש",
+      "uitspraak": "lehargish",
+      "nl": "voelen",
+      "soort": "ww",
+      "categorie": "Hif'il",
+      "shoresh": "ר-ג-ש"
+    },
+    {
+      "id": 177,
+      "les": "16",
+      "he": "להכיר",
+      "he_clean": "להכיר",
+      "uitspraak": "lehakir",
+      "nl": "kennen, herkennen",
+      "soort": "ww",
+      "categorie": "Hif'il Pe-Nun",
+      "shoresh": null
+    },
+    {
+      "id": 178,
+      "les": "16",
+      "he": "להחליט",
+      "he_clean": "להחליט",
+      "uitspraak": "lehachlit",
+      "nl": "beslissen",
+      "soort": "ww",
+      "categorie": "Hif'il",
+      "shoresh": "ח-ל-ט"
+    },
+    {
+      "id": 179,
+      "les": "16",
+      "he": "להחליף",
+      "he_clean": "להחליף",
+      "uitspraak": "lehachalif",
+      "nl": "vervangen, wisselen",
+      "soort": "ww",
+      "categorie": "Hif'il",
+      "shoresh": "ח-ל-פ"
+    },
+    {
+      "id": 180,
+      "les": "16",
+      "he": "להעביר",
+      "he_clean": "להעביר",
+      "uitspraak": "leha'avir",
+      "nl": "overdragen, doorgeven",
+      "soort": "ww",
+      "categorie": "Hif'il",
+      "shoresh": "ע-ב-ר"
+    },
+    {
+      "id": 181,
+      "les": "16",
+      "he": "להפריע",
+      "he_clean": "להפריע",
+      "uitspraak": "lehafri'a",
+      "nl": "storen, hinderen",
+      "soort": "ww",
+      "categorie": "Hif'il",
+      "shoresh": "פ-ר-ע"
+    },
+    {
+      "id": 182,
+      "les": "16",
+      "he": "הרגשה",
+      "he_clean": "הרגשה",
+      "uitspraak": "hargasha",
+      "nl": "gevoel, stemming",
+      "soort": "zn",
+      "categorie": "abstract",
+      "shoresh": null
+    },
+    {
+      "id": 183,
+      "les": "16",
+      "he": "החלטה",
+      "he_clean": "החלטה",
+      "uitspraak": "hachlatah",
+      "nl": "beslissing",
+      "soort": "zn",
+      "categorie": "abstract",
+      "shoresh": null
+    },
+    {
+      "id": 184,
+      "les": "16",
+      "he": "רגש",
+      "he_clean": "רגש",
+      "uitspraak": "regesh",
+      "nl": "gevoel, emotie",
+      "soort": "zn",
+      "categorie": "abstract",
+      "shoresh": null
+    },
+    {
+      "id": 185,
+      "les": "16",
+      "he": "מרגש",
+      "he_clean": "מרגש",
+      "uitspraak": "meragesh",
+      "nl": "ontroerend, aangrijpend",
+      "soort": "bn",
+      "categorie": "eigenschappen",
+      "shoresh": null
+    },
+    {
+      "id": 186,
+      "les": "16",
+      "he": "סוף סוף",
+      "he_clean": "סוף",
+      "uitspraak": "sof sof",
+      "nl": "eindelijk",
+      "soort": "bw",
+      "categorie": "tijd",
+      "shoresh": null
+    },
+    {
+      "id": 187,
+      "les": "16",
+      "he": "לבסוף",
+      "he_clean": "לבסוף",
+      "uitspraak": "levasof",
+      "nl": "uiteindelijk",
+      "soort": "bw",
+      "categorie": "tijd",
+      "shoresh": null
+    },
+    {
+      "id": 188,
+      "les": "17",
+      "he": "להעדיף",
+      "he_clean": "להעדיף",
+      "uitspraak": "leha'adif",
+      "nl": "de voorkeur geven",
+      "soort": "ww",
+      "categorie": "Hif'il",
+      "shoresh": "י-ד-ע"
+    },
+    {
+      "id": 189,
+      "les": "17",
+      "he": "להשכיר",
+      "he_clean": "להשכיר",
+      "uitspraak": "lehaskir",
+      "nl": "verhuren",
+      "soort": "ww",
+      "categorie": "Hif'il",
+      "shoresh": null
+    },
+    {
+      "id": 190,
+      "les": "17",
+      "he": "להפקיד",
+      "he_clean": "להפקיד",
+      "uitspraak": "lehafkid",
+      "nl": "deponeren, toevertrouwen",
+      "soort": "ww",
+      "categorie": "Hif'il",
+      "shoresh": null
+    },
+    {
+      "id": 191,
+      "les": "17",
+      "he": "יותר מדי",
+      "he_clean": "יותר",
+      "uitspraak": "yoter midai",
+      "nl": "te veel",
+      "soort": "bw",
+      "categorie": "hoeveelheid",
+      "shoresh": null
+    },
+    {
+      "id": 192,
+      "les": "17",
+      "he": "מדי",
+      "he_clean": "מדי",
+      "uitspraak": "midai",
+      "nl": "te (+ bijv nw)",
+      "soort": "bw",
+      "categorie": "mate",
+      "shoresh": null
+    },
+    {
+      "id": 193,
+      "les": "17",
+      "he": "גדול מדי",
+      "he_clean": "גדול",
+      "uitspraak": "gadol midai",
+      "nl": "te groot",
+      "soort": "uitdr",
+      "categorie": "mate",
+      "shoresh": null
+    },
+    {
+      "id": 194,
+      "les": "17",
+      "he": "קטן מדי",
+      "he_clean": "קטן",
+      "uitspraak": "katan midai",
+      "nl": "te klein",
+      "soort": "uitdr",
+      "categorie": "mate",
+      "shoresh": null
+    },
+    {
+      "id": 195,
+      "les": "17",
+      "he": "לפני שבוע",
+      "he_clean": "לפני",
+      "uitspraak": "lifnei shavua",
+      "nl": "een week geleden",
+      "soort": "uitdr",
+      "categorie": "tijd",
+      "shoresh": null
+    },
+    {
+      "id": 196,
+      "les": "17",
+      "he": "בשבוע הבא",
+      "he_clean": "בשבוע",
+      "uitspraak": "bashavua haba",
+      "nl": "volgende week",
+      "soort": "uitdr",
+      "categorie": "tijd",
+      "shoresh": null
+    },
+    {
+      "id": 197,
+      "les": "17",
+      "he": "בחודש הבא",
+      "he_clean": "בחודש",
+      "uitspraak": "bachodesh haba",
+      "nl": "volgende maand",
+      "soort": "uitdr",
+      "categorie": "tijd",
+      "shoresh": null
+    },
+    {
+      "id": 198,
+      "les": "18",
+      "he": "להתקשר",
+      "he_clean": "להתקשר",
+      "uitspraak": "lehitkasher",
+      "nl": "bellen, contact opnemen",
+      "soort": "ww",
+      "categorie": "Hitpa'el",
+      "shoresh": null
+    },
+    {
+      "id": 199,
+      "les": "18",
+      "he": "להתחתן",
+      "he_clean": "להתחתן",
+      "uitspraak": "lehitchaten",
+      "nl": "trouwen",
+      "soort": "ww",
+      "categorie": "Hitpa'el",
+      "shoresh": null
+    },
+    {
+      "id": 200,
+      "les": "18",
+      "he": "להתלבש",
+      "he_clean": "להתלבש",
+      "uitspraak": "lehitlabesh",
+      "nl": "zich aankleden",
+      "soort": "ww",
+      "categorie": "Hitpa'el",
+      "shoresh": null
+    },
+    {
+      "id": 201,
+      "les": "18",
+      "he": "להתרחץ",
+      "he_clean": "להתרחץ",
+      "uitspraak": "lehitrachetz",
+      "nl": "zich wassen",
+      "soort": "ww",
+      "categorie": "Hitpa'el",
+      "shoresh": null
+    },
+    {
+      "id": 202,
+      "les": "18",
+      "he": "להסתכל",
+      "he_clean": "להסתכל",
+      "uitspraak": "lehistakel",
+      "nl": "kijken naar",
+      "soort": "ww",
+      "categorie": "Hitpa'el",
+      "shoresh": null
+    },
+    {
+      "id": 203,
+      "les": "18",
+      "he": "להצטרך",
+      "he_clean": "להצטרך",
+      "uitspraak": "lehitztarech",
+      "nl": "nodig hebben",
+      "soort": "ww",
+      "categorie": "Hitpa'el",
+      "shoresh": null
+    },
+    {
+      "id": 204,
+      "les": "18",
+      "he": "להצטער",
+      "he_clean": "להצטער",
+      "uitspraak": "lehitzta'er",
+      "nl": "spijt hebben",
+      "soort": "ww",
+      "categorie": "Hitpa'el",
+      "shoresh": null
+    },
+    {
+      "id": 205,
+      "les": "18",
+      "he": "לי",
+      "he_clean": "לי",
+      "uitspraak": "li",
+      "nl": "aan mij, voor mij",
+      "soort": "vz",
+      "categorie": "voornaamwoord+vz",
+      "shoresh": null
+    },
+    {
+      "id": 206,
+      "les": "18",
+      "he": "לך",
+      "he_clean": "לך",
+      "uitspraak": "lecha/lach",
+      "nl": "aan jou (m/v)",
+      "soort": "vz",
+      "categorie": "voornaamwoord+vz",
+      "shoresh": null
+    },
+    {
+      "id": 207,
+      "les": "18",
+      "he": "לו",
+      "he_clean": "לו",
+      "uitspraak": "lo",
+      "nl": "aan hem",
+      "soort": "vz",
+      "categorie": "voornaamwoord+vz",
+      "shoresh": null
+    },
+    {
+      "id": 208,
+      "les": "18",
+      "he": "לה",
+      "he_clean": "לה",
+      "uitspraak": "la",
+      "nl": "aan haar",
+      "soort": "vz",
+      "categorie": "voornaamwoord+vz",
+      "shoresh": null
+    },
+    {
+      "id": 209,
+      "les": "18",
+      "he": "לנו",
+      "he_clean": "לנו",
+      "uitspraak": "lanu",
+      "nl": "aan ons",
+      "soort": "vz",
+      "categorie": "voornaamwoord+vz",
+      "shoresh": null
+    },
+    {
+      "id": 210,
+      "les": "18",
+      "he": "אותי",
+      "he_clean": "אותי",
+      "uitspraak": "oti",
+      "nl": "mij (direct object)",
+      "soort": "vw",
+      "categorie": "object-voornaamwoord",
+      "shoresh": null
+    },
+    {
+      "id": 211,
+      "les": "18",
+      "he": "אותך",
+      "he_clean": "אותך",
+      "uitspraak": "otcha/otach",
+      "nl": "jou (direct object)",
+      "soort": "vw",
+      "categorie": "object-voornaamwoord",
+      "shoresh": null
+    },
+    {
+      "id": 212,
+      "les": "18",
+      "he": "אותו",
+      "he_clean": "אותו",
+      "uitspraak": "oto",
+      "nl": "hem (direct object)",
+      "soort": "vw",
+      "categorie": "object-voornaamwoord",
+      "shoresh": null
+    },
+    {
+      "id": 213,
+      "les": "18",
+      "he": "אותה",
+      "he_clean": "אותה",
+      "uitspraak": "ota",
+      "nl": "haar (direct object)",
+      "soort": "vw",
+      "categorie": "object-voornaamwoord",
+      "shoresh": null
+    },
+    {
+      "id": 214,
+      "les": "19",
+      "he": "לצעוק",
+      "he_clean": "לצעוק",
+      "uitspraak": "litz'ok",
+      "nl": "schreeuwen, roepen",
+      "soort": "ww",
+      "categorie": "Pa'al",
+      "shoresh": "צ-ע-ק"
+    },
+    {
+      "id": 215,
+      "les": "19",
+      "he": "להציל",
+      "he_clean": "להציל",
+      "uitspraak": "lehatzil",
+      "nl": "redden",
+      "soort": "ww",
+      "categorie": "Hif'il",
+      "shoresh": "נ-צ-ל"
+    },
+    {
+      "id": 216,
+      "les": "19",
+      "he": "לתפוס",
+      "he_clean": "לתפוס",
+      "uitspraak": "litpos",
+      "nl": "vangen, pakken",
+      "soort": "ww",
+      "categorie": "Pa'al",
+      "shoresh": "ת-פ-ס"
+    },
+    {
+      "id": 217,
+      "les": "19",
+      "he": "במקום",
+      "he_clean": "במקום",
+      "uitspraak": "bimkom",
+      "nl": "in plaats van",
+      "soort": "vz",
+      "categorie": "vervanging",
+      "shoresh": null
+    },
+    {
+      "id": 218,
+      "les": "19",
+      "he": "עדיין",
+      "he_clean": "עדיין",
+      "uitspraak": "adayin",
+      "nl": "nog steeds",
+      "soort": "bw",
+      "categorie": "tijd",
+      "shoresh": null
+    },
+    {
+      "id": 219,
+      "les": "19",
+      "he": "לסמוך על",
+      "he_clean": "לסמוך",
+      "uitspraak": "lismoch al",
+      "nl": "vertrouwen op",
+      "soort": "ww",
+      "categorie": "Pa'al",
+      "shoresh": "ס-מ-כ"
+    },
+    {
+      "id": 220,
+      "les": "19",
+      "he": "ביטחון",
+      "he_clean": "ביטחון",
+      "uitspraak": "bitachon",
+      "nl": "veiligheid, vertrouwen",
+      "soort": "zn",
+      "categorie": "abstract",
+      "shoresh": null
+    },
+    {
+      "id": 221,
+      "les": "19",
+      "he": "בטוח",
+      "he_clean": "בטוח",
+      "uitspraak": "batuach",
+      "nl": "zeker, veilig",
+      "soort": "bn",
+      "categorie": "eigenschappen",
+      "shoresh": null
+    },
+    {
+      "id": 222,
+      "les": "19",
+      "he": "לא בטוח",
+      "he_clean": "לא",
+      "uitspraak": "lo batuach",
+      "nl": "niet zeker",
+      "soort": "uitdr",
+      "categorie": "onzekerheid",
+      "shoresh": null
+    },
+    {
+      "id": 223,
+      "les": "0",
+      "he": "שלום",
+      "he_clean": "שלום",
+      "uitspraak": "shalom",
+      "nl": "hallo, tot ziens, vrede",
+      "soort": "uitdr",
+      "categorie": "begroeting",
+      "shoresh": null
+    },
+    {
+      "id": 224,
+      "les": "0",
+      "he": "בוקר טוב",
+      "he_clean": "בוקר",
+      "uitspraak": "boker tov",
+      "nl": "goedemorgen",
+      "soort": "uitdr",
+      "categorie": "begroeting",
+      "shoresh": null
+    },
+    {
+      "id": 225,
+      "les": "0",
+      "he": "ערב טוב",
+      "he_clean": "ערב",
+      "uitspraak": "erev tov",
+      "nl": "goedenavond",
+      "soort": "uitdr",
+      "categorie": "begroeting",
+      "shoresh": null
+    },
+    {
+      "id": 226,
+      "les": "0",
+      "he": "לילה טוב",
+      "he_clean": "לילה",
+      "uitspraak": "layla tov",
+      "nl": "goedenacht",
+      "soort": "uitdr",
+      "categorie": "begroeting",
+      "shoresh": null
+    },
+    {
+      "id": 227,
+      "les": "0",
+      "he": "להתראות",
+      "he_clean": "להתראות",
+      "uitspraak": "lehitraot",
+      "nl": "tot ziens",
+      "soort": "uitdr",
+      "categorie": "begroeting",
+      "shoresh": null
+    },
+    {
+      "id": 228,
+      "les": "0",
+      "he": "נעים מאוד",
+      "he_clean": "נעים",
+      "uitspraak": "na'im me'od",
+      "nl": "aangenaam (kennismaking)",
+      "soort": "uitdr",
+      "categorie": "begroeting",
+      "shoresh": null
+    },
+    {
+      "id": 229,
+      "les": "0",
+      "he": "מה שלומך",
+      "he_clean": "מה",
+      "uitspraak": "ma shlomcha",
+      "nl": "hoe gaat het (m)",
+      "soort": "uitdr",
+      "categorie": "begroeting",
+      "shoresh": null
+    },
+    {
+      "id": 230,
+      "les": "0",
+      "he": "תודה",
+      "he_clean": "תודה",
+      "uitspraak": "toda",
+      "nl": "dank je",
+      "soort": "uitdr",
+      "categorie": "beleefdheid",
+      "shoresh": null
+    },
+    {
+      "id": 231,
+      "les": "0",
+      "he": "תודה רבה",
+      "he_clean": "תודה",
+      "uitspraak": "toda raba",
+      "nl": "hartelijk dank",
+      "soort": "uitdr",
+      "categorie": "beleefdheid",
+      "shoresh": null
+    },
+    {
+      "id": 232,
+      "les": "0",
+      "he": "בבקשה",
+      "he_clean": "בבקשה",
+      "uitspraak": "bevakasha",
+      "nl": "alstublieft, graag gedaan",
+      "soort": "uitdr",
+      "categorie": "beleefdheid",
+      "shoresh": null
+    },
+    {
+      "id": 233,
+      "les": "0",
+      "he": "סליחה",
+      "he_clean": "סליחה",
+      "uitspraak": "slicha",
+      "nl": "sorry, pardon",
+      "soort": "uitdr",
+      "categorie": "beleefdheid",
+      "shoresh": null
+    },
+    {
+      "id": 234,
+      "les": "0",
+      "he": "אין בעיה",
+      "he_clean": "אין",
+      "uitspraak": "ein be'aya",
+      "nl": "geen probleem",
+      "soort": "uitdr",
+      "categorie": "beleefdheid",
+      "shoresh": null
+    },
+    {
+      "id": 235,
+      "les": "0",
+      "he": "בסדר",
+      "he_clean": "בסדר",
+      "uitspraak": "beseder",
+      "nl": "oké, in orde",
+      "soort": "uitdr",
+      "categorie": "reactie",
+      "shoresh": null
+    },
+    {
+      "id": 236,
+      "les": "0",
+      "he": "תחזיק מעמד",
+      "he_clean": "תחזיק",
+      "uitspraak": "tachazik ma'amad",
+      "nl": "hou vol, hang in there",
+      "soort": "uitdr",
+      "categorie": "aanmoediging",
+      "shoresh": null
+    },
+    {
+      "id": 237,
+      "les": "0",
+      "he": "זה מתאים לך",
+      "he_clean": "זה",
+      "uitspraak": "ze matim lecha",
+      "nl": "het staat je goed",
+      "soort": "uitdr",
+      "categorie": "compliment",
+      "shoresh": null
+    },
+    {
+      "id": 238,
+      "les": "0",
+      "he": "תעשה לי טובה",
+      "he_clean": "תעשה",
+      "uitspraak": "ase li tova",
+      "nl": "doe me een plezier",
+      "soort": "uitdr",
+      "categorie": "verzoek",
+      "shoresh": null
+    },
+    {
+      "id": 239,
+      "les": "0",
+      "he": "אין טעם",
+      "he_clean": "אין",
+      "uitspraak": "ein ta'am",
+      "nl": "er is geen zin in",
+      "soort": "uitdr",
+      "categorie": "zinloosheid",
+      "shoresh": null
+    },
+    {
+      "id": 240,
+      "les": "0",
+      "he": "אין לי מושג",
+      "he_clean": "אין",
+      "uitspraak": "ein li musag",
+      "nl": "ik heb geen idee",
+      "soort": "uitdr",
+      "categorie": "onwetendheid",
+      "shoresh": null
+    },
+    {
+      "id": 241,
+      "les": "0",
+      "he": "אין סיכוי",
+      "he_clean": "אין",
+      "uitspraak": "ein sikui",
+      "nl": "geen kans",
+      "soort": "uitdr",
+      "categorie": "onmogelijkheid",
+      "shoresh": null
+    },
+    {
+      "id": 242,
+      "les": "0",
+      "he": "לשמור על קשר",
+      "he_clean": "לשמור",
+      "uitspraak": "lishmor al kesher",
+      "nl": "contact houden",
+      "soort": "uitdr",
+      "categorie": "relatie",
+      "shoresh": null
+    },
+    {
+      "id": 243,
+      "les": "0",
+      "he": "לא משנה",
+      "he_clean": "לא",
+      "uitspraak": "lo meshane",
+      "nl": "het maakt niet uit",
+      "soort": "uitdr",
+      "categorie": "reactie",
+      "shoresh": null
+    },
+    {
+      "id": 244,
+      "les": "0",
+      "he": "בכל מקרה",
+      "he_clean": "בכל",
+      "uitspraak": "bechol mikreh",
+      "nl": "in elk geval",
+      "soort": "uitdr",
+      "categorie": "reactie",
+      "shoresh": null
+    },
+    {
+      "id": 245,
+      "les": "0",
+      "he": "מה קורה",
+      "he_clean": "מה",
+      "uitspraak": "ma kore",
+      "nl": "wat is er aan de hand",
+      "soort": "uitdr",
+      "categorie": "vraag",
+      "shoresh": null
+    },
+    {
+      "id": 246,
+      "les": "0",
+      "he": "כל כך",
+      "he_clean": "כל",
+      "uitspraak": "kol kach",
+      "nl": "zo, zoveel",
+      "soort": "bw",
+      "categorie": "mate",
+      "shoresh": null
+    },
+    {
+      "id": 247,
+      "les": "0",
+      "he": "כדאי",
+      "he_clean": "כדאי",
+      "uitspraak": "kedai",
+      "nl": "het is de moeite waard",
+      "soort": "uitdr",
+      "categorie": "waardeoordeel",
+      "shoresh": null
+    },
+    {
+      "id": 248,
+      "les": "0",
+      "he": "בא לי",
+      "he_clean": "בא",
+      "uitspraak": "ba li",
+      "nl": "ik heb zin in",
+      "soort": "uitdr",
+      "categorie": "wens",
+      "shoresh": null
+    },
+    {
+      "id": 249,
+      "les": "0",
+      "he": "אין לי כוח",
+      "he_clean": "אין",
+      "uitspraak": "ein li koach",
+      "nl": "ik heb geen energie",
+      "soort": "uitdr",
+      "categorie": "uitputting",
+      "shoresh": null
+    },
+    {
+      "id": 250,
+      "les": "0",
+      "he": "אני בדרך",
+      "he_clean": "אני",
+      "uitspraak": "ani baderech",
+      "nl": "ik ben onderweg",
+      "soort": "uitdr",
+      "categorie": "beweging",
+      "shoresh": null
+    },
+    {
+      "id": 251,
+      "les": "0",
+      "he": "קוראים לי",
+      "he_clean": "קוראים",
+      "uitspraak": "korim li",
+      "nl": "ik heet (men noemt mij)",
+      "soort": "uitdr",
+      "categorie": "identiteit",
+      "shoresh": null
+    }
+  ],
+  "shoresh_groepen": {
+    "ל-מ-ד": [
+      6
+    ],
+    "ש-ל-מ": [
+      8
+    ],
+    "ד-ב-ר": [
+      9
+    ],
+    "ק-ב-ל": [
+      27,
+      51
+    ],
+    "ח-פ-ש": [
+      62
+    ],
+    "ס-ג-ר": [
+      63,
+      129
+    ],
+    "ח-ש-ב": [
+      67
+    ],
+    "ג-מ-ר": [
+      86
+    ],
+    "י-ש-ב": [
+      91
+    ],
+    "ל-ק-ח": [
+      92
+    ],
+    "ע-ב-ד": [
+      96
+    ],
+    "א-כ-ל": [
+      97
+    ],
+    "נ-ס-ע": [
+      98
+    ],
+    "ס-ל-ח": [
+      100
+    ],
+    "נ-ת-נ": [
+      116
+    ],
+    "ע-ז-ר": [
+      117
+    ],
+    "ש-מ-ע": [
+      118
+    ],
+    "א-מ-ר": [
+      119
+    ],
+    "ס-ד-ר": [
+      126
+    ],
+    "ב-ד-ק": [
+      127
+    ],
+    "פ-ת-ח": [
+      128
+    ],
+    "ח-ל-ל": [
+      130,
+      155
+    ],
+    "מ-ש-כ": [
+      131,
+      156
+    ],
+    "כ-ת-ב": [
+      133
+    ],
+    "ס-כ-מ": [
+      141
+    ],
+    "נ-ג-ע": [
+      142
+    ],
+    "ז-מ-נ": [
+      143
+    ],
+    "י-צ-א": [
+      144,
+      149
+    ],
+    "ה-ל-כ": [
+      145
+    ],
+    "י-ר-ד": [
+      146
+    ],
+    "ס-ב-ר": [
+      154
+    ],
+    "כ-נ-ס": [
+      164
+    ],
+    "מ-ת-נ": [
+      165
+    ],
+    "ח-ז-ר": [
+      167
+    ],
+    "ב-ט-ח": [
+      168
+    ],
+    "צ-ל-ח": [
+      169
+    ],
+    "ר-ג-ש": [
+      176
+    ],
+    "ח-ל-ט": [
+      178
+    ],
+    "ח-ל-פ": [
+      179
+    ],
+    "ע-ב-ר": [
+      180
+    ],
+    "פ-ר-ע": [
+      181
+    ],
+    "י-ד-ע": [
+      188
+    ],
+    "צ-ע-ק": [
+      214
+    ],
+    "נ-צ-ל": [
+      215
+    ],
+    "ת-פ-ס": [
+      216
+    ],
+    "ס-מ-כ": [
+      219
+    ]
+  },
+  "memory_paren": [
+    {
+      "id": 6,
+      "he": "ללמוד",
+      "nl": "leren, studeren",
+      "uitspraak": "lilmod",
+      "les": "1"
+    },
+    {
+      "id": 7,
+      "he": "צריך",
+      "nl": "nodig hebben, moeten (m/v)",
+      "uitspraak": "tzarich / tzricha",
+      "les": "1"
+    },
+    {
+      "id": 8,
+      "he": "לשלם",
+      "nl": "betalen",
+      "uitspraak": "leshalem",
+      "les": "1"
+    },
+    {
+      "id": 9,
+      "he": "לדבר",
+      "nl": "spreken",
+      "uitspraak": "ledaber",
+      "les": "1"
+    },
+    {
+      "id": 13,
+      "he": "שקל",
+      "nl": "sjekel (geldeenheid)",
+      "uitspraak": "shekel",
+      "les": "1"
+    },
+    {
+      "id": 14,
+      "he": "עברית",
+      "nl": "Hebreeuws",
+      "uitspraak": "ivrit",
+      "les": "1"
+    },
+    {
+      "id": 17,
+      "he": "יכול",
+      "nl": "kunnen (m/v)",
+      "uitspraak": "yachol / yechola",
+      "les": "2"
+    },
+    {
+      "id": 20,
+      "he": "לא",
+      "nl": "niet",
+      "uitspraak": "lo",
+      "les": "2"
+    },
+    {
+      "id": 27,
+      "he": "לקבל",
+      "nl": "ontvangen, accepteren",
+      "uitspraak": "lekabel",
+      "les": "3"
+    },
+    {
+      "id": 30,
+      "he": "פה",
+      "nl": "hier",
+      "uitspraak": "po",
+      "les": "3"
+    },
+    {
+      "id": 31,
+      "he": "שם",
+      "nl": "daar",
+      "uitspraak": "sham",
+      "les": "3"
+    },
+    {
+      "id": 32,
+      "he": "בבית",
+      "nl": "thuis",
+      "uitspraak": "babayit",
+      "les": "3"
+    },
+    {
+      "id": 33,
+      "he": "באולפן",
+      "nl": "in het ulpan",
+      "uitspraak": "be'ulpan",
+      "les": "3"
+    },
+    {
+      "id": 34,
+      "he": "בבנק",
+      "nl": "in de bank",
+      "uitspraak": "babank",
+      "les": "3"
+    },
+    {
+      "id": 35,
+      "he": "היום",
+      "nl": "vandaag",
+      "uitspraak": "hayom",
+      "les": "3"
+    },
+    {
+      "id": 36,
+      "he": "מחר",
+      "nl": "morgen",
+      "uitspraak": "machar",
+      "les": "3"
+    },
+    {
+      "id": 37,
+      "he": "אוהב",
+      "nl": "houden van (m/v)",
+      "uitspraak": "ohev / ohevet",
+      "les": "3"
+    },
+    {
+      "id": 38,
+      "he": "רק",
+      "nl": "alleen, slechts",
+      "uitspraak": "rak",
+      "les": "3"
+    },
+    {
+      "id": 42,
+      "he": "יותר",
+      "nl": "meer, -er",
+      "uitspraak": "yoter",
+      "les": "4"
+    },
+    {
+      "id": 43,
+      "he": "יותר",
+      "nl": "beter",
+      "uitspraak": "yoter tov",
+      "les": "4"
+    },
+    {
+      "id": 44,
+      "he": "יותר",
+      "nl": "moeilijker",
+      "uitspraak": "yoter kashe",
+      "les": "4"
+    },
+    {
+      "id": 45,
+      "he": "טוב",
+      "nl": "goed",
+      "uitspraak": "tov",
+      "les": "4"
+    },
+    {
+      "id": 46,
+      "he": "קשה",
+      "nl": "moeilijk, zwaar",
+      "uitspraak": "kashe",
+      "les": "4"
+    },
+    {
+      "id": 47,
+      "he": "פשוט",
+      "nl": "eenvoudig",
+      "uitspraak": "pashut",
+      "les": "4"
+    },
+    {
+      "id": 48,
+      "he": "יותר",
+      "nl": "eenvoudiger",
+      "uitspraak": "yoter pashut",
+      "les": "4"
+    },
+    {
+      "id": 50,
+      "he": "כסף",
+      "nl": "geld",
+      "uitspraak": "kesef",
+      "les": "4"
+    },
+    {
+      "id": 51,
+      "he": "לקבל",
+      "nl": "krijgen, ontvangen",
+      "uitspraak": "lekabel",
+      "les": "4"
+    },
+    {
+      "id": 54,
+      "he": "יודע",
+      "nl": "weten, kennen (m/v)",
+      "uitspraak": "yode'a / yoda'at",
+      "les": "5"
+    },
+    {
+      "id": 55,
+      "he": "שומע",
+      "nl": "horen (m/v)",
+      "uitspraak": "shome'a / shoma'at",
+      "les": "5"
+    },
+    {
+      "id": 57,
+      "he": "דבר",
+      "nl": "zaak, ding",
+      "uitspraak": "davar",
+      "les": "5"
+    },
+    {
+      "id": 58,
+      "he": "גם",
+      "nl": "ook",
+      "uitspraak": "gam",
+      "les": "5"
+    },
+    {
+      "id": 59,
+      "he": "עכשיו",
+      "nl": "nu",
+      "uitspraak": "achshav",
+      "les": "5"
+    },
+    {
+      "id": 60,
+      "he": "דירה",
+      "nl": "appartement",
+      "uitspraak": "dira",
+      "les": "5"
+    },
+    {
+      "id": 61,
+      "he": "עבודה",
+      "nl": "werk, baan",
+      "uitspraak": "avoda",
+      "les": "5"
+    },
+    {
+      "id": 62,
+      "he": "לחפש",
+      "nl": "zoeken",
+      "uitspraak": "lechapes",
+      "les": "5"
+    },
+    {
+      "id": 63,
+      "he": "לסגור",
+      "nl": "sluiten",
+      "uitspraak": "lisgoor",
+      "les": "6"
+    },
+    {
+      "id": 64,
+      "he": "תמיד",
+      "nl": "altijd",
+      "uitspraak": "tamid",
+      "les": "6"
+    },
+    {
+      "id": 67,
+      "he": "לחשוב",
+      "nl": "denken, overwegen",
+      "uitspraak": "lachshov",
+      "les": "6"
+    },
+    {
+      "id": 71,
+      "he": "כן",
+      "nl": "ja",
+      "uitspraak": "ken",
+      "les": "6"
+    },
+    {
+      "id": 81,
+      "he": "יום",
+      "nl": "dag",
+      "uitspraak": "yom",
+      "les": "7"
+    },
+    {
+      "id": 82,
+      "he": "שבוע",
+      "nl": "week",
+      "uitspraak": "shavua",
+      "les": "7"
+    },
+    {
+      "id": 83,
+      "he": "חודש",
+      "nl": "maand",
+      "uitspraak": "chodesh",
+      "les": "7"
+    },
+    {
+      "id": 84,
+      "he": "שנה",
+      "nl": "jaar",
+      "uitspraak": "shana",
+      "les": "7"
+    },
+    {
+      "id": 85,
+      "he": "לשקול",
+      "nl": "wegen, overwegen",
+      "uitspraak": "lishkol",
+      "les": "7"
+    },
+    {
+      "id": 86,
+      "he": "לגמור",
+      "nl": "beëindigen, klaar zijn",
+      "uitspraak": "ligmor",
+      "les": "7"
+    },
+    {
+      "id": 87,
+      "he": "לחזור",
+      "nl": "terugkeren",
+      "uitspraak": "lachazor",
+      "les": "7"
+    },
+    {
+      "id": 88,
+      "he": "לחזור",
+      "nl": "herhalen",
+      "uitspraak": "lachazor al",
+      "les": "7"
+    },
+    {
+      "id": 91,
+      "he": "לשבת",
+      "nl": "zitten, wonen",
+      "uitspraak": "lashevet",
+      "les": "8"
+    },
+    {
+      "id": 92,
+      "he": "לקחת",
+      "nl": "nemen",
+      "uitspraak": "lakachat",
+      "les": "8"
+    },
+    {
+      "id": 94,
+      "he": "זמן",
+      "nl": "tijd",
+      "uitspraak": "zman",
+      "les": "8"
+    },
+    {
+      "id": 96,
+      "he": "לעבוד",
+      "nl": "werken",
+      "uitspraak": "la'avod",
+      "les": "8"
+    },
+    {
+      "id": 97,
+      "he": "לאכול",
+      "nl": "eten",
+      "uitspraak": "le'echol",
+      "les": "8"
+    },
+    {
+      "id": 98,
+      "he": "לנסוע",
+      "nl": "reizen, rijden",
+      "uitspraak": "linso'a",
+      "les": "8"
+    },
+    {
+      "id": 99,
+      "he": "להזיז",
+      "nl": "bewegen (trans.)",
+      "uitspraak": "lehaziz",
+      "les": "9"
+    },
+    {
+      "id": 100,
+      "he": "לסלוח",
+      "nl": "vergeven",
+      "uitspraak": "lisloch",
+      "les": "9"
+    },
+    {
+      "id": 101,
+      "he": "הכי",
+      "nl": "het meest, super",
+      "uitspraak": "hachi",
+      "les": "9"
+    },
+    {
+      "id": 104,
+      "he": "ימינה",
+      "nl": "rechtsaf",
+      "uitspraak": "yamina",
+      "les": "9"
+    },
+    {
+      "id": 105,
+      "he": "שמאלה",
+      "nl": "linksaf",
+      "uitspraak": "smola",
+      "les": "9"
+    },
+    {
+      "id": 106,
+      "he": "ישר",
+      "nl": "rechtdoor",
+      "uitspraak": "yashar",
+      "les": "9"
+    },
+    {
+      "id": 109,
+      "he": "בדרך",
+      "nl": "gewoonlijk",
+      "uitspraak": "bederech klal",
+      "les": "10"
+    },
+    {
+      "id": 116,
+      "he": "לתת",
+      "nl": "geven",
+      "uitspraak": "latet",
+      "les": "11"
+    },
+    {
+      "id": 117,
+      "he": "לעזור",
+      "nl": "helpen",
+      "uitspraak": "la'azor",
+      "les": "11"
+    },
+    {
+      "id": 118,
+      "he": "לשמוע",
+      "nl": "horen",
+      "uitspraak": "lishmo'a",
+      "les": "11"
+    },
+    {
+      "id": 119,
+      "he": "לומר",
+      "nl": "zeggen",
+      "uitspraak": "lomar",
+      "les": "11"
+    },
+    {
+      "id": 120,
+      "he": "אתמול",
+      "nl": "gisteren",
+      "uitspraak": "etmol",
+      "les": "11"
+    },
+    {
+      "id": 121,
+      "he": "כבר",
+      "nl": "al, reeds",
+      "uitspraak": "kvar",
+      "les": "11"
+    },
+    {
+      "id": 122,
+      "he": "עדיין",
+      "nl": "nog steeds",
+      "uitspraak": "adayin",
+      "les": "11"
+    },
+    {
+      "id": 123,
+      "he": "עדיין",
+      "nl": "nog niet",
+      "uitspraak": "adayin lo",
+      "les": "11"
+    },
+    {
+      "id": 126,
+      "he": "לסדר",
+      "nl": "ordenen, regelen",
+      "uitspraak": "lesader",
+      "les": "12"
+    },
+    {
+      "id": 127,
+      "he": "לבדוק",
+      "nl": "controleren",
+      "uitspraak": "livdok",
+      "les": "12"
+    },
+    {
+      "id": 128,
+      "he": "לפתוח",
+      "nl": "openen",
+      "uitspraak": "liftoch",
+      "les": "12"
+    },
+    {
+      "id": 129,
+      "he": "לסגור",
+      "nl": "sluiten",
+      "uitspraak": "lisgoor",
+      "les": "12"
+    },
+    {
+      "id": 130,
+      "he": "להתחיל",
+      "nl": "beginnen",
+      "uitspraak": "lehatchil",
+      "les": "12"
+    },
+    {
+      "id": 131,
+      "he": "להמשיך",
+      "nl": "doorgaan",
+      "uitspraak": "lehamshich",
+      "les": "12"
+    },
+    {
+      "id": 132,
+      "he": "לשלוח",
+      "nl": "sturen",
+      "uitspraak": "lishloch",
+      "les": "12"
+    },
+    {
+      "id": 133,
+      "he": "לכתוב",
+      "nl": "schrijven",
+      "uitspraak": "lichtov",
+      "les": "12"
+    },
+    {
+      "id": 134,
+      "he": "מכתב",
+      "nl": "brief",
+      "uitspraak": "michtav",
+      "les": "12"
+    },
+    {
+      "id": 136,
+      "he": "אל",
+      "nl": "niet! (gebod)",
+      "uitspraak": "al",
+      "les": "12"
+    },
+    {
+      "id": 137,
+      "he": "בזמן",
+      "nl": "op tijd",
+      "uitspraak": "bazman",
+      "les": "12"
+    },
+    {
+      "id": 138,
+      "he": "לא",
+      "nl": "niet op tijd",
+      "uitspraak": "lo bazman",
+      "les": "12"
+    },
+    {
+      "id": 139,
+      "he": "דחוף",
+      "nl": "dringend",
+      "uitspraak": "dachuf",
+      "les": "12"
+    },
+    {
+      "id": 140,
+      "he": "חשוב",
+      "nl": "belangrijk",
+      "uitspraak": "chashuv",
+      "les": "12"
+    },
+    {
+      "id": 141,
+      "he": "להסכים",
+      "nl": "instemmen, akkoord gaan",
+      "uitspraak": "lehaskim",
+      "les": "13"
+    },
+    {
+      "id": 142,
+      "he": "להגיע",
+      "nl": "aankomen, bereiken",
+      "uitspraak": "lehagi'a",
+      "les": "13"
+    },
+    {
+      "id": 143,
+      "he": "להזמין",
+      "nl": "uitnodigen, bestellen",
+      "uitspraak": "lehazmin",
+      "les": "13"
+    },
+    {
+      "id": 144,
+      "he": "לצאת",
+      "nl": "uitgaan, vertrekken",
+      "uitspraak": "latzet",
+      "les": "13"
+    },
+    {
+      "id": 145,
+      "he": "ללכת",
+      "nl": "gaan, lopen",
+      "uitspraak": "lalechet",
+      "les": "13"
+    },
+    {
+      "id": 146,
+      "he": "לרדת",
+      "nl": "dalen, naar beneden gaan",
+      "uitspraak": "laredet",
+      "les": "13"
+    },
+    {
+      "id": 151,
+      "he": "מחיר",
+      "nl": "prijs",
+      "uitspraak": "mechir",
+      "les": "13"
+    },
+    {
+      "id": 152,
+      "he": "גשם",
+      "nl": "regen",
+      "uitspraak": "geshem",
+      "les": "13"
+    },
+    {
+      "id": 153,
+      "he": "שלג",
+      "nl": "sneeuw",
+      "uitspraak": "sheleg",
+      "les": "13"
+    },
+    {
+      "id": 154,
+      "he": "להסביר",
+      "nl": "uitleggen",
+      "uitspraak": "lehasbir",
+      "les": "14"
+    },
+    {
+      "id": 155,
+      "he": "להתחיל",
+      "nl": "beginnen",
+      "uitspraak": "lehatchil",
+      "les": "14"
+    },
+    {
+      "id": 156,
+      "he": "להמשיך",
+      "nl": "doorgaan",
+      "uitspraak": "lehamshich",
+      "les": "14"
+    },
+    {
+      "id": 158,
+      "he": "נכון",
+      "nl": "juist, correct",
+      "uitspraak": "nachon",
+      "les": "14"
+    },
+    {
+      "id": 159,
+      "he": "לא",
+      "nl": "onjuist",
+      "uitspraak": "lo nachon",
+      "les": "14"
+    },
+    {
+      "id": 161,
+      "he": "בעצמי",
+      "nl": "zelf, door mijzelf",
+      "uitspraak": "be'atzmi",
+      "les": "14"
+    },
+    {
+      "id": 162,
+      "he": "בעצמו",
+      "nl": "zelf (m)",
+      "uitspraak": "be'atzmo",
+      "les": "14"
+    },
+    {
+      "id": 163,
+      "he": "בעצמה",
+      "nl": "zelf (v)",
+      "uitspraak": "be'atzmah",
+      "les": "14"
+    },
+    {
+      "id": 164,
+      "he": "להכניס",
+      "nl": "binnenbrengen",
+      "uitspraak": "lehachnis",
+      "les": "15"
+    },
+    {
+      "id": 165,
+      "he": "להמתין",
+      "nl": "wachten",
+      "uitspraak": "lehametin",
+      "les": "15"
+    },
+    {
+      "id": 166,
+      "he": "להציע",
+      "nl": "voorstellen, aanbieden",
+      "uitspraak": "lehatzi'a",
+      "les": "15"
+    },
+    {
+      "id": 167,
+      "he": "להחזיר",
+      "nl": "teruggeven, terugsturen",
+      "uitspraak": "lehachazir",
+      "les": "15"
+    },
+    {
+      "id": 168,
+      "he": "להבטיח",
+      "nl": "beloven",
+      "uitspraak": "lehavti'ach",
+      "les": "15"
+    },
+    {
+      "id": 169,
+      "he": "להצליח",
+      "nl": "slagen, lukken",
+      "uitspraak": "lehatzliach",
+      "les": "15"
+    },
+    {
+      "id": 171,
+      "he": "הצלחה",
+      "nl": "succes",
+      "uitspraak": "hatzlacha",
+      "les": "15"
+    },
+    {
+      "id": 172,
+      "he": "הבטחה",
+      "nl": "belofte",
+      "uitspraak": "havtacha",
+      "les": "15"
+    },
+    {
+      "id": 176,
+      "he": "להרגיש",
+      "nl": "voelen",
+      "uitspraak": "lehargish",
+      "les": "16"
+    },
+    {
+      "id": 177,
+      "he": "להכיר",
+      "nl": "kennen, herkennen",
+      "uitspraak": "lehakir",
+      "les": "16"
+    },
+    {
+      "id": 178,
+      "he": "להחליט",
+      "nl": "beslissen",
+      "uitspraak": "lehachlit",
+      "les": "16"
+    },
+    {
+      "id": 179,
+      "he": "להחליף",
+      "nl": "vervangen, wisselen",
+      "uitspraak": "lehachalif",
+      "les": "16"
+    },
+    {
+      "id": 180,
+      "he": "להעביר",
+      "nl": "overdragen, doorgeven",
+      "uitspraak": "leha'avir",
+      "les": "16"
+    },
+    {
+      "id": 181,
+      "he": "להפריע",
+      "nl": "storen, hinderen",
+      "uitspraak": "lehafri'a",
+      "les": "16"
+    },
+    {
+      "id": 182,
+      "he": "הרגשה",
+      "nl": "gevoel, stemming",
+      "uitspraak": "hargasha",
+      "les": "16"
+    },
+    {
+      "id": 183,
+      "he": "החלטה",
+      "nl": "beslissing",
+      "uitspraak": "hachlatah",
+      "les": "16"
+    },
+    {
+      "id": 184,
+      "he": "רגש",
+      "nl": "gevoel, emotie",
+      "uitspraak": "regesh",
+      "les": "16"
+    },
+    {
+      "id": 185,
+      "he": "מרגש",
+      "nl": "ontroerend, aangrijpend",
+      "uitspraak": "meragesh",
+      "les": "16"
+    },
+    {
+      "id": 186,
+      "he": "סוף",
+      "nl": "eindelijk",
+      "uitspraak": "sof sof",
+      "les": "16"
+    },
+    {
+      "id": 187,
+      "he": "לבסוף",
+      "nl": "uiteindelijk",
+      "uitspraak": "levasof",
+      "les": "16"
+    },
+    {
+      "id": 188,
+      "he": "להעדיף",
+      "nl": "de voorkeur geven",
+      "uitspraak": "leha'adif",
+      "les": "17"
+    },
+    {
+      "id": 189,
+      "he": "להשכיר",
+      "nl": "verhuren",
+      "uitspraak": "lehaskir",
+      "les": "17"
+    },
+    {
+      "id": 190,
+      "he": "להפקיד",
+      "nl": "deponeren, toevertrouwen",
+      "uitspraak": "lehafkid",
+      "les": "17"
+    },
+    {
+      "id": 191,
+      "he": "יותר",
+      "nl": "te veel",
+      "uitspraak": "yoter midai",
+      "les": "17"
+    },
+    {
+      "id": 192,
+      "he": "מדי",
+      "nl": "te (+ bijv nw)",
+      "uitspraak": "midai",
+      "les": "17"
+    },
+    {
+      "id": 198,
+      "he": "להתקשר",
+      "nl": "bellen, contact opnemen",
+      "uitspraak": "lehitkasher",
+      "les": "18"
+    },
+    {
+      "id": 199,
+      "he": "להתחתן",
+      "nl": "trouwen",
+      "uitspraak": "lehitchaten",
+      "les": "18"
+    },
+    {
+      "id": 200,
+      "he": "להתלבש",
+      "nl": "zich aankleden",
+      "uitspraak": "lehitlabesh",
+      "les": "18"
+    },
+    {
+      "id": 201,
+      "he": "להתרחץ",
+      "nl": "zich wassen",
+      "uitspraak": "lehitrachetz",
+      "les": "18"
+    },
+    {
+      "id": 202,
+      "he": "להסתכל",
+      "nl": "kijken naar",
+      "uitspraak": "lehistakel",
+      "les": "18"
+    },
+    {
+      "id": 203,
+      "he": "להצטרך",
+      "nl": "nodig hebben",
+      "uitspraak": "lehitztarech",
+      "les": "18"
+    },
+    {
+      "id": 204,
+      "he": "להצטער",
+      "nl": "spijt hebben",
+      "uitspraak": "lehitzta'er",
+      "les": "18"
+    },
+    {
+      "id": 214,
+      "he": "לצעוק",
+      "nl": "schreeuwen, roepen",
+      "uitspraak": "litz'ok",
+      "les": "19"
+    },
+    {
+      "id": 215,
+      "he": "להציל",
+      "nl": "redden",
+      "uitspraak": "lehatzil",
+      "les": "19"
+    },
+    {
+      "id": 216,
+      "he": "לתפוס",
+      "nl": "vangen, pakken",
+      "uitspraak": "litpos",
+      "les": "19"
+    },
+    {
+      "id": 218,
+      "he": "עדיין",
+      "nl": "nog steeds",
+      "uitspraak": "adayin",
+      "les": "19"
+    },
+    {
+      "id": 219,
+      "he": "לסמוך",
+      "nl": "vertrouwen op",
+      "uitspraak": "lismoch al",
+      "les": "19"
+    },
+    {
+      "id": 220,
+      "he": "ביטחון",
+      "nl": "veiligheid, vertrouwen",
+      "uitspraak": "bitachon",
+      "les": "19"
+    },
+    {
+      "id": 221,
+      "he": "בטוח",
+      "nl": "zeker, veilig",
+      "uitspraak": "batuach",
+      "les": "19"
+    },
+    {
+      "id": 246,
+      "he": "כל",
+      "nl": "zo, zoveel",
+      "uitspraak": "kol kach",
+      "les": "0"
+    }
+  ]
+}
