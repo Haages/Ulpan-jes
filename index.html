@@ -564,9 +564,11 @@ async function toonFase1() {
       <div class="min-h-screen flex flex-col items-center justify-center p-6">
         <div class="text-5xl mb-6">🔇</div>
         <h2 class="text-xl font-bold text-gray-800 mb-4 text-center">Audio niet beschikbaar</h2>
-        <p class="text-gray-600 text-center mb-8">
+        <p class="text-gray-600 text-center mb-4">
           Configureer eerst je Azure API-sleutel via Instellingen.
-          Zonder audio kan de les niet worden gestart.
+        </p>
+        <p class="text-sm text-gray-400 text-center mb-8">
+          portal.azure.com → ivriet-speech → Keys and Endpoint → Key 1
         </p>
         <button onclick="renderInstellingenScherm(); toonScherm('screen-settings')"
                 class="px-8 py-3 bg-blue-600 text-white rounded-xl text-lg hover:bg-blue-700">
