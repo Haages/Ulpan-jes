@@ -667,50 +667,68 @@ async function toonFase1() {
         <div class="text-5xl mb-6">🔇</div>
         <h2 class="text-xl font-bold text-gray-800 mb-4 text-center">Audio not available</h2>
         <p class="text-gray-600 text-center mb-4">
-          Configureer eerst je Azure API key via Settings.
+          Configure your Azure API key in Settings first.
         </p>
         <p class="text-sm text-gray-400 text-center mb-8">
           portal.azure.com → ivriet-speech → Keys and Endpoint → Key 1
         </p>
         <button onclick="renderSettingsScherm(); toonScherm('screen-settings')"
                 class="px-8 py-3 bg-blue-600 text-white rounded-xl text-lg hover:bg-blue-700">
-          ⚙️ Naar Settings
+          ⚙️ Go to Settings
         </button>
       </div>
     `;
     return;
   }
 
-  container.innerHTML = `
-    <div class="min-h-screen bg-blue-50 flex flex-col items-center justify-center p-6">
-      <p class="text-sm text-gray-500 mb-1">Phase 1 of 7 — Listening</p>
-      <p class="text-gray-600 mb-8 text-center">
-        Listen and understand. You don't need to do anything yet.
-      </p>
-      <div id="fase1-woord" class="text-center"></div>
-      <div id="fase1-voortgang" class="mt-6 text-sm text-gray-400"></div>
-    </div>
-  `;
+  let idx = 0;
 
-  for (let i = 0; i < woorden.length; i++) {
-    const woord = woorden[i];
-    document.getElementById('fase1-voortgang').textContent =
-      `${i + 1} / ${woorden.length}`;
+  const render = async () => {
+    if (idx >= woorden.length) { toonFase(2); return; }
+    const woord = woorden[idx];
+    const betekenis = woord.en || woord.nl;
 
-    document.getElementById('fase1-woord').innerHTML = `
-      <div class="text-4xl mb-3">🔊</div>
-      <div class="text-2xl font-semibold mb-2">${woord.nl}</div>
-    `;
+    container.innerHTML = `
+      <div class="min-h-screen bg-blue-50 flex flex-col items-center justify-center p-6">
+        <p class="text-sm text-gray-500 mb-1">Phase 1 of 7 — Listening</p>
+        <p class="text-gray-600 mb-6 text-center">
+          Listen and understand. You don't need to do anything yet.
+        </p>
+        <div class="text-5xl mb-4">🔊</div>
+        <div class="text-2xl font-semibold mb-2">${betekenis}</div>
+        <div class="text-sm text-gray-400 mb-6">${idx + 1} / ${woorden.length}</div>
+        <div class="flex gap-3 mt-2">
+          <button onclick="fase1Terug()" ${idx === 0 ? 'disabled class="opacity-30 border border-gray-300 text-gray-600 rounded-xl px-5 py-3"' : 'class="border border-gray-300 text-gray-600 rounded-xl px-5 py-3"'}>
+            ← Back
+          </button>
+          <button onclick="fase1Herhaal()"
+                  class="border border-blue-400 text-blue-600 rounded-xl px-5 py-3">
+            🔊 Repeat
+          </button>
+          <button onclick="fase1Volgende()"
+                  class="bg-blue-600 text-white rounded-xl px-6 py-3">
+            Next →
+          </button>
+        </div>
+      </div>`;
 
-    // Spreek 3x voor met pauze
-    for (let herhaling = 0; herhaling < 3; herhaling++) {
+    window.fase1Volgende = () => { idx++; render(); };
+    window.fase1Terug = () => { if (idx > 0) { idx--; render(); } };
+    window.fase1Herhaal = async () => {
+      for (let h = 0; h < 3; h++) {
+        await spreekWoordUit(woord);
+        await new Promise(r => setTimeout(r, 800));
+      }
+    };
+
+    // Automatisch 3x uitspreken bij verschijnen
+    for (let h = 0; h < 3; h++) {
       await spreekWoordUit(woord);
       await new Promise(r => setTimeout(r, 800));
     }
-    await new Promise(r => setTimeout(r, 500));
-  }
+  };
 
-  toonFase(2);
+  render();
 }
 
 /**
