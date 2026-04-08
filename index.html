@@ -721,21 +721,17 @@ async function toonFase1() {
 async function toonFase2() {
   const woorden   = window.huidigeLesData.nieuweWoorden;
   const container = document.getElementById('les-fase-container');
-  let woordIndex  = 0;
+  let idx = 0;
 
-  const toonVolgend = async () => {
-    if (woordIndex >= woorden.length) {
-      toonFase(3);
-      return;
-    }
-    const woord = woorden[woordIndex++];
-
+  const render = async () => {
+    if (idx >= woorden.length) { toonFase(3); return; }
+    const woord = woorden[idx];
     const betekenis = woord.en || woord.nl;
 
     container.innerHTML = `
       <div class="min-h-screen flex flex-col items-center justify-center p-6">
         <p class="text-sm text-gray-500 mb-4">
-          Fase 2 van 7 — Kijken en herhalen (${woordIndex}/${woorden.length})
+          Fase 2 van 7 — Kijken en herhalen (${idx + 1}/${woorden.length})
         </p>
         <div class="text-6xl font-bold mb-1" dir="rtl" lang="he"
              style="font-family: Arial, sans-serif;">${woord.he_clean}</div>
@@ -745,24 +741,28 @@ async function toonFase2() {
         <div class="text-sm text-gray-400 mb-4">
           ${woord.soort === 'ww' && woord.shoresh ? `<span dir="rtl" lang="he">שורש: ${woord.shoresh}</span>` : ''}
         </div>
-        <button onclick="spreekWoordUit(window.huidigeLesData.nieuweWoorden[${woordIndex - 1}])"
-                class="px-6 py-2 bg-gray-100 text-gray-700 rounded-lg mb-4 hover:bg-gray-200">
-          🔊 Nogmaals beluisteren
-        </button>
         <p class="text-gray-500 text-sm mb-4">Spreek na zodra je het hoort</p>
-        <button onclick="fase2Volgende()"
-                class="px-8 py-3 bg-blue-600 text-white rounded-xl text-lg
-                       hover:bg-blue-700 transition-colors">
-          Spreek na en ga verder →
-        </button>
-      </div>
-    `;
+        <div class="flex gap-3 mt-2">
+          <button onclick="fase2Terug()" ${idx === 0 ? 'disabled class="opacity-30 border border-gray-300 text-gray-600 rounded-xl px-5 py-3"' : 'class="border border-gray-300 text-gray-600 rounded-xl px-5 py-3"'}>
+            ← Terug
+          </button>
+          <button onclick="spreekWoordUit(window.huidigeLesData.nieuweWoorden[${idx}])"
+                  class="border border-blue-400 text-blue-600 rounded-xl px-5 py-3">
+            🔊 Herhaal
+          </button>
+          <button onclick="fase2Volgende()"
+                  class="bg-blue-600 text-white rounded-xl px-6 py-3">
+            Volgende →
+          </button>
+        </div>
+      </div>`;
 
-    window.fase2Volgende = toonVolgend;
+    window.fase2Volgende = () => { idx++; render(); };
+    window.fase2Terug = () => { if (idx > 0) { idx--; render(); } };
     await spreekWoordUit(woord);
   };
 
-  toonVolgend();
+  render();
 }
 
 /**
@@ -773,47 +773,51 @@ async function toonFase2() {
 async function toonFase3() {
   const woorden   = window.huidigeLesData.nieuweWoorden;
   const container = document.getElementById('les-fase-container');
-  let woordIndex  = 0;
+  let idx = 0;
 
-  const toonVolgend = async () => {
-    if (woordIndex >= woorden.length) {
-      toonFase('3b');
-      return;
-    }
-    const woord = woorden[woordIndex++];
+  const render = async () => {
+    if (idx >= woorden.length) { toonFase('3b'); return; }
+    const woord = woorden[idx];
 
     container.innerHTML = `
       <div class="min-h-screen flex flex-col items-center justify-center p-6">
         <p class="text-sm text-gray-500 mb-4">
-          Fase 3 van 7 — Begrijpen (${woordIndex}/${woorden.length})
+          Fase 3 van 7 — Begrijpen (${idx + 1}/${woorden.length})
         </p>
         <div class="font-hebrew text-6xl mb-4" dir="rtl" lang="he">${woord.he}</div>
-        <div class="text-2xl text-blue-600 mb-8">${woord.uitspraak}</div>
+        <div class="text-2xl text-blue-600 mb-6">${woord.uitspraak}</div>
         <button onclick="fase3ToonBetekenis()" id="toon-btn"
                 class="px-6 py-2 border border-gray-300 text-gray-500 rounded-lg mb-4
                        hover:bg-gray-50 text-sm">
           Toon betekenis
         </button>
         <div id="fase3-betekenis" class="hidden text-xl text-gray-700 mb-6">${woord.nl}</div>
-        <button onclick="fase3Volgende()"
-                class="px-8 py-3 bg-blue-600 text-white rounded-xl text-lg hidden"
-                id="fase3-volgende">
-          Volgende →
-        </button>
-      </div>
-    `;
+        <div class="flex gap-3 mt-2">
+          <button onclick="fase3Terug()" ${idx === 0 ? 'disabled class="opacity-30 border border-gray-300 text-gray-600 rounded-xl px-5 py-3"' : 'class="border border-gray-300 text-gray-600 rounded-xl px-5 py-3"'}>
+            ← Terug
+          </button>
+          <button onclick="spreekWoordUit(window.huidigeLesData.nieuweWoorden[${idx}])"
+                  class="border border-blue-400 text-blue-600 rounded-xl px-5 py-3">
+            🔊 Herhaal
+          </button>
+          <button onclick="fase3Volgende()"
+                  class="bg-blue-600 text-white rounded-xl px-6 py-3">
+            Volgende →
+          </button>
+        </div>
+      </div>`;
 
     window.fase3ToonBetekenis = () => {
       document.getElementById('fase3-betekenis').classList.remove('hidden');
-      document.getElementById('fase3-volgende').classList.remove('hidden');
       document.getElementById('toon-btn').classList.add('hidden');
     };
-    window.fase3Volgende = toonVolgend;
+    window.fase3Volgende = () => { idx++; render(); };
+    window.fase3Terug = () => { if (idx > 0) { idx--; render(); } };
 
     await spreekWoordUit(woord);
   };
 
-  toonVolgend();
+  render();
 }
 
 /**
@@ -823,27 +827,20 @@ async function toonFase3() {
  * Dual Coding: auditief geheugenspoor + visuele verankering.
  */
 function toonFase3b() {
-  // Alleen woorden met een shoresh tonen in fase 3b
   const woorden   = window.huidigeLesData.nieuweWoorden.filter(w => w.shoresh);
   const container = document.getElementById('les-fase-container');
-  let woordIndex  = 0;
+  let idx = 0;
 
-  if (woorden.length === 0) {
-    toonFase(4);
-    return;
-  }
+  if (woorden.length === 0) { toonFase(4); return; }
 
-  const toonVolgend = () => {
-    if (woordIndex >= woorden.length) {
-      toonFase(4);
-      return;
-    }
-    const woord = woorden[woordIndex++];
+  const render = () => {
+    if (idx >= woorden.length) { toonFase(4); return; }
+    const woord = woorden[idx];
 
     container.innerHTML = `
       <div class="min-h-screen flex flex-col items-center justify-center p-6">
         <p class="text-sm text-gray-500 mb-4">
-          Fase 3b van 7 — Woordbeeld (${woordIndex}/${woorden.length})
+          Fase 3b van 7 — Woordbeeld (${idx + 1}/${woorden.length})
         </p>
         <div class="font-hebrew text-7xl mb-2 tracking-wider"
              dir="rtl" lang="he">${woord.he}</div>
@@ -856,18 +853,27 @@ function toonFase3b() {
                dir="rtl" lang="he">${woord.shoresh}</p>
           </div>
         ` : '<div class="mb-6"></div>'}
-        <button onclick="fase3bVolgende()"
-                class="px-8 py-3 bg-blue-600 text-white rounded-xl text-lg">
-          Volgende →
-        </button>
-      </div>
-    `;
+        <div class="flex gap-3 mt-2">
+          <button onclick="fase3bTerug()" ${idx === 0 ? 'disabled class="opacity-30 border border-gray-300 text-gray-600 rounded-xl px-5 py-3"' : 'class="border border-gray-300 text-gray-600 rounded-xl px-5 py-3"'}>
+            ← Terug
+          </button>
+          <button onclick="spreekWoordUit(window.huidigeLesData.nieuweWoorden.filter(w=>w.shoresh)[${idx}])"
+                  class="border border-blue-400 text-blue-600 rounded-xl px-5 py-3">
+            🔊 Herhaal
+          </button>
+          <button onclick="fase3bVolgende()"
+                  class="bg-blue-600 text-white rounded-xl px-6 py-3">
+            Volgende →
+          </button>
+        </div>
+      </div>`;
 
-    window.fase3bVolgende = toonVolgend;
+    window.fase3bVolgende = () => { idx++; render(); };
+    window.fase3bTerug = () => { if (idx > 0) { idx--; render(); } };
     spreekWoordUit(woord);
   };
 
-  toonVolgend();
+  render();
 }
 
 /**
