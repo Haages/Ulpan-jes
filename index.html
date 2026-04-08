@@ -411,11 +411,9 @@ const AudioManager = {
       return false;
     }
 
-    // Stop lopende audio voordat nieuwe start
-    if (this.bezig) this.stop();
-
     const stemNaam    = stem === 'man' ? TTS_STEM_MAN : TTS_STEM_VROUW;
     const schoneTekst = tekst.trim();
+    AppLogger.debug('TTS', `${stem}:${schoneTekst}`);
     const apiSleutel  = window.AZURE_API_SLEUTEL || null;
 
     // Probeer Azure TTS als API-sleutel beschikbaar is
@@ -461,7 +459,7 @@ const AudioManager = {
     }
 
     // Fallback: Web Speech API (gratis, geen sleutel nodig)
-    return this._webSpeechFallback(schoneTekst);
+    return this._webSpeechFallback(schoneTekst, stem);
   },
 
   /**
@@ -470,22 +468,23 @@ const AudioManager = {
    * @returns {Promise<boolean>}
    * @private
    */
-  _webSpeechFallback(tekst) {
+  _webSpeechFallback(tekst, stem = 'vrouw') {
     return new Promise(resolve => {
       if (!window.speechSynthesis) {
         AppLogger.debug('TTS', 'No speech synthesis available');
         resolve(false);
         return;
       }
+      this.bezig = true;
       const utt = new SpeechSynthesisUtterance(tekst);
       utt.lang = 'he-IL';
       utt.rate = 0.85;
+      // Probeer mannelijke/vrouwelijke stem te vinden
       const stemmen = speechSynthesis.getVoices();
       const heStem = stemmen.find(s => s.lang.startsWith('he'));
       if (heStem) utt.voice = heStem;
-      utt.onend = () => resolve(true);
-      utt.onerror = () => resolve(false);
-      speechSynthesis.cancel();
+      utt.onend = () => { this.bezig = false; resolve(true); };
+      utt.onerror = () => { this.bezig = false; resolve(false); };
       speechSynthesis.speak(utt);
     });
   },
