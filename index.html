@@ -286,7 +286,7 @@ async function laadAlleDatabases() {
     AppLogger.info('DB', `Geladen: ${VOCAB_DB.woorden.length} woorden, ` +
       `${MUZIEK_DB.liederen.length} liedjes, ${OEFEN_DB.zinnen.length} zinnen`);
   } catch(fout) {
-    AppLogger.error('DB', 'Databases laden mislukt', fout);
+    AppLogger.error('DB', 'Failed to load databases', fout);
   }
 }
 
@@ -347,7 +347,7 @@ const Opslag = {
     try {
       localStorage.setItem(sleutel, JSON.stringify(waarde));
     } catch(fout) {
-      AppLogger.warn('Opslag', `Opslaan mislukt: ${sleutel}`, fout.message);
+      AppLogger.warn('Opslag', `Save mislukt: ${sleutel}`, fout.message);
     }
   },
 
@@ -393,7 +393,7 @@ const AudioManager = {
    */
   async spreekUit(tekst, stem = 'vrouw') {
     if (!tekst?.trim()) {
-      AppLogger.warn('TTS', 'Lege tekst doorgegeven');
+      AppLogger.warn('TTS', 'Empty text provided');
       return false;
     }
 
@@ -402,7 +402,7 @@ const AudioManager = {
     const apiSleutel       = window.AZURE_API_SLEUTEL || null;
 
     if (!apiSleutel) {
-      AppLogger.error('TTS', 'Azure API-sleutel niet geconfigureerd');
+      AppLogger.error('TTS', 'Azure API key niet geconfigureerd');
       return false;
     }
 
@@ -441,7 +441,7 @@ const AudioManager = {
 
     } catch(fout) {
       this.bezig = false;
-      AppLogger.error('TTS', 'Azure TTS mislukt', fout);
+      AppLogger.error('TTS', 'Azure TTS failed', fout);
       return false;
     }
   },
@@ -653,28 +653,28 @@ function toonFase(faseNummer) {
  * Leerder hoort + ziet Nederlandse betekenis. Geen Hebreeuws schrift prominent.
  * Geslachtsindicator altijd als onderdeel van de auditieve presentatie.
  * Geen productie gevraagd — affectieve filter laag houden.
- * Vereist Azure API-sleutel — zonder audio heeft deze fase geen zin.
+ * Vereist Azure API key — zonder audio heeft deze fase geen zin.
  */
 async function toonFase1() {
   const woorden   = window.huidigeLesData.nieuweWoorden;
   const container = document.getElementById('les-fase-container');
   if (!container) return;
 
-  // Controleer of TTS beschikbaar is
+  // Check of TTS beschikbaar is
   if (!window.AZURE_API_SLEUTEL) {
     container.innerHTML = `
       <div class="min-h-screen flex flex-col items-center justify-center p-6">
         <div class="text-5xl mb-6">🔇</div>
-        <h2 class="text-xl font-bold text-gray-800 mb-4 text-center">Audio niet beschikbaar</h2>
+        <h2 class="text-xl font-bold text-gray-800 mb-4 text-center">Audio not available</h2>
         <p class="text-gray-600 text-center mb-4">
-          Configureer eerst je Azure API-sleutel via Instellingen.
+          Configureer eerst je Azure API key via Settings.
         </p>
         <p class="text-sm text-gray-400 text-center mb-8">
           portal.azure.com → ivriet-speech → Keys and Endpoint → Key 1
         </p>
-        <button onclick="renderInstellingenScherm(); toonScherm('screen-settings')"
+        <button onclick="renderSettingsScherm(); toonScherm('screen-settings')"
                 class="px-8 py-3 bg-blue-600 text-white rounded-xl text-lg hover:bg-blue-700">
-          ⚙️ Naar Instellingen
+          ⚙️ Naar Settings
         </button>
       </div>
     `;
@@ -683,9 +683,9 @@ async function toonFase1() {
 
   container.innerHTML = `
     <div class="min-h-screen bg-blue-50 flex flex-col items-center justify-center p-6">
-      <p class="text-sm text-gray-500 mb-1">Fase 1 van 7 — Luisteren</p>
+      <p class="text-sm text-gray-500 mb-1">Phase 1 of 7 — Listening</p>
       <p class="text-gray-600 mb-8 text-center">
-        Luister en begrijp. Je hoeft nog niets te doen.
+        Listen and understand. You don't need to do anything yet.
       </p>
       <div id="fase1-woord" class="text-center"></div>
       <div id="fase1-voortgang" class="mt-6 text-sm text-gray-400"></div>
@@ -731,7 +731,7 @@ async function toonFase2() {
     container.innerHTML = `
       <div class="min-h-screen flex flex-col items-center justify-center p-6">
         <p class="text-sm text-gray-500 mb-4">
-          Fase 2 van 7 — Kijken en herhalen (${idx + 1}/${woorden.length})
+          Phase 2 of 7 — Look and repeat (${idx + 1}/${woorden.length})
         </p>
         <div class="text-6xl font-bold mb-1" dir="rtl" lang="he"
              style="font-family: Arial, sans-serif;">${woord.he_clean}</div>
@@ -741,18 +741,18 @@ async function toonFase2() {
         <div class="text-sm text-gray-400 mb-4">
           ${woord.soort === 'ww' && woord.shoresh ? `<span dir="rtl" lang="he">שורש: ${woord.shoresh}</span>` : ''}
         </div>
-        <p class="text-gray-500 text-sm mb-4">Spreek na zodra je het hoort</p>
+        <p class="text-gray-500 text-sm mb-4">Repeat after you hear it</p>
         <div class="flex gap-3 mt-2">
           <button onclick="fase2Terug()" ${idx === 0 ? 'disabled class="opacity-30 border border-gray-300 text-gray-600 rounded-xl px-5 py-3"' : 'class="border border-gray-300 text-gray-600 rounded-xl px-5 py-3"'}>
-            ← Terug
+            ← Back
           </button>
           <button onclick="spreekWoordUit(window.huidigeLesData.nieuweWoorden[${idx}])"
                   class="border border-blue-400 text-blue-600 rounded-xl px-5 py-3">
-            🔊 Herhaal
+            🔊 Repeat
           </button>
           <button onclick="fase2Volgende()"
                   class="bg-blue-600 text-white rounded-xl px-6 py-3">
-            Volgende →
+            Next →
           </button>
         </div>
       </div>`;
@@ -782,27 +782,27 @@ async function toonFase3() {
     container.innerHTML = `
       <div class="min-h-screen flex flex-col items-center justify-center p-6">
         <p class="text-sm text-gray-500 mb-4">
-          Fase 3 van 7 — Begrijpen (${idx + 1}/${woorden.length})
+          Phase 3 of 7 — Understanding (${idx + 1}/${woorden.length})
         </p>
         <div class="font-hebrew text-6xl mb-4" dir="rtl" lang="he">${woord.he}</div>
         <div class="text-2xl text-blue-600 mb-6">${woord.uitspraak}</div>
         <button onclick="fase3ToonBetekenis()" id="toon-btn"
                 class="px-6 py-2 border border-gray-300 text-gray-500 rounded-lg mb-4
                        hover:bg-gray-50 text-sm">
-          Toon betekenis
+          Show meaning
         </button>
         <div id="fase3-betekenis" class="hidden text-xl text-gray-700 mb-6">${woord.nl}</div>
         <div class="flex gap-3 mt-2">
           <button onclick="fase3Terug()" ${idx === 0 ? 'disabled class="opacity-30 border border-gray-300 text-gray-600 rounded-xl px-5 py-3"' : 'class="border border-gray-300 text-gray-600 rounded-xl px-5 py-3"'}>
-            ← Terug
+            ← Back
           </button>
           <button onclick="spreekWoordUit(window.huidigeLesData.nieuweWoorden[${idx}])"
                   class="border border-blue-400 text-blue-600 rounded-xl px-5 py-3">
-            🔊 Herhaal
+            🔊 Repeat
           </button>
           <button onclick="fase3Volgende()"
                   class="bg-blue-600 text-white rounded-xl px-6 py-3">
-            Volgende →
+            Next →
           </button>
         </div>
       </div>`;
@@ -840,7 +840,7 @@ function toonFase3b() {
     container.innerHTML = `
       <div class="min-h-screen flex flex-col items-center justify-center p-6">
         <p class="text-sm text-gray-500 mb-4">
-          Fase 3b van 7 — Woordbeeld (${idx + 1}/${woorden.length})
+          Phase 3b of 7 — Word image (${idx + 1}/${woorden.length})
         </p>
         <div class="font-hebrew text-7xl mb-2 tracking-wider"
              dir="rtl" lang="he">${woord.he}</div>
@@ -855,15 +855,15 @@ function toonFase3b() {
         ` : '<div class="mb-6"></div>'}
         <div class="flex gap-3 mt-2">
           <button onclick="fase3bTerug()" ${idx === 0 ? 'disabled class="opacity-30 border border-gray-300 text-gray-600 rounded-xl px-5 py-3"' : 'class="border border-gray-300 text-gray-600 rounded-xl px-5 py-3"'}>
-            ← Terug
+            ← Back
           </button>
           <button onclick="spreekWoordUit(window.huidigeLesData.nieuweWoorden.filter(w=>w.shoresh)[${idx}])"
                   class="border border-blue-400 text-blue-600 rounded-xl px-5 py-3">
-            🔊 Herhaal
+            🔊 Repeat
           </button>
           <button onclick="fase3bVolgende()"
                   class="bg-blue-600 text-white rounded-xl px-6 py-3">
-            Volgende →
+            Next →
           </button>
         </div>
       </div>`;
@@ -907,7 +907,7 @@ async function toonFase4() {
     container.innerHTML = `
       <div class="min-h-screen flex flex-col items-center justify-center p-6">
         <p class="text-sm text-gray-500 mb-4">
-          Fase 4 van 7 — Oefenzinnen (${zinIndex}/${zinnen.length})
+          Phase 4 of 7 — Practice sentences (${zinIndex}/${zinnen.length})
         </p>
         ${enCue ? `<p class="text-lg text-gray-700 mb-4 text-center">${enCue}</p>` : ''}
         <div class="font-hebrew text-2xl text-right leading-relaxed mb-4
@@ -917,15 +917,15 @@ async function toonFase4() {
         <button onclick="document.getElementById('fase4-nl').classList.remove('hidden'); this.classList.add('hidden')"
                 class="px-6 py-2 border border-gray-300 text-gray-500 rounded-lg mb-4 text-sm hover:bg-gray-50"
                 id="fase4-toon-nl">
-          Toon Nederlands
+          Show translation
         </button>
         <p id="fase4-nl" class="hidden text-gray-600 mb-4 text-center">${nlCue}</p>
         ` : ''}
-        <p class="text-sm text-gray-500 mb-6">Luister en spreek na</p>
+        <p class="text-sm text-gray-500 mb-6">Listen and repeat</p>
         <button onclick="fase4Volgende()"
                 class="px-8 py-3 bg-blue-600 text-white rounded-xl text-lg
                        hover:bg-blue-700 transition-colors">
-          Spreek na en ga verder →
+          Repeat and continue →
         </button>
       </div>
     `;
@@ -953,21 +953,21 @@ function toonFase5a() {
 
   container.innerHTML = `
     <div class="min-h-screen flex flex-col p-6">
-      <p class="text-sm text-gray-500 mb-2 text-center">Fase 5 van 7 — Consolidatie</p>
+      <p class="text-sm text-gray-500 mb-2 text-center">Phase 5 of 7 — Consolidation</p>
       <div class="text-center mb-6">
         <p class="text-3xl font-bold text-green-700">🎉</p>
         <p class="text-xl font-bold text-green-700 mt-2">Les ${les} voltooid!</p>
-        <p class="text-sm text-gray-500 mt-1">${woorden.length} nieuwe woorden geleerd</p>
+        <p class="text-sm text-gray-500 mt-1">${woorden.length} new words learned</p>
       </div>
       <div class="space-y-2 mb-6 max-w-md mx-auto w-full" id="fase5a-woorden"></div>
       <div class="grid grid-cols-2 gap-3 max-w-md mx-auto w-full mt-auto">
-        <button onclick="renderSpelletjesMenu(huidigeLes()); toonScherm('screen-games')"
+        <button onclick="renderGamesMenu(huidigeLes()); toonScherm('screen-games')"
                 class="py-3 bg-purple-600 text-white rounded-xl font-semibold">
-          🎮 Spelletjes
+          🎮 Games
         </button>
         <button onclick="startLes(${les + 1}); toonScherm('screen-lesson')"
                 class="py-3 bg-blue-600 text-white rounded-xl font-semibold">
-          Volgende les →
+          Next lesson →
         </button>
       </div>
     </div>`;
@@ -1003,12 +1003,12 @@ function toonFase5b() {
   }
 
   const lied = kiesWillekeurig(geschikt, 1)[0];
-  // openMuziekLes wordt geïmplementeerd in Module K
+  // openMusicLes wordt geïmplementeerd in Module K
   toonFase5a();
 }
 
 // ══════════════════════════════════════════════════════════════
-// MODULE J: Spelletjes-engine + 7 spelletjes
+// MODULE J: Games-engine + 7 spelletjes
 // ══════════════════════════════════════════════════════════════
 
 const SRS_GEWICHTEN = {
@@ -1083,18 +1083,18 @@ function registreerSpelResultaat(woordId, spelType, correct) {
  * Rendert het spelletjesmenu met beschikbare en vergrendelde spellen.
  * @param {number} lesNummer - Huidig lesnummer
  */
-function renderSpelletjesMenu(lesNummer) {
+function renderGamesMenu(lesNummer) {
   const menu = document.getElementById('games-menu');
   if (!menu) return;
 
   const spellen = [
-    { id: 'memory',        naam: 'Memory',        icon: '🃏', beschrijving: 'Vind Hebreeuws-Nederlands paren' },
-    { id: 'vertaalkeuze',  naam: 'Vertaalkeuze',  icon: '🔤', beschrijving: 'Kies de juiste vertaling' },
-    { id: 'woordzoeker',   naam: 'Woordzoeker',   icon: '🔍', beschrijving: 'Vind woorden in het raster' },
-    { id: 'wordle',        naam: 'Wordle',         icon: '📝', beschrijving: 'Raad het Hebreeuwse woord' },
-    { id: 'zinsbouwer',    naam: 'Zinsbouwer',     icon: '🧱', beschrijving: 'Bouw de zin in de juiste volgorde' },
-    { id: 'shoresh-sort',  naam: 'Shoresh-sort',   icon: '🌳', beschrijving: 'Sorteer woorden op woordwortel' },
-    { id: 'dialoogpuzzel', naam: 'Dialoogpuzzel',  icon: '💬', beschrijving: 'Leg de dialoog in de juiste volgorde' },
+    { id: 'memory',        naam: 'Memory',           icon: '🃏', beschrijving: 'Find Hebrew-English pairs' },
+    { id: 'vertaalkeuze',  naam: 'Translation',      icon: '🔤', beschrijving: 'Choose the correct translation' },
+    { id: 'woordzoeker',   naam: 'Word search',      icon: '🔍', beschrijving: 'Find words in the grid' },
+    { id: 'wordle',        naam: 'Wordle',            icon: '📝', beschrijving: 'Guess the Hebrew word' },
+    { id: 'zinsbouwer',    naam: 'Sentence builder',  icon: '🧱', beschrijving: 'Build the sentence in the right order' },
+    { id: 'shoresh-sort',  naam: 'Root sort',         icon: '🌳', beschrijving: 'Sort words by root' },
+    { id: 'dialoogpuzzel', naam: 'Dialogue puzzle',   icon: '💬', beschrijving: 'Put the dialogue in the right order' },
   ];
 
   menu.innerHTML = `
@@ -1102,7 +1102,7 @@ function renderSpelletjesMenu(lesNummer) {
       <div class="flex items-center gap-4 mb-6">
         <button onclick="renderStartScherm(); toonScherm('screen-start')"
                 class="text-2xl text-gray-400">←</button>
-        <h2 class="text-xl font-bold">Spelletjes</h2>
+        <h2 class="text-xl font-bold">Games</h2>
       </div>
       <div class="space-y-3">
         ${spellen.map(s => {
@@ -1116,7 +1116,7 @@ function renderSpelletjesMenu(lesNummer) {
               <div>
                 <div class="font-semibold">${s.naam}</div>
                 <div class="text-sm text-gray-500">
-                  ${beschikbaar ? s.beschrijving : `Beschikbaar vanaf les ${min.les}`}
+                  ${beschikbaar ? s.beschrijving : `Available from lesson ${min.les}`}
                 </div>
               </div>
             </button>`;
@@ -1140,9 +1140,9 @@ function openSpelletje(spelId) {
   else if (spelId === 'vertaalkeuze') startVertaalkeuze(les);
   else if (spelId === 'woordzoeker') startWoordzoeker(les);
   else if (spelId === 'wordle') startWordle(les);
-  else if (spelId === 'zinsbouwer') startZinsbouwer(les);
+  else if (spelId === 'zinsbouwer') startSentence builder(les);
   else if (spelId === 'shoresh-sort') startShoreshSort(les);
-  else if (spelId === 'dialoogpuzzel') startDialoogpuzzel(les);
+  else if (spelId === 'dialoogpuzzel') startDialogue puzzle(les);
   else toonToast(`${spelId} wordt binnenkort beschikbaar`, 'info');
 }
 
@@ -1152,7 +1152,7 @@ function openSpelletje(spelId) {
 function terugNaarSpelMenu() {
   document.querySelectorAll('[id^="game-"]').forEach(el => el.classList.add('hidden'));
   document.getElementById('games-menu').classList.remove('hidden');
-  renderSpelletjesMenu(huidigeLes());
+  renderGamesMenu(huidigeLes());
 }
 
 // ── Spelletje 1: Memory ─────────────────────────────────────
@@ -1167,7 +1167,7 @@ let memoryStaat = null;
 function startMemory(lesNummer) {
   const paren = getMemoryParen(lesNummer, MEMORY_CONFIG.AANTAL_PAREN);
   if (paren.length < 3) {
-    toonToast('Niet genoeg woorden voor Memory', 'warning');
+    toonToast('Not enough words for Memory', 'warning');
     terugNaarSpelMenu();
     return;
   }
@@ -1196,8 +1196,8 @@ function startMemory(lesNummer) {
     eersteKeuze: null,
     tweedeKeuze: null,
     bezig: false,
-    aantalPogingen: 0,
-    aantalGevonden: 0,
+    aantalAttempts: 0,
+    aantalFound: 0,
     totaalParen: paren.length,
   };
 
@@ -1228,7 +1228,7 @@ function renderMemoryBord() {
   `).join('');
 
   document.getElementById('memory-scores').textContent =
-    `Pogingen: ${memoryStaat.aantalPogingen} | Gevonden: ${memoryStaat.aantalGevonden}/${memoryStaat.totaalParen}`;
+    `Attempts: ${memoryStaat.aantalAttempts} | Found: ${memoryStaat.aantalFound}/${memoryStaat.totaalParen}`;
 }
 
 /**
@@ -1252,7 +1252,7 @@ function klikMemoryKaartje(kaartId) {
   // Tweede kaart omgedraaid
   memoryStaat.tweedeKeuze = kaart;
   memoryStaat.bezig = true;
-  memoryStaat.aantalPogingen++;
+  memoryStaat.aantalAttempts++;
 
   const match = memoryStaat.eersteKeuze.paarId === memoryStaat.tweedeKeuze.paarId;
 
@@ -1260,7 +1260,7 @@ function klikMemoryKaartje(kaartId) {
     if (match) {
       memoryStaat.eersteKeuze.gevonden = true;
       memoryStaat.tweedeKeuze.gevonden = true;
-      memoryStaat.aantalGevonden++;
+      memoryStaat.aantalFound++;
       registreerSpelResultaat(kaart.woordId, 'memory', true);
       AudioManager.spreekUit(kaart.type === 'he' ? kaart.inhoud : memoryStaat.eersteKeuze.inhoud, 'vrouw');
     } else {
@@ -1274,7 +1274,7 @@ function klikMemoryKaartje(kaartId) {
     memoryStaat.bezig = false;
     renderMemoryBord();
 
-    if (memoryStaat.aantalGevonden === memoryStaat.totaalParen) {
+    if (memoryStaat.aantalFound === memoryStaat.totaalParen) {
       toonMemoryEinde();
     }
   }, match ? MEMORY_CONFIG.ANIMATIE_MS : MEMORY_CONFIG.TOON_TIJD_MS);
@@ -1289,10 +1289,10 @@ function toonMemoryEinde() {
   einde.classList.remove('hidden');
   einde.innerHTML = `
     <div class="p-4">
-      <p class="text-xl font-bold text-green-700 mb-2">🎉 Alle paren gevonden!</p>
-      <p class="text-gray-600 mb-4">${memoryStaat.aantalPogingen} pogingen</p>
+      <p class="text-xl font-bold text-green-700 mb-2">🎉 All pairs found!</p>
+      <p class="text-gray-600 mb-4">${memoryStaat.aantalAttempts} pogingen</p>
       <button onclick="terugNaarSpelMenu()" class="px-6 py-2 bg-blue-600 text-white rounded-xl">
-        ← Terug naar spelletjes
+        ← Back naar spelletjes
       </button>
     </div>`;
 }
@@ -1309,7 +1309,7 @@ let vertaalStaat = null;
 function startVertaalkeuze(lesNummer) {
   const woorden = getSpelWoorden(lesNummer);
   if (woorden.length < VERTAAL_CONFIG.AANTAL_KEUZES) {
-    toonToast('Niet genoeg woorden voor Vertaalkeuze', 'warning');
+    toonToast('Not enough words for Vertaalkeuze', 'warning');
     terugNaarSpelMenu();
     return;
   }
@@ -1356,7 +1356,7 @@ function renderVertaalkeuze() {
       <p class="text-sm text-gray-500 mb-2">Vraag ${huidigeVraag + 1}/${vragen.length}</p>
       <div class="font-hebrew text-4xl mb-6 p-4 bg-blue-50 rounded-xl"
            dir="rtl" lang="he">${vraag.juist.he}</div>
-      <p class="text-sm text-gray-600 mb-4">Kies de juiste Nederlandse vertaling</p>
+      <p class="text-sm text-gray-600 mb-4">Choose the correct translation</p>
       <div class="space-y-3">
         ${vraag.keuzes.map(k => `
           <button onclick="kiesVertaalAntwoord(${k.id}, ${vraag.juist.id})"
@@ -1408,15 +1408,15 @@ function toonVertaalEinde() {
   container.innerHTML = `
     <div class="text-center p-4">
       <p class="text-xl font-bold ${pct >= 70 ? 'text-green-700' : 'text-orange-600'} mb-2">
-        ${pct >= 70 ? '🎉 Goed gedaan!' : '💪 Blijf oefenen!'}
+        ${pct >= 70 ? '🎉 Well done!' : '💪 Keep practicing!'}
       </p>
       <p class="text-3xl font-bold mb-2">${pct}%</p>
       <p class="text-gray-600 mb-6">${aantalCorrect} van ${vragen.length} correct</p>
       <div class="space-y-3">
         <button onclick="startVertaalkeuze(huidigeLes())"
-                class="w-full py-3 bg-blue-600 text-white rounded-xl">Opnieuw spelen</button>
+                class="w-full py-3 bg-blue-600 text-white rounded-xl">Play again</button>
         <button onclick="terugNaarSpelMenu()"
-                class="w-full py-3 bg-gray-200 text-gray-700 rounded-xl">← Terug naar spelletjes</button>
+                class="w-full py-3 bg-gray-200 text-gray-700 rounded-xl">← Back naar spelletjes</button>
       </div>
     </div>`;
 }
@@ -1435,7 +1435,7 @@ function startWoordzoeker(lesNummer) {
   const woorden = getSpelWoorden(lesNummer)
     .filter(w => stripNikud(w.he_clean).length >= 2 && stripNikud(w.he_clean).length <= 6);
   if (woorden.length < ZOEKER_CONFIG.AANTAL_WOORDEN) {
-    toonToast('Niet genoeg woorden voor Woordzoeker', 'warning');
+    toonToast('Not enough words for Woordzoeker', 'warning');
     terugNaarSpelMenu();
     return;
   }
@@ -1535,11 +1535,11 @@ function renderWoordzoeker() {
       ${raster.map((rij, r) =>
         rij.map((letter, k) => {
           const key = `${r},${k}`;
-          const isGevonden = gevondenCellen.has(key);
+          const isFound = gevondenCellen.has(key);
           const isSelected = selectieSet.has(key);
           return `<button onclick="klikZoekerCel(${r},${k})"
                     class="w-9 h-9 flex items-center justify-center font-hebrew text-lg rounded
-                           ${isGevonden ? 'bg-green-200 text-green-800' :
+                           ${isFound ? 'bg-green-200 text-green-800' :
                              isSelected ? 'bg-blue-200 text-blue-800' :
                              'bg-white hover:bg-gray-100'} border"
                     dir="rtl" lang="he">${letter}</button>`;
@@ -1559,9 +1559,9 @@ function renderWoordzoeker() {
   if (gevonden.size === woorden.length) {
     lijstEl.innerHTML += `
       <div class="text-center mt-4">
-        <p class="text-xl font-bold text-green-700 mb-3">🎉 Alle woorden gevonden!</p>
+        <p class="text-xl font-bold text-green-700 mb-3">🎉 All words found!</p>
         <button onclick="terugNaarSpelMenu()" class="px-6 py-2 bg-blue-600 text-white rounded-xl">
-          ← Terug naar spelletjes
+          ← Back naar spelletjes
         </button>
       </div>`;
   }
@@ -1579,7 +1579,7 @@ function klikZoekerCel(r, k) {
 }
 
 /**
- * Controleert of de huidige selectie een woord vormt.
+ * Checkt of de huidige selectie een woord vormt.
  */
 function controleerZoekerSelectie() {
   const sel = zoekerStaat.selectie;
@@ -1656,7 +1656,7 @@ function renderWordle() {
   if (!container) return;
   const { doelwoord, woordLengte, pogingen, huidigeInvoer, klaar, toetsStatus } = wordleStaat;
 
-  // Pogingen-raster
+  // Attempts-raster
   let rasterHTML = '';
   for (let p = 0; p < WORDLE_CONFIG.MAX_POGINGEN; p++) {
     let rijHTML = '';
@@ -1718,15 +1718,15 @@ function renderWordle() {
       <p class="font-hebrew text-2xl mb-1" dir="rtl" lang="he">${doelwoord.he_clean}</p>
       <p class="text-gray-600 text-sm mb-3">${doelwoord.uitspraak} — ${doelwoord.nl}</p>
       <div class="flex gap-2 justify-center">
-        <button onclick="startWordle(huidigeLes())" class="px-4 py-2 bg-blue-600 text-white rounded-xl text-sm">Opnieuw</button>
-        <button onclick="terugNaarSpelMenu()" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-xl text-sm">← Terug</button>
+        <button onclick="startWordle(huidigeLes())" class="px-4 py-2 bg-blue-600 text-white rounded-xl text-sm">Again</button>
+        <button onclick="terugNaarSpelMenu()" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-xl text-sm">← Back</button>
       </div>
     </div>`;
   }
 
   container.innerHTML = `
     <div class="text-center">
-      <p class="text-sm text-gray-500 mb-2">Wordle — raad het werkwoord</p>
+      <p class="text-sm text-gray-500 mb-2">Wordle — guess the verb</p>
       ${hintHTML}
       <div class="mb-4">${rasterHTML}</div>
       ${klaar ? '' : `<div class="mb-2">${keyboardHTML}</div>`}
@@ -1802,18 +1802,18 @@ function wordleEvalueer() {
   }
 }
 
-// ── Spelletje 5: Zinsbouwer ──────────────────────────────────
+// ── Spelletje 5: Sentence builder ──────────────────────────────────
 
 let zinsbouwerStaat = null;
 
 /**
- * Start een nieuw Zinsbouwer-spel.
+ * Start een nieuw Sentence builder-spel.
  * @param {number} lesNummer - Huidig lesnummer
  */
-function startZinsbouwer(lesNummer) {
+function startSentence builder(lesNummer) {
   const zinnen = getBekendZinnen(lesNummer, 20);
   if (zinnen.length < 3) {
-    toonToast('Niet genoeg zinnen voor Zinsbouwer', 'warning');
+    toonToast('Not enough sentences for Sentence builder', 'warning');
     terugNaarSpelMenu();
     return;
   }
@@ -1833,13 +1833,13 @@ function startZinsbouwer(lesNummer) {
   zinsbouwerStaat = { vragen, huidigeVraag: 0, aantalCorrect: 0 };
 
   document.getElementById('game-zinsbouwer').classList.remove('hidden');
-  renderZinsbouwer();
+  renderSentence builder();
 }
 
 /**
- * Rendert de huidige Zinsbouwer-vraag.
+ * Rendert de huidige Sentence builder-vraag.
  */
-function renderZinsbouwer() {
+function renderSentence builder() {
   const container = document.getElementById('zinsbouwer-container');
   if (!container) return;
   const { vragen, huidigeVraag, aantalCorrect } = zinsbouwerStaat;
@@ -1849,12 +1849,12 @@ function renderZinsbouwer() {
     container.innerHTML = `
       <div class="text-center p-4">
         <p class="text-xl font-bold ${pct >= 70 ? 'text-green-700' : 'text-orange-600'} mb-2">
-          ${pct >= 70 ? '🎉 Goed gedaan!' : '💪 Blijf oefenen!'}
+          ${pct >= 70 ? '🎉 Well done!' : '💪 Keep practicing!'}
         </p>
         <p class="text-3xl font-bold mb-4">${pct}%</p>
         <p class="text-gray-600 mb-6">${aantalCorrect} van ${vragen.length} correct</p>
         <button onclick="terugNaarSpelMenu()" class="px-6 py-2 bg-blue-600 text-white rounded-xl">
-          ← Terug naar spelletjes
+          ← Back naar spelletjes
         </button>
       </div>`;
     return;
@@ -1864,7 +1864,7 @@ function renderZinsbouwer() {
 
   container.innerHTML = `
     <div class="text-center">
-      <p class="text-sm text-gray-500 mb-4">Zinsbouwer — ${huidigeVraag + 1}/${vragen.length}</p>
+      <p class="text-sm text-gray-500 mb-4">Sentence builder — ${huidigeVraag + 1}/${vragen.length}</p>
 
       <!-- Geplaatste woorden (de zin die de leerder bouwt) -->
       <div class="min-h-16 p-4 mb-4 bg-blue-50 rounded-xl flex flex-wrap gap-2 justify-end" dir="rtl" id="zb-geplaatst">
@@ -1873,7 +1873,7 @@ function renderZinsbouwer() {
                   class="px-3 py-2 bg-blue-600 text-white rounded-lg font-hebrew"
                   dir="rtl" lang="he">${w}</button>
         `).join('')}
-        ${vraag.geplaatst.length === 0 ? '<p class="text-gray-400 text-sm w-full">Tik op woorden om de zin te bouwen</p>' : ''}
+        ${vraag.geplaatst.length === 0 ? '<p class="text-gray-400 text-sm w-full">Tap words to build the sentence</p>' : ''}
       </div>
 
       <!-- Beschikbare woorden -->
@@ -1887,10 +1887,10 @@ function renderZinsbouwer() {
       </div>
 
       <div class="flex gap-2 justify-center">
-        <button onclick="zinsbouwerControleer()"
+        <button onclick="zinsbouwerCheck()"
                 class="px-6 py-2 bg-green-600 text-white rounded-xl ${vraag.geplaatst.length === vraag.juisteVolgorde.length ? '' : 'opacity-50'}"
                 ${vraag.geplaatst.length === vraag.juisteVolgorde.length ? '' : 'disabled'}>
-          ✓ Controleer
+          ✓ Check
         </button>
         <button onclick="zinsbouwerReset()"
                 class="px-6 py-2 bg-gray-200 text-gray-700 rounded-xl">Reset</button>
@@ -1904,24 +1904,24 @@ function zinsbouwerPlaats(woord) {
   const geschud = zinsbouwerStaat.vragen[zinsbouwerStaat.huidigeVraag].geschud;
   const idx = geschud.indexOf(woord);
   if (idx !== -1) geschud.splice(idx, 1);
-  renderZinsbouwer();
+  renderSentence builder();
 }
 
 function zinsbouwerVerwijder(index) {
   const vraag = zinsbouwerStaat.vragen[zinsbouwerStaat.huidigeVraag];
   const woord = vraag.geplaatst.splice(index, 1)[0];
   vraag.geschud.push(woord);
-  renderZinsbouwer();
+  renderSentence builder();
 }
 
 function zinsbouwerReset() {
   const vraag = zinsbouwerStaat.vragen[zinsbouwerStaat.huidigeVraag];
   vraag.geschud = [...vraag.juisteVolgorde].sort(() => Math.random() - 0.5);
   vraag.geplaatst = [];
-  renderZinsbouwer();
+  renderSentence builder();
 }
 
-function zinsbouwerControleer() {
+function zinsbouwerCheck() {
   const vraag = zinsbouwerStaat.vragen[zinsbouwerStaat.huidigeVraag];
   const correct = vraag.geplaatst.every((w, i) => w === vraag.juisteVolgorde[i]);
 
@@ -1930,14 +1930,14 @@ function zinsbouwerControleer() {
     AudioManager.spreekUit(vraag.origineel, 'vrouw');
     toonToast('Correct! ✓', 'success');
   } else {
-    toonToast('Niet helemaal goed — probeer opnieuw', 'warning');
+    toonToast('Not quite right — try again', 'warning');
     zinsbouwerReset();
     return;
   }
 
   setTimeout(() => {
     zinsbouwerStaat.huidigeVraag++;
-    renderZinsbouwer();
+    renderSentence builder();
   }, 1500);
 }
 
@@ -2015,7 +2015,7 @@ function renderShoreshSort() {
 
   container.innerHTML = `
     <div>
-      <p class="text-sm text-gray-500 mb-4 text-center">Shoresh-sort — sorteer de woorden per woordwortel</p>
+      <p class="text-sm text-gray-500 mb-4 text-center">Shoresh-sort — sort words by root</p>
 
       <!-- Shoresh-bakken -->
       <div class="grid grid-cols-${groepen.length} gap-3 mb-6">
@@ -2044,9 +2044,9 @@ function renderShoreshSort() {
         `).join('')}
       </div>` : `
       <div class="text-center p-4">
-        <p class="text-xl font-bold text-green-700 mb-3">🎉 Alle woorden gesorteerd!</p>
+        <p class="text-xl font-bold text-green-700 mb-3">🎉 All words sorted!</p>
         <button onclick="terugNaarSpelMenu()" class="px-6 py-2 bg-blue-600 text-white rounded-xl">
-          ← Terug naar spelletjes
+          ← Back naar spelletjes
         </button>
       </div>`}
     </div>`;
@@ -2068,14 +2068,14 @@ function shoreshKlikBak(shoresh) {
     registreerSpelResultaat(woord.id, 'shoresh-sort', true);
     spreekWoordUit(woord);
   } else {
-    toonToast('Dat woord hoort bij een andere shoresh', 'warning');
+    toonToast('That word belongs to a different root', 'warning');
     registreerSpelResultaat(woord.id, 'shoresh-sort', false);
   }
   shoreshStaat.geselecteerd = null;
   renderShoreshSort();
 }
 
-// ── Spelletje 7: Dialoogpuzzel ──────────────────────────────
+// ── Spelletje 7: Dialogue puzzle ──────────────────────────────
 
 const DIALOOG_TEMPLATES = [
   { les: 1, titel: 'Wie ben jij?', zinnen: [
@@ -2107,13 +2107,13 @@ const DIALOOG_TEMPLATES = [
 let dialoogStaat = null;
 
 /**
- * Start een nieuw Dialoogpuzzel-spel.
+ * Start een nieuw Dialogue puzzle-spel.
  * @param {number} lesNummer - Huidig lesnummer
  */
-function startDialoogpuzzel(lesNummer) {
+function startDialogue puzzle(lesNummer) {
   const geschikt = DIALOOG_TEMPLATES.filter(d => d.les <= lesNummer);
   if (geschikt.length === 0) {
-    toonToast('Geen dialogen beschikbaar voor dit niveau', 'warning');
+    toonToast('No dialogues available for this level', 'warning');
     terugNaarSpelMenu();
     return;
   }
@@ -2129,13 +2129,13 @@ function startDialoogpuzzel(lesNummer) {
   };
 
   document.getElementById('game-dialoogpuzzel').classList.remove('hidden');
-  renderDialoogpuzzel();
+  renderDialogue puzzle();
 }
 
 /**
- * Rendert het Dialoogpuzzel-spel.
+ * Rendert het Dialogue puzzle-spel.
  */
-function renderDialoogpuzzel() {
+function renderDialogue puzzle() {
   const container = document.getElementById('dialoog-container');
   if (!container) return;
   const { dialoog, geschud, geplaatst, juisteVolgorde } = dialoogStaat;
@@ -2145,8 +2145,8 @@ function renderDialoogpuzzel() {
 
   container.innerHTML = `
     <div>
-      <p class="text-sm text-gray-500 mb-2 text-center">Dialoogpuzzel — ${dialoog.titel}</p>
-      <p class="text-xs text-gray-400 mb-4 text-center">Leg de zinnen in de juiste volgorde</p>
+      <p class="text-sm text-gray-500 mb-2 text-center">Dialogue puzzle — ${dialoog.titel}</p>
+      <p class="text-xs text-gray-400 mb-4 text-center">Put the sentences in the right order</p>
 
       <!-- Geplaatste zinnen -->
       <div class="space-y-2 mb-6 min-h-32">
@@ -2184,22 +2184,22 @@ function renderDialoogpuzzel() {
       ${klaar ? `<div id="dialoog-resultaat"></div>` : ''}
     </div>`;
 
-  if (klaar) dialoogControleer();
+  if (klaar) dialoogCheck();
 }
 
 function dialoogPlaats(geschudIdx) {
   dialoogStaat.geplaatst.push(geschudIdx);
   const zin = dialoogStaat.geschud[geschudIdx];
   AudioManager.spreekUit(zin.tekst, zin.spreker === 'Avri' ? 'man' : 'vrouw');
-  renderDialoogpuzzel();
+  renderDialogue puzzle();
 }
 
 function dialoogReset() {
   dialoogStaat.geplaatst = [];
-  renderDialoogpuzzel();
+  renderDialogue puzzle();
 }
 
-function dialoogControleer() {
+function dialoogCheck() {
   const { geschud, geplaatst, juisteVolgorde } = dialoogStaat;
   const correct = geplaatst.every((geschudIdx, i) =>
     geschud[geschudIdx].tekst === juisteVolgorde[i].tekst
@@ -2213,7 +2213,7 @@ function dialoogControleer() {
       <div class="text-center p-4">
         <p class="text-xl font-bold text-green-700 mb-3">🎉 Correct!</p>
         <button onclick="terugNaarSpelMenu()" class="px-6 py-2 bg-blue-600 text-white rounded-xl">
-          ← Terug naar spelletjes
+          ← Back naar spelletjes
         </button>
       </div>`;
     // Speel hele dialoog af
@@ -2226,15 +2226,15 @@ function dialoogControleer() {
   } else {
     el.innerHTML = `
       <div class="text-center p-4">
-        <p class="text-lg text-orange-600 mb-3">Niet helemaal goed — probeer opnieuw</p>
-        <button onclick="dialoogReset(); renderDialoogpuzzel()"
-                class="px-6 py-2 bg-blue-600 text-white rounded-xl">Opnieuw</button>
+        <p class="text-lg text-orange-600 mb-3">Not quite right — try again</p>
+        <button onclick="dialoogReset(); renderDialogue puzzle()"
+                class="px-6 py-2 bg-blue-600 text-white rounded-xl">Again</button>
       </div>`;
   }
 }
 
 // ══════════════════════════════════════════════════════════════
-// MODULE K: Muziekmodule
+// MODULE K: Musicmodule
 // ══════════════════════════════════════════════════════════════
 
 const SHIRONET_SELECTOR = '.artist_lyrics_text';
@@ -2291,7 +2291,7 @@ async function fetchVeilig(url, bron, metProxy = false) {
  * Opent de muziekles-weergave voor een specifiek lied.
  * @param {number} liedId - ID van het lied
  */
-async function openMuziekLes(liedId) {
+async function openMusicLes(liedId) {
   if (!MUZIEK_DB) return;
   const lied = MUZIEK_DB.liederen.find(l => l.id === liedId);
   if (!lied) return;
@@ -2301,13 +2301,13 @@ async function openMuziekLes(liedId) {
   container.innerHTML = `
     <div class="p-6">
       <div class="flex items-center gap-4 mb-4">
-        <button onclick="renderMuziekLijst(); toonScherm('screen-music')" class="text-2xl text-gray-400">←</button>
+        <button onclick="renderMusicLijst(); toonScherm('screen-music')" class="text-2xl text-gray-400">←</button>
         <div>
           <h2 class="font-hebrew text-xl" dir="rtl" lang="he">${lied.he}</h2>
           <p class="text-sm text-gray-500">${lied.artiest} — ${lied.nl}</p>
         </div>
       </div>
-      <p class="text-gray-500 text-center py-8">Tekst wordt opgehaald...</p>
+      <p class="text-gray-500 text-center py-8">Loading lyrics...</p>
     </div>`;
 
   const tekst = await fetchLiedTekstMetFallback(lied);
@@ -2317,7 +2317,7 @@ async function openMuziekLes(liedId) {
     container.innerHTML = `
       <div class="p-6">
         <div class="flex items-center gap-4 mb-4">
-          <button onclick="renderMuziekLijst()" class="text-2xl text-gray-400">←</button>
+          <button onclick="renderMusicLijst()" class="text-2xl text-gray-400">←</button>
           <div>
             <h2 class="font-hebrew text-xl" dir="rtl" lang="he">${lied.he}</h2>
             <p class="text-sm text-gray-500">${lied.artiest}</p>
@@ -2335,10 +2335,10 @@ async function openMuziekLes(liedId) {
     container.innerHTML = `
       <div class="p-6">
         <div class="flex items-center gap-4 mb-4">
-          <button onclick="renderMuziekLijst()" class="text-2xl text-gray-400">←</button>
+          <button onclick="renderMusicLijst()" class="text-2xl text-gray-400">←</button>
           <h2 class="font-hebrew text-xl" dir="rtl" lang="he">${lied.he}</h2>
         </div>
-        <p class="text-gray-500 text-center py-8">Tekst niet gevonden. Probeer later opnieuw.</p>
+        <p class="text-gray-500 text-center py-8">Lyrics not found. Try again later.</p>
       </div>`;
   }
 }
@@ -2346,7 +2346,7 @@ async function openMuziekLes(liedId) {
 /**
  * Rendert de muzieklijst gesorteerd op cursusvolgorde.
  */
-function renderMuziekLijst() {
+function renderMusicLijst() {
   if (!MUZIEK_DB) return;
   const container = document.getElementById('muziek-container');
   const les = huidigeLes();
@@ -2355,7 +2355,7 @@ function renderMuziekLijst() {
     <div class="p-6">
       <div class="flex items-center gap-4 mb-6">
         <button onclick="toonScherm('screen-start')" class="text-2xl text-gray-400">←</button>
-        <h2 class="text-xl font-bold">Muziek</h2>
+        <h2 class="text-xl font-bold">Music</h2>
       </div>
       <div class="space-y-2">
         ${MUZIEK_DB.liederen
@@ -2363,7 +2363,7 @@ function renderMuziekLijst() {
           .map(lied => {
             const beschikbaar = lied.vanaf_les !== 'gimel' && parseInt(lied.vanaf_les) <= les;
             return `
-              <button ${beschikbaar ? `onclick="openMuziekLes(${lied.id})"` : 'disabled'}
+              <button ${beschikbaar ? `onclick="openMusicLes(${lied.id})"` : 'disabled'}
                       class="w-full flex items-center gap-3 p-3 rounded-xl text-left
                              ${beschikbaar ? 'bg-white shadow-sm hover:shadow-md' : 'bg-gray-100 opacity-50'}">
                 <span class="text-2xl">🎵</span>
@@ -2424,33 +2424,33 @@ function renderStartScherm() {
 
       <!-- Dagelijkse les -->
       <div class="bg-white rounded-2xl shadow-sm p-6 mb-4">
-        <p class="text-sm text-gray-500 mb-1">Vandaag</p>
+        <p class="text-sm text-gray-500 mb-1">Today</p>
         <h2 class="text-xl font-bold mb-4">Les ${les}</h2>
         <button onclick="startLes(${les}); toonScherm('screen-lesson')"
                 class="w-full py-4 bg-blue-600 text-white rounded-xl text-lg font-semibold
                        hover:bg-blue-700 transition-colors">
-          Les starten →
+          Start lesson →
         </button>
       </div>
 
       <!-- Herhaling -->
       ${teHerhalen > 0 ? `
       <div class="bg-yellow-50 border border-yellow-200 rounded-2xl p-4 mb-4">
-        <p class="font-semibold text-yellow-800">📚 ${teHerhalen} woorden te herhalen</p>
+        <p class="font-semibold text-yellow-800">📚 ${teHerhalen} words to review</p>
         <button onclick="toonScherm('screen-review')"
                 class="mt-2 px-4 py-2 bg-yellow-500 text-white rounded-lg text-sm
                        hover:bg-yellow-600 transition-colors">
-          Nu herhalen
+          Review now
         </button>
       </div>` : ''}
 
       <!-- Navigatie -->
       <div class="grid grid-cols-4 gap-2 mt-6">
         ${[
-          { icon: '🎮', label: 'Spelletjes', actie: "renderSpelletjesMenu(huidigeLes()); toonScherm('screen-games')" },
-          { icon: '🎵', label: 'Muziek',     actie: "renderMuziekLijst()" },
-          { icon: '📊', label: 'Voortgang',  actie: "toonScherm('screen-progress')" },
-          { icon: '⚙️', label: 'Instellingen', actie: "renderInstellingenScherm(); toonScherm('screen-settings')" },
+          { icon: '🎮', label: 'Games', actie: "renderGamesMenu(huidigeLes()); toonScherm('screen-games')" },
+          { icon: '🎵', label: 'Music',     actie: "renderMusicLijst()" },
+          { icon: '📊', label: 'Progress',  actie: "toonScherm('screen-progress')" },
+          { icon: '⚙️', label: 'Settings', actie: "renderSettingsScherm(); toonScherm('screen-settings')" },
         ].map(nav => `
           <button onclick="${nav.actie}"
                   class="flex flex-col items-center p-3 bg-white rounded-xl shadow-sm
@@ -2467,7 +2467,7 @@ function renderStartScherm() {
 /**
  * Rendert het instellingenscherm.
  */
-function renderInstellingenScherm() {
+function renderSettingsScherm() {
   const container = document.getElementById('screen-settings');
   if (!container) return;
   const opgeslagenSleutel = localStorage.getItem('ujes_azure_key') || '';
@@ -2478,15 +2478,15 @@ function renderInstellingenScherm() {
       <div class="flex items-center gap-4 mb-6">
         <button onclick="renderStartScherm(); toonScherm('screen-start')"
                 class="text-2xl text-gray-400">←</button>
-        <h2 class="text-xl font-bold">Instellingen</h2>
+        <h2 class="text-xl font-bold">Settings</h2>
       </div>
 
       <div class="space-y-6">
-        <!-- Azure API-sleutel -->
+        <!-- Azure API key -->
         <div>
-          <label class="block text-sm font-medium text-gray-700 mb-2">Azure API-sleutel</label>
+          <label class="block text-sm font-medium text-gray-700 mb-2">Azure API key</label>
           <input type="password" id="inst-api-key" value="${opgeslagenSleutel}"
-                 class="w-full p-3 border rounded-lg" placeholder="Plak je Azure Key 1 hier">
+                 class="w-full p-3 border rounded-lg" placeholder="Paste your Azure Key 1 here">
           <p class="text-xs text-gray-400 mt-1">portal.azure.com → ivriet-speech → Keys and Endpoint → Key 1</p>
         </div>
 
@@ -2499,16 +2499,16 @@ function renderInstellingenScherm() {
           </select>
         </div>
 
-        <!-- Opslaan -->
-        <button onclick="slaInstellingenOp()"
+        <!-- Save -->
+        <button onclick="slaSettingsOp()"
                 class="w-full py-3 bg-blue-600 text-white rounded-xl text-lg font-semibold hover:bg-blue-700">
-          Opslaan
+          Save
         </button>
 
-        <!-- Test spraak -->
+        <!-- Test speech -->
         <button onclick="AudioManager.spreekUit('שלום, אני מדברת עברית', document.getElementById('inst-stem').value === 'man' ? 'man' : 'vrouw')"
                 class="w-full py-3 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200">
-          🔊 Test spraak
+          🔊 Test speech
         </button>
 
         <!-- Versie -->
@@ -2524,7 +2524,7 @@ function renderInstellingenScherm() {
  * Azure sleutel in localStorage als 'ujes_azure_key'.
  * Stem in OPSLAG_PREFIXEN.instellingen.
  */
-function slaInstellingenOp() {
+function slaSettingsOp() {
   const apiSleutel = document.getElementById('inst-api-key')?.value || '';
   const stem = document.getElementById('inst-stem')?.value || 'vrouw';
 
@@ -2535,7 +2535,7 @@ function slaInstellingenOp() {
   // Sla stem op
   Opslag.slaOp(OPSLAG_PREFIXEN.instellingen, { stem });
 
-  toonToast('Instellingen opgeslagen', 'success');
+  toonToast('Settings opgeslagen', 'success');
 }
 
 // ══════════════════════════════════════════════════════════════
@@ -2681,7 +2681,7 @@ async function testOpslagRondtrip() {
   const naam = 'Opslag rondtrip';
   try {
     Opslag.slaOp('test_sleutel', { waarde: 42 });
-    if (Opslag.laad('test_sleutel')?.waarde !== 42) throw new Error('Opslaan/laden mislukt');
+    if (Opslag.laad('test_sleutel')?.waarde !== 42) throw new Error('Save/laden mislukt');
     Opslag.verwijder('test_sleutel');
     if (Opslag.laad('test_sleutel') !== null) throw new Error('Verwijderen mislukt');
     console.log(`✅ ${naam}`);
@@ -2770,7 +2770,7 @@ function toonTestRapport(resultaten) {
 document.addEventListener('DOMContentLoaded', async () => {
   AppLogger.info('App', `${APP_NAAM} ${APP_VERSIE} start`);
 
-  // Laad opgeslagen Azure API-sleutel
+  // Laad opgeslagen Azure API key
   window.AZURE_API_SLEUTEL = localStorage.getItem('ujes_azure_key') || null;
 
   // Forceer font laden vóór UI rendering
@@ -2789,7 +2789,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   renderStartScherm();
   toonScherm('screen-start');
-  renderSpelletjesMenu(huidigeLes());
+  renderGamesMenu(huidigeLes());
 
   AppLogger.info('App', 'Klaar');
 });
