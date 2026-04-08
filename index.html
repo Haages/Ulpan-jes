@@ -166,12 +166,14 @@ async function spreekWoordUit(woord) {
   const he = stripNikud(woord.he_clean || '');
   const uitspraak = woord.uitspraak || '';
 
-  // Woorden met "/" in uitspraak: twee vormen, eerst Avri dan Hila
+  // Woorden met "/" in uitspraak: twee vormen direct na elkaar
+  // Eerst Avri (mannelijk), dan Hila (vrouwelijk)
   if (uitspraak.includes('/')) {
     const delen = uitspraak.split('/').map(d => d.trim());
     await AudioManager.spreekUit(delen[0], 'man');
     await new Promise(r => setTimeout(r, 400));
-    return AudioManager.spreekUit(delen[1], 'vrouw');
+    await AudioManager.spreekUit(delen[1], 'vrouw');
+    return true;
   }
 
   // Bepaal stem (gecached per woord)
@@ -194,9 +196,9 @@ async function spreekWoordUit(woord) {
     _woordStemCache[he] = stem;
   }
 
-  // Voornaamwoorden: stuur uitspraak als tekst (niet he_clean)
-  // Azure leest את als "et" (objectmarkeerder) i.p.v. "at" (voornaamwoord)
-  const tekst = (woord.soort === 'vw' && uitspraak) ? uitspraak : woord.he_clean;
+  // ALTIJD woord.uitspraak sturen als dat niet leeg is
+  // Alleen woord.he_clean als uitspraak ontbreekt
+  const tekst = uitspraak ? uitspraak : woord.he_clean;
 
   return AudioManager.spreekUit(tekst, _woordStemCache[he]);
 }

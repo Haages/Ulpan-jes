@@ -42,7 +42,7 @@
       "nl": "willen (mannelijk/vrouwelijk)",
       "soort": "ww",
       "shoresh": "ר-צ-ה",
-      "en": "to want"
+      "en": "want"
     },
     {
       "id": 5,
@@ -130,7 +130,7 @@
       "nl": "niet/nee",
       "soort": "bw",
       "shoresh": null,
-      "en": "not/no"
+      "en": "not"
     },
     {
       "id": 13,
