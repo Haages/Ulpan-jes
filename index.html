@@ -79,6 +79,9 @@
 // MODULE A: Constanten en configuratie
 // ══════════════════════════════════════════════════════════════
 
+// ── Azure API-sleutel — vul hier in of stel in via Instellingen ──
+// window.AZURE_API_SLEUTEL = 'PLAK_HIER_JE_SLEUTEL';
+
 const APP_VERSIE        = '1.0.0';
 const APP_NAAM          = 'Ulpan Jes';
 const AZURE_REGIO       = 'eastus';
@@ -128,6 +131,25 @@ function kiesWillekeurig(arr, n) {
     resultaat.push(kopie.splice(idx, 1)[0]);
   }
   return resultaat;
+}
+
+/**
+ * Vertaalt een woordsoort-afkorting naar een leesbare Nederlandse term.
+ * @param {string} soort - Afkorting (vw, ww, bw, zn, vrg, vgw, vz, bn)
+ * @returns {string} Volledige naam
+ */
+function woordSoortNaam(soort) {
+  const NAMEN = {
+    vw:  'voornaamwoord',
+    ww:  'werkwoord',
+    bw:  'bijwoord',
+    zn:  'zelfstandig naamwoord',
+    vrg: 'vraagwoord',
+    vgw: 'voegwoord',
+    vz:  'voorzetsel',
+    bn:  'bijvoeglijk naamwoord',
+  };
+  return NAMEN[soort] || soort;
 }
 
 /**
@@ -558,7 +580,6 @@ async function toonFase1() {
     document.getElementById('fase1-woord').innerHTML = `
       <div class="text-4xl mb-3">🔊</div>
       <div class="text-2xl font-semibold mb-2">${woord.nl}</div>
-      <div class="text-sm text-gray-500">${woord.soort === 'ww' ? 'werkwoord' : woord.soort}</div>
     `;
 
     // Spreek 3x voor met pauze
@@ -604,7 +625,7 @@ async function toonFase2() {
         <button onclick="fase2Volgende()"
                 class="px-8 py-3 bg-blue-600 text-white rounded-xl text-lg
                        hover:bg-blue-700 transition-colors">
-          ✓ Nagesproken — volgende
+          Spreek na en ga verder →
         </button>
       </div>
     `;
@@ -753,7 +774,7 @@ async function toonFase4() {
         <button onclick="fase4Volgende()"
                 class="px-8 py-3 bg-blue-600 text-white rounded-xl text-lg
                        hover:bg-blue-700 transition-colors">
-          ✓ Nagesproken — volgende
+          Spreek na en ga verder →
         </button>
       </div>
     `;
@@ -2307,7 +2328,7 @@ function renderStartScherm() {
 function renderInstellingenScherm() {
   const container = document.getElementById('screen-settings');
   if (!container) return;
-  const inst = Opslag.laad(OPSLAG_PREFIXEN.instellingen, { stem: 'vrouw', tekstGrootte: 'normaal' });
+  const inst = Opslag.laad(OPSLAG_PREFIXEN.instellingen, { stem: 'vrouw', tekstGrootte: 'normaal', apiSleutel: '' });
 
   container.innerHTML = `
     <div class="min-h-screen bg-white p-6 max-w-md mx-auto">
@@ -2318,6 +2339,15 @@ function renderInstellingenScherm() {
       </div>
 
       <div class="space-y-6">
+        <!-- Azure API-sleutel -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">Azure TTS API-sleutel</label>
+          <input type="password" id="inst-api-key" value="${inst.apiSleutel || ''}"
+                 class="w-full p-3 border rounded-lg" placeholder="Voer Azure API-sleutel in"
+                 onchange="slaInstellingenOp()">
+          <p class="text-xs text-gray-400 mt-1">Nodig voor spraakfunctie (Azure Cognitive Services)</p>
+        </div>
+
         <!-- Stem -->
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-2">Voorkeursstem</label>
@@ -2359,7 +2389,9 @@ function renderInstellingenScherm() {
 function slaInstellingenOp() {
   const stem = document.getElementById('inst-stem')?.value || 'vrouw';
   const tekstGrootte = document.getElementById('inst-tekstgrootte')?.value || 'normaal';
-  Opslag.slaOp(OPSLAG_PREFIXEN.instellingen, { stem, tekstGrootte });
+  const apiSleutel = document.getElementById('inst-api-key')?.value || '';
+  Opslag.slaOp(OPSLAG_PREFIXEN.instellingen, { stem, tekstGrootte, apiSleutel });
+  if (apiSleutel) window.AZURE_API_SLEUTEL = apiSleutel;
   toonToast('Instellingen opgeslagen', 'success');
 }
 
@@ -2594,6 +2626,10 @@ function toonTestRapport(resultaten) {
 // ══════════════════════════════════════════════════════════════
 document.addEventListener('DOMContentLoaded', async () => {
   AppLogger.info('App', `${APP_NAAM} ${APP_VERSIE} start`);
+
+  // Laad opgeslagen API-sleutel
+  const inst = Opslag.laad(OPSLAG_PREFIXEN.instellingen, {});
+  if (inst.apiSleutel) window.AZURE_API_SLEUTEL = inst.apiSleutel;
 
   // Forceer font laden vóór UI rendering
   try {
