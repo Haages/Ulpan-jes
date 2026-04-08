@@ -978,6 +978,9 @@ function openSpelletje(spelId) {
   else if (spelId === 'vertaalkeuze') startVertaalkeuze(les);
   else if (spelId === 'woordzoeker') startWoordzoeker(les);
   else if (spelId === 'wordle') startWordle(les);
+  else if (spelId === 'zinsbouwer') startZinsbouwer(les);
+  else if (spelId === 'shoresh-sort') startShoreshSort(les);
+  else if (spelId === 'dialoogpuzzel') startDialoogpuzzel(les);
   else toonToast(`${spelId} wordt binnenkort beschikbaar`, 'info');
 }
 
@@ -1637,6 +1640,583 @@ function wordleEvalueer() {
   }
 }
 
+// ── Spelletje 5: Zinsbouwer ──────────────────────────────────
+
+let zinsbouwerStaat = null;
+
+/**
+ * Start een nieuw Zinsbouwer-spel.
+ * @param {number} lesNummer - Huidig lesnummer
+ */
+function startZinsbouwer(lesNummer) {
+  const zinnen = getBekendZinnen(lesNummer, 20);
+  if (zinnen.length < 3) {
+    toonToast('Niet genoeg zinnen voor Zinsbouwer', 'warning');
+    terugNaarSpelMenu();
+    return;
+  }
+
+  const gekozen = kiesWillekeurig(zinnen, Math.min(8, zinnen.length));
+  const vragen = gekozen.map(z => {
+    // Verwijder nummering en leestekens aan begin/eind van woorden
+    const woorden = z.zin
+      .replace(/[\u200f\u200e\u202b\u202c]/g, '')
+      .split(/\s+/)
+      .map(w => w.replace(/^[\d.]+/, '').replace(/[.,!?;:]+$/, ''))
+      .filter(w => w.length > 0);
+    const geschud = [...woorden].sort(() => Math.random() - 0.5);
+    return { origineel: z.zin, juisteVolgorde: woorden, geschud, geplaatst: [] };
+  });
+
+  zinsbouwerStaat = { vragen, huidigeVraag: 0, aantalCorrect: 0 };
+
+  document.getElementById('game-zinsbouwer').classList.remove('hidden');
+  renderZinsbouwer();
+}
+
+/**
+ * Rendert de huidige Zinsbouwer-vraag.
+ */
+function renderZinsbouwer() {
+  const container = document.getElementById('zinsbouwer-container');
+  if (!container) return;
+  const { vragen, huidigeVraag, aantalCorrect } = zinsbouwerStaat;
+
+  if (huidigeVraag >= vragen.length) {
+    const pct = Math.round((aantalCorrect / vragen.length) * 100);
+    container.innerHTML = `
+      <div class="text-center p-4">
+        <p class="text-xl font-bold ${pct >= 70 ? 'text-green-700' : 'text-orange-600'} mb-2">
+          ${pct >= 70 ? '🎉 Goed gedaan!' : '💪 Blijf oefenen!'}
+        </p>
+        <p class="text-3xl font-bold mb-4">${pct}%</p>
+        <p class="text-gray-600 mb-6">${aantalCorrect} van ${vragen.length} correct</p>
+        <button onclick="terugNaarSpelMenu()" class="px-6 py-2 bg-blue-600 text-white rounded-xl">
+          ← Terug naar spelletjes
+        </button>
+      </div>`;
+    return;
+  }
+
+  const vraag = vragen[huidigeVraag];
+
+  container.innerHTML = `
+    <div class="text-center">
+      <p class="text-sm text-gray-500 mb-4">Zinsbouwer — ${huidigeVraag + 1}/${vragen.length}</p>
+
+      <!-- Geplaatste woorden (de zin die de leerder bouwt) -->
+      <div class="min-h-16 p-4 mb-4 bg-blue-50 rounded-xl flex flex-wrap gap-2 justify-end" dir="rtl" id="zb-geplaatst">
+        ${vraag.geplaatst.map((w, i) => `
+          <button onclick="zinsbouwerVerwijder(${i})"
+                  class="px-3 py-2 bg-blue-600 text-white rounded-lg font-hebrew"
+                  dir="rtl" lang="he">${w}</button>
+        `).join('')}
+        ${vraag.geplaatst.length === 0 ? '<p class="text-gray-400 text-sm w-full">Tik op woorden om de zin te bouwen</p>' : ''}
+      </div>
+
+      <!-- Beschikbare woorden -->
+      <div class="flex flex-wrap gap-2 justify-center mb-6" id="zb-beschikbaar">
+        ${vraag.geschud.filter(w => !vraag.geplaatst.includes(w)).map(w => `
+          <button onclick="zinsbouwerPlaats('${w.replace(/'/g, "\\'")}')"
+                  class="px-3 py-2 bg-white border-2 border-gray-200 rounded-lg font-hebrew
+                         hover:border-blue-400"
+                  dir="rtl" lang="he">${w}</button>
+        `).join('')}
+      </div>
+
+      <div class="flex gap-2 justify-center">
+        <button onclick="zinsbouwerControleer()"
+                class="px-6 py-2 bg-green-600 text-white rounded-xl ${vraag.geplaatst.length === vraag.juisteVolgorde.length ? '' : 'opacity-50'}"
+                ${vraag.geplaatst.length === vraag.juisteVolgorde.length ? '' : 'disabled'}>
+          ✓ Controleer
+        </button>
+        <button onclick="zinsbouwerReset()"
+                class="px-6 py-2 bg-gray-200 text-gray-700 rounded-xl">Reset</button>
+      </div>
+    </div>`;
+}
+
+function zinsbouwerPlaats(woord) {
+  zinsbouwerStaat.vragen[zinsbouwerStaat.huidigeVraag].geplaatst.push(woord);
+  // Verwijder eerste voorkomen uit geschud
+  const geschud = zinsbouwerStaat.vragen[zinsbouwerStaat.huidigeVraag].geschud;
+  const idx = geschud.indexOf(woord);
+  if (idx !== -1) geschud.splice(idx, 1);
+  renderZinsbouwer();
+}
+
+function zinsbouwerVerwijder(index) {
+  const vraag = zinsbouwerStaat.vragen[zinsbouwerStaat.huidigeVraag];
+  const woord = vraag.geplaatst.splice(index, 1)[0];
+  vraag.geschud.push(woord);
+  renderZinsbouwer();
+}
+
+function zinsbouwerReset() {
+  const vraag = zinsbouwerStaat.vragen[zinsbouwerStaat.huidigeVraag];
+  vraag.geschud = [...vraag.juisteVolgorde].sort(() => Math.random() - 0.5);
+  vraag.geplaatst = [];
+  renderZinsbouwer();
+}
+
+function zinsbouwerControleer() {
+  const vraag = zinsbouwerStaat.vragen[zinsbouwerStaat.huidigeVraag];
+  const correct = vraag.geplaatst.every((w, i) => w === vraag.juisteVolgorde[i]);
+
+  if (correct) {
+    zinsbouwerStaat.aantalCorrect++;
+    AudioManager.spreekUit(vraag.origineel, 'vrouw');
+    toonToast('Correct! ✓', 'success');
+  } else {
+    toonToast('Niet helemaal goed — probeer opnieuw', 'warning');
+    zinsbouwerReset();
+    return;
+  }
+
+  setTimeout(() => {
+    zinsbouwerStaat.huidigeVraag++;
+    renderZinsbouwer();
+  }, 1500);
+}
+
+// ── Spelletje 6: Shoresh-sorteerspel ────────────────────────
+
+let shoreshStaat = null;
+
+/**
+ * Geeft shoresh-groepen terug waarvan alle woorden bekend zijn.
+ * @param {number} lesNummer - Huidig lesnummer
+ * @returns {Array<{shoresh: string, woorden: Array<Object>}>}
+ */
+function getBekendeShoreshGroepen(lesNummer) {
+  if (!SPEL_DB) return [];
+  const bekendIds = new Set(getSpelWoorden(lesNummer).map(w => w.id));
+  const groepen = [];
+  for (const [shoresh, ids] of Object.entries(SPEL_DB.shoresh_groepen)) {
+    const woorden = ids
+      .map(id => SPEL_DB.woorden.find(w => w.id === id))
+      .filter(w => w && bekendIds.has(w.id));
+    if (woorden.length >= 2) {
+      groepen.push({ shoresh, woorden });
+    }
+  }
+  return groepen;
+}
+
+/**
+ * Start een nieuw Shoresh-sorteerspel.
+ * @param {number} lesNummer - Huidig lesnummer
+ */
+function startShoreshSort(lesNummer) {
+  const groepen = getBekendeShoreshGroepen(lesNummer);
+  if (groepen.length < 2) {
+    toonToast('Niet genoeg shoresh-groepen beschikbaar', 'warning');
+    terugNaarSpelMenu();
+    return;
+  }
+
+  const gekozen = kiesWillekeurig(groepen, Math.min(3, groepen.length));
+  // Verzamel alle losse woorden en schud
+  const losseWoorden = [];
+  gekozen.forEach(g => {
+    g.woorden.forEach(w => losseWoorden.push({ ...w, shoresh: g.shoresh }));
+  });
+  for (let i = losseWoorden.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [losseWoorden[i], losseWoorden[j]] = [losseWoorden[j], losseWoorden[i]];
+  }
+
+  shoreshStaat = {
+    groepen: gekozen,
+    losseWoorden,
+    gesorteerd: Object.fromEntries(gekozen.map(g => [g.shoresh, []])),
+    geselecteerd: null,
+  };
+
+  document.getElementById('game-shoresh-sort').classList.remove('hidden');
+  renderShoreshSort();
+}
+
+/**
+ * Rendert het Shoresh-sorteerspel.
+ */
+function renderShoreshSort() {
+  const container = document.getElementById('shoresh-container');
+  if (!container) return;
+  const { groepen, losseWoorden, gesorteerd, geselecteerd } = shoreshStaat;
+
+  const alGeplaatst = new Set(Object.values(gesorteerd).flat().map(w => w.id));
+  const beschikbaar = losseWoorden.filter(w => !alGeplaatst.has(w.id));
+
+  // Check klaar
+  const klaar = beschikbaar.length === 0;
+
+  container.innerHTML = `
+    <div>
+      <p class="text-sm text-gray-500 mb-4 text-center">Shoresh-sort — sorteer de woorden per woordwortel</p>
+
+      <!-- Shoresh-bakken -->
+      <div class="grid grid-cols-${groepen.length} gap-3 mb-6">
+        ${groepen.map(g => `
+          <div onclick="shoreshKlikBak('${g.shoresh}')"
+               class="p-3 rounded-xl border-2 text-center min-h-32 cursor-pointer
+                      ${geselecteerd ? 'border-blue-400 hover:bg-blue-50' : 'border-gray-200'}">
+            <p class="font-hebrew text-xl text-orange-700 mb-2" dir="rtl" lang="he">${g.shoresh}</p>
+            <div class="space-y-1">
+              ${(gesorteerd[g.shoresh] || []).map(w => `
+                <div class="text-sm font-hebrew bg-green-50 rounded p-1" dir="rtl" lang="he">${w.he_clean}</div>
+              `).join('')}
+            </div>
+          </div>
+        `).join('')}
+      </div>
+
+      <!-- Losse woorden -->
+      ${!klaar ? `
+      <div class="flex flex-wrap gap-2 justify-center mb-4">
+        ${beschikbaar.map(w => `
+          <button onclick="shoreshKlikWoord(${w.id})"
+                  class="px-4 py-2 rounded-lg font-hebrew text-lg
+                         ${geselecteerd === w.id ? 'bg-blue-600 text-white scale-105' : 'bg-white border-2 border-gray-200 hover:border-blue-400'}"
+                  dir="rtl" lang="he">${w.he_clean}</button>
+        `).join('')}
+      </div>` : `
+      <div class="text-center p-4">
+        <p class="text-xl font-bold text-green-700 mb-3">🎉 Alle woorden gesorteerd!</p>
+        <button onclick="terugNaarSpelMenu()" class="px-6 py-2 bg-blue-600 text-white rounded-xl">
+          ← Terug naar spelletjes
+        </button>
+      </div>`}
+    </div>`;
+}
+
+function shoreshKlikWoord(woordId) {
+  shoreshStaat.geselecteerd = woordId;
+  renderShoreshSort();
+}
+
+function shoreshKlikBak(shoresh) {
+  if (!shoreshStaat.geselecteerd) return;
+  const woord = shoreshStaat.losseWoorden.find(w => w.id === shoreshStaat.geselecteerd);
+  if (!woord) return;
+
+  const correct = woord.shoresh === shoresh;
+  if (correct) {
+    shoreshStaat.gesorteerd[shoresh].push(woord);
+    registreerSpelResultaat(woord.id, 'shoresh-sort', true);
+    AudioManager.spreekUit(woord.he_clean, 'vrouw');
+  } else {
+    toonToast('Dat woord hoort bij een andere shoresh', 'warning');
+    registreerSpelResultaat(woord.id, 'shoresh-sort', false);
+  }
+  shoreshStaat.geselecteerd = null;
+  renderShoreshSort();
+}
+
+// ── Spelletje 7: Dialoogpuzzel ──────────────────────────────
+
+const DIALOOG_TEMPLATES = [
+  { les: 1, titel: 'Wie ben jij?', zinnen: [
+    { spreker: 'Avri', tekst: 'שלום, מי אתה?' },
+    { spreker: 'Hila', tekst: 'אני הילה. מי אתה?' },
+    { spreker: 'Avri', tekst: 'אני אברי. מה את רוצה?' },
+    { spreker: 'Hila', tekst: 'אני רוצה ללמוד עברית.' },
+    { spreker: 'Avri', tekst: 'את צריכה לשלם.' },
+    { spreker: 'Hila', tekst: 'כמה אני צריכה לשלם?' },
+  ]},
+  { les: 3, titel: 'Waar ben je?', zinnen: [
+    { spreker: 'Avri', tekst: 'איפה את?' },
+    { spreker: 'Hila', tekst: 'אני בבית. ואתה?' },
+    { spreker: 'Avri', tekst: 'אני באולפן.' },
+    { spreker: 'Hila', tekst: 'מתי אתה בבית?' },
+    { spreker: 'Avri', tekst: 'אני בבית מחר.' },
+    { spreker: 'Hila', tekst: 'אני אוהבת ללמוד פה.' },
+  ]},
+  { les: 6, titel: 'Wat denk je?', zinnen: [
+    { spreker: 'Hila', tekst: 'מה אתה חושב?' },
+    { spreker: 'Avri', tekst: 'אני חושב שזה טוב.' },
+    { spreker: 'Hila', tekst: 'אפשר לסגור את זה היום?' },
+    { spreker: 'Avri', tekst: 'כן, אפשר.' },
+    { spreker: 'Hila', tekst: 'אני תמיד חושבת על זה.' },
+    { spreker: 'Avri', tekst: 'אני יודע. זה חשוב.' },
+  ]},
+];
+
+let dialoogStaat = null;
+
+/**
+ * Start een nieuw Dialoogpuzzel-spel.
+ * @param {number} lesNummer - Huidig lesnummer
+ */
+function startDialoogpuzzel(lesNummer) {
+  const geschikt = DIALOOG_TEMPLATES.filter(d => d.les <= lesNummer);
+  if (geschikt.length === 0) {
+    toonToast('Geen dialogen beschikbaar voor dit niveau', 'warning');
+    terugNaarSpelMenu();
+    return;
+  }
+
+  const dialoog = kiesWillekeurig(geschikt, 1)[0];
+  const geschud = [...dialoog.zinnen].sort(() => Math.random() - 0.5);
+
+  dialoogStaat = {
+    dialoog,
+    geschud,
+    geplaatst: [],
+    juisteVolgorde: dialoog.zinnen,
+  };
+
+  document.getElementById('game-dialoogpuzzel').classList.remove('hidden');
+  renderDialoogpuzzel();
+}
+
+/**
+ * Rendert het Dialoogpuzzel-spel.
+ */
+function renderDialoogpuzzel() {
+  const container = document.getElementById('dialoog-container');
+  if (!container) return;
+  const { dialoog, geschud, geplaatst, juisteVolgorde } = dialoogStaat;
+
+  const beschikbaar = geschud.filter((_, i) => !geplaatst.includes(i));
+  const klaar = geplaatst.length === juisteVolgorde.length;
+
+  container.innerHTML = `
+    <div>
+      <p class="text-sm text-gray-500 mb-2 text-center">Dialoogpuzzel — ${dialoog.titel}</p>
+      <p class="text-xs text-gray-400 mb-4 text-center">Leg de zinnen in de juiste volgorde</p>
+
+      <!-- Geplaatste zinnen -->
+      <div class="space-y-2 mb-6 min-h-32">
+        ${geplaatst.map((geschudIdx, i) => {
+          const zin = geschud[geschudIdx];
+          const isAvri = zin.spreker === 'Avri';
+          return `
+            <div class="flex items-start gap-2 ${isAvri ? '' : 'flex-row-reverse'}">
+              <span class="text-xs px-2 py-1 rounded-full ${isAvri ? 'bg-blue-100 text-blue-700' : 'bg-pink-100 text-pink-700'}">
+                ${zin.spreker}
+              </span>
+              <div class="font-hebrew text-lg p-3 rounded-xl max-w-xs
+                          ${isAvri ? 'bg-blue-50 border border-blue-200' : 'bg-pink-50 border border-pink-200'}"
+                   dir="rtl" lang="he">${zin.tekst}</div>
+            </div>`;
+        }).join('')}
+      </div>
+
+      <!-- Beschikbare zinnen -->
+      ${!klaar ? `
+      <div class="space-y-2 mb-4">
+        ${geschud.map((zin, i) => {
+          if (geplaatst.includes(i)) return '';
+          return `
+            <button onclick="dialoogPlaats(${i})"
+                    class="w-full p-3 bg-white border-2 border-gray-200 rounded-xl text-left
+                           hover:border-blue-400 font-hebrew text-lg"
+                    dir="rtl" lang="he">${zin.tekst}</button>`;
+        }).join('')}
+      </div>
+      <button onclick="dialoogReset()"
+              class="w-full py-2 bg-gray-200 text-gray-700 rounded-xl text-sm">Reset</button>
+      ` : ''}
+
+      ${klaar ? `<div id="dialoog-resultaat"></div>` : ''}
+    </div>`;
+
+  if (klaar) dialoogControleer();
+}
+
+function dialoogPlaats(geschudIdx) {
+  dialoogStaat.geplaatst.push(geschudIdx);
+  const zin = dialoogStaat.geschud[geschudIdx];
+  AudioManager.spreekUit(zin.tekst, zin.spreker === 'Avri' ? 'man' : 'vrouw');
+  renderDialoogpuzzel();
+}
+
+function dialoogReset() {
+  dialoogStaat.geplaatst = [];
+  renderDialoogpuzzel();
+}
+
+function dialoogControleer() {
+  const { geschud, geplaatst, juisteVolgorde } = dialoogStaat;
+  const correct = geplaatst.every((geschudIdx, i) =>
+    geschud[geschudIdx].tekst === juisteVolgorde[i].tekst
+  );
+
+  const el = document.getElementById('dialoog-resultaat');
+  if (!el) return;
+
+  if (correct) {
+    el.innerHTML = `
+      <div class="text-center p-4">
+        <p class="text-xl font-bold text-green-700 mb-3">🎉 Correct!</p>
+        <button onclick="terugNaarSpelMenu()" class="px-6 py-2 bg-blue-600 text-white rounded-xl">
+          ← Terug naar spelletjes
+        </button>
+      </div>`;
+    // Speel hele dialoog af
+    (async () => {
+      for (const zin of juisteVolgorde) {
+        await new Promise(r => setTimeout(r, 800));
+        await AudioManager.spreekUit(zin.tekst, zin.spreker === 'Avri' ? 'man' : 'vrouw');
+      }
+    })();
+  } else {
+    el.innerHTML = `
+      <div class="text-center p-4">
+        <p class="text-lg text-orange-600 mb-3">Niet helemaal goed — probeer opnieuw</p>
+        <button onclick="dialoogReset(); renderDialoogpuzzel()"
+                class="px-6 py-2 bg-blue-600 text-white rounded-xl">Opnieuw</button>
+      </div>`;
+  }
+}
+
+// ══════════════════════════════════════════════════════════════
+// MODULE K: Muziekmodule
+// ══════════════════════════════════════════════════════════════
+
+const SHIRONET_SELECTOR = '.artist_lyrics_text';
+
+/**
+ * Haalt liedtekst op met 4-staps fallback.
+ * @param {Object} lied - Lied-object uit muziek_database.json
+ * @returns {Promise<string|null>} Hebreeuwse tekst of null
+ */
+async function fetchLiedTekstMetFallback(lied) {
+  const gecached = Opslag.laad(`${OPSLAG_PREFIXEN.lyric}${lied.id}`);
+  if (gecached) return gecached;
+
+  const shironetUrl = `https://shironet.mako.co.il/search?q=${encodeURIComponent(lied.shironet_zoek)}`;
+  const tekst = await fetchVeilig(shironetUrl, 'Shironet')
+             || await fetchVeilig(shironetUrl, 'Shironet-proxy', true)
+             || await fetchVeilig(
+                  `https://www.hebrewsongs.com/?song=${encodeURIComponent(lied.hebrewsongs_zoek)}`,
+                  'HebrewSongs'
+                )
+             || null;
+
+  if (tekst) Opslag.slaOp(`${OPSLAG_PREFIXEN.lyric}${lied.id}`, tekst);
+  return tekst;
+}
+
+/**
+ * Veilige fetch met timeout en optionele CORS-proxy.
+ * @param {string} url - Te fetchen URL
+ * @param {string} bron - Naam voor logging
+ * @param {boolean} metProxy - Of CORS-proxy gebruikt moet worden
+ * @returns {Promise<string|null>}
+ */
+async function fetchVeilig(url, bron, metProxy = false) {
+  const fetchUrl = metProxy ? `${CORS_PROXY_URL}${encodeURIComponent(url)}` : url;
+  try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 8000);
+    const resp = await fetch(fetchUrl, { signal: controller.signal });
+    clearTimeout(timer);
+    if (!resp.ok) return null;
+    const html = await resp.text();
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    const el = doc.querySelector(SHIRONET_SELECTOR) || doc.querySelector('.lyrics');
+    return el?.textContent?.trim() || null;
+  } catch(fout) {
+    AppLogger.debug('Fetch', `${bron} mislukt`, fout.message);
+    return null;
+  }
+}
+
+/**
+ * Opent de muziekles-weergave voor een specifiek lied.
+ * @param {number} liedId - ID van het lied
+ */
+async function openMuziekLes(liedId) {
+  if (!MUZIEK_DB) return;
+  const lied = MUZIEK_DB.liederen.find(l => l.id === liedId);
+  if (!lied) return;
+
+  toonScherm('screen-music');
+  const container = document.getElementById('muziek-container');
+  container.innerHTML = `
+    <div class="p-6">
+      <div class="flex items-center gap-4 mb-4">
+        <button onclick="renderMuziekLijst(); toonScherm('screen-music')" class="text-2xl text-gray-400">←</button>
+        <div>
+          <h2 class="font-hebrew text-xl" dir="rtl" lang="he">${lied.he}</h2>
+          <p class="text-sm text-gray-500">${lied.artiest} — ${lied.nl}</p>
+        </div>
+      </div>
+      <p class="text-gray-500 text-center py-8">Tekst wordt opgehaald...</p>
+    </div>`;
+
+  const tekst = await fetchLiedTekstMetFallback(lied);
+
+  if (tekst) {
+    const regels = tekst.split('\n').filter(r => r.trim());
+    container.innerHTML = `
+      <div class="p-6">
+        <div class="flex items-center gap-4 mb-4">
+          <button onclick="renderMuziekLijst()" class="text-2xl text-gray-400">←</button>
+          <div>
+            <h2 class="font-hebrew text-xl" dir="rtl" lang="he">${lied.he}</h2>
+            <p class="text-sm text-gray-500">${lied.artiest}</p>
+          </div>
+        </div>
+        <div class="space-y-2 mb-6">
+          ${regels.map((regel, i) => `
+            <div onclick="AudioManager.spreekUit('${stripNikud(regel).replace(/'/g, "\\'")}', 'vrouw')"
+                 class="font-hebrew text-lg p-2 rounded hover:bg-blue-50 cursor-pointer"
+                 dir="rtl" lang="he">${regel}</div>
+          `).join('')}
+        </div>
+      </div>`;
+  } else {
+    container.innerHTML = `
+      <div class="p-6">
+        <div class="flex items-center gap-4 mb-4">
+          <button onclick="renderMuziekLijst()" class="text-2xl text-gray-400">←</button>
+          <h2 class="font-hebrew text-xl" dir="rtl" lang="he">${lied.he}</h2>
+        </div>
+        <p class="text-gray-500 text-center py-8">Tekst niet gevonden. Probeer later opnieuw.</p>
+      </div>`;
+  }
+}
+
+/**
+ * Rendert de muzieklijst gesorteerd op cursusvolgorde.
+ */
+function renderMuziekLijst() {
+  if (!MUZIEK_DB) return;
+  const container = document.getElementById('muziek-container');
+  const les = huidigeLes();
+
+  container.innerHTML = `
+    <div class="p-6">
+      <div class="flex items-center gap-4 mb-6">
+        <button onclick="toonScherm('screen-start')" class="text-2xl text-gray-400">←</button>
+        <h2 class="text-xl font-bold">Muziek</h2>
+      </div>
+      <div class="space-y-2">
+        ${MUZIEK_DB.liederen
+          .sort((a, b) => a.cursusvolgorde - b.cursusvolgorde)
+          .map(lied => {
+            const beschikbaar = lied.vanaf_les !== 'gimel' && parseInt(lied.vanaf_les) <= les;
+            return `
+              <button ${beschikbaar ? `onclick="openMuziekLes(${lied.id})"` : 'disabled'}
+                      class="w-full flex items-center gap-3 p-3 rounded-xl text-left
+                             ${beschikbaar ? 'bg-white shadow-sm hover:shadow-md' : 'bg-gray-100 opacity-50'}">
+                <span class="text-2xl">🎵</span>
+                <div class="flex-1 min-w-0">
+                  <div class="font-hebrew text-lg truncate" dir="rtl" lang="he">${lied.he}</div>
+                  <div class="text-sm text-gray-500 truncate">${lied.artiest}</div>
+                </div>
+                <span class="text-xs text-gray-400">G${lied.groep}</span>
+              </button>`;
+          }).join('')}
+      </div>
+    </div>`;
+  toonScherm('screen-music');
+}
+
 // ══════════════════════════════════════════════════════════════
 // MODULE L: UI-controller (navigatie, schermwissels)
 // ══════════════════════════════════════════════════════════════
@@ -1821,8 +2401,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         Les ${les} starten →
       </button>
       <button onclick="renderSpelletjesMenu(huidigeLes()); toonScherm('screen-games')"
-              class="w-full max-w-xs px-8 py-3 bg-purple-600 text-white rounded-xl font-semibold hover:bg-purple-700">
+              class="w-full max-w-xs px-8 py-3 bg-purple-600 text-white rounded-xl font-semibold hover:bg-purple-700 mb-3">
         🎮 Spelletjes
+      </button>
+      <button onclick="renderMuziekLijst()"
+              class="w-full max-w-xs px-8 py-3 bg-green-600 text-white rounded-xl font-semibold hover:bg-green-700">
+        🎵 Muziek
       </button>
     </div>`;
 
