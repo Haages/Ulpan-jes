@@ -154,53 +154,42 @@ const _woordStemCache = {};
 let _afwisselTeller = 0;
 
 /**
- * Bepaalt de juiste stem voor een woord en spreekt het uit.
- * - Voornaamwoorden (soort==='vw'): stuur uitspraak als tekst (niet he_clean)
- *   zodat Azure את als "at" uitspreekt, niet als "et"
- * - Woorden met "/" in uitspraak: twee vormen, eerst Avri dan Hila
- * - Stem wordt gecached per woord zodat herhalingen dezelfde stem gebruiken
+ * Bepaalt de juiste stem voor een woord.
+ * @param {Object} woord - Woordobject
+ * @returns {string} 'man' of 'vrouw'
+ */
+function bepaalStem(woord) {
+  const he = stripNikud(woord.he_clean || '');
+  const nl = woord.nl || '';
+
+  if (nl.includes('(mannelijk)')) return 'man';
+  if (nl.includes('(vrouwelijk)')) return 'vrouw';
+  if (nl.includes('(infinitief)')) return (_afwisselTeller++ % 2 === 0) ? 'man' : 'vrouw';
+  if (woord.soort === 'vw') {
+    if (he === 'אתה' || he === 'הוא') return 'man';
+    if (he === 'את' || he === 'היא') return 'vrouw';
+    if (he === 'אני') return (_afwisselTeller++ % 2 === 0) ? 'man' : 'vrouw';
+  }
+  return 'vrouw';
+}
+
+/**
+ * Spreekt een woord uit via Azure TTS.
+ * Stuurt ALTIJD Hebreeuwse tekst (he_clean) naar Azure.
+ * Azure he-IL stemmen spreken Hebreeuws correct uit.
  * @param {Object} woord - Woordobject
  * @returns {Promise<boolean>}
  */
 async function spreekWoordUit(woord) {
-  const he = stripNikud(woord.he_clean || '');
-  const uitspraak = woord.uitspraak || '';
-
-  // Woorden met "/" in uitspraak: twee vormen direct na elkaar
-  // Eerst Avri (mannelijk), dan Hila (vrouwelijk)
-  if (uitspraak.includes('/')) {
-    const delen = uitspraak.split('/').map(d => d.trim());
-    await AudioManager.spreekUit(delen[0], 'man');
-    await new Promise(r => setTimeout(r, 400));
-    await AudioManager.spreekUit(delen[1], 'vrouw');
-    return true;
+  // Woorden met twee vormen (m/v) — spreek beide uit
+  if (woord.uitspraak && woord.uitspraak.includes('/')) {
+    await AudioManager.spreekUit(woord.he, 'man');
+    return AudioManager.spreekUit(woord.he, 'vrouw');
   }
 
-  // Bepaal stem (gecached per woord)
-  if (!_woordStemCache[he]) {
-    const nl = woord.nl || '';
-    let stem = 'vrouw';
-
-    if (nl.includes('(mannelijk)')) {
-      stem = 'man';
-    } else if (nl.includes('(vrouwelijk)')) {
-      stem = 'vrouw';
-    } else if (nl.includes('(infinitief)')) {
-      stem = (_afwisselTeller++ % 2 === 0) ? 'man' : 'vrouw';
-    } else if (woord.soort === 'vw') {
-      if (he === 'אתה' || he === 'הוא') stem = 'man';
-      else if (he === 'את' || he === 'היא') stem = 'vrouw';
-      else if (he === 'אני') stem = (_afwisselTeller++ % 2 === 0) ? 'man' : 'vrouw';
-    }
-
-    _woordStemCache[he] = stem;
-  }
-
-  // ALTIJD woord.uitspraak sturen als dat niet leeg is
-  // Alleen woord.he_clean als uitspraak ontbreekt
-  const tekst = uitspraak ? uitspraak : woord.he_clean;
-
-  return AudioManager.spreekUit(tekst, _woordStemCache[he]);
+  // Alle andere woorden — stuur Hebreeuwse tekst naar Azure
+  const stem = bepaalStem(woord);
+  return AudioManager.spreekUit(woord.he_clean, stem);
 }
 
 /**
