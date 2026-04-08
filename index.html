@@ -1158,9 +1158,9 @@ function openSpelletje(spelId) {
   else if (spelId === 'vertaalkeuze') startVertaalkeuze(les);
   else if (spelId === 'woordzoeker') startWoordzoeker(les);
   else if (spelId === 'wordle') startWordle(les);
-  else if (spelId === 'zinsbouwer') startSentence builder(les);
+  else if (spelId === 'zinsbouwer') startZinsbouwer(les);
   else if (spelId === 'shoresh-sort') startShoreshSort(les);
-  else if (spelId === 'dialoogpuzzel') startDialogue puzzle(les);
+  else if (spelId === 'dialoogpuzzel') startDialoogpuzzel(les);
   else toonToast(`${spelId} wordt binnenkort beschikbaar`, 'info');
 }
 
@@ -1828,7 +1828,7 @@ let zinsbouwerStaat = null;
  * Start een nieuw Sentence builder-spel.
  * @param {number} lesNummer - Huidig lesnummer
  */
-function startSentence builder(lesNummer) {
+function startZinsbouwer(lesNummer) {
   const zinnen = getBekendZinnen(lesNummer, 20);
   if (zinnen.length < 3) {
     toonToast('Not enough sentences for Sentence builder', 'warning');
@@ -1851,13 +1851,13 @@ function startSentence builder(lesNummer) {
   zinsbouwerStaat = { vragen, huidigeVraag: 0, aantalCorrect: 0 };
 
   document.getElementById('game-zinsbouwer').classList.remove('hidden');
-  renderSentence builder();
+  renderZinsbouwer();
 }
 
 /**
  * Rendert de huidige Sentence builder-vraag.
  */
-function renderSentence builder() {
+function renderZinsbouwer() {
   const container = document.getElementById('zinsbouwer-container');
   if (!container) return;
   const { vragen, huidigeVraag, aantalCorrect } = zinsbouwerStaat;
@@ -1905,7 +1905,7 @@ function renderSentence builder() {
       </div>
 
       <div class="flex gap-2 justify-center">
-        <button onclick="zinsbouwerCheck()"
+        <button onclick="zinsbouwerControleer()"
                 class="px-6 py-2 bg-green-600 text-white rounded-xl ${vraag.geplaatst.length === vraag.juisteVolgorde.length ? '' : 'opacity-50'}"
                 ${vraag.geplaatst.length === vraag.juisteVolgorde.length ? '' : 'disabled'}>
           ✓ Check
@@ -1922,24 +1922,24 @@ function zinsbouwerPlaats(woord) {
   const geschud = zinsbouwerStaat.vragen[zinsbouwerStaat.huidigeVraag].geschud;
   const idx = geschud.indexOf(woord);
   if (idx !== -1) geschud.splice(idx, 1);
-  renderSentence builder();
+  renderZinsbouwer();
 }
 
 function zinsbouwerVerwijder(index) {
   const vraag = zinsbouwerStaat.vragen[zinsbouwerStaat.huidigeVraag];
   const woord = vraag.geplaatst.splice(index, 1)[0];
   vraag.geschud.push(woord);
-  renderSentence builder();
+  renderZinsbouwer();
 }
 
 function zinsbouwerReset() {
   const vraag = zinsbouwerStaat.vragen[zinsbouwerStaat.huidigeVraag];
   vraag.geschud = [...vraag.juisteVolgorde].sort(() => Math.random() - 0.5);
   vraag.geplaatst = [];
-  renderSentence builder();
+  renderZinsbouwer();
 }
 
-function zinsbouwerCheck() {
+function zinsbouwerControleer() {
   const vraag = zinsbouwerStaat.vragen[zinsbouwerStaat.huidigeVraag];
   const correct = vraag.geplaatst.every((w, i) => w === vraag.juisteVolgorde[i]);
 
@@ -1955,7 +1955,7 @@ function zinsbouwerCheck() {
 
   setTimeout(() => {
     zinsbouwerStaat.huidigeVraag++;
-    renderSentence builder();
+    renderZinsbouwer();
   }, 1500);
 }
 
@@ -2128,7 +2128,7 @@ let dialoogStaat = null;
  * Start een nieuw Dialogue puzzle-spel.
  * @param {number} lesNummer - Huidig lesnummer
  */
-function startDialogue puzzle(lesNummer) {
+function startDialoogpuzzel(lesNummer) {
   const geschikt = DIALOOG_TEMPLATES.filter(d => d.les <= lesNummer);
   if (geschikt.length === 0) {
     toonToast('No dialogues available for this level', 'warning');
@@ -2147,13 +2147,13 @@ function startDialogue puzzle(lesNummer) {
   };
 
   document.getElementById('game-dialoogpuzzel').classList.remove('hidden');
-  renderDialogue puzzle();
+  renderDialoogpuzzel();
 }
 
 /**
  * Rendert het Dialogue puzzle-spel.
  */
-function renderDialogue puzzle() {
+function renderDialoogpuzzel() {
   const container = document.getElementById('dialoog-container');
   if (!container) return;
   const { dialoog, geschud, geplaatst, juisteVolgorde } = dialoogStaat;
@@ -2209,12 +2209,12 @@ function dialoogPlaats(geschudIdx) {
   dialoogStaat.geplaatst.push(geschudIdx);
   const zin = dialoogStaat.geschud[geschudIdx];
   AudioManager.spreekUit(zin.tekst, zin.spreker === 'Avri' ? 'man' : 'vrouw');
-  renderDialogue puzzle();
+  renderDialoogpuzzel();
 }
 
 function dialoogReset() {
   dialoogStaat.geplaatst = [];
-  renderDialogue puzzle();
+  renderDialoogpuzzel();
 }
 
 function dialoogCheck() {
@@ -2245,7 +2245,7 @@ function dialoogCheck() {
     el.innerHTML = `
       <div class="text-center p-4">
         <p class="text-lg text-orange-600 mb-3">Not quite right — try again</p>
-        <button onclick="dialoogReset(); renderDialogue puzzle()"
+        <button onclick="dialoogReset(); renderDialoogpuzzel()"
                 class="px-6 py-2 bg-blue-600 text-white rounded-xl">Again</button>
       </div>`;
   }
