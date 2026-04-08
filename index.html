@@ -162,9 +162,9 @@ function bepaalStem(woord) {
   const he = stripNikud(woord.he_clean || '');
   const nl = woord.nl || '';
 
-  if (nl.includes('(mannelijk)')) return 'man';
-  if (nl.includes('(vrouwelijk)')) return 'vrouw';
-  if (nl.includes('(infinitief)')) return (_afwisselTeller++ % 2 === 0) ? 'man' : 'vrouw';
+  if (nl.includes('(m)')) return 'man';
+  if (nl.includes('(f)')) return 'vrouw';
+  if (nl.includes('infinitief') || nl.includes('to ')) return (_afwisselTeller++ % 2 === 0) ? 'man' : 'vrouw';
   if (woord.soort === 'vw') {
     if (he === 'אתה' || he === 'הוא') return 'man';
     if (he === 'את' || he === 'היא') return 'vrouw';
@@ -181,21 +181,20 @@ function bepaalStem(woord) {
  * @returns {Promise<boolean>}
  */
 async function spreekWoordUit(woord) {
-  // Fix 1: את als voornaamwoord — stuur met nikud zodat Azure "at" zegt
+  // את als voornaamwoord — stuur met nikud zodat Azure "at" zegt
   if (woord.he_clean === 'את' && woord.soort === 'vw') {
     return AudioManager.spreekUit('אַת', 'vrouw');
   }
 
-  // Fix 2: Woorden met twee vormen (m/v) — beide direct na elkaar, klaar daarna
-  if (woord.uitspraak && woord.uitspraak.includes('/')) {
-    await AudioManager.spreekUit(woord.he, 'man');
-    await AudioManager.spreekUit(woord.he_v || woord.he, 'vrouw');
-    return true;
-  }
+  // Bepaal stem op basis van nl veld of bepaalStem()
+  const nl = woord.nl || '';
+  let stem;
+  if (nl.includes('(m)')) stem = 'man';
+  else if (nl.includes('(f)')) stem = 'vrouw';
+  else stem = bepaalStem(woord);
 
-  // Alle andere woorden — stuur Hebreeuwse tekst naar Azure
-  const stem = bepaalStem(woord);
-  return AudioManager.spreekUit(woord.he_clean, stem);
+  // Stuur Hebreeuwse tekst met nikud naar Azure — één aanroep per woord
+  return AudioManager.spreekUit(woord.he, stem);
 }
 
 /**
@@ -1775,7 +1774,7 @@ function renderWordle() {
     const gewonnen = pogingen.some(p => p.status.every(s => s === 'correct'));
     resultaatHTML = `<div class="text-center mt-4 p-4 rounded-xl ${gewonnen ? 'bg-green-50' : 'bg-red-50'}">
       <p class="text-lg font-bold ${gewonnen ? 'text-green-700' : 'text-red-700'} mb-1">
-        ${gewonnen ? '🎉 Correct!' : '💪 Volgende keer beter!'}
+        ${gewonnen ? '🎉 Correct!' : '💪 Better luck next time!'}
       </p>
       <p class="font-hebrew text-2xl mb-1" dir="rtl" lang="he">${doelwoord.he_clean}</p>
       <p class="text-gray-600 text-sm mb-3">${doelwoord.uitspraak} — ${doelwoord.nl}</p>

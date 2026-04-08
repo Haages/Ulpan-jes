@@ -6,9 +6,10 @@
       "he": "אֲנִי",
       "he_clean": "אני",
       "uitspraak": "ani",
-      "nl": "ik",
+      "nl": "I",
       "soort": "vw",
-      "shoresh": null
+      "shoresh": null,
+      "en": "I"
     },
     {
       "id": 2,
@@ -16,9 +17,10 @@
       "he": "אַתָּה",
       "he_clean": "אתה",
       "uitspraak": "ata",
-      "nl": "jij (mannelijk)",
+      "nl": "you (m)",
       "soort": "vw",
-      "shoresh": null
+      "shoresh": null,
+      "en": "you (m)"
     },
     {
       "id": 3,
@@ -26,9 +28,10 @@
       "he": "אַת",
       "he_clean": "את",
       "uitspraak": "at",
-      "nl": "jij (vrouwelijk)",
+      "nl": "you (f)",
       "soort": "vw",
-      "shoresh": null
+      "shoresh": null,
+      "en": "you (f)"
     },
     {
       "id": 4,
@@ -36,21 +39,23 @@
       "he": "רוֹצֶה",
       "he_clean": "רוצה",
       "uitspraak": "rotze",
-      "nl": "to want (m)",
+      "nl": "want (m)",
       "en": "want (m)",
       "soort": "ww",
-      "shoresh": "ר-צ-ה"
+      "shoresh": "ר-צ-ה",
+      "he_v": null
     },
     {
-      "id": 5,
+      "id": 1004,
       "les": "1",
       "he": "רוֹצָה",
       "he_clean": "רוצה",
       "uitspraak": "rotza",
-      "nl": "to want (f)",
+      "nl": "want (f)",
       "en": "want (f)",
       "soort": "ww",
-      "shoresh": "ר-צ-ה"
+      "shoresh": "ר-צ-ה",
+      "he_v": null
     },
     {
       "id": 6,
@@ -58,9 +63,10 @@
       "he": "צָרִיך",
       "he_clean": "צריך",
       "uitspraak": "tzarich",
-      "nl": "moeten (mannelijk)",
+      "nl": "need (m)",
       "soort": "ww",
-      "shoresh": "צ-ר-כ"
+      "shoresh": "צ-ר-כ",
+      "en": "need (m)"
     },
     {
       "id": 7,
@@ -68,9 +74,10 @@
       "he": "צְרִיכָה",
       "he_clean": "צריכה",
       "uitspraak": "tzricha",
-      "nl": "moeten (vrouwelijk)",
+      "nl": "need (f)",
       "soort": "ww",
-      "shoresh": "צ-ר-כ"
+      "shoresh": "צ-ר-כ",
+      "en": "need (f)"
     },
     {
       "id": 8,
@@ -78,9 +85,10 @@
       "he": "לִלְמוֹד",
       "he_clean": "ללמוד",
       "uitspraak": "lilmod",
-      "nl": "leren (infinitief)",
+      "nl": "to learn",
       "soort": "ww",
-      "shoresh": "ל-מ-ד"
+      "shoresh": "ל-מ-ד",
+      "en": "to learn"
     },
     {
       "id": 9,
@@ -88,9 +96,10 @@
       "he": "לְשַׁלֵּם",
       "he_clean": "לשלם",
       "uitspraak": "leshalem",
-      "nl": "betalen (infinitief)",
+      "nl": "to pay",
       "soort": "ww",
-      "shoresh": "ש-ל-מ"
+      "shoresh": "ש-ל-מ",
+      "en": "to pay"
     },
     {
       "id": 10,
@@ -98,9 +107,10 @@
       "he": "לְדַבֵּר",
       "he_clean": "לדבר",
       "uitspraak": "ledaber",
-      "nl": "spreken (infinitief)",
+      "nl": "to speak",
       "soort": "ww",
-      "shoresh": "ד-ב-ר"
+      "shoresh": "ד-ב-ר",
+      "en": "to speak"
     },
     {
       "id": 11,
@@ -108,9 +118,10 @@
       "he": "מִי",
       "he_clean": "מי",
       "uitspraak": "mi",
-      "nl": "wie",
+      "nl": "who",
       "soort": "vrg",
-      "shoresh": null
+      "shoresh": null,
+      "en": "who"
     },
     {
       "id": 12,
@@ -118,9 +129,10 @@
       "he": "מָה",
       "he_clean": "מה",
       "uitspraak": "ma",
-      "nl": "wat",
+      "nl": "what",
       "soort": "vrg",
-      "shoresh": null
+      "shoresh": null,
+      "en": "what"
     },
     {
       "id": 13,
@@ -128,9 +140,10 @@
       "he": "לֹא",
       "he_clean": "לא",
       "uitspraak": "lo",
-      "nl": "niet/nee",
+      "nl": "not / no",
       "soort": "bw",
-      "shoresh": null
+      "shoresh": null,
+      "en": "not / no"
     },
     {
       "id": 14,
@@ -138,9 +151,10 @@
       "he": "עִבְרִית",
       "he_clean": "עברית",
       "uitspraak": "ivrit",
-      "nl": "Hebreeuws",
+      "nl": "Hebrew",
       "soort": "zn",
-      "shoresh": null
+      "shoresh": null,
+      "en": "Hebrew"
     },
     {
       "id": 15,
