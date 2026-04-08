@@ -149,43 +149,42 @@ function woordSoortNaam(soort) {
   return NAMEN[soort] || soort;
 }
 
-// Teller voor afwisseling Avri/Hila bij infinitieven
-let _spreekAfwisselTeller = 0;
+// Cache voor welke stem bij welk woord hoort (bepaald per woord, niet per aanroep)
+const _woordStemCache = {};
+let _afwisselTeller = 0;
 
 /**
  * Bepaalt de juiste stem (man/vrouw) voor een woord en spreekt het uit.
- * Logica:
- *   - nl bevat "(mannelijk)" → Avri
- *   - nl bevat "(vrouwelijk)" → Hila
- *   - infinitief (begint met ל) → wissel af Avri/Hila
- *   - voornaamwoord: אתה/הוא → Avri, את/היא → Hila, אני → wissel af
- *   - overig → vrouw (Hila) als standaard
+ * Stuurt altijd de Hebreeuwse tekst (he_clean) naar Azure — nooit fonetiek.
+ * De stem wordt per woord bepaald en gecached zodat herhalingen dezelfde stem gebruiken.
  * @param {Object} woord - Woordobject met he_clean, nl, soort
  * @returns {Promise<boolean>} true bij succes
  */
 function spreekWoordUit(woord) {
-  const nl = woord.nl || '';
   const he = stripNikud(woord.he_clean || '');
 
-  let stem = 'vrouw'; // standaard Hila
+  // Check cache — zelfde woord krijgt altijd dezelfde stem
+  if (!_woordStemCache[he]) {
+    const nl = woord.nl || '';
+    let stem = 'vrouw';
 
-  if (nl.includes('(mannelijk)')) {
-    stem = 'man';
-  } else if (nl.includes('(vrouwelijk)')) {
-    stem = 'vrouw';
-  } else if (nl.includes('(infinitief)')) {
-    stem = (_spreekAfwisselTeller++ % 2 === 0) ? 'man' : 'vrouw';
-  } else if (woord.soort === 'vw') {
-    if (he === 'אתה' || he === 'הוא') stem = 'man';
-    else if (he === 'את' || he === 'היא') stem = 'vrouw';
-    else if (he === 'אני') stem = (_spreekAfwisselTeller++ % 2 === 0) ? 'man' : 'vrouw';
+    if (nl.includes('(mannelijk)')) {
+      stem = 'man';
+    } else if (nl.includes('(vrouwelijk)')) {
+      stem = 'vrouw';
+    } else if (nl.includes('(infinitief)')) {
+      stem = (_afwisselTeller++ % 2 === 0) ? 'man' : 'vrouw';
+    } else if (woord.soort === 'vw') {
+      if (he === 'אתה' || he === 'הוא') stem = 'man';
+      else if (he === 'את' || he === 'היא') stem = 'vrouw';
+      else if (he === 'אני') stem = (_afwisselTeller++ % 2 === 0) ? 'man' : 'vrouw';
+    }
+
+    _woordStemCache[he] = stem;
   }
 
-  // Als het woord een uitspraak heeft in de database — gebruik die altijd
-  // Dit voorkomt TTS-fouten zoals את → "et" i.p.v. "at"
-  const tekst = woord.uitspraak ? woord.uitspraak : stripNikud(woord.he_clean);
-
-  return AudioManager.spreekUit(tekst, stem);
+  // Stuur altijd Hebreeuwse tekst naar Azure — nooit fonetiek
+  return AudioManager.spreekUit(woord.he_clean, _woordStemCache[he]);
 }
 
 /**
