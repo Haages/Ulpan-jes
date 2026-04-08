@@ -315,6 +315,7 @@ function getBekendZinnen(lesNummer, max = 5) {
   if (!OEFEN_DB) return [];
   return OEFEN_DB.zinnen
     .filter(z => parseInt(z.les) <= lesNummer)
+    .sort((a, b) => (a.niveau || 99) - (b.niveau || 99))
     .slice(0, max);
 }
 
@@ -801,7 +802,6 @@ async function toonFase4() {
   let zinIndex    = 0;
 
   if (zinnen.length === 0) {
-    // Geen zinnen beschikbaar — ga direct naar fase 5
     toonFase('5a');
     return;
   }
@@ -812,18 +812,28 @@ async function toonFase4() {
       return;
     }
     const zin = zinnen[zinIndex++];
+    const heTekst = zin.he || zin.zin || '';
+    const enCue = zin.cues?.en || '';
+    const nlCue = zin.cues?.nl || '';
 
     container.innerHTML = `
       <div class="min-h-screen flex flex-col items-center justify-center p-6">
         <p class="text-sm text-gray-500 mb-4">
           Fase 4 van 7 — Oefenzinnen (${zinIndex}/${zinnen.length})
         </p>
+        ${enCue ? `<p class="text-lg text-gray-700 mb-4 text-center">${enCue}</p>` : ''}
         <div class="font-hebrew text-2xl text-right leading-relaxed mb-4
                     bg-blue-50 rounded-xl p-6 w-full max-w-md"
-             dir="rtl" lang="he">${zin.zin}</div>
-        <p class="text-sm text-gray-500 mb-6">
-          Luister en spreek na
-        </p>
+             dir="rtl" lang="he">${heTekst}</div>
+        ${nlCue ? `
+        <button onclick="document.getElementById('fase4-nl').classList.remove('hidden'); this.classList.add('hidden')"
+                class="px-6 py-2 border border-gray-300 text-gray-500 rounded-lg mb-4 text-sm hover:bg-gray-50"
+                id="fase4-toon-nl">
+          Toon Nederlands
+        </button>
+        <p id="fase4-nl" class="hidden text-gray-600 mb-4 text-center">${nlCue}</p>
+        ` : ''}
+        <p class="text-sm text-gray-500 mb-6">Luister en spreek na</p>
         <button onclick="fase4Volgende()"
                 class="px-8 py-3 bg-blue-600 text-white rounded-xl text-lg
                        hover:bg-blue-700 transition-colors">
@@ -833,7 +843,7 @@ async function toonFase4() {
     `;
 
     window.fase4Volgende = toonVolgend;
-    await AudioManager.spreekUit(zin.zin, 'vrouw');
+    await AudioManager.spreekUit(heTekst, 'vrouw');
   };
 
   toonVolgend();
