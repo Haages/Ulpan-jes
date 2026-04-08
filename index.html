@@ -2477,7 +2477,7 @@ async function testGetNieuweWoorden() {
   try {
     const nieuw = getNieuweWoorden(1);
     if (!Array.isArray(nieuw)) throw new Error('Geen array');
-    if (nieuw.length !== 8) throw new Error(`Les 1 verwacht 8 woorden, kreeg ${nieuw.length}`);
+    if (nieuw.length !== 13) throw new Error(`Les 1 verwacht 13 woorden, kreeg ${nieuw.length}`);
     console.log(`✅ ${naam} — les 1: ${nieuw.length} nieuwe woorden`);
     return { ok: true, naam };
   } catch(fout) {
