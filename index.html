@@ -383,10 +383,24 @@ const Opslag = {
 const AudioManager = {
   AZURE_ENDPOINT: `https://${AZURE_REGIO}.tts.speech.microsoft.com/cognitiveservices/v1`,
   bezig: false,
+  huidigAudio: null,
 
   /**
-   * Spreekt een Hebreeuwse tekst uit via Azure TTS.
-   * Verwijdert ALTIJD nikud vóór verzending naar de API.
+   * Stopt de huidige audio onmiddellijk.
+   */
+  stop() {
+    if (this.huidigAudio) {
+      this.huidigAudio.pause();
+      this.huidigAudio.currentTime = 0;
+      this.huidigAudio = null;
+    }
+    if (window.speechSynthesis) speechSynthesis.cancel();
+    this.bezig = false;
+  },
+
+  /**
+   * Spreekt tekst uit via Azure TTS of Web Speech API fallback.
+   * Stopt eerst lopende audio als die bezig is.
    * @param {string} tekst - Hebreeuwse tekst (mag nikud bevatten)
    * @param {string} stem - 'man' (Avri) of 'vrouw' (Hila, standaard)
    * @returns {Promise<boolean>} true bij succes, false bij mislukking
@@ -396,6 +410,9 @@ const AudioManager = {
       AppLogger.warn('TTS', 'Empty text provided');
       return false;
     }
+
+    // Stop lopende audio voordat nieuwe start
+    if (this.bezig) this.stop();
 
     const stemNaam    = stem === 'man' ? TTS_STEM_MAN : TTS_STEM_VROUW;
     const schoneTekst = tekst.trim();
@@ -425,10 +442,11 @@ const AudioManager = {
         const blob  = await resp.blob();
         const url   = URL.createObjectURL(blob);
         const audio = new Audio(url);
+        this.huidigAudio = audio;
 
         await new Promise((resolve, reject) => {
-          audio.onended = resolve;
-          audio.onerror = reject;
+          audio.onended = () => { this.huidigAudio = null; resolve(); };
+          audio.onerror = () => { this.huidigAudio = null; reject(); };
           audio.play();
         });
 
@@ -710,14 +728,14 @@ async function toonFase1() {
         <div class="text-2xl font-semibold mb-2">${betekenis}</div>
         <div class="text-sm text-gray-400 mb-6">${idx + 1} / ${woorden.length}</div>
         <div class="flex gap-3 mt-2">
-          <button onclick="fase1Terug()" ${idx === 0 ? 'disabled class="opacity-30 border border-gray-300 text-gray-600 rounded-xl px-5 py-3"' : 'class="border border-gray-300 text-gray-600 rounded-xl px-5 py-3"'}>
+          <button onclick="AudioManager.stop(); fase1Terug()" ${idx === 0 ? 'disabled class="opacity-30 border border-gray-300 text-gray-600 rounded-xl px-5 py-3"' : 'class="border border-gray-300 text-gray-600 rounded-xl px-5 py-3"'}>
             ← Back
           </button>
-          <button onclick="fase1Herhaal()"
+          <button onclick="AudioManager.stop(); fase1Herhaal()"
                   class="border border-blue-400 text-blue-600 rounded-xl px-5 py-3">
             🔊 Repeat
           </button>
-          <button onclick="fase1Volgende()"
+          <button onclick="AudioManager.stop(); fase1Volgende()"
                   class="bg-blue-600 text-white rounded-xl px-6 py-3">
             Next →
           </button>
