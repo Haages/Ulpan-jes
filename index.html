@@ -398,7 +398,7 @@ const AudioManager = {
     }
 
     const stemNaam         = stem === 'man' ? TTS_STEM_MAN : TTS_STEM_VROUW;
-    const tekstZonderNikud = stripNikud(tekst.trim());
+    const schoneTekst      = tekst.trim();
     const apiSleutel       = window.AZURE_API_SLEUTEL || null;
 
     if (!apiSleutel) {
@@ -407,7 +407,7 @@ const AudioManager = {
     }
 
     const ssml = `<speak version='1.0' xml:lang='he-IL'>
-      <voice name='${stemNaam}'>${tekstZonderNikud}</voice>
+      <voice name='${stemNaam}'>${schoneTekst}</voice>
     </speak>`;
 
     try {
