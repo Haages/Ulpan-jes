@@ -446,6 +446,427 @@ const SRSEngine = {
 };
 
 // ══════════════════════════════════════════════════════════════
+// MODULE H: StreakManager
+// ══════════════════════════════════════════════════════════════
+
+const StreakManager = {
+  /**
+   * Registreert activiteit voor vandaag en werkt streak bij.
+   */
+  registreerActiviteit() {
+    const vandaag    = new Date().toISOString().split('T')[0];
+    const gisteren   = new Date();
+    gisteren.setDate(gisteren.getDate() - 1);
+    const gisterenStr = gisteren.toISOString().split('T')[0];
+
+    const streak = Opslag.laad(OPSLAG_PREFIXEN.streak,
+      { huidig: 0, langste: 0, laatste: null });
+
+    if (streak.laatste === vandaag) return;
+
+    streak.huidig  = streak.laatste === gisterenStr ? streak.huidig + 1 : 1;
+    streak.langste = Math.max(streak.langste, streak.huidig);
+    streak.laatste = vandaag;
+
+    Opslag.slaOp(OPSLAG_PREFIXEN.streak, streak);
+    AppLogger.info('Streak', `Dag ${streak.huidig} (langste: ${streak.langste})`);
+  },
+
+  /**
+   * Geeft de huidige streakdata terug.
+   * @returns {{huidig: number, langste: number, laatste: string|null}}
+   */
+  getStreak() {
+    return Opslag.laad(OPSLAG_PREFIXEN.streak, { huidig: 0, langste: 0, laatste: null });
+  }
+};
+
+// ══════════════════════════════════════════════════════════════
+// MODULE I: Leercyclus — 7 fasen per les
+// ══════════════════════════════════════════════════════════════
+
+/**
+ * Start een les voor het opgegeven lesnummer.
+ * Laadt nieuwe woorden uit vocab_database.json.
+ * @param {number} lesNummer - Te starten les (1-19)
+ */
+function startLes(lesNummer) {
+  if (!VOCAB_DB || !OEFEN_DB) {
+    AppLogger.error('Les', 'Databases niet geladen');
+    return;
+  }
+
+  const nieuweWoorden = getNieuweWoorden(lesNummer);
+  const oefenzinnen   = getBekendZinnen(lesNummer, 5);
+
+  window.huidigeLesData = { lesNummer, nieuweWoorden, oefenzinnen, huidigeFase: 1 };
+
+  StreakManager.registreerActiviteit();
+  Opslag.slaOp(OPSLAG_PREFIXEN.huidigeLes, lesNummer);
+
+  AppLogger.info('Les', `Les ${lesNummer} gestart`, `${nieuweWoorden.length} nieuwe woorden`);
+  toonFase(1);
+}
+
+/**
+ * Toont de opgegeven fase van de huidige les.
+ * @param {number|string} faseNummer - Fase 1, 2, 3, '3b', 4, '5a' of '5b'
+ */
+function toonFase(faseNummer) {
+  window.huidigeLesData.huidigeFase = faseNummer;
+  const fasen = {
+    1:   toonFase1,
+    2:   toonFase2,
+    3:   toonFase3,
+    '3b': toonFase3b,
+    4:   toonFase4,
+    '5a': toonFase5a,
+    '5b': toonFase5b,
+  };
+  const fn = fasen[faseNummer];
+  if (fn) fn();
+  else AppLogger.error('Les', `Ongeldige fase: ${faseNummer}`);
+}
+
+/**
+ * Fase 1: Hila spreekt elk nieuw woord minimaal 3x voor.
+ * Leerder hoort + ziet Nederlandse betekenis. Geen Hebreeuws schrift prominent.
+ * Geslachtsindicator altijd als onderdeel van de auditieve presentatie.
+ * Geen productie gevraagd — affectieve filter laag houden.
+ */
+async function toonFase1() {
+  const woorden   = window.huidigeLesData.nieuweWoorden;
+  const container = document.getElementById('les-fase-container');
+  if (!container) return;
+
+  container.innerHTML = `
+    <div class="min-h-screen bg-blue-50 flex flex-col items-center justify-center p-6">
+      <p class="text-sm text-gray-500 mb-1">Fase 1 van 7 — Luisteren</p>
+      <p class="text-gray-600 mb-8 text-center">
+        Luister en begrijp. Je hoeft nog niets te doen.
+      </p>
+      <div id="fase1-woord" class="text-center"></div>
+      <div id="fase1-voortgang" class="mt-6 text-sm text-gray-400"></div>
+    </div>
+  `;
+
+  for (let i = 0; i < woorden.length; i++) {
+    const woord = woorden[i];
+    document.getElementById('fase1-voortgang').textContent =
+      `${i + 1} / ${woorden.length}`;
+
+    // Toon Nederlandse betekenis — Hebreeuws schrift nog niet prominent
+    document.getElementById('fase1-woord').innerHTML = `
+      <div class="text-4xl mb-3">🔊</div>
+      <div class="text-2xl font-semibold mb-2">${woord.nl}</div>
+      <div class="text-sm text-gray-500">${woord.soort === 'ww' ? 'werkwoord' : woord.soort}</div>
+    `;
+
+    // Spreek 3x voor met pauze
+    for (let herhaling = 0; herhaling < 3; herhaling++) {
+      await AudioManager.spreekUit(woord.he_clean, 'vrouw');
+      await new Promise(r => setTimeout(r, 800));
+    }
+    await new Promise(r => setTimeout(r, 500));
+  }
+
+  toonFase(2);
+}
+
+/**
+ * Fase 2: Woord wordt getoond met nikud + uitspraak + betekenis.
+ * Hila spreekt voor, leerder spreekt na (shadowing).
+ * Motorisch geheugenspoor opbouwen via imitatie.
+ */
+async function toonFase2() {
+  const woorden   = window.huidigeLesData.nieuweWoorden;
+  const container = document.getElementById('les-fase-container');
+  let woordIndex  = 0;
+
+  const toonVolgend = async () => {
+    if (woordIndex >= woorden.length) {
+      toonFase(3);
+      return;
+    }
+    const woord = woorden[woordIndex++];
+
+    container.innerHTML = `
+      <div class="min-h-screen flex flex-col items-center justify-center p-6">
+        <p class="text-sm text-gray-500 mb-4">
+          Fase 2 van 7 — Herhalen (${woordIndex}/${woorden.length})
+        </p>
+        <div class="font-hebrew text-6xl mb-3" dir="rtl" lang="he">${woord.he}</div>
+        <div class="text-2xl text-blue-600 mb-1">${woord.uitspraak}</div>
+        <div class="text-xl text-gray-700 mb-2">${woord.nl}</div>
+        <div class="text-sm text-gray-400 mb-8">
+          ${woord.soort === 'ww' ? `שורש: ${woord.shoresh || '—'}` : ''}
+        </div>
+        <p class="text-gray-500 text-sm mb-4">Spreek na zodra je het hoort</p>
+        <button onclick="fase2Volgende()"
+                class="px-8 py-3 bg-blue-600 text-white rounded-xl text-lg
+                       hover:bg-blue-700 transition-colors">
+          ✓ Nagesproken — volgende
+        </button>
+      </div>
+    `;
+
+    window.fase2Volgende = toonVolgend;
+    await AudioManager.spreekUit(woord.he_clean, 'vrouw');
+  };
+
+  toonVolgend();
+}
+
+/**
+ * Fase 3: Dezelfde woorden, nu zonder Nederlandse vertaling.
+ * Leerder reconstrueert de betekenis zelfstandig — noticing-moment.
+ * Desirable Difficulty: weghalen van het vangnet verdiept retentie.
+ */
+async function toonFase3() {
+  const woorden   = window.huidigeLesData.nieuweWoorden;
+  const container = document.getElementById('les-fase-container');
+  let woordIndex  = 0;
+
+  const toonVolgend = async () => {
+    if (woordIndex >= woorden.length) {
+      toonFase('3b');
+      return;
+    }
+    const woord = woorden[woordIndex++];
+
+    container.innerHTML = `
+      <div class="min-h-screen flex flex-col items-center justify-center p-6">
+        <p class="text-sm text-gray-500 mb-4">
+          Fase 3 van 7 — Begrijpen (${woordIndex}/${woorden.length})
+        </p>
+        <div class="font-hebrew text-6xl mb-4" dir="rtl" lang="he">${woord.he}</div>
+        <div class="text-2xl text-blue-600 mb-8">${woord.uitspraak}</div>
+        <button onclick="fase3ToonBetekenis()" id="toon-btn"
+                class="px-6 py-2 border border-gray-300 text-gray-500 rounded-lg mb-4
+                       hover:bg-gray-50 text-sm">
+          Toon betekenis
+        </button>
+        <div id="fase3-betekenis" class="hidden text-xl text-gray-700 mb-6">${woord.nl}</div>
+        <button onclick="fase3Volgende()"
+                class="px-8 py-3 bg-blue-600 text-white rounded-xl text-lg hidden"
+                id="fase3-volgende">
+          Volgende →
+        </button>
+      </div>
+    `;
+
+    window.fase3ToonBetekenis = () => {
+      document.getElementById('fase3-betekenis').classList.remove('hidden');
+      document.getElementById('fase3-volgende').classList.remove('hidden');
+      document.getElementById('toon-btn').classList.add('hidden');
+    };
+    window.fase3Volgende = toonVolgend;
+
+    await AudioManager.spreekUit(woord.he_clean, 'vrouw');
+  };
+
+  toonVolgend();
+}
+
+/**
+ * Fase 3b: Hebreeuwse letters en shoresh zichtbaar maken.
+ * De shoresh wordt visueel gemarkeerd in het woord.
+ * Twee woorden met dezelfde shoresh naast elkaar = noticing-moment.
+ * Dual Coding: auditief geheugenspoor + visuele verankering.
+ */
+function toonFase3b() {
+  const woorden   = window.huidigeLesData.nieuweWoorden;
+  const container = document.getElementById('les-fase-container');
+  let woordIndex  = 0;
+
+  const toonVolgend = () => {
+    if (woordIndex >= woorden.length) {
+      toonFase(4);
+      return;
+    }
+    const woord = woorden[woordIndex++];
+
+    container.innerHTML = `
+      <div class="min-h-screen flex flex-col items-center justify-center p-6">
+        <p class="text-sm text-gray-500 mb-4">
+          Fase 3b van 7 — Woordbeeld (${woordIndex}/${woorden.length})
+        </p>
+        <div class="font-hebrew text-7xl mb-2 tracking-wider"
+             dir="rtl" lang="he">${woord.he}</div>
+        <div class="text-blue-600 text-lg mb-1">${woord.uitspraak}</div>
+        <div class="text-gray-700 mb-4">${woord.nl}</div>
+        ${woord.shoresh ? `
+          <div class="bg-orange-50 border border-orange-200 rounded-lg p-3 mb-6 text-center">
+            <p class="text-xs text-orange-600 mb-1">שורש / woordwortel</p>
+            <p class="font-hebrew text-2xl text-orange-700"
+               dir="rtl" lang="he">${woord.shoresh}</p>
+          </div>
+        ` : '<div class="mb-6"></div>'}
+        <button onclick="fase3bVolgende()"
+                class="px-8 py-3 bg-blue-600 text-white rounded-xl text-lg">
+          Volgende →
+        </button>
+      </div>
+    `;
+
+    window.fase3bVolgende = toonVolgend;
+    AudioManager.spreekUit(woord.he_clean, 'vrouw');
+  };
+
+  toonVolgend();
+}
+
+/**
+ * Fase 4: Maximaal 5 oefenzinnen uit oefenzinnen.json.
+ * ALLEEN zinnen met woorden die de leerder al kent.
+ * Gelaagd: receptief eerst, dan productief.
+ * Alle zinnen worden door Hila uitgesproken.
+ */
+async function toonFase4() {
+  const zinnen    = getBekendZinnen(window.huidigeLesData.lesNummer, 5);
+  const container = document.getElementById('les-fase-container');
+  let zinIndex    = 0;
+
+  if (zinnen.length === 0) {
+    // Geen zinnen beschikbaar — ga direct naar fase 5
+    toonFase('5a');
+    return;
+  }
+
+  const toonVolgend = async () => {
+    if (zinIndex >= zinnen.length) {
+      toonFase('5a');
+      return;
+    }
+    const zin = zinnen[zinIndex++];
+
+    container.innerHTML = `
+      <div class="min-h-screen flex flex-col items-center justify-center p-6">
+        <p class="text-sm text-gray-500 mb-4">
+          Fase 4 van 7 — Oefenzinnen (${zinIndex}/${zinnen.length})
+        </p>
+        <div class="font-hebrew text-2xl text-right leading-relaxed mb-4
+                    bg-blue-50 rounded-xl p-6 w-full max-w-md"
+             dir="rtl" lang="he">${zin.zin}</div>
+        <p class="text-sm text-gray-500 mb-6">
+          Luister en spreek na
+        </p>
+        <button onclick="fase4Volgende()"
+                class="px-8 py-3 bg-blue-600 text-white rounded-xl text-lg
+                       hover:bg-blue-700 transition-colors">
+          ✓ Nagesproken — volgende
+        </button>
+      </div>
+    `;
+
+    window.fase4Volgende = toonVolgend;
+    await AudioManager.spreekUit(zin.zin, 'vrouw');
+  };
+
+  toonVolgend();
+}
+
+/**
+ * Fase 5a: Consolidatie via een kort verhaaltje of dialoog.
+ * UITSLUITEND bekende woorden — geen enkel onbekend woord.
+ * Avri en Hila spreken samen — dialogische presentatie.
+ * Succeservaring aan het einde van elke les.
+ */
+function toonFase5a() {
+  const les       = window.huidigeLesData.lesNummer;
+  const container = document.getElementById('les-fase-container');
+
+  // Sla voortgang op
+  Opslag.slaOp(`${OPSLAG_PREFIXEN.voortgang}${les}`,
+    { voltooid: true, datum: new Date().toISOString() });
+
+  const woorden = window.huidigeLesData.nieuweWoorden;
+
+  container.innerHTML = `
+    <div class="min-h-screen flex flex-col p-6">
+      <p class="text-sm text-gray-500 mb-2 text-center">Fase 5 van 7 — Consolidatie</p>
+      <div class="text-center mb-6">
+        <p class="text-3xl font-bold text-green-700">🎉</p>
+        <p class="text-xl font-bold text-green-700 mt-2">Les ${les} voltooid!</p>
+        <p class="text-sm text-gray-500 mt-1">
+          ${woorden.length} nieuwe woorden geleerd
+        </p>
+      </div>
+
+      <!-- Overzicht nieuwe woorden -->
+      <div class="space-y-2 mb-6 max-w-md mx-auto w-full">
+        ${woorden.map(w => `
+          <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg"
+               onclick="AudioManager.spreekUit('${stripNikud(w.he_clean)}', 'vrouw')">
+            <span class="font-hebrew text-xl" dir="rtl" lang="he">${w.he_clean}</span>
+            <span class="text-gray-500 text-sm">${w.uitspraak}</span>
+            <span class="text-gray-700 text-sm">${w.nl}</span>
+          </div>
+        `).join('')}
+      </div>
+
+      <!-- Navigatie -->
+      <div class="grid grid-cols-2 gap-3 max-w-md mx-auto w-full mt-auto">
+        <button onclick="toonScherm('screen-games')"
+                class="py-3 bg-purple-600 text-white rounded-xl font-semibold">
+          🎮 Spelletjes
+        </button>
+        <button onclick="startLes(${les + 1}); toonScherm('screen-lesson')"
+                class="py-3 bg-blue-600 text-white rounded-xl font-semibold">
+          Volgende les →
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+/**
+ * Fase 5b: Consolidatie via een liedje uit muziek_database.json.
+ * Alleen liedjes waarvan ≥70% van de woorden bekend zijn.
+ * Als geen geschikt liedje beschikbaar is: terugval naar fase 5a.
+ */
+function toonFase5b() {
+  const les = window.huidigeLesData.lesNummer;
+
+  // Zoek geschikt liedje voor dit lesniveau
+  if (!MUZIEK_DB) {
+    toonFase5a();
+    return;
+  }
+
+  const geschikt = MUZIEK_DB.liederen.filter(l => l.groep <= Math.ceil(les / 2));
+  if (geschikt.length === 0) {
+    toonFase5a();
+    return;
+  }
+
+  const lied = kiesWillekeurig(geschikt, 1)[0];
+  // openMuziekLes wordt geïmplementeerd in Module K
+  toonFase5a();
+}
+
+// ══════════════════════════════════════════════════════════════
+// MODULE L: UI-controller (navigatie, schermwissels)
+// ══════════════════════════════════════════════════════════════
+
+/**
+ * Toont het opgegeven scherm en verbergt alle andere schermen.
+ * @param {string} schermId - ID van het te tonen scherm
+ */
+function toonScherm(schermId) {
+  const SCHERMEN = [
+    'screen-start', 'screen-onboarding', 'screen-lesson',
+    'screen-review', 'screen-games', 'screen-music',
+    'screen-progress', 'screen-settings'
+  ];
+  SCHERMEN.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.toggle('hidden', id !== schermId);
+  });
+  AppLogger.debug('UI', `Scherm: ${schermId}`);
+}
+
+// ══════════════════════════════════════════════════════════════
 // MODULE N: Testmodule (alleen actief bij ?test=true)
 // ══════════════════════════════════════════════════════════════
 
@@ -461,6 +882,9 @@ async function runAllTests() {
   const tests = [
     testStripNikud,
     testSRSBerekening,
+    testGetNieuweWoorden,
+    testGetBekendZinnen,
+    testStreakRegistratie,
   ];
 
   const resultaten = [];
@@ -503,6 +927,51 @@ async function testSRSBerekening() {
   }
 }
 
+async function testGetNieuweWoorden() {
+  const naam = 'getNieuweWoorden()';
+  try {
+    const nieuw = getNieuweWoorden(2);
+    if (!Array.isArray(nieuw)) throw new Error('Geen array');
+    if (nieuw.length === 0) throw new Error('Les 2 heeft geen nieuwe woorden');
+    console.log(`✅ ${naam} — les 2: ${nieuw.length} nieuwe woorden`);
+    return { ok: true, naam };
+  } catch(fout) {
+    console.error(`❌ ${naam}:`, fout.message);
+    return { ok: false, naam, fout: fout.message };
+  }
+}
+
+async function testGetBekendZinnen() {
+  const naam = 'getBekendZinnen()';
+  try {
+    const zinnen = getBekendZinnen(5, 5);
+    if (!Array.isArray(zinnen)) throw new Error('Geen array');
+    zinnen.forEach(z => {
+      if (parseInt(z.les) > 5) throw new Error(`Zin uit les ${z.les} bij les 5`);
+    });
+    console.log(`✅ ${naam} — ${zinnen.length} zinnen bij les 5`);
+    return { ok: true, naam };
+  } catch(fout) {
+    console.error(`❌ ${naam}:`, fout.message);
+    return { ok: false, naam, fout: fout.message };
+  }
+}
+
+async function testStreakRegistratie() {
+  const naam = 'Streak registratie';
+  try {
+    StreakManager.registreerActiviteit();
+    const streak = StreakManager.getStreak();
+    if (typeof streak.huidig !== 'number' || streak.huidig < 1)
+      throw new Error(`streak.huidig: ${streak.huidig}`);
+    console.log(`✅ ${naam} — dag ${streak.huidig}`);
+    return { ok: true, naam };
+  } catch(fout) {
+    console.error(`❌ ${naam}:`, fout.message);
+    return { ok: false, naam, fout: fout.message };
+  }
+}
+
 function toonTestRapport(resultaten) {
   const geslaagd = resultaten.filter(r => r.ok).length;
   const rapport  = document.createElement('div');
@@ -527,7 +996,23 @@ function toonTestRapport(resultaten) {
 // ══════════════════════════════════════════════════════════════
 // APP START
 // ══════════════════════════════════════════════════════════════
-document.addEventListener('DOMContentLoaded', () => laadAlleDatabases());
+document.addEventListener('DOMContentLoaded', async () => {
+  AppLogger.info('App', `${APP_NAAM} ${APP_VERSIE} start`);
+  await laadAlleDatabases();
+
+  // Toon simpel startscherm met les-knop
+  const les = huidigeLes();
+  document.getElementById('screen-start').innerHTML = `
+    <div class="min-h-screen bg-gradient-to-b from-blue-50 to-white p-6 flex flex-col items-center justify-center">
+      <h1 class="text-2xl font-bold text-blue-800 mb-8">${APP_NAAM}</h1>
+      <button onclick="startLes(${les}); toonScherm('screen-lesson')"
+              class="px-8 py-4 bg-blue-600 text-white rounded-xl text-lg font-semibold hover:bg-blue-700">
+        Les ${les} starten →
+      </button>
+    </div>`;
+
+  AppLogger.info('App', 'Klaar');
+});
   </script>
 </body>
 </html>
