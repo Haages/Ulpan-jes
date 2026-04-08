@@ -161,10 +161,12 @@ let _afwisselTeller = 0;
 function bepaalStem(woord) {
   const he = stripNikud(woord.he_clean || '');
   const nl = woord.nl || '';
+  const en = woord.en || '';
 
-  if (nl.includes('(m)')) return 'man';
-  if (nl.includes('(f)')) return 'vrouw';
-  if (nl.includes('infinitief') || nl.includes('to ')) return (_afwisselTeller++ % 2 === 0) ? 'man' : 'vrouw';
+  // Check nl EN en velden voor geslacht
+  if (nl.includes('(m)') || en.includes('(m)')) return 'man';
+  if (nl.includes('(f)') || en.includes('(f)')) return 'vrouw';
+  if (he.startsWith('ל') && woord.soort === 'ww') return (_afwisselTeller++ % 2 === 0) ? 'man' : 'vrouw';
   if (woord.soort === 'vw') {
     if (he === 'אתה' || he === 'הוא') return 'man';
     if (he === 'את' || he === 'היא') return 'vrouw';
@@ -383,6 +385,7 @@ const AudioManager = {
   AZURE_ENDPOINT: `https://${AZURE_REGIO}.tts.speech.microsoft.com/cognitiveservices/v1`,
   bezig: false,
   huidigAudio: null,
+  _stopRequested: false,
 
   /**
    * Stopt de huidige audio onmiddellijk.
@@ -390,11 +393,12 @@ const AudioManager = {
   stop() {
     if (this.huidigAudio) {
       this.huidigAudio.pause();
-      this.huidigAudio.currentTime = 0;
+      this.huidigAudio.src = '';
       this.huidigAudio = null;
     }
     if (window.speechSynthesis) speechSynthesis.cancel();
     this.bezig = false;
+    this._stopRequested = true;
   },
 
   /**
@@ -410,6 +414,7 @@ const AudioManager = {
       return false;
     }
 
+    this._stopRequested = false;
     const stemNaam    = stem === 'man' ? TTS_STEM_MAN : TTS_STEM_VROUW;
     const schoneTekst = tekst.trim();
     AppLogger.debug('TTS', `${stem}:${schoneTekst}`);
@@ -679,18 +684,20 @@ function startLes(lesNummer) {
 
 /**
  * Toont de opgegeven fase van de huidige les.
- * @param {number|string} faseNummer - Fase 1, 2, 3, '3b', 4, '5a' of '5b'
+ * @param {number} faseNummer - Fase 1-8
  */
 function toonFase(faseNummer) {
+  AudioManager.stop();
   window.huidigeLesData.huidigeFase = faseNummer;
   const fasen = {
-    1:   toonFase1,
-    2:   toonFase2,
-    3:   toonFase3,
-    '3b': toonFase3b,
-    4:   toonFase4,
-    '5a': toonFase5a,
-    '5b': toonFase5b,
+    1: toonFase1,       // Listening
+    2: toonFase2,       // Look and repeat
+    3: toonFase3,       // Understanding
+    4: toonFase3b,      // Word image
+    5: toonFase4,       // Practice sentences
+    6: toonFase5a,      // Music
+    7: toonFase7Video,  // Video
+    8: toonFase8Woorden,// Word list
   };
   const fn = fasen[faseNummer];
   if (fn) fn();
@@ -718,7 +725,7 @@ async function toonFase1() {
 
     container.innerHTML = `
       <div class="min-h-screen bg-blue-50 flex flex-col items-center justify-center p-6">
-        <p class="text-sm text-gray-500 mb-1">Lesson ${window.huidigeLesData.lesNummer} — Phase 1 of 7 — Listening</p>
+        <p class="text-sm text-gray-500 mb-1">Lesson ${window.huidigeLesData.lesNummer} — Phase 1 of 8 — Listening</p>
         <p class="text-gray-600 mb-6 text-center">
           Listen and understand. You don't need to do anything yet.
         </p>
@@ -777,7 +784,7 @@ async function toonFase2() {
     container.innerHTML = `
       <div class="min-h-screen flex flex-col items-center justify-center p-6">
         <p class="text-sm text-gray-500 mb-4">
-          Lesson ${window.huidigeLesData.lesNummer} — Phase 2 of 7 — Look and repeat (${idx + 1}/${woorden.length})
+          Lesson ${window.huidigeLesData.lesNummer} — Phase 2 of 8 — Look and repeat (${idx + 1}/${woorden.length})
         </p>
         <div class="text-6xl font-bold mb-1" dir="rtl" lang="he"
              style="font-family: Arial, sans-serif;">${woord.he_clean}</div>
@@ -822,13 +829,13 @@ async function toonFase3() {
   let idx = 0;
 
   const render = async () => {
-    if (idx >= woorden.length) { toonFase('3b'); return; }
+    if (idx >= woorden.length) { toonFase(5); return; }
     const woord = woorden[idx];
 
     container.innerHTML = `
       <div class="min-h-screen flex flex-col items-center justify-center p-6">
         <p class="text-sm text-gray-500 mb-4">
-          Lesson ${window.huidigeLesData.lesNummer} — Phase 3 of 7 — Understanding (${idx + 1}/${woorden.length})
+          Lesson ${window.huidigeLesData.lesNummer} — Phase 3 of 8 — Understanding (${idx + 1}/${woorden.length})
         </p>
         <div class="font-hebrew text-6xl mb-4" dir="rtl" lang="he">${woord.he}</div>
         <div class="text-2xl text-blue-600 mb-6">${woord.uitspraak}</div>
@@ -877,16 +884,16 @@ function toonFase3b() {
   const container = document.getElementById('les-fase-container');
   let idx = 0;
 
-  if (woorden.length === 0) { toonFase(4); return; }
+  if (woorden.length === 0) { toonFase(5); return; }
 
   const render = () => {
-    if (idx >= woorden.length) { toonFase(4); return; }
+    if (idx >= woorden.length) { toonFase(5); return; }
     const woord = woorden[idx];
 
     container.innerHTML = `
       <div class="min-h-screen flex flex-col items-center justify-center p-6">
         <p class="text-sm text-gray-500 mb-4">
-          Lesson ${window.huidigeLesData.lesNummer} — Phase 4 of 7 — Word image (${idx + 1}/${woorden.length})
+          Lesson ${window.huidigeLesData.lesNummer} — Phase 4 of 8 — Word image (${idx + 1}/${woorden.length})
         </p>
         <div class="font-hebrew text-7xl mb-2 tracking-wider"
              dir="rtl" lang="he">${woord.he}</div>
@@ -936,13 +943,13 @@ async function toonFase4() {
   let zinIndex    = 0;
 
   if (zinnen.length === 0) {
-    toonFase('5a');
+    toonFase(6);
     return;
   }
 
   const toonVolgend = async () => {
     if (zinIndex >= zinnen.length) {
-      toonFase('5a');
+      toonFase(6);
       return;
     }
     const zin = zinnen[zinIndex++];
@@ -953,7 +960,7 @@ async function toonFase4() {
     container.innerHTML = `
       <div class="min-h-screen flex flex-col items-center justify-center p-6">
         <p class="text-sm text-gray-500 mb-4">
-          Lesson ${window.huidigeLesData.lesNummer} — Phase 5 of 7 — Practice sentences (${zinIndex}/${zinnen.length})
+          Lesson ${window.huidigeLesData.lesNummer} — Phase 5 of 8 — Practice sentences (${zinIndex}/${zinnen.length})
         </p>
         ${enCue ? `<p class="text-lg text-gray-700 mb-4 text-center">${enCue}</p>` : ''}
         <div class="font-hebrew text-2xl text-right leading-relaxed mb-4
@@ -999,16 +1006,16 @@ function toonFase5a() {
 
   container.innerHTML = `
     <div class="min-h-screen flex flex-col p-6">
-      <p class="text-sm text-gray-500 mb-2 text-center">Lesson ${window.huidigeLesData.lesNummer} — Phase 6 of 7 — Story</p>
+      <p class="text-sm text-gray-500 mb-2 text-center">Lesson ${window.huidigeLesData.lesNummer} — Phase 6 of 8 — Music</p>
       <div class="text-center mb-6">
         <p class="text-3xl font-bold text-green-700">🎉</p>
         <p class="text-xl font-bold text-green-700 mt-2">Lesson ${les} complete!</p>
         <p class="text-sm text-gray-500 mt-1">${woorden.length} new words learned</p>
       </div>
       <div class="space-y-2 mb-6 max-w-md mx-auto w-full" id="fase5a-woorden"></div>
-      <button onclick="toonFase('5b')"
+      <button onclick="toonFase(7)"
               class="w-full max-w-md mx-auto py-3 bg-blue-600 text-white rounded-xl font-semibold mt-auto">
-        Continue to Music →
+        Continue to Video →
       </button>
     </div>`;
 
@@ -1053,8 +1060,64 @@ function toonFase5b() {
 
   container.innerHTML = `
     <div class="min-h-screen flex flex-col p-6">
-      <p class="text-sm text-gray-500 mb-4 text-center">Lesson ${les} — Phase 7 of 7 — Music</p>
+      <p class="text-sm text-gray-500 mb-4 text-center">Lesson ${les} — Phase 6 of 8 — Music</p>
+      <button onclick="toonFase(5)" class="text-sm text-gray-400 mb-4">← Previous phase</button>
       ${liedHTML || '<p class="text-gray-400 text-center mb-6">No songs available for this level yet.</p>'}
+      <button onclick="toonFase(7)"
+              class="w-full max-w-md mx-auto py-3 bg-blue-600 text-white rounded-xl font-semibold mt-auto">
+        Continue to Video →
+      </button>
+    </div>`;
+}
+
+/**
+ * Phase 7: Video — YouTube embed relevant to the lesson.
+ */
+function toonFase7Video() {
+  const les       = window.huidigeLesData.lesNummer;
+  const container = document.getElementById('les-fase-container');
+
+  // Video per les — les 1 = Alef-Bet
+  const videoPerLes = {
+    1: 'Z1q3NW5Hs3M',
+  };
+  const videoId = videoPerLes[les] || 'Z1q3NW5Hs3M';
+
+  container.innerHTML = `
+    <div class="min-h-screen flex flex-col p-6">
+      <p class="text-sm text-gray-500 mb-2 text-center">Lesson ${les} — Phase 7 of 8 — Video</p>
+      <button onclick="toonFase(6)" class="text-sm text-gray-400 mb-4">← Previous phase</button>
+      <div class="w-full max-w-md mx-auto mb-6" style="aspect-ratio:16/9;">
+        <iframe src="https://www.youtube.com/embed/${videoId}"
+                class="w-full h-full rounded-xl"
+                frameborder="0" allowfullscreen
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+        </iframe>
+      </div>
+      <button onclick="toonFase(8)"
+              class="w-full max-w-md mx-auto py-3 bg-blue-600 text-white rounded-xl font-semibold mt-auto">
+        Continue to Word list →
+      </button>
+    </div>`;
+}
+
+/**
+ * Phase 8: Word list — overview of all words from the lesson with audio.
+ */
+function toonFase8Woorden() {
+  const les       = window.huidigeLesData.lesNummer;
+  const woorden   = window.huidigeLesData.nieuweWoorden;
+  const container = document.getElementById('les-fase-container');
+
+  container.innerHTML = `
+    <div class="min-h-screen flex flex-col p-6">
+      <p class="text-sm text-gray-500 mb-2 text-center">Lesson ${les} — Phase 8 of 8 — Word list</p>
+      <button onclick="toonFase(7)" class="text-sm text-gray-400 mb-4">← Previous phase</button>
+      <div class="text-center mb-4">
+        <p class="text-xl font-bold text-green-700">🎉 Lesson ${les} complete!</p>
+        <p class="text-sm text-gray-500 mt-1">${woorden.length} new words</p>
+      </div>
+      <div class="space-y-2 mb-6 max-w-md mx-auto w-full" id="fase8-woorden"></div>
       <div class="grid grid-cols-2 gap-3 max-w-md mx-auto w-full mt-auto">
         <button onclick="renderGamesMenu(huidigeLes()); toonScherm('screen-games')"
                 class="py-3 bg-purple-600 text-white rounded-xl font-semibold">
@@ -1066,6 +1129,14 @@ function toonFase5b() {
         </button>
       </div>
     </div>`;
+
+  document.getElementById('fase8-woorden').innerHTML = woorden.map((w, i) => `
+    <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg cursor-pointer"
+         onclick="AudioManager.stop(); spreekWoordUit(window.huidigeLesData.nieuweWoorden[${i}])">
+      <span class="font-hebrew text-xl" dir="rtl" lang="he">${w.he_clean}</span>
+      <span class="text-gray-500 text-sm">${w.uitspraak}</span>
+      <span class="text-gray-700 text-sm">${w.en || w.nl}</span>
+    </div>`).join('');
 }
 
 // ══════════════════════════════════════════════════════════════
