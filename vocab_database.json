@@ -3,7 +3,7 @@
     {
       "id": 1,
       "les": "1",
-      "he": "אֲנִי",
+      "he": "אני",
       "he_clean": "אני",
       "uitspraak": "ani",
       "nl": "I",
@@ -14,7 +14,7 @@
     {
       "id": 2,
       "les": "1",
-      "he": "אַתָּה",
+      "he": "אתה",
       "he_clean": "אתה",
       "uitspraak": "ata",
       "nl": "you (m)",
@@ -25,7 +25,7 @@
     {
       "id": 3,
       "les": "1",
-      "he": "אַת",
+      "he": "את",
       "he_clean": "את",
       "uitspraak": "at",
       "nl": "you (f)",
@@ -115,7 +115,7 @@
     {
       "id": 11,
       "les": "1",
-      "he": "מִי",
+      "he": "מי",
       "he_clean": "מי",
       "uitspraak": "mi",
       "nl": "who",
@@ -126,7 +126,7 @@
     {
       "id": 12,
       "les": "1",
-      "he": "מָה",
+      "he": "מה",
       "he_clean": "מה",
       "uitspraak": "ma",
       "nl": "what",
@@ -137,7 +137,7 @@
     {
       "id": 13,
       "les": "1",
-      "he": "לֹא",
+      "he": "לא",
       "he_clean": "לא",
       "uitspraak": "lo",
       "nl": "not / no",
