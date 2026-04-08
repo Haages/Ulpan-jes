@@ -397,53 +397,79 @@ const AudioManager = {
       return false;
     }
 
-    const stemNaam         = stem === 'man' ? TTS_STEM_MAN : TTS_STEM_VROUW;
-    const schoneTekst      = tekst.trim();
-    const apiSleutel       = window.AZURE_API_SLEUTEL || null;
+    const stemNaam    = stem === 'man' ? TTS_STEM_MAN : TTS_STEM_VROUW;
+    const schoneTekst = tekst.trim();
+    const apiSleutel  = window.AZURE_API_SLEUTEL || null;
 
-    if (!apiSleutel) {
-      AppLogger.error('TTS', 'Azure API key niet geconfigureerd');
-      return false;
+    // Probeer Azure TTS als API-sleutel beschikbaar is
+    if (apiSleutel) {
+      const ssml = `<speak version='1.0' xml:lang='he-IL'>
+        <voice name='${stemNaam}'>${schoneTekst}</voice>
+      </speak>`;
+
+      try {
+        this.bezig = true;
+        AppLogger.debug('TTS', 'SSML', ssml);
+        const resp = await fetch(this.AZURE_ENDPOINT, {
+          method: 'POST',
+          headers: {
+            'Ocp-Apim-Subscription-Key': apiSleutel,
+            'Content-Type': 'application/ssml+xml',
+            'X-Microsoft-OutputFormat': 'audio-16khz-128kbitrate-mono-mp3',
+          },
+          body: ssml,
+        });
+
+        if (!resp.ok) throw new Error(`Azure TTS HTTP ${resp.status}`);
+
+        const blob  = await resp.blob();
+        const url   = URL.createObjectURL(blob);
+        const audio = new Audio(url);
+
+        await new Promise((resolve, reject) => {
+          audio.onended = resolve;
+          audio.onerror = reject;
+          audio.play();
+        });
+
+        URL.revokeObjectURL(url);
+        this.bezig = false;
+        return true;
+
+      } catch(fout) {
+        this.bezig = false;
+        AppLogger.debug('TTS', 'Azure failed, trying browser speech', fout.message);
+      }
     }
 
-    const ssml = `<speak version='1.0' xml:lang='he-IL'>
-      <voice name='${stemNaam}'>${schoneTekst}</voice>
-    </speak>`;
+    // Fallback: Web Speech API (gratis, geen sleutel nodig)
+    return this._webSpeechFallback(schoneTekst);
+  },
 
-    try {
-      this.bezig = true;
-      AppLogger.debug('TTS', 'SSML', ssml);
-      const resp = await fetch(this.AZURE_ENDPOINT, {
-        method: 'POST',
-        headers: {
-          'Ocp-Apim-Subscription-Key': apiSleutel,
-          'Content-Type': 'application/ssml+xml',
-          'X-Microsoft-OutputFormat': 'audio-16khz-128kbitrate-mono-mp3',
-        },
-        body: ssml,
-      });
-
-      if (!resp.ok) throw new Error(`Azure TTS HTTP ${resp.status}`);
-
-      const blob  = await resp.blob();
-      const url   = URL.createObjectURL(blob);
-      const audio = new Audio(url);
-
-      await new Promise((resolve, reject) => {
-        audio.onended = resolve;
-        audio.onerror = reject;
-        audio.play();
-      });
-
-      URL.revokeObjectURL(url);
-      this.bezig = false;
-      return true;
-
-    } catch(fout) {
-      this.bezig = false;
-      AppLogger.error('TTS', 'Azure TTS failed', fout);
-      return false;
-    }
+  /**
+   * Web Speech API fallback — werkt zonder Azure sleutel.
+   * @param {string} tekst - Tekst om uit te spreken
+   * @returns {Promise<boolean>}
+   * @private
+   */
+  _webSpeechFallback(tekst) {
+    return new Promise(resolve => {
+      if (!window.speechSynthesis) {
+        AppLogger.debug('TTS', 'No speech synthesis available');
+        resolve(false);
+        return;
+      }
+      const utt = new SpeechSynthesisUtterance(tekst);
+      utt.lang = 'he-IL';
+      utt.rate = 0.85;
+      const stemmen = speechSynthesis.getVoices();
+      const heStem = stemmen.find(s => s.lang.startsWith('he'));
+      if (heStem) utt.voice = heStem;
+      utt.onend = () => resolve(true);
+      utt.onerror = () => resolve(false);
+      speechSynthesis.cancel();
+      speechSynthesis.speak(utt);
+    });
   },
 
   /**
@@ -497,6 +523,13 @@ const AudioManager = {
     }
   }
 };
+
+// Laad stemmen zodra beschikbaar (sommige browsers laden async)
+if (window.speechSynthesis) {
+  speechSynthesis.onvoiceschanged = () => {
+    AppLogger.debug('TTS', `${speechSynthesis.getVoices().length} voices loaded`);
+  };
+}
 
 // ══════════════════════════════════════════════════════════════
 // MODULE G: SRS-engine (SM-2 algoritme)
@@ -659,27 +692,6 @@ async function toonFase1() {
   const woorden   = window.huidigeLesData.nieuweWoorden;
   const container = document.getElementById('les-fase-container');
   if (!container) return;
-
-  // Check of TTS beschikbaar is
-  if (!window.AZURE_API_SLEUTEL) {
-    container.innerHTML = `
-      <div class="min-h-screen flex flex-col items-center justify-center p-6">
-        <div class="text-5xl mb-6">🔇</div>
-        <h2 class="text-xl font-bold text-gray-800 mb-4 text-center">Audio not available</h2>
-        <p class="text-gray-600 text-center mb-4">
-          Configure your Azure API key in Settings first.
-        </p>
-        <p class="text-sm text-gray-400 text-center mb-8">
-          portal.azure.com → ivriet-speech → Keys and Endpoint → Key 1
-        </p>
-        <button onclick="renderSettingsScherm(); toonScherm('screen-settings')"
-                class="px-8 py-3 bg-blue-600 text-white rounded-xl text-lg hover:bg-blue-700">
-          ⚙️ Go to Settings
-        </button>
-      </div>
-    `;
-    return;
-  }
 
   let idx = 0;
 
