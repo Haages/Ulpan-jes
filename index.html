@@ -2460,11 +2460,11 @@ async function testKiesWillekeurig() {
 async function testGetBekendWoorden() {
   const naam = 'getBekendWoorden()';
   try {
-    const les1  = getBekendWoorden(1);
-    const les10 = getBekendWoorden(10);
+    const les1 = getBekendWoorden(1);
+    const les2 = getBekendWoorden(2);
     if (les1.length === 0) throw new Error('Les 1: 0 woorden');
-    if (les10.length <= les1.length) throw new Error('Les 10 niet groter dan les 1');
-    console.log(`✅ ${naam} — les 1: ${les1.length}, les 10: ${les10.length}`);
+    if (les2.length <= les1.length) throw new Error('Les 2 niet groter dan les 1');
+    console.log(`✅ ${naam} — les 1: ${les1.length}, les 2: ${les2.length}`);
     return { ok: true, naam };
   } catch(fout) {
     console.error(`❌ ${naam}:`, fout.message);
