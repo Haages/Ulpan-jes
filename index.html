@@ -2238,6 +2238,82 @@ function toonScherm(schermId) {
   AppLogger.debug('UI', `Scherm: ${schermId}`);
 }
 
+/**
+ * Rendert het startscherm met streak, dagelijkse les en navigatie.
+ */
+function renderStartScherm() {
+  const streak    = StreakManager.getStreak();
+  const les       = huidigeLes();
+  const teHerhalen = SRSEngine.getWoordenVoorHerhaling(les).length;
+  const container  = document.getElementById('screen-start');
+  if (!container) return;
+
+  container.innerHTML = `
+    <div class="min-h-screen bg-gradient-to-b from-blue-50 to-white p-6 max-w-md mx-auto">
+
+      <!-- Header -->
+      <div class="flex justify-between items-center mb-8">
+        <h1 class="text-2xl font-bold text-blue-800">Ulpan Jes</h1>
+        <div class="flex items-center gap-2 bg-orange-100 px-3 py-1 rounded-full">
+          <span>🔥</span>
+          <span class="font-bold text-orange-700">${streak.huidig}</span>
+        </div>
+      </div>
+
+      <!-- Dagelijkse les -->
+      <div class="bg-white rounded-2xl shadow-sm p-6 mb-4">
+        <p class="text-sm text-gray-500 mb-1">Vandaag</p>
+        <h2 class="text-xl font-bold mb-4">Les ${les}</h2>
+        <button onclick="startLes(${les}); toonScherm('screen-lesson')"
+                class="w-full py-4 bg-blue-600 text-white rounded-xl text-lg font-semibold
+                       hover:bg-blue-700 transition-colors">
+          Les starten →
+        </button>
+      </div>
+
+      <!-- Herhaling -->
+      ${teHerhalen > 0 ? `
+      <div class="bg-yellow-50 border border-yellow-200 rounded-2xl p-4 mb-4">
+        <p class="font-semibold text-yellow-800">📚 ${teHerhalen} woorden te herhalen</p>
+        <button onclick="toonScherm('screen-review')"
+                class="mt-2 px-4 py-2 bg-yellow-500 text-white rounded-lg text-sm
+                       hover:bg-yellow-600 transition-colors">
+          Nu herhalen
+        </button>
+      </div>` : ''}
+
+      <!-- Navigatie -->
+      <div class="grid grid-cols-4 gap-2 mt-6">
+        ${[
+          { icon: '🎮', label: 'Spelletjes', actie: "renderSpelletjesMenu(huidigeLes()); toonScherm('screen-games')" },
+          { icon: '🎵', label: 'Muziek',     actie: "renderMuziekLijst()" },
+          { icon: '📊', label: 'Voortgang',  actie: "toonScherm('screen-progress')" },
+          { icon: '⚙️', label: 'Instellingen', actie: "toonScherm('screen-settings')" },
+        ].map(nav => `
+          <button onclick="${nav.actie}"
+                  class="flex flex-col items-center p-3 bg-white rounded-xl shadow-sm
+                         hover:shadow-md transition-shadow">
+            <span class="text-2xl mb-1">${nav.icon}</span>
+            <span class="text-xs text-gray-600">${nav.label}</span>
+          </button>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
+
+// ══════════════════════════════════════════════════════════════
+// MODULE M: PWA (Service Worker registratie)
+// ══════════════════════════════════════════════════════════════
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => AppLogger.info('PWA', 'Service Worker geregistreerd'))
+      .catch(err => AppLogger.warn('PWA', 'Service Worker mislukt', err));
+  });
+}
+
 // ══════════════════════════════════════════════════════════════
 // MODULE N: Testmodule (alleen actief bij ?test=true)
 // ══════════════════════════════════════════════════════════════
@@ -2254,10 +2330,14 @@ async function runAllTests() {
   const tests = [
     testDatabasesGeladen,
     testStripNikud,
-    testSRSBerekening,
+    testKiesWillekeurig,
+    testGetBekendWoorden,
     testGetNieuweWoorden,
     testGetBekendZinnen,
+    testOpslagRondtrip,
+    testSRSBerekening,
     testStreakRegistratie,
+    testSchermWisseling,
   ];
 
   const resultaten = [];
@@ -2301,16 +2381,29 @@ async function testStripNikud() {
   }
 }
 
-async function testSRSBerekening() {
-  const naam = 'SRS SM-2 berekening';
+async function testKiesWillekeurig() {
+  const naam = 'kiesWillekeurig()';
   try {
-    const begin = { interval: 1, easiness: 2.5, repetitions: 0 };
-    const na5   = SRSEngine.berekenNieuwInterval(begin, 5);
-    if (na5.repetitions !== 1) throw new Error('Repetitions na correct fout');
-    if (na5.interval < 1) throw new Error('Interval < 1');
-    const na0   = SRSEngine.berekenNieuwInterval(na5, 0);
-    if (na0.repetitions !== 0) throw new Error('Reset na fout werkt niet');
+    const arr = [1,2,3,4,5];
+    if (kiesWillekeurig(arr, 3).length !== 3) throw new Error('Verkeerd aantal');
+    if (new Set(kiesWillekeurig(arr, 3)).size !== 3) throw new Error('Duplicaten');
+    if (kiesWillekeurig([], 3).length !== 0) throw new Error('Lege array fout');
     console.log(`✅ ${naam}`);
+    return { ok: true, naam };
+  } catch(fout) {
+    console.error(`❌ ${naam}:`, fout.message);
+    return { ok: false, naam, fout: fout.message };
+  }
+}
+
+async function testGetBekendWoorden() {
+  const naam = 'getBekendWoorden()';
+  try {
+    const les1  = getBekendWoorden(1);
+    const les10 = getBekendWoorden(10);
+    if (les1.length === 0) throw new Error('Les 1: 0 woorden');
+    if (les10.length <= les1.length) throw new Error('Les 10 niet groter dan les 1');
+    console.log(`✅ ${naam} — les 1: ${les1.length}, les 10: ${les10.length}`);
     return { ok: true, naam };
   } catch(fout) {
     console.error(`❌ ${naam}:`, fout.message);
@@ -2348,6 +2441,38 @@ async function testGetBekendZinnen() {
   }
 }
 
+async function testOpslagRondtrip() {
+  const naam = 'Opslag rondtrip';
+  try {
+    Opslag.slaOp('test_sleutel', { waarde: 42 });
+    if (Opslag.laad('test_sleutel')?.waarde !== 42) throw new Error('Opslaan/laden mislukt');
+    Opslag.verwijder('test_sleutel');
+    if (Opslag.laad('test_sleutel') !== null) throw new Error('Verwijderen mislukt');
+    console.log(`✅ ${naam}`);
+    return { ok: true, naam };
+  } catch(fout) {
+    console.error(`❌ ${naam}:`, fout.message);
+    return { ok: false, naam, fout: fout.message };
+  }
+}
+
+async function testSRSBerekening() {
+  const naam = 'SRS SM-2 berekening';
+  try {
+    const begin = { interval: 1, easiness: 2.5, repetitions: 0 };
+    const na5   = SRSEngine.berekenNieuwInterval(begin, 5);
+    if (na5.repetitions !== 1) throw new Error('Repetitions na correct fout');
+    if (na5.interval < 1) throw new Error('Interval < 1');
+    const na0   = SRSEngine.berekenNieuwInterval(na5, 0);
+    if (na0.repetitions !== 0) throw new Error('Reset na fout werkt niet');
+    console.log(`✅ ${naam}`);
+    return { ok: true, naam };
+  } catch(fout) {
+    console.error(`❌ ${naam}:`, fout.message);
+    return { ok: false, naam, fout: fout.message };
+  }
+}
+
 async function testStreakRegistratie() {
   const naam = 'Streak registratie';
   try {
@@ -2356,6 +2481,25 @@ async function testStreakRegistratie() {
     if (typeof streak.huidig !== 'number' || streak.huidig < 1)
       throw new Error(`streak.huidig: ${streak.huidig}`);
     console.log(`✅ ${naam} — dag ${streak.huidig}`);
+    return { ok: true, naam };
+  } catch(fout) {
+    console.error(`❌ ${naam}:`, fout.message);
+    return { ok: false, naam, fout: fout.message };
+  }
+}
+
+async function testSchermWisseling() {
+  const naam = 'Schermwisseling';
+  try {
+    toonScherm('screen-start');
+    const start = document.getElementById('screen-start');
+    if (!start || start.classList.contains('hidden'))
+      throw new Error('screen-start niet zichtbaar');
+    toonScherm('screen-games');
+    if (!start.classList.contains('hidden'))
+      throw new Error('screen-start nog zichtbaar na wissel');
+    toonScherm('screen-start');
+    console.log(`✅ ${naam}`);
     return { ok: true, naam };
   } catch(fout) {
     console.error(`❌ ${naam}:`, fout.message);
@@ -2389,28 +2533,13 @@ function toonTestRapport(resultaten) {
 // ══════════════════════════════════════════════════════════════
 document.addEventListener('DOMContentLoaded', async () => {
   AppLogger.info('App', `${APP_NAAM} ${APP_VERSIE} start`);
+
   await laadAlleDatabases();
 
-  // Toon startscherm met les-knop en navigatie
-  const les = huidigeLes();
-  document.getElementById('screen-start').innerHTML = `
-    <div class="min-h-screen bg-gradient-to-b from-blue-50 to-white p-6 flex flex-col items-center justify-center">
-      <h1 class="text-2xl font-bold text-blue-800 mb-8">${APP_NAAM}</h1>
-      <button onclick="startLes(${les}); toonScherm('screen-lesson')"
-              class="w-full max-w-xs px-8 py-4 bg-blue-600 text-white rounded-xl text-lg font-semibold hover:bg-blue-700 mb-4">
-        Les ${les} starten →
-      </button>
-      <button onclick="renderSpelletjesMenu(huidigeLes()); toonScherm('screen-games')"
-              class="w-full max-w-xs px-8 py-3 bg-purple-600 text-white rounded-xl font-semibold hover:bg-purple-700 mb-3">
-        🎮 Spelletjes
-      </button>
-      <button onclick="renderMuziekLijst()"
-              class="w-full max-w-xs px-8 py-3 bg-green-600 text-white rounded-xl font-semibold hover:bg-green-700">
-        🎵 Muziek
-      </button>
-    </div>`;
+  renderStartScherm();
+  toonScherm('screen-start');
+  renderSpelletjesMenu(huidigeLes());
 
-  renderSpelletjesMenu(les);
   AppLogger.info('App', 'Klaar');
 });
   </script>
