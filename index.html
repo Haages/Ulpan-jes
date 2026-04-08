@@ -84,7 +84,7 @@ const AZURE_REGIO       = 'eastus';
 const AZURE_RESOURCE    = 'ivriet-speech';
 const TTS_STEM_MAN      = 'he-IL-AvriNeural';
 const TTS_STEM_VROUW    = 'he-IL-HilaNeural';
-const MAX_LES           = 19;
+const MAX_LES           = 21;
 const CORS_PROXY_URL    = 'https://corsproxy.io/?';
 const OPSLAG_PREFIXEN   = {
   voortgang:    'ujes_voortgang_',
@@ -246,16 +246,7 @@ function getBekendWoorden(lesNummer) {
  */
 function getNieuweWoorden(lesNummer) {
   if (!VOCAB_DB) return [];
-  // Les 1: geen vorige les, retourneer direct woorden met les === '1'
-  if (lesNummer <= 1) {
-    return VOCAB_DB.woorden.filter(w => w.les === '1');
-  }
-  // Les N>1: vergelijk bekendNaLes[N] met bekendNaLes[N-1]
-  const huidig = getBekendWoorden(lesNummer);
-  const vorigeSet = new Set(
-    (VOCAB_DB.bekendNaLes[String(lesNummer - 1)] || []).map(w => stripNikud(w).toLowerCase())
-  );
-  return huidig.filter(w => !vorigeSet.has(stripNikud(w.he_clean).toLowerCase()));
+  return VOCAB_DB.woorden.filter(w => w.les === String(lesNummer));
 }
 
 /**
@@ -606,7 +597,7 @@ async function toonFase2() {
         <div class="text-2xl text-blue-600 mb-1">${woord.uitspraak}</div>
         <div class="text-xl text-gray-700 mb-2">${woord.nl}</div>
         <div class="text-sm text-gray-400 mb-8">
-          ${woord.soort === 'ww' ? `שורש: ${woord.shoresh || '—'}` : ''}
+          ${woord.soort === 'ww' ? `<span dir="rtl" lang="he">שורש: ${woord.shoresh || '—'}</span>` : ''}
         </div>
         <p class="text-gray-500 text-sm mb-4">Spreek na zodra je het hoort</p>
         <button onclick="fase2Volgende()"
@@ -704,7 +695,7 @@ function toonFase3b() {
         <div class="text-gray-700 mb-4">${woord.nl}</div>
         ${woord.shoresh ? `
           <div class="bg-orange-50 border border-orange-200 rounded-lg p-3 mb-6 text-center">
-            <p class="text-xs text-orange-600 mb-1">שורש / woordwortel</p>
+            <p class="text-xs text-orange-600 mb-1" dir="rtl" lang="he">שורש / woordwortel</p>
             <p class="font-hebrew text-2xl text-orange-700"
                dir="rtl" lang="he">${woord.shoresh}</p>
           </div>
@@ -2485,7 +2476,7 @@ async function testGetNieuweWoorden() {
   try {
     const nieuw = getNieuweWoorden(1);
     if (!Array.isArray(nieuw)) throw new Error('Geen array');
-    if (nieuw.length === 0) throw new Error('Les 1 heeft geen nieuwe woorden');
+    if (nieuw.length !== 8) throw new Error(`Les 1 verwacht 8 woorden, kreeg ${nieuw.length}`);
     console.log(`✅ ${naam} — les 1: ${nieuw.length} nieuwe woorden`);
     return { ok: true, naam };
   } catch(fout) {
