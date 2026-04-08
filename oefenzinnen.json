@@ -446,8 +446,10 @@
       "he": "מי אתה? מה אתה רוצה?",
       "cues": {
         "en": "Who are you? What do you want?",
-        "nl": ""
-      }
+        "nl": "Wie ben jij? Wat wil jij?"
+      },
+      "niveau": 1,
+      "type": "nieuw"
     },
     {
       "id": 42,
@@ -455,17 +457,21 @@
       "he": "איפה את? אני בבית.",
       "cues": {
         "en": "Where are you (F)? I'm at home.",
-        "nl": ""
-      }
+        "nl": "Waar ben jij (v)? Ik ben thuis."
+      },
+      "niveau": 1,
+      "type": "nieuw"
     },
     {
       "id": 43,
       "les": 3,
-      "he": "היום אני לא בבית  ,אני בתל אביב.",
+      "he": "היום אני לא בבית, אני בתל אביב.",
       "cues": {
         "en": "Today I'm not at home, I'm in Tel Aviv.",
-        "nl": ""
-      }
+        "nl": "Vandaag ben ik niet thuis, ik ben in Tel Aviv."
+      },
+      "niveau": 1,
+      "type": "nieuw"
     },
     {
       "id": 44,
@@ -473,830 +479,1729 @@
       "he": "איפה אני יכול לקבל קפה?",
       "cues": {
         "en": "Where can I get coffee?",
-        "nl": ""
-      }
+        "nl": "Waar kan ik koffie krijgen?"
+      },
+      "niveau": 2,
+      "type": "nieuw"
     },
     {
       "id": 45,
       "les": 3,
-      "he": "איפה אני יכול לקבל את זה? אתה יכול לקבל את זה באולפן.",
+      "he": "זה טוב. אני אוהבת את זה.",
       "cues": {
-        "en": "Where can I receive it ? You can recive it at the Ulpan.",
-        "nl": ""
-      }
+        "en": "This is good. I (f) like it.",
+        "nl": "Dit is goed. Ik (v) hou ervan."
+      },
+      "niveau": 2,
+      "type": "nieuw"
     },
     {
       "id": 46,
       "les": 3,
-      "he": "זה טוב .אני אוהבת את זה.",
+      "he": "זה טוב ללמוד בבית. יותר טוב ללמוד באולפן.",
       "cues": {
-        "en": "This is good. I (f) like it.",
-        "nl": ""
-      }
+        "en": "It's good to study at home . (It's) better to study at the Ulpan.",
+        "nl": "Het is goed thuis te leren. Het is beter in het ulpan te leren."
+      },
+      "niveau": 2,
+      "type": "nieuw"
     },
     {
       "id": 47,
       "les": 3,
-      "he": "זה טוב ללמוד בבית .יותר טוב ללמוד באולפן,",
+      "he": "קשה לשלם שקל. יותר קשה לשלם מיליון.",
       "cues": {
-        "en": "It's good to study at home . (It's) better to study at the Ulpan.",
-        "nl": ""
-      }
+        "en": "(It's) hard to pay a shekel. (It's) harder to pay a million.",
+        "nl": "Het is moeilijk een sjekel te betalen. Het is moeilijker een miljoen te betalen."
+      },
+      "niveau": 2,
+      "type": "nieuw"
     },
     {
       "id": 48,
       "les": 3,
-      "he": "קשה לשלם שקל .יותר קשה לשלם מיליון.",
+      "he": "הוא יכול לבוא היום והיא יכולה לבוא מחר.",
       "cues": {
-        "en": "(It's) hard to pay a shekel. (It's) harder to pay a million.",
-        "nl": ""
-      }
+        "en": "He can come today and she can come tomorrow.",
+        "nl": "Hij kan vandaag komen en zij kan morgen komen."
+      },
+      "niveau": 3,
+      "type": "nieuw"
     },
     {
       "id": 49,
       "les": 3,
-      "he": "כַּמָּה אֲנִי צְרִיכָה לְשַלֵּם?  -אַתְּ צְרִיכָה לְשַלֵּם שֶקֶל.",
+      "he": "אני אוהבת לדבר עברית.",
       "cues": {
-        "en": "How much do I need to pay? You (F) need to pay a shekel.",
-        "nl": ""
-      }
+        "en": "I (f) like to speak Hebrew.",
+        "nl": "Ik (v) hou ervan Hebreeuws te spreken."
+      },
+      "niveau": 3,
+      "type": "nieuw"
     },
     {
       "id": 50,
       "les": 3,
-      "he": "כמה צריך לשלם ? כמה היא צריכה לשלם?",
+      "he": "הוא אוהב את זה. הוא אוהב את שרה.",
       "cues": {
-        "en": "How much is it necessary to pay? How much does she need to pay?",
-        "nl": ""
-      }
+        "en": "He likes it. He likes Sarah.",
+        "nl": "Hij houdt ervan. Hij houdt van Sarah."
+      },
+      "niveau": 3,
+      "type": "nieuw"
     },
     {
       "id": 51,
       "les": 3,
-      "he": "הוא יכול לבוא היום ,והיא יכולה לבוא מחר.",
+      "he": "הוא רוצה ללמוד עברית.",
       "cues": {
-        "en": "He can come today and she can come tomorrow.",
+        "en": "He wants to learn Hebrew.",
         "nl": ""
-      }
+      },
+      "niveau": 1,
+      "type": "herhaling"
     },
     {
       "id": 52,
       "les": 3,
-      "he": "אני אוהבת לדבר עברית .",
+      "he": "היא צריכה לשלם שקל.",
       "cues": {
-        "en": "I (f) like to speak Hebrew.",
+        "en": "She needs to pay a shekel.",
         "nl": ""
-      }
+      },
+      "niveau": 1,
+      "type": "herhaling"
     },
     {
       "id": 53,
       "les": 3,
-      "he": "הוא אוהב את זה .הוא אוהב את שרה.",
+      "he": "איפה היא? היא באולפן. היא צריכה ללמוד.",
       "cues": {
-        "en": "He likes it. He likes Sarah.",
+        "en": "Where is she? She is at the ulpan. She needs to study.",
         "nl": ""
-      }
+      },
+      "niveau": 2,
+      "type": "herhaling"
     },
     {
       "id": 54,
       "les": 3,
-      "he": "אם אתה רוצה לקבל את זה ,אתה צריך לשלם.",
+      "he": "כמה אני צריכה לשלם? את צריכה לשלם שקל.",
       "cues": {
-        "en": "If you want to receive it, you need to pay.",
+        "en": "How much do I need to pay? You (F) need to pay a shekel.",
         "nl": ""
-      }
+      },
+      "niveau": 2,
+      "type": "herhaling"
     },
     {
       "id": 55,
       "les": 3,
-      "he": "מתי צריך לבוא? כמה צריך לשלם?",
+      "he": "אתה צריך לבוא, לשלם, ללמוד ולדבר עברית.",
       "cues": {
-        "en": "When is it necessary to come? How much is it necessary to pay?",
+        "en": "You (m) need to come, pay, learn and speak Hebrew.",
         "nl": ""
-      }
+      },
+      "niveau": 2,
+      "type": "herhaling"
     },
     {
       "id": 56,
-      "les": 4,
-      "he": "מי זה? מה זה? כמה זה? איפה זה? מתי זה?",
+      "les": 3,
+      "he": "אני רוצה לקבל את זה באולפן.",
       "cues": {
-        "en": "Who is it? What is it? How much is it? Where is it? When is it?",
+        "en": "I want to receive it at the ulpan.",
         "nl": ""
-      }
+      },
+      "niveau": 2,
+      "type": "herhaling"
     },
     {
       "id": 57,
-      "les": 4,
-      "he": "זה טוב? זה טוב ,אבל זה קשה.",
+      "les": 3,
+      "he": "אם אתה רוצה לקבל את זה, אתה צריך לשלם.",
       "cues": {
-        "en": "Is it good? It is good, but it is difficult.",
+        "en": "If you (m) want to receive it, you need to pay.",
         "nl": ""
-      }
+      },
+      "niveau": 3,
+      "type": "herhaling"
     },
     {
       "id": 58,
-      "les": 4,
-      "he": "זה טוב ללמוד בבית ,אבל יותר טוב ללמוד באולפן,",
+      "les": 3,
+      "he": "הוא פה באולפן והיא שם בבית.",
       "cues": {
-        "en": "It's good to study at home , but (It's) better to study at the Ulpan.",
+        "en": "He is here at the ulpan and she is there at home.",
         "nl": ""
-      }
+      },
+      "niveau": 3,
+      "type": "herhaling"
     },
     {
       "id": 59,
-      "les": 4,
-      "he": "מי יכול לדבר עברית? הוא יכול והיא יכולה.",
+      "les": 3,
+      "he": "היום אני לא בבית, אני בתל אביב.",
       "cues": {
-        "en": "Who can speak Hebrew ? He can and she can.",
+        "en": "Today I am not at home, I am in Tel Aviv.",
         "nl": ""
-      }
+      },
+      "niveau": 3,
+      "type": "herhaling"
     },
     {
       "id": 60,
-      "les": 4,
-      "he": "מי יודע? מי שומע?",
+      "les": 3,
+      "he": "אני לא רוצה לשלם מיליון. אני צריך לשלם שקל.",
       "cues": {
-        "en": "Who knows? Who hears?",
+        "en": "I (m) don't want to pay a million. I need to pay a shekel.",
         "nl": ""
-      }
+      },
+      "niveau": 3,
+      "type": "herhaling"
     },
     {
       "id": 61,
       "les": 4,
-      "he": "מי יודע עברית פה? רק היא יודעת.",
+      "he": "מי זה? מה זה? איפה זה?",
       "cues": {
-        "en": "Who know Hebrew here? Only she knows.",
+        "en": "Who is it? What is it? Where is it?",
         "nl": ""
-      }
+      },
+      "niveau": 1,
+      "type": "nieuw"
     },
     {
       "id": 62,
       "les": 4,
-      "he": "זה טוב? זה טוב .אני אוהב את זה.",
+      "he": "זה טוב? זה טוב, אבל זה קשה.",
       "cues": {
-        "en": "Is it good? It is good. I like it.",
-        "nl": ""
-      }
+        "en": "Is it good? It is good, but it is difficult.",
+        "nl": "Is het goed? Het is goed, maar het is moeilijk."
+      },
+      "niveau": 1,
+      "type": "nieuw"
     },
     {
       "id": 63,
       "les": 4,
-      "he": "אני אוהבת את זה .אני אוהבת את משה.",
+      "he": "מי יכול לדבר עברית? הוא יכול והיא יכולה.",
       "cues": {
-        "en": "I like it. I like Moshe.",
+        "en": "Who can speak Hebrew? He can and she can.",
         "nl": ""
-      }
+      },
+      "niveau": 1,
+      "type": "nieuw"
     },
     {
       "id": 64,
       "les": 4,
-      "he": "את שומעת? אני לא שומעת שום דבר.",
+      "he": "מי יודע? מי שומע?",
       "cues": {
-        "en": "Do you hear? I don't hear anything.",
-        "nl": ""
-      }
+        "en": "Who knows? Who hears?",
+        "nl": "Wie weet? Wie hoort?"
+      },
+      "niveau": 1,
+      "type": "nieuw"
     },
     {
       "id": 65,
       "les": 4,
-      "he": "צריך לדבר .מתי אתה בבית? מתי אני יכול לבוא?",
+      "he": "מי יודע עברית פה? רק היא יודעת.",
       "cues": {
-        "en": "(It's) necessary to speak. When are you at home? When can I come?",
+        "en": "Who knows Hebrew here? Only she knows.",
         "nl": ""
-      }
+      },
+      "niveau": 2,
+      "type": "nieuw"
     },
     {
       "id": 66,
       "les": 4,
-      "he": "צריך לסדר את זה .אתה צריך לסדר את זה.",
+      "he": "את שומעת? אני לא שומעת שום דבר.",
       "cues": {
-        "en": "(It's) necessary to arrange it. You need to arrange it.",
+        "en": "Do you (f) hear? I do not hear anything.",
         "nl": ""
-      }
+      },
+      "niveau": 2,
+      "type": "nieuw"
     },
     {
       "id": 67,
       "les": 4,
-      "he": "מי יודע איפה הוא? הוא פה.",
+      "he": "צריך לסדר את זה. אתה צריך לסדר את זה.",
       "cues": {
-        "en": "Who know where he is? He is here.",
+        "en": "It is necessary to arrange it. You need to arrange it.",
         "nl": ""
-      }
+      },
+      "niveau": 2,
+      "type": "nieuw"
     },
     {
       "id": 68,
       "les": 4,
-      "he": "יותר טוב לסדר את זה היום.",
+      "he": "מי יודע איפה הוא? הוא פה.",
       "cues": {
-        "en": "(It's) better to arrange it today.",
+        "en": "Who knows where he is? He is here.",
         "nl": ""
-      }
+      },
+      "niveau": 2,
+      "type": "nieuw"
     },
     {
       "id": 69,
       "les": 4,
-      "he": "אם אני לא יכול לשלם היום ,אני יכול לשלם מחר?",
+      "he": "יותר טוב לסדר את זה היום.",
       "cues": {
-        "en": "If I can't pay today, can I pay tomorrow?",
+        "en": "It is better to arrange it today.",
         "nl": ""
-      }
+      },
+      "niveau": 3,
+      "type": "nieuw"
     },
     {
       "id": 70,
       "les": 4,
-      "he": "איפה אני יכולה לקבל את זה? את יכולה לקבל את זה רק באולפן.",
+      "he": "אם אני לא יכול לשלם היום, אני יכול לשלם מחר?",
       "cues": {
-        "en": "Where can I receive it? You can receive it only at the ulpan.",
+        "en": "If I cannot pay today, can I pay tomorrow?",
         "nl": ""
-      }
+      },
+      "niveau": 3,
+      "type": "nieuw"
     },
     {
       "id": 71,
-      "les": 5,
-      "he": "מי אתה? למה אתה פה? כי אני רוצה ללמוד עברית.",
+      "les": 4,
+      "he": "אני אוהבת את זה. אני אוהבת את משה.",
       "cues": {
-        "en": "Who are you? why are you here? Because I want to study Hebrew.",
+        "en": "I like it. I like Moshe.",
         "nl": ""
-      }
+      },
+      "niveau": 1,
+      "type": "herhaling"
     },
     {
       "id": 72,
-      "les": 5,
-      "he": "מי אתה? אני משה .מֵאיפה אתה? אני מֵהולנד.",
+      "les": 4,
+      "he": "היא אוהבת את זה. היא אוהבת לדבר עברית.",
       "cues": {
-        "en": "Who are you? I'm Moshe. Where are you from? I'm from Holand.",
+        "en": "She likes it. She likes to speak Hebrew.",
         "nl": ""
-      }
+      },
+      "niveau": 1,
+      "type": "herhaling"
     },
     {
       "id": 73,
-      "les": 5,
-      "he": "איפה? בבית .לאן? הביתה .מאיפה? מֵאמריקה .למה? כִּי .עִם מי? אִיתי.",
+      "les": 4,
+      "he": "זה טוב ללמוד בבית, אבל יותר טוב ללמוד באולפן.",
       "cues": {
-        "en": "Where? at home. To where? home. From where? from America. Why?",
+        "en": "It is good to study at home, but better to study at the ulpan.",
         "nl": ""
-      }
+      },
+      "niveau": 2,
+      "type": "herhaling"
     },
     {
       "id": 74,
-      "les": 5,
-      "he": "איפה משה? אפשר לשאול את משה?",
+      "les": 4,
+      "he": "קשה לשלם שקל. יותר קשה לשלם מיליון.",
       "cues": {
-        "en": "because. With whom? with me.",
+        "en": "It is hard to pay a shekel. It is harder to pay a million.",
         "nl": ""
-      }
+      },
+      "niveau": 2,
+      "type": "herhaling"
     },
     {
       "id": 75,
-      "les": 5,
-      "he": "איפה משה? אֶפשַר לדבר עם משה?",
+      "les": 4,
+      "he": "מתי את בבית? אני בבית היום.",
       "cues": {
-        "en": "Where is Moshe? May I ask Moshe?",
+        "en": "When are you (f) at home? I am at home today.",
         "nl": ""
-      }
+      },
+      "niveau": 2,
+      "type": "herhaling"
     },
     {
       "id": 76,
-      "les": 5,
-      "he": "מתי היא מקבלת ? היא מְקַבֵּלת מִשתיים עַד ארבע.",
+      "les": 4,
+      "he": "הוא יכול לבוא היום והיא יכולה לבוא מחר.",
       "cues": {
-        "en": "Where is Moshe? May I speak with Moshe?",
-        "nl": ""
-      }
+        "en": "He can come today and she can come tomorrow.",
+        "nl": "Hij kan vandaag komen en zij kan morgen komen."
+      },
+      "niveau": 2,
+      "type": "herhaling"
     },
     {
       "id": 77,
-      "les": 5,
-      "he": "מה אתה חושב? אני חושב שלא פשוט לתקן את זה.",
+      "les": 4,
+      "he": "איפה אני יכול לקבל שקל? רק באולפן.",
       "cues": {
-        "en": "When does she receive? she receives from 2 till 4.",
+        "en": "Where can I receive a shekel? Only at the ulpan.",
         "nl": ""
-      }
+      },
+      "niveau": 3,
+      "type": "herhaling"
     },
     {
       "id": 78,
-      "les": 5,
-      "he": "הוא מדבר עם שרה ,כי הוא אוהב את שרה.",
+      "les": 4,
+      "he": "היא לא צריכה שום דבר. היא רק רוצה ללמוד עברית.",
       "cues": {
-        "en": "What do you think? I think that (it's) not simple to fix this.",
+        "en": "She does not need anything. She only wants to study Hebrew.",
         "nl": ""
-      }
+      },
+      "niveau": 3,
+      "type": "herhaling"
     },
     {
       "id": 79,
-      "les": 5,
-      "he": "אפשר לשאול אותך משהו?",
+      "les": 4,
+      "he": "אני לא רוצה לשלם. אבל אני צריך לשלם.",
       "cues": {
-        "en": "He speaks with Sarah, because he likes Sarah.",
+        "en": "I do not want to pay. But I need to pay.",
         "nl": ""
-      }
+      },
+      "niveau": 3,
+      "type": "herhaling"
     },
     {
       "id": 80,
-      "les": 5,
-      "he": "אני מחפשת אותו ,כי אני רוצה לשאול אותו משהו.",
+      "les": 4,
+      "he": "מי רוצה לדבר עברית פה? רק היא רוצה.",
       "cues": {
-        "en": "May (I) ask you something?",
+        "en": "Who wants to speak Hebrew here? Only she wants.",
         "nl": ""
-      }
+      },
+      "niveau": 3,
+      "type": "herhaling"
     },
     {
       "id": 81,
       "les": 5,
-      "he": "מישהו מדבר עברית פה?",
+      "he": "מי אתה? למה אתה פה? כי אני רוצה ללמוד עברית.",
       "cues": {
-        "en": "I'm looking for him, because I want to ask him something.",
+        "en": "Who are you? Why are you here? Because I want to study Hebrew.",
         "nl": ""
-      }
+      },
+      "niveau": 1,
+      "type": "nieuw"
     },
     {
       "id": 82,
       "les": 5,
-      "he": "הוא לא יודע עברית ,צריך לסגור אותו באולפן.",
+      "he": "מאיפה אתה? אני מהולנד.",
       "cues": {
-        "en": "Does someone speak Hebrew here?",
+        "en": "Where are you from? I am from Holland.",
         "nl": ""
-      }
+      },
+      "niveau": 1,
+      "type": "nieuw"
     },
     {
       "id": 83,
       "les": 5,
-      "he": "אני רוצה לאכול משהו .מה אני יכולה לאכול?",
+      "he": "איפה? בבית. לאן? הביתה. מאיפה? מאמריקה.",
       "cues": {
-        "en": "He doesn't know Hebrew, (it's) necessary to close him at the ulpan.",
+        "en": "Where? at home. To where? home. From where? from America.",
         "nl": ""
-      }
+      },
+      "niveau": 2,
+      "type": "nieuw"
     },
     {
       "id": 84,
       "les": 5,
-      "he": "הוא אוהב את שרה ורוצה לעבוד רק עם שרה.",
+      "he": "איפה משה? אפשר לשאול את משה?",
       "cues": {
-        "en": "I want to eat something. What can I eat?",
+        "en": "Where is Moshe? May I ask Moshe?",
         "nl": ""
-      }
+      },
+      "niveau": 2,
+      "type": "nieuw"
     },
     {
       "id": 85,
       "les": 5,
-      "he": "אם אתה רוצה לקבל כסף ,אתה צריך לעבוד.",
+      "he": "אפשר לשאול אותך משהו?",
       "cues": {
-        "en": "He likes Sarah and wants to work only with Sarah.",
+        "en": "May I ask you something?",
         "nl": ""
-      }
+      },
+      "niveau": 2,
+      "type": "nieuw"
     },
     {
       "id": 86,
-      "les": 6,
-      "he": "מי אתה ? מה אתה רוצה?",
+      "les": 5,
+      "he": "אני מחפשת אותו, כי אני רוצה לשאול אותו משהו.",
       "cues": {
-        "en": "Who are you (m)? What do you want?",
+        "en": "I am looking for him, because I want to ask him something.",
         "nl": ""
-      }
+      },
+      "niveau": 2,
+      "type": "nieuw"
     },
     {
       "id": 87,
-      "les": 6,
-      "he": "מי רוצה? אני רוצה .מה אתה רוצה?",
+      "les": 5,
+      "he": "מישהו מדבר עברית פה?",
       "cues": {
-        "en": "Who wants? I (m) want. What do you want?",
-        "nl": ""
-      }
+        "en": "Does someone speak Hebrew here?",
+        "nl": "Spreekt iemand hier Hebreeuws?"
+      },
+      "niveau": 2,
+      "type": "nieuw"
     },
     {
       "id": 88,
+      "les": 5,
+      "he": "אני רוצה לאכול משהו. מה אני יכולה לאכול?",
+      "cues": {
+        "en": "I want to eat something. What can I eat?",
+        "nl": "Ik wil iets eten. Wat kan ik eten?"
+      },
+      "niveau": 3,
+      "type": "nieuw"
+    },
+    {
+      "id": 89,
+      "les": 5,
+      "he": "אם אתה רוצה לקבל כסף, אתה צריך לעבוד.",
+      "cues": {
+        "en": "If you want to receive money, you need to work.",
+        "nl": "Als jij geld wil ontvangen, moet jij werken."
+      },
+      "niveau": 3,
+      "type": "nieuw"
+    },
+    {
+      "id": 90,
+      "les": 5,
+      "he": "הוא אוהב את שרה ורוצה לעבוד רק עם שרה.",
+      "cues": {
+        "en": "He likes Sarah and wants to work only with Sarah.",
+        "nl": ""
+      },
+      "niveau": 3,
+      "type": "nieuw"
+    },
+    {
+      "id": 91,
+      "les": 5,
+      "he": "הוא מדבר עם שרה, כי הוא אוהב את שרה.",
+      "cues": {
+        "en": "He speaks with her because he likes her.",
+        "nl": ""
+      },
+      "niveau": 1,
+      "type": "herhaling"
+    },
+    {
+      "id": 92,
+      "les": 5,
+      "he": "למה אתה רוצה לדבר עברית?",
+      "cues": {
+        "en": "Why do you (m) want to speak Hebrew?",
+        "nl": ""
+      },
+      "niveau": 1,
+      "type": "herhaling"
+    },
+    {
+      "id": 93,
+      "les": 5,
+      "he": "מי יודע איפה הוא? הוא פה.",
+      "cues": {
+        "en": "Who knows where he is? He is here.",
+        "nl": ""
+      },
+      "niveau": 2,
+      "type": "herhaling"
+    },
+    {
+      "id": 94,
+      "les": 5,
+      "he": "היא לא שומעת שום דבר. היא לא יודעת שום דבר.",
+      "cues": {
+        "en": "She does not hear anything. She does not know anything.",
+        "nl": ""
+      },
+      "niveau": 2,
+      "type": "herhaling"
+    },
+    {
+      "id": 95,
+      "les": 5,
+      "he": "צריך לסדר את זה. מי יכול לסדר את זה?",
+      "cues": {
+        "en": "It is necessary to arrange it. Who can arrange it?",
+        "nl": ""
+      },
+      "niveau": 2,
+      "type": "herhaling"
+    },
+    {
+      "id": 96,
+      "les": 5,
+      "he": "הוא אוהב לדבר, אבל היא אוהבת ללמוד.",
+      "cues": {
+        "en": "He likes to speak, but she likes to study.",
+        "nl": ""
+      },
+      "niveau": 2,
+      "type": "herhaling"
+    },
+    {
+      "id": 97,
+      "les": 5,
+      "he": "אם אני לא יכול ללמוד באולפן, אני יכול ללמוד בבית?",
+      "cues": {
+        "en": "If I cannot study at the ulpan, can I study at home?",
+        "nl": ""
+      },
+      "niveau": 3,
+      "type": "herhaling"
+    },
+    {
+      "id": 98,
+      "les": 5,
+      "he": "טוב - יותר טוב. קשה - יותר קשה. פשוט - יותר פשוט.",
+      "cues": {
+        "en": "Good - better. Hard - harder. Simple - simpler.",
+        "nl": ""
+      },
+      "niveau": 3,
+      "type": "herhaling"
+    },
+    {
+      "id": 99,
+      "les": 5,
+      "he": "הוא לא פה. הוא בבית. הוא צריך לבוא.",
+      "cues": {
+        "en": "He is not here. He is at home. He needs to come.",
+        "nl": ""
+      },
+      "niveau": 3,
+      "type": "herhaling"
+    },
+    {
+      "id": 100,
+      "les": 5,
+      "he": "אני חושב על זה. אני לא יודע שום דבר על זה.",
+      "cues": {
+        "en": "I think about it. I do not know anything about it.",
+        "nl": ""
+      },
+      "niveau": 3,
+      "type": "herhaling"
+    },
+    {
+      "id": 101,
+      "les": 6,
+      "he": "מי אתה? מה אתה רוצה?",
+      "cues": {
+        "en": "Who are you (m)? What do you want?",
+        "nl": ""
+      },
+      "niveau": 1,
+      "type": "nieuw"
+    },
+    {
+      "id": 102,
+      "les": 6,
+      "he": "מי רוצה? אני רוצה. מה אתה רוצה?",
+      "cues": {
+        "en": "Who wants? I (m) want. What do you want?",
+        "nl": ""
+      },
+      "niveau": 1,
+      "type": "nieuw"
+    },
+    {
+      "id": 103,
       "les": 6,
       "he": "מה את רוצה? אני רוצה ללמוד עברית.",
       "cues": {
         "en": "What do you (f) want? I want to study Hebrew.",
         "nl": ""
-      }
+      },
+      "niveau": 1,
+      "type": "nieuw"
     },
     {
-      "id": 89,
+      "id": 104,
       "les": 6,
       "he": "אתה צריך? את צריכה?",
       "cues": {
         "en": "Do you (M) need? Do you (F) need?",
         "nl": ""
-      }
+      },
+      "niveau": 1,
+      "type": "nieuw"
     },
     {
-      "id": 90,
+      "id": 105,
       "les": 6,
       "he": "כמה אני צריך לשלם?",
       "cues": {
         "en": "How much do I (m) need to pay?",
         "nl": ""
-      }
+      },
+      "niveau": 2,
+      "type": "nieuw"
     },
     {
-      "id": 91,
+      "id": 106,
       "les": 6,
       "he": "אתה צריך לשלם שקל.",
       "cues": {
         "en": "You (m) need to pay a shekel.",
         "nl": ""
-      }
+      },
+      "niveau": 2,
+      "type": "nieuw"
     },
     {
-      "id": 92,
+      "id": 107,
       "les": 6,
-      "he": "מי רוצה לדבר עברית ?",
+      "he": "מי רוצה לדבר עברית?",
       "cues": {
-        "en": "Who wants to speak Hebrew ?",
+        "en": "Who wants to speak Hebrew?",
         "nl": ""
-      }
+      },
+      "niveau": 2,
+      "type": "nieuw"
     },
     {
-      "id": 93,
+      "id": 108,
       "les": 6,
       "he": "מה את רוצה? מה את צריכה?",
       "cues": {
         "en": "What do you (f) want? What do you (f) need?",
         "nl": ""
-      }
+      },
+      "niveau": 2,
+      "type": "nieuw"
     },
     {
-      "id": 94,
+      "id": 109,
       "les": 6,
       "he": "מי? מה? כמה?",
       "cues": {
         "en": "Who? What? How much?",
         "nl": ""
-      }
+      },
+      "niveau": 3,
+      "type": "nieuw"
     },
     {
-      "id": 95,
+      "id": 110,
       "les": 6,
-      "he": "ללמוד ,לשלם ,לדבר.",
+      "he": "ללמוד, לשלם, לדבר.",
       "cues": {
         "en": "To study, to pay, to speak.",
         "nl": ""
-      }
+      },
+      "niveau": 3,
+      "type": "nieuw"
     },
     {
-      "id": 96,
-      "les": 7,
-      "he": "מי הוא ? מה הוא רוצה ?",
+      "id": 111,
+      "les": 6,
+      "he": "היא רוצה ללמוד. הוא צריך לשלם.",
       "cues": {
-        "en": "Who is he? what does he want?",
+        "en": "She wants to learn. He needs to pay.",
         "nl": ""
-      }
+      },
+      "niveau": 1,
+      "type": "herhaling"
     },
     {
-      "id": 97,
+      "id": 112,
+      "les": 6,
+      "he": "מי יכול? היא יכולה. מה היא יכולה לעשות?",
+      "cues": {
+        "en": "Who can? She can. What can she do?",
+        "nl": ""
+      },
+      "niveau": 1,
+      "type": "herhaling"
+    },
+    {
+      "id": 113,
+      "les": 6,
+      "he": "טוב ללמוד בבית, אבל יותר טוב באולפן.",
+      "cues": {
+        "en": "It is good to study at home, but better at the ulpan.",
+        "nl": ""
+      },
+      "niveau": 2,
+      "type": "herhaling"
+    },
+    {
+      "id": 114,
+      "les": 6,
+      "he": "אני לא רוצה לשלם. אבל אני צריך לשלם.",
+      "cues": {
+        "en": "I do not want to pay. But I need to pay.",
+        "nl": ""
+      },
+      "niveau": 2,
+      "type": "herhaling"
+    },
+    {
+      "id": 115,
+      "les": 6,
+      "he": "הוא פה והיא שם בבית.",
+      "cues": {
+        "en": "He is here and she is there at home.",
+        "nl": ""
+      },
+      "niveau": 2,
+      "type": "herhaling"
+    },
+    {
+      "id": 116,
+      "les": 6,
+      "he": "היום אני לא בבית. אני בתל אביב.",
+      "cues": {
+        "en": "Today I am not at home. I am in Tel Aviv.",
+        "nl": ""
+      },
+      "niveau": 2,
+      "type": "herhaling"
+    },
+    {
+      "id": 117,
+      "les": 6,
+      "he": "אם אני לא יכול לדבר עברית, אני יכול לדבר אנגלית?",
+      "cues": {
+        "en": "If I cannot speak Hebrew, can I speak English?",
+        "nl": ""
+      },
+      "niveau": 3,
+      "type": "herhaling"
+    },
+    {
+      "id": 118,
+      "les": 6,
+      "he": "הוא אוהב את זה. הוא אוהב לדבר עברית.",
+      "cues": {
+        "en": "He likes it. He likes to speak Hebrew.",
+        "nl": ""
+      },
+      "niveau": 3,
+      "type": "herhaling"
+    },
+    {
+      "id": 119,
+      "les": 6,
+      "he": "צריך לבוא, לשלם, ללמוד ולדבר עברית.",
+      "cues": {
+        "en": "It is necessary to come, to pay, to study and to speak Hebrew.",
+        "nl": ""
+      },
+      "niveau": 3,
+      "type": "herhaling"
+    },
+    {
+      "id": 120,
+      "les": 6,
+      "he": "איפה אני יכול לקבל שקל? רק באולפן.",
+      "cues": {
+        "en": "Where can I receive a shekel? Only at the ulpan.",
+        "nl": ""
+      },
+      "niveau": 3,
+      "type": "herhaling"
+    },
+    {
+      "id": 121,
+      "les": 7,
+      "he": "מי הוא? מה הוא רוצה?",
+      "cues": {
+        "en": "Who is he? What does he want?",
+        "nl": ""
+      },
+      "niveau": 1,
+      "type": "nieuw"
+    },
+    {
+      "id": 122,
       "les": 7,
       "he": "מי היא? מה היא צריכה?",
       "cues": {
-        "en": "Who is she? what does she need ?",
+        "en": "Who is she? What does she need?",
         "nl": ""
-      }
+      },
+      "niveau": 1,
+      "type": "nieuw"
     },
     {
-      "id": 98,
+      "id": 123,
       "les": 7,
-      "he": "מי רוצה? היא רוצה .מי צריך? היא צריכה .מי יכול? היא יכולה.",
+      "he": "מי רוצה? היא רוצה. מי צריך? היא צריכה. מי יכול? היא יכולה.",
       "cues": {
-        "en": "Who wants? She wants. Who needs? She needs. Who can? she can.",
+        "en": "Who wants? She wants. Who needs? She needs. Who can? She can.",
         "nl": ""
-      }
+      },
+      "niveau": 1,
+      "type": "nieuw"
     },
     {
-      "id": 99,
+      "id": 124,
       "les": 7,
-      "he": "היא צריכה ללמוד ,והוא צריך לשלם.",
+      "he": "היא צריכה ללמוד, והוא צריך לשלם.",
       "cues": {
         "en": "She needs to learn, and he needs to pay.",
         "nl": ""
-      }
+      },
+      "niveau": 2,
+      "type": "nieuw"
     },
     {
-      "id": 100,
+      "id": 125,
       "les": 7,
       "he": "כמה הוא צריך לשלם?",
       "cues": {
         "en": "How much does he need to pay?",
         "nl": ""
-      }
+      },
+      "niveau": 2,
+      "type": "nieuw"
     },
     {
-      "id": 101,
+      "id": 126,
       "les": 7,
-      "he": "אני לא רוצה לבוא  ,אבל אני צריך.",
+      "he": "אני לא רוצה לבוא, אבל אני צריך.",
       "cues": {
-        "en": "I don't want to come, but I need.",
+        "en": "I do not want to come, but I need to.",
         "nl": ""
-      }
+      },
+      "niveau": 2,
+      "type": "nieuw"
     },
     {
-      "id": 102,
+      "id": 127,
       "les": 7,
-      "he": "אני לא יכול לשלם מיליון ,אני יכול לשלם שקל.",
+      "he": "אתה לא צריך לשלם. הוא צריך לשלם.",
       "cues": {
-        "en": "I can't pay a million, I can pay a shekel.",
+        "en": "You do not need to pay. He needs to pay.",
         "nl": ""
-      }
+      },
+      "niveau": 2,
+      "type": "nieuw"
     },
     {
-      "id": 103,
+      "id": 128,
       "les": 7,
-      "he": "אתה צריך לבוא ,לשלם ,ללמוד ולדבר עברית.",
+      "he": "אני לא יכול לשלם מיליון. אני יכול לשלם שקל.",
       "cues": {
-        "en": "Yon need to come, to pay, to study and to speak Hebrew.",
+        "en": "I cannot pay a million. I can pay a shekel.",
         "nl": ""
-      }
+      },
+      "niveau": 3,
+      "type": "nieuw"
     },
     {
-      "id": 104,
+      "id": 129,
+      "les": 7,
+      "he": "אתה צריך לבוא, לשלם, ללמוד ולדבר עברית.",
+      "cues": {
+        "en": "You need to come, to pay, to study and to speak Hebrew.",
+        "nl": ""
+      },
+      "niveau": 3,
+      "type": "nieuw"
+    },
+    {
+      "id": 130,
+      "les": 7,
+      "he": "מי יכול לדבר עברית? הוא יכול והיא יכולה.",
+      "cues": {
+        "en": "Who can speak Hebrew? He can and she can.",
+        "nl": ""
+      },
+      "niveau": 3,
+      "type": "nieuw"
+    },
+    {
+      "id": 131,
+      "les": 7,
+      "he": "היא לא יודעת שום דבר. היא לא שומעת שום דבר.",
+      "cues": {
+        "en": "She does not know anything. She does not hear anything.",
+        "nl": ""
+      },
+      "niveau": 1,
+      "type": "herhaling"
+    },
+    {
+      "id": 132,
+      "les": 7,
+      "he": "מי יודע? רק היא יודעת.",
+      "cues": {
+        "en": "Who knows? Only she knows.",
+        "nl": ""
+      },
+      "niveau": 1,
+      "type": "herhaling"
+    },
+    {
+      "id": 133,
+      "les": 7,
+      "he": "זה טוב אבל קשה. יותר טוב ללמוד באולפן.",
+      "cues": {
+        "en": "It is good but difficult. Better to study at the ulpan.",
+        "nl": ""
+      },
+      "niveau": 2,
+      "type": "herhaling"
+    },
+    {
+      "id": 134,
+      "les": 7,
+      "he": "איפה היא? היא בבית. היא צריכה ללמוד.",
+      "cues": {
+        "en": "Where is she? She is at home. She needs to study.",
+        "nl": ""
+      },
+      "niveau": 2,
+      "type": "herhaling"
+    },
+    {
+      "id": 135,
+      "les": 7,
+      "he": "אפשר לשאול אותך משהו?",
+      "cues": {
+        "en": "May I ask you (m) something?",
+        "nl": ""
+      },
+      "niveau": 2,
+      "type": "herhaling"
+    },
+    {
+      "id": 136,
+      "les": 7,
+      "he": "הוא אוהב לדבר, אבל היא אוהבת ללמוד.",
+      "cues": {
+        "en": "He likes to speak, but she likes to study.",
+        "nl": ""
+      },
+      "niveau": 2,
+      "type": "herhaling"
+    },
+    {
+      "id": 137,
+      "les": 7,
+      "he": "אני מחפשת אותו כי אני רוצה לשאול אותו משהו.",
+      "cues": {
+        "en": "I am looking for him because I want to ask him something.",
+        "nl": ""
+      },
+      "niveau": 3,
+      "type": "herhaling"
+    },
+    {
+      "id": 138,
+      "les": 7,
+      "he": "מישהו מדבר עברית פה? מי?",
+      "cues": {
+        "en": "Someone speaks Hebrew here? Who?",
+        "nl": ""
+      },
+      "niveau": 3,
+      "type": "herhaling"
+    },
+    {
+      "id": 139,
+      "les": 7,
+      "he": "צריך לסדר את זה. יותר טוב לסדר את זה היום.",
+      "cues": {
+        "en": "It is necessary to arrange it. It is better to arrange it today.",
+        "nl": ""
+      },
+      "niveau": 3,
+      "type": "herhaling"
+    },
+    {
+      "id": 140,
+      "les": 7,
+      "he": "אם אתה רוצה לקבל כסף, אתה צריך לעבוד.",
+      "cues": {
+        "en": "If you want to receive money, you need to work.",
+        "nl": "Als jij geld wil ontvangen, moet jij werken."
+      },
+      "niveau": 3,
+      "type": "herhaling"
+    },
+    {
+      "id": 141,
       "les": 8,
-      "he": "איפה אתה? אתה פה? אני לא פה .אני בתל אביב.",
+      "he": "איפה אתה? אתה פה? אני לא פה. אני בתל אביב.",
       "cues": {
-        "en": "Where are you (M)? Are you here? I am not here. I'm in Tel Aviv.",
+        "en": "Where are you (M)? Are you here? I am not here. I am in Tel Aviv.",
         "nl": ""
-      }
+      },
+      "niveau": 1,
+      "type": "nieuw"
     },
     {
-      "id": 105,
+      "id": 142,
       "les": 8,
       "he": "איפה אני צריכה לשלם? את צריכה לשלם בבנק.",
       "cues": {
-        "en": "Where do I (F) need to pay? You need to pay at the Bank.",
+        "en": "Where do I (F) need to pay? You need to pay at the bank.",
         "nl": ""
-      }
+      },
+      "niveau": 1,
+      "type": "nieuw"
     },
     {
-      "id": 106,
+      "id": 143,
       "les": 8,
-      "he": "מתי את בבית? אני בבית ב 3.",
+      "he": "מתי את בבית? אני בבית ב-3.",
       "cues": {
-        "en": "When are you (F) at home? I'm at home at 3.",
+        "en": "When are you (F) at home? I am at home at 3.",
         "nl": ""
-      }
+      },
+      "niveau": 1,
+      "type": "nieuw"
     },
     {
-      "id": 107,
+      "id": 144,
       "les": 8,
       "he": "אני אוהב ללמוד עברית באולפן ובבית.",
       "cues": {
         "en": "I (M) like to learn Hebrew at the ulpan and at home.",
         "nl": ""
-      }
+      },
+      "niveau": 2,
+      "type": "nieuw"
     },
     {
-      "id": 108,
+      "id": 145,
       "les": 8,
-      "he": "לא צריך לדבר ,צריך ללמוד!!",
+      "he": "לא צריך לדבר, צריך ללמוד.",
       "cues": {
-        "en": "(It's) not necessary to talk, it's necessary to learn.",
+        "en": "It is not necessary to talk, it is necessary to learn.",
         "nl": ""
-      }
+      },
+      "niveau": 2,
+      "type": "nieuw"
     },
     {
-      "id": 109,
+      "id": 146,
       "les": 8,
       "he": "מתי ואיפה צריך לשלם? צריך לשלם מחר בבנק.",
       "cues": {
-        "en": "When and where (is it) necessary to pay? (It's) necessary to pay tomorrow at",
+        "en": "When and where is it necessary to pay? Tomorrow at the bank.",
         "nl": ""
-      }
+      },
+      "niveau": 2,
+      "type": "nieuw"
     },
     {
-      "id": 110,
+      "id": 147,
       "les": 8,
-      "he": "אם אני לא יכול לשלם מיליון ,אני יכול לשלם שקל ?",
+      "he": "אם אני לא יכול לשלם מיליון, אני יכול לשלם שקל?",
       "cues": {
-        "en": "the Bank.",
+        "en": "If I (M) cannot pay a million, can I pay a shekel?",
         "nl": ""
-      }
+      },
+      "niveau": 2,
+      "type": "nieuw"
     },
     {
-      "id": 111,
+      "id": 148,
       "les": 8,
-      "he": "אם אני לא יכול לבוא ב  3,אני יכול לבוא ב ?4",
+      "he": "אם אני לא יכול לבוא ב-3, אני יכול לבוא ב-4?",
       "cues": {
-        "en": "If I (M) can't pay a million, can I pay a shekel ?",
+        "en": "If I (M) cannot come at 3, can I come at 4?",
         "nl": ""
-      }
+      },
+      "niveau": 3,
+      "type": "nieuw"
     },
     {
-      "id": 112,
+      "id": 149,
       "les": 8,
       "he": "הוא אוהב לדבר והיא אוהבת ללמוד.",
       "cues": {
-        "en": "If I (M) can't come at 3, can I come at 4 ?",
-        "nl": ""
-      }
-    },
-    {
-      "id": 113,
-      "les": 8,
-      "he": "היא צריכה ללמוד היום ,היא יכולה ללמוד רק מחר.",
-      "cues": {
         "en": "He likes to speak and she likes to study.",
         "nl": ""
-      }
+      },
+      "niveau": 3,
+      "type": "nieuw"
     },
     {
-      "id": 114,
+      "id": 150,
       "les": 8,
-      "he": "היא אוהבת ללמוד עברית ,אבל רק היום.",
+      "he": "היא צריכה ללמוד היום, היא יכולה ללמוד רק מחר.",
       "cues": {
-        "en": "I (F) like to speak Hebrew.",
+        "en": "She needs to study today, she can only study tomorrow.",
         "nl": ""
-      }
+      },
+      "niveau": 3,
+      "type": "nieuw"
     },
     {
-      "id": 115,
+      "id": 151,
       "les": 8,
-      "he": "צריך לבוא ,לשלם ,ללמוד ולדבר עברית.",
+      "he": "הוא רוצה לסדר את זה. רק הוא יכול לסדר את זה.",
       "cues": {
-        "en": "She likes to study Hebrew, but only today.",
+        "en": "He wants to arrange it. Only he can arrange it.",
         "nl": ""
-      }
+      },
+      "niveau": 1,
+      "type": "herhaling"
     },
     {
-      "id": 116,
-      "les": 9,
-      "he": "מי זה? מה הוא רוצה?",
+      "id": 152,
+      "les": 8,
+      "he": "היא לא רוצה לבוא. אבל היא צריכה לבוא.",
       "cues": {
-        "en": "Who is it? What does he want?",
+        "en": "She does not want to come. But she needs to come.",
         "nl": ""
-      }
+      },
+      "niveau": 1,
+      "type": "herhaling"
     },
     {
-      "id": 117,
-      "les": 9,
-      "he": "איפה זה? זה פה? זה לא פה ,זה שם.",
+      "id": 153,
+      "les": 8,
+      "he": "מי זה? מה זה? איפה זה? זה פה או שם?",
       "cues": {
-        "en": "Where is it? Is it here? It's not here, it's there.",
+        "en": "Who is it? What is it? Where is it? Is it here or there?",
         "nl": ""
-      }
+      },
+      "niveau": 2,
+      "type": "herhaling"
     },
     {
-      "id": 118,
-      "les": 9,
-      "he": "לשלם את זה .ללמוד את זה .לקבל את זה.",
+      "id": 154,
+      "les": 8,
+      "he": "הוא יודע הכל, אבל היא לא יודעת שום דבר.",
       "cues": {
-        "en": "To pay it. To study it. To recieve it.",
+        "en": "He knows everything, but she does not know anything.",
         "nl": ""
-      }
+      },
+      "niveau": 2,
+      "type": "herhaling"
     },
     {
-      "id": 119,
+      "id": 155,
+      "les": 8,
+      "he": "אני מחפשת משהו. מה אני יכולה למצוא פה?",
+      "cues": {
+        "en": "I am looking for something. What can I find here?",
+        "nl": ""
+      },
+      "niveau": 2,
+      "type": "herhaling"
+    },
+    {
+      "id": 156,
+      "les": 8,
+      "he": "היא צריכה לחפש עבודה ודירה.",
+      "cues": {
+        "en": "She needs to find a job and an apartment.",
+        "nl": ""
+      },
+      "niveau": 2,
+      "type": "herhaling"
+    },
+    {
+      "id": 157,
+      "les": 8,
+      "he": "למה אתה רוצה ללמוד עברית? כי אני רוצה לדבר.",
+      "cues": {
+        "en": "Why do you (m) want to study Hebrew? Because I want to speak.",
+        "nl": ""
+      },
+      "niveau": 3,
+      "type": "herhaling"
+    },
+    {
+      "id": 158,
+      "les": 8,
+      "he": "מאיפה אתה? אני מהולנד. לאן אתה הולך? הביתה.",
+      "cues": {
+        "en": "From where are you? I am from Holland. Where are you going? Home.",
+        "nl": ""
+      },
+      "niveau": 3,
+      "type": "herhaling"
+    },
+    {
+      "id": 159,
+      "les": 8,
+      "he": "אפשר לדבר עם משה? כן, משה פה.",
+      "cues": {
+        "en": "May I speak with Moshe? Yes, Moshe is here.",
+        "nl": ""
+      },
+      "niveau": 3,
+      "type": "herhaling"
+    },
+    {
+      "id": 160,
+      "les": 8,
+      "he": "לא צריך לשלם מיליון, רק שקל.",
+      "cues": {
+        "en": "It is not necessary to pay a million, only a shekel.",
+        "nl": ""
+      },
+      "niveau": 3,
+      "type": "herhaling"
+    },
+    {
+      "id": 161,
       "les": 9,
-      "he": "אם את רוצה לקבל את זה ,את צריכה לשלם.",
+      "he": "מי זה? מה זה? כמה זה? איפה זה?",
+      "cues": {
+        "en": "Who is it? What is it? How much is it? Where is it?",
+        "nl": ""
+      },
+      "niveau": 1,
+      "type": "nieuw"
+    },
+    {
+      "id": 162,
+      "les": 9,
+      "he": "איפה זה? זה פה? זה לא פה, זה שם.",
+      "cues": {
+        "en": "Where is it? Is it here? It is not here, it is there.",
+        "nl": ""
+      },
+      "niveau": 1,
+      "type": "nieuw"
+    },
+    {
+      "id": 163,
+      "les": 9,
+      "he": "זה טוב. אני אוהבת את זה.",
+      "cues": {
+        "en": "This is good. I (F) like it.",
+        "nl": ""
+      },
+      "niveau": 1,
+      "type": "nieuw"
+    },
+    {
+      "id": 164,
+      "les": 9,
+      "he": "לשלם את זה. ללמוד את זה. לקבל את זה.",
+      "cues": {
+        "en": "To pay it. To study it. To receive it.",
+        "nl": ""
+      },
+      "niveau": 2,
+      "type": "nieuw"
+    },
+    {
+      "id": 165,
+      "les": 9,
+      "he": "אם את רוצה לקבל את זה, את צריכה לשלם.",
       "cues": {
         "en": "If you (F) want to receive it, you need to pay.",
         "nl": ""
-      }
+      },
+      "niveau": 2,
+      "type": "nieuw"
     },
     {
-      "id": 120,
+      "id": 166,
       "les": 9,
-      "he": "זה קשה לשלם שקל .יותר קשה לשלם מיליון.",
+      "he": "זה קשה לשלם שקל. יותר קשה לשלם מיליון.",
       "cues": {
-        "en": "It's hard to pay a shekel. (It's) harder to pay a million.",
+        "en": "It is hard to pay a shekel. It is harder to pay a million.",
         "nl": ""
-      }
+      },
+      "niveau": 2,
+      "type": "nieuw"
     },
     {
-      "id": 121,
+      "id": 167,
       "les": 9,
-      "he": "הוא אוהב רק את שרה ,כי רק שרה יכולה לדבר עברית טוב.",
+      "he": "הוא אוהב את זה. הוא אוהב את שרה.",
       "cues": {
-        "en": "He kikes only Sarah, because only Sarah can speak Hebrew well.",
-        "nl": ""
-      }
+        "en": "He likes it. He likes Sarah.",
+        "nl": "Hij houdt ervan. Hij houdt van Sarah."
+      },
+      "niveau": 2,
+      "type": "nieuw"
     },
     {
-      "id": 122,
+      "id": 168,
       "les": 9,
-      "he": "כמה כסף את צריכה? רק שקל.",
+      "he": "הוא אוהב רק את שרה, כי רק שרה יכולה לדבר עברית טוב.",
       "cues": {
-        "en": "(It's) better to arrange it today.",
+        "en": "He likes only Sarah, because only Sarah can speak Hebrew well.",
         "nl": ""
-      }
+      },
+      "niveau": 3,
+      "type": "nieuw"
     },
     {
-      "id": 123,
+      "id": 169,
+      "les": 9,
+      "he": "מתי צריך לבוא? כמה צריך לשלם?",
+      "cues": {
+        "en": "When is it necessary to come? How much is it necessary to pay?",
+        "nl": ""
+      },
+      "niveau": 3,
+      "type": "nieuw"
+    },
+    {
+      "id": 170,
+      "les": 9,
+      "he": "אני צריך לסדר את זה. יותר טוב לסדר את זה היום.",
+      "cues": {
+        "en": "I need to arrange it. It is better to arrange it today.",
+        "nl": ""
+      },
+      "niveau": 3,
+      "type": "nieuw"
+    },
+    {
+      "id": 171,
+      "les": 9,
+      "he": "זה טוב? זה טוב, אבל זה קשה.",
+      "cues": {
+        "en": "Is it good? It is good but difficult.",
+        "nl": ""
+      },
+      "niveau": 1,
+      "type": "herhaling"
+    },
+    {
+      "id": 172,
+      "les": 9,
+      "he": "הוא לא יודע שום דבר. הוא לא שומע שום דבר.",
+      "cues": {
+        "en": "He does not know anything. He does not hear anything.",
+        "nl": ""
+      },
+      "niveau": 1,
+      "type": "herhaling"
+    },
+    {
+      "id": 173,
+      "les": 9,
+      "he": "איפה אני יכול לקבל את זה? רק באולפן.",
+      "cues": {
+        "en": "Where can I receive it? Only at the ulpan.",
+        "nl": ""
+      },
+      "niveau": 2,
+      "type": "herhaling"
+    },
+    {
+      "id": 174,
+      "les": 9,
+      "he": "היא צריכה לשלם מחר בבנק.",
+      "cues": {
+        "en": "She needs to pay tomorrow at the bank.",
+        "nl": ""
+      },
+      "niveau": 2,
+      "type": "herhaling"
+    },
+    {
+      "id": 175,
+      "les": 9,
+      "he": "אני לא יכול לבוא ב-3. אני יכול לבוא ב-4?",
+      "cues": {
+        "en": "I cannot come at 3. Can I come at 4?",
+        "nl": ""
+      },
+      "niveau": 2,
+      "type": "herhaling"
+    },
+    {
+      "id": 176,
+      "les": 9,
+      "he": "מי רוצה לדבר עברית פה? מישהו מדבר עברית.",
+      "cues": {
+        "en": "Who wants to speak Hebrew here? Someone speaks Hebrew.",
+        "nl": ""
+      },
+      "niveau": 2,
+      "type": "herhaling"
+    },
+    {
+      "id": 177,
+      "les": 9,
+      "he": "אני אוהב ללמוד בבית, אבל יותר טוב באולפן.",
+      "cues": {
+        "en": "I like to study at home, but better at the ulpan.",
+        "nl": ""
+      },
+      "niveau": 3,
+      "type": "herhaling"
+    },
+    {
+      "id": 178,
+      "les": 9,
+      "he": "היא מחפשת אותו כי היא רוצה לשאול אותו משהו.",
+      "cues": {
+        "en": "She is looking for him because she wants to ask him something.",
+        "nl": ""
+      },
+      "niveau": 3,
+      "type": "herhaling"
+    },
+    {
+      "id": 179,
+      "les": 9,
+      "he": "הוא צריך לעבוד. אם הוא עובד הוא יכול לקבל כסף.",
+      "cues": {
+        "en": "He needs to work. If he works he can receive money.",
+        "nl": ""
+      },
+      "niveau": 3,
+      "type": "herhaling"
+    },
+    {
+      "id": 180,
+      "les": 9,
+      "he": "לא צריך לשלם מיליון, רק שקל.",
+      "cues": {
+        "en": "It is not necessary to pay a million, only a shekel.",
+        "nl": ""
+      },
+      "niveau": 3,
+      "type": "herhaling"
+    },
+    {
+      "id": 181,
       "les": 10,
-      "he": "מי יודֵעַ? היא יודעת .מי שומע? היא שומעת.",
+      "he": "מי יודע? היא יודעת. מי שומע? היא שומעת.",
       "cues": {
         "en": "Who knows? She knows. Who hears? She hears.",
         "nl": ""
-      }
+      },
+      "niveau": 1,
+      "type": "nieuw"
     },
     {
-      "id": 124,
+      "id": 182,
       "les": 10,
-      "he": "מי צריך לחפש את זה? מי רוצֶה לחפש את זה? מי יָכול לחפש את זה?",
-      "cues": {
-        "en": "Who needs to look for it? Who wants to look for it? Who can look for it?",
-        "nl": ""
-      }
-    },
-    {
-      "id": 125,
-      "les": 10,
-      "he": "אני יכולה לדבר גם עברית וגם אנגלית.",
-      "cues": {
-        "en": "I can speak also Hebrew and also English.",
-        "nl": ""
-      }
-    },
-    {
-      "id": 126,
-      "les": 10,
-      "he": "את אוהבת אותי? אני אוהבת אותָך.",
+      "he": "את אוהבת אותי? אני אוהבת אותך.",
       "cues": {
         "en": "Do you like me? I like you.",
         "nl": ""
-      }
+      },
+      "niveau": 1,
+      "type": "nieuw"
     },
     {
-      "id": 127,
+      "id": 183,
       "les": 10,
       "he": "מתי אתה צריך אותי? אני צריך אותך עכשיו.",
       "cues": {
         "en": "When do you need me? I need you now.",
         "nl": ""
-      }
+      },
+      "niveau": 1,
+      "type": "nieuw"
     },
     {
-      "id": 128,
+      "id": 184,
       "les": 10,
       "he": "היא צריכה לחפש דירה וגם עבודה.",
       "cues": {
         "en": "She needs to look for a flat and also a job.",
         "nl": ""
-      }
+      },
+      "niveau": 2,
+      "type": "nieuw"
     },
     {
-      "id": 129,
+      "id": 185,
       "les": 10,
       "he": "אתה שומע אותי? אני שומע אותך.",
       "cues": {
         "en": "Do you hear me? I hear you (f).",
         "nl": ""
-      }
+      },
+      "niveau": 2,
+      "type": "nieuw"
     },
     {
-      "id": 130,
+      "id": 186,
       "les": 10,
-      "he": "מתי אתה יכול לקבל אותי? אני יכול לקבל אותך עכשיו.",
+      "he": "אני יכולה לדבר גם עברית וגם אנגלית.",
       "cues": {
-        "en": "When can you recieve me? I can recieve you now.",
+        "en": "I can speak also Hebrew and also English.",
         "nl": ""
-      }
+      },
+      "niveau": 2,
+      "type": "nieuw"
     },
     {
-      "id": 131,
+      "id": 187,
       "les": 10,
       "he": "למה את צריכה לחפש עבודה? כי אני צריכה כסף.",
       "cues": {
-        "en": "Why do you need to look for a job? because I need money.",
+        "en": "Why do you need to look for a job? Because I need money.",
         "nl": ""
-      }
+      },
+      "niveau": 2,
+      "type": "nieuw"
     },
     {
-      "id": 132,
+      "id": 188,
       "les": 10,
-      "he": "הוא לא יודע שום דבר .הוא לא שומע שום דבר.",
+      "he": "מי צריך לחפש את זה? מי רוצה? מי יכול?",
       "cues": {
-        "en": "He doesn't know anything. He doesn't hear anything.",
+        "en": "Who needs to look for it? Who wants to? Who can?",
         "nl": ""
-      }
+      },
+      "niveau": 3,
+      "type": "nieuw"
     },
     {
-      "id": 133,
+      "id": 189,
       "les": 10,
-      "he": "הוא אוהב לדבר ,אבל היא אוהבת ללמוד.",
+      "he": "הוא לא יודע שום דבר. הוא לא שומע שום דבר.",
+      "cues": {
+        "en": "He does not know anything. He does not hear anything.",
+        "nl": ""
+      },
+      "niveau": 3,
+      "type": "nieuw"
+    },
+    {
+      "id": 190,
+      "les": 10,
+      "he": "הוא אוהב לדבר, אבל היא אוהבת ללמוד.",
       "cues": {
         "en": "He likes to speak, but she likes to study.",
         "nl": ""
-      }
+      },
+      "niveau": 3,
+      "type": "nieuw"
     },
     {
-      "id": 134,
+      "id": 191,
       "les": 10,
-      "he": "בישראל ,יותר טוב לדבר עברית.",
+      "he": "מי זה? מה הוא רוצה? איפה הוא?",
       "cues": {
-        "en": "In Israel, (it is) better to speak Hebrew.",
+        "en": "Who is it? What does he want? Where is he?",
         "nl": ""
-      }
+      },
+      "niveau": 1,
+      "type": "herhaling"
     },
     {
-      "id": 135,
+      "id": 192,
       "les": 10,
-      "he": "הוא לא יכול לסדר את זה היום .הוא יכול לסדר את זה רק מחר.",
+      "he": "זה טוב? זה טוב אבל קשה.",
       "cues": {
-        "en": "He can't arrange it today. He can arrange it only tomorrow.",
+        "en": "Is it good? It is good but difficult.",
         "nl": ""
-      }
+      },
+      "niveau": 1,
+      "type": "herhaling"
     },
     {
-      "id": 136,
+      "id": 193,
+      "les": 10,
+      "he": "אם אתה רוצה לקבל את זה, אתה צריך לשלם את זה.",
+      "cues": {
+        "en": "If you want to receive it, you need to pay for it.",
+        "nl": ""
+      },
+      "niveau": 2,
+      "type": "herhaling"
+    },
+    {
+      "id": 194,
+      "les": 10,
+      "he": "היום אני לא בבית. אני בבנק.",
+      "cues": {
+        "en": "Today I am not at home. I am at the bank.",
+        "nl": ""
+      },
+      "niveau": 2,
+      "type": "herhaling"
+    },
+    {
+      "id": 195,
+      "les": 10,
+      "he": "צריך לסדר את זה היום. אתה יכול לסדר את זה?",
+      "cues": {
+        "en": "It is necessary to arrange it today. Can you arrange it?",
+        "nl": ""
+      },
+      "niveau": 2,
+      "type": "herhaling"
+    },
+    {
+      "id": 196,
+      "les": 10,
+      "he": "היא אוהבת רק את משה, כי משה יכול לדבר עברית.",
+      "cues": {
+        "en": "She likes only Moshe, because Moshe can speak Hebrew.",
+        "nl": ""
+      },
+      "niveau": 2,
+      "type": "herhaling"
+    },
+    {
+      "id": 197,
+      "les": 10,
+      "he": "איפה אני יכול לקבל קפה? אתה יכול לקבל את זה באולפן.",
+      "cues": {
+        "en": "Where can I receive coffee? You can receive it at the ulpan.",
+        "nl": ""
+      },
+      "niveau": 3,
+      "type": "herhaling"
+    },
+    {
+      "id": 198,
+      "les": 10,
+      "he": "הוא מחפש מישהו שיכול לדבר עברית.",
+      "cues": {
+        "en": "He is looking for someone who can speak Hebrew.",
+        "nl": ""
+      },
+      "niveau": 3,
+      "type": "herhaling"
+    },
+    {
+      "id": 199,
+      "les": 10,
+      "he": "טוב - יותר טוב. קשה - יותר קשה. פשוט - יותר פשוט.",
+      "cues": {
+        "en": "Good - better. Hard - harder. Simple - simpler.",
+        "nl": ""
+      },
+      "niveau": 3,
+      "type": "herhaling"
+    },
+    {
+      "id": 200,
+      "les": 10,
+      "he": "למה אתה פה? כי אני רוצה ללמוד ולדבר עברית.",
+      "cues": {
+        "en": "Why are you here? Because I want to learn and speak Hebrew.",
+        "nl": ""
+      },
+      "niveau": 3,
+      "type": "herhaling"
+    },
+    {
+      "id": 201,
       "les": 11,
       "he": "מי יודע? מי שומע? מי נוסע?",
       "cues": {
@@ -1305,7 +2210,7 @@
       }
     },
     {
-      "id": 137,
+      "id": 202,
       "les": 11,
       "he": "לאן את נוסעת? אני נוסעת הביתה.",
       "cues": {
@@ -1314,7 +2219,7 @@
       }
     },
     {
-      "id": 138,
+      "id": 203,
       "les": 11,
       "he": "הוא אוהב לסדר  ,אבל היא לא אוהבת לסדר.",
       "cues": {
@@ -1323,7 +2228,7 @@
       }
     },
     {
-      "id": 139,
+      "id": 204,
       "les": 11,
       "he": "אתה אוהב אותי? אני אוהב אותך.",
       "cues": {
@@ -1332,7 +2237,7 @@
       }
     },
     {
-      "id": 140,
+      "id": 205,
       "les": 11,
       "he": "הוא פה באולפן והיא שם בבית.",
       "cues": {
@@ -1341,7 +2246,7 @@
       }
     },
     {
-      "id": 141,
+      "id": 206,
       "les": 11,
       "he": "הוא נוסע לאולפן והיא נוסעת לתל אביב.",
       "cues": {
@@ -1350,7 +2255,7 @@
       }
     },
     {
-      "id": 142,
+      "id": 207,
       "les": 11,
       "he": "אני צריך לדבר עברית אבל אני מדבר אנגלית.",
       "cues": {
@@ -1359,7 +2264,7 @@
       }
     },
     {
-      "id": 143,
+      "id": 208,
       "les": 11,
       "he": "כמה אתה מקבל? כמה אתה רוצה לקבל?",
       "cues": {
@@ -1368,7 +2273,7 @@
       }
     },
     {
-      "id": 144,
+      "id": 209,
       "les": 11,
       "he": "מתי הוא מקבל? הוא יכול לקבל אותי היום?",
       "cues": {
@@ -1377,7 +2282,7 @@
       }
     },
     {
-      "id": 145,
+      "id": 210,
       "les": 11,
       "he": "ללמוד עברית זה טוב ,אבל זה גם קשה.",
       "cues": {
@@ -1386,7 +2291,7 @@
       }
     },
     {
-      "id": 146,
+      "id": 211,
       "les": 12,
       "he": "איפה? בבית .לאן? הביתה .מאיפה? מאמריקה .למה? כי.",
       "cues": {
@@ -1395,7 +2300,7 @@
       }
     },
     {
-      "id": 147,
+      "id": 212,
       "les": 12,
       "he": "אתה שומע משהו?",
       "cues": {
@@ -1404,7 +2309,7 @@
       }
     },
     {
-      "id": 148,
+      "id": 213,
       "les": 12,
       "he": "מישהו שומע אותי? אני שומע אותך.",
       "cues": {
@@ -1413,7 +2318,7 @@
       }
     },
     {
-      "id": 149,
+      "id": 214,
       "les": 12,
       "he": "עד  3אני בבית .אפשר לבוא עד  3.אתה יכול לבוא?",
       "cues": {
@@ -1422,7 +2327,7 @@
       }
     },
     {
-      "id": 150,
+      "id": 215,
       "les": 12,
       "he": "הוא מקבל רק מ 7 -עד  9.הוא לא יכול לקבל אותך היום.",
       "cues": {
@@ -1431,7 +2336,7 @@
       }
     },
     {
-      "id": 151,
+      "id": 216,
       "les": 12,
       "he": "אני מחפשת אותו  ,אני רוצה לשאול אותו משהו.",
       "cues": {
@@ -1440,7 +2345,7 @@
       }
     },
     {
-      "id": 152,
+      "id": 217,
       "les": 12,
       "he": "מתי את משלמת ? אני משלמת מחר.",
       "cues": {
@@ -1449,7 +2354,7 @@
       }
     },
     {
-      "id": 153,
+      "id": 218,
       "les": 12,
       "he": "היום אני מסדרת  ,מחר אתה מסדר.",
       "cues": {
@@ -1458,7 +2363,7 @@
       }
     },
     {
-      "id": 154,
+      "id": 219,
       "les": 12,
       "he": "אם אני לא יכולה לקבל את זה היום  ,אני יכולה לקבל את זה מחר?",
       "cues": {
@@ -1467,7 +2372,7 @@
       }
     },
     {
-      "id": 155,
+      "id": 220,
       "les": 12,
       "he": "אם אני לא יכול ללמוד באולפן ,אני יכול ללמוד בבית?",
       "cues": {
@@ -1476,7 +2381,7 @@
       }
     },
     {
-      "id": 156,
+      "id": 221,
       "les": 12,
       "he": "אתה יכול לבוא ולקבל את זה עד מחר.",
       "cues": {
@@ -1485,7 +2390,7 @@
       }
     },
     {
-      "id": 157,
+      "id": 222,
       "les": 12,
       "he": "היא נוסעת לתל אביב .לאן אתה נוסע ?",
       "cues": {
@@ -1494,7 +2399,7 @@
       }
     },
     {
-      "id": 158,
+      "id": 223,
       "les": 13,
       "he": "היא יודעת הכל  ,אבל הוא לא יודע שום דבר.",
       "cues": {
@@ -1503,7 +2408,7 @@
       }
     },
     {
-      "id": 159,
+      "id": 224,
       "les": 13,
       "he": "איפה? בבית .לאן? הביתה .מאיפה? מאמריקה.",
       "cues": {
@@ -1512,7 +2417,7 @@
       }
     },
     {
-      "id": 160,
+      "id": 225,
       "les": 13,
       "he": "זה פשוט? אני חושב שכן.",
       "cues": {
@@ -1521,7 +2426,7 @@
       }
     },
     {
-      "id": 161,
+      "id": 226,
       "les": 13,
       "he": "אני תמיד חושבת על זה.",
       "cues": {
@@ -1530,7 +2435,7 @@
       }
     },
     {
-      "id": 162,
+      "id": 227,
       "les": 13,
       "he": "אני חושב שזה לא קשה ללמוד עברית.",
       "cues": {
@@ -1539,7 +2444,7 @@
       }
     },
     {
-      "id": 163,
+      "id": 228,
       "les": 13,
       "he": "אני חושב שהיא מקבלת מ  6עד 9.",
       "cues": {
@@ -1548,7 +2453,7 @@
       }
     },
     {
-      "id": 164,
+      "id": 229,
       "les": 13,
       "he": "למה את אוהבת אותי? כי את יודעת עברית.",
       "cues": {
@@ -1557,7 +2462,7 @@
       }
     },
     {
-      "id": 165,
+      "id": 230,
       "les": 13,
       "he": "אני חושב שצריך לסגור את זה היום.",
       "cues": {
@@ -1566,7 +2471,7 @@
       }
     },
     {
-      "id": 166,
+      "id": 231,
       "les": 13,
       "he": "אני יודע שאפשר לקבל את זה היום.",
       "cues": {
@@ -1575,7 +2480,7 @@
       }
     },
     {
-      "id": 167,
+      "id": 232,
       "les": 13,
       "he": "הוא מחפש אותה והיא מחפשת אותו.",
       "cues": {
@@ -1584,7 +2489,7 @@
       }
     },
     {
-      "id": 168,
+      "id": 233,
       "les": 13,
       "he": "זה לא פשוט לתקן את זה.",
       "cues": {
@@ -1593,7 +2498,7 @@
       }
     },
     {
-      "id": 169,
+      "id": 234,
       "les": 13,
       "he": "אם אתה לא משלם  -אתה לא מקבל.",
       "cues": {
@@ -1602,7 +2507,7 @@
       }
     },
     {
-      "id": 170,
+      "id": 235,
       "les": 13,
       "he": "איפה אתה אוהב ללמוד? בבית או באולפן?",
       "cues": {
@@ -1611,7 +2516,7 @@
       }
     },
     {
-      "id": 171,
+      "id": 236,
       "les": 14,
       "he": "He pays a shekel , but he needs to pay a miliion ()ןוילימ.",
       "cues": {
@@ -1620,7 +2525,7 @@
       }
     },
     {
-      "id": 172,
+      "id": 237,
       "les": 14,
       "he": "מישהו שומע משהו? מישהו יודע משהו?",
       "cues": {
@@ -1629,7 +2534,7 @@
       }
     },
     {
-      "id": 173,
+      "id": 238,
       "les": 14,
       "he": "הוא משלם שקל ,אבל הוא צריך לשלם מיליון.",
       "cues": {
@@ -1638,7 +2543,7 @@
       }
     },
     {
-      "id": 174,
+      "id": 239,
       "les": 14,
       "he": "הוּא רוֹצֶה לְדַבֵּר ומְדַבֵּר .מִי מְדַבֵּר?",
       "cues": {
@@ -1647,7 +2552,7 @@
       }
     },
     {
-      "id": 175,
+      "id": 240,
       "les": 14,
       "he": "מתי אתה צריך לסגור? מתי אתה סוגר ?",
       "cues": {
@@ -1656,7 +2561,7 @@
       }
     },
     {
-      "id": 176,
+      "id": 241,
       "les": 14,
       "he": "יותר טוב לסגור את זה עכשיו.",
       "cues": {
@@ -1665,7 +2570,7 @@
       }
     },
     {
-      "id": 177,
+      "id": 242,
       "les": 14,
       "he": "אני חושב שזה פשוט ללמוד עברית .מה את חושבת?",
       "cues": {
@@ -1674,7 +2579,7 @@
       }
     },
     {
-      "id": 178,
+      "id": 243,
       "les": 14,
       "he": "למה אני מקבל רק שקל? אני רוצה לקבל מיליון.",
       "cues": {
@@ -1683,7 +2588,7 @@
       }
     },
     {
-      "id": 179,
+      "id": 244,
       "les": 14,
       "he": "אני לא יכול לעבוד ,אני רוצה לאכול.",
       "cues": {
@@ -1692,7 +2597,7 @@
       }
     },
     {
-      "id": 180,
+      "id": 245,
       "les": 14,
       "he": "איפה את עובדת? איפה את רוצה לעבוד?",
       "cues": {
@@ -1701,7 +2606,7 @@
       }
     },
     {
-      "id": 181,
+      "id": 246,
       "les": 14,
       "he": "מה את אוהבת לאכול? מה את אוכלת?",
       "cues": {
@@ -1710,7 +2615,7 @@
       }
     },
     {
-      "id": 182,
+      "id": 247,
       "les": 14,
       "he": "מי לומד? היא לומדת .היא לומדת מ 8-עד 10.",
       "cues": {
@@ -1719,7 +2624,7 @@
       }
     },
     {
-      "id": 183,
+      "id": 248,
       "les": 15,
       "he": "לבוא או לא לבוא? לאן לבוא?",
       "cues": {
@@ -1728,7 +2633,7 @@
       }
     },
     {
-      "id": 184,
+      "id": 249,
       "les": 15,
       "he": "הוא רוצה לסדר ומסדר .מי מסדר?",
       "cues": {
@@ -1737,7 +2642,7 @@
       }
     },
     {
-      "id": 185,
+      "id": 250,
       "les": 15,
       "he": "הוא רוצה לתקן ומְתקן.",
       "cues": {
@@ -1746,7 +2651,7 @@
       }
     },
     {
-      "id": 186,
+      "id": 251,
       "les": 15,
       "he": "אני מתקנת את זה  ,כי זה לא עובד.",
       "cues": {
@@ -1755,7 +2660,7 @@
       }
     },
     {
-      "id": 187,
+      "id": 252,
       "les": 15,
       "he": "אני רוצה לשלם .אתה יכול לשקול את זה?",
       "cues": {
@@ -1764,7 +2669,7 @@
       }
     },
     {
-      "id": 188,
+      "id": 253,
       "les": 15,
       "he": "היא יכולה לעבוד רק מ  8עד 10.",
       "cues": {
@@ -1773,7 +2678,7 @@
       }
     },
     {
-      "id": 189,
+      "id": 254,
       "les": 15,
       "he": "אתה אוכל משהו? אני לא אוכל שום דבר.",
       "cues": {
@@ -1782,7 +2687,7 @@
       }
     },
     {
-      "id": 190,
+      "id": 255,
       "les": 15,
       "he": "מה את חושבת? אני חושב שצריך לחפש עבודה.",
       "cues": {
@@ -1791,7 +2696,7 @@
       }
     },
     {
-      "id": 191,
+      "id": 256,
       "les": 15,
       "he": "מישהו מחפש אותי? משה מחפש אותך.",
       "cues": {
@@ -1800,7 +2705,7 @@
       }
     },
     {
-      "id": 192,
+      "id": 257,
       "les": 15,
       "he": "אני חושב על זה .אני לא יודע שום דבר על זה.",
       "cues": {
@@ -1809,7 +2714,7 @@
       }
     },
     {
-      "id": 193,
+      "id": 258,
       "les": 15,
       "he": "אני לא רוצה לדבר על זה.",
       "cues": {
@@ -1818,7 +2723,7 @@
       }
     },
     {
-      "id": 194,
+      "id": 259,
       "les": 16,
       "he": "אפשר לחזור הביתה עכשיו?",
       "cues": {
@@ -1827,7 +2732,7 @@
       }
     },
     {
-      "id": 195,
+      "id": 260,
       "les": 16,
       "he": "צריך לחזור הביתה ולחזור על זה בבית.",
       "cues": {
@@ -1836,7 +2741,7 @@
       }
     },
     {
-      "id": 196,
+      "id": 261,
       "les": 16,
       "he": "אני יודע עברית כי אני חוזר על זה בבית.",
       "cues": {
@@ -1845,7 +2750,7 @@
       }
     },
     {
-      "id": 197,
+      "id": 262,
       "les": 16,
       "he": "זה לא עובד .אני שוקל לתקן את זה.",
       "cues": {
@@ -1854,7 +2759,7 @@
       }
     },
     {
-      "id": 198,
+      "id": 263,
       "les": 16,
       "he": "צריך לגמור את זה עד מחר .מתי אתה גומר את זה?",
       "cues": {
@@ -1863,7 +2768,7 @@
       }
     },
     {
-      "id": 199,
+      "id": 264,
       "les": 16,
       "he": "הוא חוזר הביתה וחושב על זה בבית .יותר טוב לחשוב באולפן.",
       "cues": {
@@ -1872,7 +2777,7 @@
       }
     },
     {
-      "id": 200,
+      "id": 265,
       "les": 16,
       "he": "איך אתה משלם? איך אתה רוצה לשלם?",
       "cues": {
@@ -1881,7 +2786,7 @@
       }
     },
     {
-      "id": 201,
+      "id": 266,
       "les": 16,
       "he": "כל יום ,כל שבוע ,כל חודש ,כל שנה.",
       "cues": {
@@ -1890,7 +2795,7 @@
       }
     },
     {
-      "id": 202,
+      "id": 267,
       "les": 16,
       "he": "היא מחפשת אותו ,כי היא אוהבת אותו.",
       "cues": {
@@ -1899,7 +2804,7 @@
       }
     },
     {
-      "id": 203,
+      "id": 268,
       "les": 16,
       "he": "מה אתה חושב? אני חושב שאני צריך לחפש עבודה.",
       "cues": {
@@ -1908,7 +2813,7 @@
       }
     },
     {
-      "id": 204,
+      "id": 269,
       "les": 16,
       "he": "היא מסדרת את זה ,כי היא אוהבת לסדר.",
       "cues": {
@@ -1917,7 +2822,7 @@
       }
     },
     {
-      "id": 205,
+      "id": 270,
       "les": 16,
       "he": "מה את אוהבת לֶאֶכוֹל? מה את אוכלת?",
       "cues": {
@@ -1926,7 +2831,7 @@
       }
     },
     {
-      "id": 206,
+      "id": 271,
       "les": 17,
       "he": "למה אתה שוֹאֵל אותי? אתה צריך לשאול את משה.",
       "cues": {
@@ -1935,7 +2840,7 @@
       }
     },
     {
-      "id": 207,
+      "id": 272,
       "les": 17,
       "he": "אני חושב שצריך לסגור את זה .אתה סוגר את זה?",
       "cues": {
@@ -1944,7 +2849,7 @@
       }
     },
     {
-      "id": 208,
+      "id": 273,
       "les": 17,
       "he": "צריך לחזור על זה בבית .אתה חוזר על זה ?",
       "cues": {
@@ -1953,7 +2858,7 @@
       }
     },
     {
-      "id": 209,
+      "id": 274,
       "les": 17,
       "he": "אתה יודע איך לתקן את זה? למה אתה לא מתקן את זה?",
       "cues": {
@@ -1962,7 +2867,7 @@
       }
     },
     {
-      "id": 210,
+      "id": 275,
       "les": 17,
       "he": "לחשוב על זה .לשקול את זה.",
       "cues": {
@@ -1971,7 +2876,7 @@
       }
     },
     {
-      "id": 211,
+      "id": 276,
       "les": 17,
       "he": "מה את חושבת? אני חושבת שצריך לגמור את זה עכשיו.",
       "cues": {
@@ -1980,7 +2885,7 @@
       }
     },
     {
-      "id": 212,
+      "id": 277,
       "les": 17,
       "he": "הוא עובד עד  3.ב 3-הוא גומר לעבוד ,סוגר וחוזר הביתה.",
       "cues": {
@@ -1989,7 +2894,7 @@
       }
     },
     {
-      "id": 213,
+      "id": 278,
       "les": 17,
       "he": "לאן את נוסעת? מאיפה את חוזרת?",
       "cues": {
@@ -1998,7 +2903,7 @@
       }
     },
     {
-      "id": 214,
+      "id": 279,
       "les": 17,
       "he": "עם מי אתה רוצה לנסוע? איתי או איתו?",
       "cues": {
@@ -2007,7 +2912,7 @@
       }
     },
     {
-      "id": 215,
+      "id": 280,
       "les": 17,
       "he": "אני מחפשת אותך ,כי אני רוצה לדבר איתך.",
       "cues": {
@@ -2016,7 +2921,7 @@
       }
     },
     {
-      "id": 216,
+      "id": 281,
       "les": 17,
       "he": "אני רוצה לשמוע אותך אבל אני לא יכולה .את שומעת אותי?",
       "cues": {
@@ -2025,7 +2930,7 @@
       }
     },
     {
-      "id": 217,
+      "id": 282,
       "les": 17,
       "he": "אני חושב שהוא אוהב אותה ,כי היא מדברת עברית טוב.",
       "cues": {
@@ -2034,7 +2939,7 @@
       }
     },
     {
-      "id": 218,
+      "id": 283,
       "les": 17,
       "he": "צריך ללמוד עברית כל יום  ,כל היום.",
       "cues": {
@@ -2043,7 +2948,7 @@
       }
     },
     {
-      "id": 219,
+      "id": 284,
       "les": 17,
       "he": "הוא מדבר איתי ,עובד איתי ,אוכל איתי ולומד איתי עברית.",
       "cues": {
@@ -2052,7 +2957,7 @@
       }
     },
     {
-      "id": 220,
+      "id": 285,
       "les": 18,
       "he": "אני נוסע לאולפן .אתה רוצה לבוא איתי ?",
       "cues": {
@@ -2061,7 +2966,7 @@
       }
     },
     {
-      "id": 221,
+      "id": 286,
       "les": 18,
       "he": "אני לומדת ועובדת וזה לא פשוט.",
       "cues": {
@@ -2070,7 +2975,7 @@
       }
     },
     {
-      "id": 222,
+      "id": 287,
       "les": 18,
       "he": "אף אחד לא מדבר על זה.",
       "cues": {
@@ -2079,7 +2984,7 @@
       }
     },
     {
-      "id": 223,
+      "id": 288,
       "les": 18,
       "he": "אף אחד לא אוהב לשלם .רק אני משלם.",
       "cues": {
@@ -2088,7 +2993,7 @@
       }
     },
     {
-      "id": 224,
+      "id": 289,
       "les": 18,
       "he": "אני חוזרת הביתה ,כי אני אוהבת לשבת בבית.",
       "cues": {
@@ -2097,7 +3002,7 @@
       }
     },
     {
-      "id": 225,
+      "id": 290,
       "les": 18,
       "he": "את רוצה לשבת איתי ולדבר איתי?",
       "cues": {
@@ -2106,7 +3011,7 @@
       }
     },
     {
-      "id": 226,
+      "id": 291,
       "les": 18,
       "he": "כמה זמן זה יכול לקחת?",
       "cues": {
@@ -2115,7 +3020,7 @@
       }
     },
     {
-      "id": 227,
+      "id": 292,
       "les": 18,
       "he": "כמה אתה שוקל? למה אתה שואל?",
       "cues": {
@@ -2124,7 +3029,7 @@
       }
     },
     {
-      "id": 228,
+      "id": 293,
       "les": 18,
       "he": "אני לא יודעת ,אני צריכה לחשוב על זה.",
       "cues": {
@@ -2133,7 +3038,7 @@
       }
     },
     {
-      "id": 229,
+      "id": 294,
       "les": 18,
       "he": "זה לא עובד .את יכולה לתקן את זה?",
       "cues": {
@@ -2142,7 +3047,7 @@
       }
     },
     {
-      "id": 230,
+      "id": 295,
       "les": 18,
       "he": "אני לא שומעת אותך אבל אני רוצה לשמוע אותך.",
       "cues": {
@@ -2151,7 +3056,7 @@
       }
     },
     {
-      "id": 231,
+      "id": 296,
       "les": 18,
       "he": "לאן את נוסעת? אפשר לנסוע איתך?",
       "cues": {
@@ -2160,7 +3065,7 @@
       }
     },
     {
-      "id": 232,
+      "id": 297,
       "les": 18,
       "he": "היא חוזרת הביתה ב .5-מתי אתה חוזר?",
       "cues": {
@@ -2169,7 +3074,7 @@
       }
     },
     {
-      "id": 233,
+      "id": 298,
       "les": 18,
       "he": "טוב  -יוֹתֵר טוב ,פשוט  -יותר פשוט.",
       "cues": {
@@ -2178,7 +3083,7 @@
       }
     },
     {
-      "id": 234,
+      "id": 299,
       "les": 19,
       "he": "אפשר לשבת פה?",
       "cues": {
@@ -2187,7 +3092,7 @@
       }
     },
     {
-      "id": 235,
+      "id": 300,
       "les": 19,
       "he": "מה אני צריך לקחת איתי?",
       "cues": {
@@ -2196,7 +3101,7 @@
       }
     },
     {
-      "id": 236,
+      "id": 301,
       "les": 19,
       "he": "אני צריך זמן לחשוב על זה.",
       "cues": {
@@ -2205,7 +3110,7 @@
       }
     },
     {
-      "id": 237,
+      "id": 302,
       "les": 19,
       "he": "כדי לקבל כסף ,צריך לעבוד.",
       "cues": {
@@ -2214,7 +3119,7 @@
       }
     },
     {
-      "id": 238,
+      "id": 303,
       "les": 19,
       "he": "אנחנו לא יודעים ,אנחנו צריכים לחשוב על זה.",
       "cues": {
@@ -2223,7 +3128,7 @@
       }
     },
     {
-      "id": 239,
+      "id": 304,
       "les": 19,
       "he": "הם רוצים ללמוד עברית .מה אתם רוצים?",
       "cues": {
@@ -2232,7 +3137,7 @@
       }
     },
     {
-      "id": 240,
+      "id": 305,
       "les": 19,
       "he": "מתי אתן נוסעות לשם?",
       "cues": {
@@ -2241,7 +3146,7 @@
       }
     },
     {
-      "id": 241,
+      "id": 306,
       "les": 19,
       "he": "כמה זמן זה יכול לקחת? זה יכול לקחת חודש.",
       "cues": {
@@ -2250,7 +3155,7 @@
       }
     },
     {
-      "id": 242,
+      "id": 307,
       "les": 19,
       "he": "אנחנו משלמים ומשלמים וזה לא פשוט.",
       "cues": {
@@ -2259,7 +3164,7 @@
       }
     },
     {
-      "id": 243,
+      "id": 308,
       "les": 19,
       "he": "אף אחד לא שומע אותי .אני לא שומע אף אחד.",
       "cues": {
@@ -2268,7 +3173,7 @@
       }
     },
     {
-      "id": 244,
+      "id": 309,
       "les": 19,
       "he": "זה לא עובד .צריך לתקן את זה.",
       "cues": {
@@ -2277,7 +3182,7 @@
       }
     },
     {
-      "id": 245,
+      "id": 310,
       "les": 19,
       "he": "אנחנו חוזרים הביתה ,אוכלים משהו ומדברים עברית.",
       "cues": {
@@ -2286,7 +3191,7 @@
       }
     },
     {
-      "id": 246,
+      "id": 311,
       "les": 19,
       "he": "מתי אתם סוגרים?",
       "cues": {
@@ -2295,7 +3200,7 @@
       }
     },
     {
-      "id": 247,
+      "id": 312,
       "les": 19,
       "he": "מישהו מחפש אותי? שרה מחפשת אותך.",
       "cues": {
@@ -2304,7 +3209,7 @@
       }
     },
     {
-      "id": 248,
+      "id": 313,
       "les": 19,
       "he": "אני שואל כי אני רוצה לדעת.",
       "cues": {
@@ -2313,7 +3218,7 @@
       }
     },
     {
-      "id": 249,
+      "id": 314,
       "les": 20,
       "he": "מה אתם חושבים על זה? אתם יודעים משהו על זה?",
       "cues": {
@@ -2322,7 +3227,7 @@
       }
     },
     {
-      "id": 250,
+      "id": 315,
       "les": 20,
       "he": "אנחנו לומְדים ,נוסְעים ,עובְדים וחוזְרים הביתה.",
       "cues": {
@@ -2331,7 +3236,7 @@
       }
     },
     {
-      "id": 251,
+      "id": 316,
       "les": 20,
       "he": "אני יכול לשאול אותך? אני יכול לנסוע איתך?",
       "cues": {
@@ -2340,7 +3245,7 @@
       }
     },
     {
-      "id": 252,
+      "id": 317,
       "les": 20,
       "he": "מה הוא אמר? הוא אמר שהוא חשב על זה.",
       "cues": {
@@ -2349,7 +3254,7 @@
       }
     },
     {
-      "id": 253,
+      "id": 318,
       "les": 20,
       "he": "מי אוכֵל ? מי אָכַל ? מי רוצה לֶאֱכול?",
       "cues": {
@@ -2358,7 +3263,7 @@
       }
     },
     {
-      "id": 254,
+      "id": 319,
       "les": 20,
       "he": "הוא אוֹמֵר שהוא לא יודֵע.",
       "cues": {
@@ -2367,7 +3272,7 @@
       }
     },
     {
-      "id": 255,
+      "id": 320,
       "les": 20,
       "he": "הוא שאל אותי ,אבל אני לא יודעת.",
       "cues": {
@@ -2376,7 +3281,7 @@
       }
     },
     {
-      "id": 256,
+      "id": 321,
       "les": 20,
       "he": "הוא סָגַר ב 3-ונָסַע הביתה.",
       "cues": {
@@ -2385,7 +3290,7 @@
       }
     },
     {
-      "id": 257,
+      "id": 322,
       "les": 20,
       "he": "אנחנו מתקנים את זה כי זה לא עובד.",
       "cues": {
@@ -2394,7 +3299,7 @@
       }
     },
     {
-      "id": 258,
+      "id": 323,
       "les": 20,
       "he": "היום הוא עובד ,אתמול הוא לא עבד.",
       "cues": {
@@ -2403,7 +3308,7 @@
       }
     },
     {
-      "id": 259,
+      "id": 324,
       "les": 20,
       "he": "הכל יכול לעבור .הכל עובר .הכל עבר.",
       "cues": {
@@ -2412,7 +3317,7 @@
       }
     },
     {
-      "id": 260,
+      "id": 325,
       "les": 20,
       "he": "אני רוצה לעבור דירה .אני עוברת דירה.",
       "cues": {
@@ -2421,7 +3326,7 @@
       }
     },
     {
-      "id": 261,
+      "id": 326,
       "les": 21,
       "he": "מי אמר ? אני אמרתי.",
       "cues": {
@@ -2430,7 +3335,7 @@
       }
     },
     {
-      "id": 262,
+      "id": 327,
       "les": 21,
       "he": "אני לא אמרתי שום דבר כי אני לא ידעתי.",
       "cues": {
@@ -2439,7 +3344,7 @@
       }
     },
     {
-      "id": 263,
+      "id": 328,
       "les": 21,
       "he": "אם את רוצה לקחת את זה ,את צריכה לשאול אותי.",
       "cues": {
@@ -2448,7 +3353,7 @@
       }
     },
     {
-      "id": 264,
+      "id": 329,
       "les": 21,
       "he": "מי סגר את זה? אני סגרתי את זה .למה אתה סגרת את זה?",
       "cues": {
@@ -2457,7 +3362,7 @@
       }
     },
     {
-      "id": 265,
+      "id": 330,
       "les": 21,
       "he": "מי נסע? אני נסעתי .עם מי אתה נָסַעתָ?",
       "cues": {
@@ -2466,7 +3371,7 @@
       }
     },
     {
-      "id": 266,
+      "id": 331,
       "les": 21,
       "he": "אתה שמעתָ אותי? אני שמעתי אותך.",
       "cues": {
@@ -2475,7 +3380,7 @@
       }
     },
     {
-      "id": 267,
+      "id": 332,
       "les": 21,
       "he": "קו  5עובר פה? קו  5עבר פה ?",
       "cues": {
@@ -2484,7 +3389,7 @@
       }
     },
     {
-      "id": 268,
+      "id": 333,
       "les": 21,
       "he": "מי שמע? אני שמעתי .מה אתה שמעת?",
       "cues": {
@@ -2493,7 +3398,7 @@
       }
     },
     {
-      "id": 269,
+      "id": 334,
       "les": 21,
       "he": "מה אתה חושב ? אני חושב שזה לא פשוט ללמוד עברית.",
       "cues": {
@@ -2502,7 +3407,7 @@
       }
     },
     {
-      "id": 270,
+      "id": 335,
       "les": 21,
       "he": "מתי אתה סוֹגר? מתי אתה סגרתָ? מתי את סגרתְ?",
       "cues": {
@@ -2511,7 +3416,7 @@
       }
     },
     {
-      "id": 271,
+      "id": 336,
       "les": 21,
       "he": "אתה סגרת את זה? אני לא סגרתי את זה.",
       "cues": {
@@ -2520,7 +3425,7 @@
       }
     },
     {
-      "id": 272,
+      "id": 337,
       "les": 21,
       "he": "מי חזר? אני חזרתי .מתי אתה חזרת?",
       "cues": {
@@ -2529,7 +3434,7 @@
       }
     },
     {
-      "id": 273,
+      "id": 338,
       "les": 21,
       "he": "מי סגר? אני סגרתי .מי חשב? אני חשבתי.",
       "cues": {
@@ -2538,7 +3443,7 @@
       }
     },
     {
-      "id": 274,
+      "id": 339,
       "les": 21,
       "he": "אני לא שמעתי אותך ,מה אתה אמרתָ?",
       "cues": {
@@ -2547,7 +3452,7 @@
       }
     },
     {
-      "id": 275,
+      "id": 340,
       "les": 21,
       "he": "הוא רצה לדעת אם זה עזר.",
       "cues": {
@@ -2556,7 +3461,7 @@
       }
     },
     {
-      "id": 276,
+      "id": 341,
       "les": 22,
       "he": "למה את לא מסדרת? צריך לסדר !",
       "cues": {
@@ -2565,7 +3470,7 @@
       }
     },
     {
-      "id": 277,
+      "id": 342,
       "les": 22,
       "he": "לאן את נסעתְ? מתי את חזרתְ ?",
       "cues": {
@@ -2574,7 +3479,7 @@
       }
     },
     {
-      "id": 278,
+      "id": 343,
       "les": 22,
       "he": "מישהו מחפש אותי? אף אחד לא מחפש אותך.",
       "cues": {
@@ -2583,7 +3488,7 @@
       }
     },
     {
-      "id": 279,
+      "id": 344,
       "les": 22,
       "he": "כמה זה שוקל? כמה זה שקל ?",
       "cues": {
@@ -2592,7 +3497,7 @@
       }
     },
     {
-      "id": 280,
+      "id": 345,
       "les": 22,
       "he": "מי אכל? אני אכלתי .מה אתה אכלת?",
       "cues": {
@@ -2601,7 +3506,7 @@
       }
     },
     {
-      "id": 281,
+      "id": 346,
       "les": 22,
       "he": "מי שותה ? מי שתה ? מי רוצה לשתות?",
       "cues": {
@@ -2610,7 +3515,7 @@
       }
     },
     {
-      "id": 282,
+      "id": 347,
       "les": 22,
       "he": "הוא סגר את זה וחזר הביתה .",
       "cues": {
@@ -2619,7 +3524,7 @@
       }
     },
     {
-      "id": 283,
+      "id": 348,
       "les": 22,
       "he": "הוא רצה לשתות ושתה .מה הוא שתה?",
       "cues": {
@@ -2628,7 +3533,7 @@
       }
     },
     {
-      "id": 284,
+      "id": 349,
       "les": 22,
       "he": "של מי זה? אני חושב שזה של שרה.",
       "cues": {
@@ -2637,7 +3542,7 @@
       }
     },
     {
-      "id": 285,
+      "id": 350,
       "les": 22,
       "he": "הוא רצה לקנות וקנה .מה הוא קנה?",
       "cues": {
@@ -2646,7 +3551,7 @@
       }
     },
     {
-      "id": 286,
+      "id": 351,
       "les": 22,
       "he": "אני חושב שהם מדברים עברית .",
       "cues": {
@@ -2655,7 +3560,7 @@
       }
     },
     {
-      "id": 287,
+      "id": 352,
       "les": 22,
       "he": "אנחנו מְדַבְּרים ,מְשַלְמים,מְקַבְּלים.",
       "cues": {
@@ -2664,7 +3569,7 @@
       }
     },
     {
-      "id": 288,
+      "id": 353,
       "les": 22,
       "he": "היא קונָה קפה ושותָה את זה בבית.",
       "cues": {
@@ -2673,7 +3578,7 @@
       }
     },
     {
-      "id": 289,
+      "id": 354,
       "les": 22,
       "he": "אני רוצה לעבור דירה .אני עובר דירה .אני עברתי דירה.",
       "cues": {
@@ -2682,7 +3587,7 @@
       }
     },
     {
-      "id": 290,
+      "id": 355,
       "les": 23,
       "he": "הוא ראה אותי אתמול ואני ראיתי אותו לפני  5דקות.",
       "cues": {
@@ -2691,7 +3596,7 @@
       }
     },
     {
-      "id": 291,
+      "id": 356,
       "les": 23,
       "he": "הוא אמר שהוא כבר עשה את זה.",
       "cues": {
@@ -2700,7 +3605,7 @@
       }
     },
     {
-      "id": 292,
+      "id": 357,
       "les": 23,
       "he": "מי אמר? הוא אמר .מה הוא אמר? הוא אמר שזה טוב.",
       "cues": {
@@ -2709,7 +3614,7 @@
       }
     },
     {
-      "id": 293,
+      "id": 358,
       "les": 23,
       "he": "למה אתה עשית את זה? אני לא עשיתי שום דבר.",
       "cues": {
@@ -2718,7 +3623,7 @@
       }
     },
     {
-      "id": 294,
+      "id": 359,
       "les": 23,
       "he": "אני רוצה לעבור דירה .לאן אתה רוצה לעבור?",
       "cues": {
@@ -2727,7 +3632,7 @@
       }
     },
     {
-      "id": 295,
+      "id": 360,
       "les": 23,
       "he": "לעשות .הוא עושה .מי עשה את זה?",
       "cues": {
@@ -2736,7 +3641,7 @@
       }
     },
     {
-      "id": 296,
+      "id": 361,
       "les": 23,
       "he": "מה אתה קנית היום? אני לא קניתי שום דבר.",
       "cues": {
@@ -2745,7 +3650,7 @@
       }
     },
     {
-      "id": 297,
+      "id": 362,
       "les": 23,
       "he": "מי חשב? אני חשבתי .מה את חשבת ?",
       "cues": {
@@ -2754,7 +3659,7 @@
       }
     },
     {
-      "id": 298,
+      "id": 363,
       "les": 23,
       "he": "מי עשה את זה? אני עשיתי את זה .מי ראה אותו? אני ראיתי אותו.",
       "cues": {
@@ -2763,7 +3668,7 @@
       }
     },
     {
-      "id": 299,
+      "id": 364,
       "les": 23,
       "he": "אני שתיתי קפה בבוקר .מה את שתית אתמול?",
       "cues": {
@@ -2772,7 +3677,7 @@
       }
     },
     {
-      "id": 300,
+      "id": 365,
       "les": 24,
       "he": "אז מה? אז מתי? אז למה?",
       "cues": {
@@ -2781,7 +3686,7 @@
       }
     },
     {
-      "id": 301,
+      "id": 366,
       "les": 24,
       "he": "הוא משלם לה והיא משלמת לו.",
       "cues": {
@@ -2790,7 +3695,7 @@
       }
     },
     {
-      "id": 302,
+      "id": 367,
       "les": 24,
       "he": "מי יכול לתת לי כסף?",
       "cues": {
@@ -2799,7 +3704,7 @@
       }
     },
     {
-      "id": 303,
+      "id": 368,
       "les": 24,
       "he": "זה עוזר לי .זה עזר לי .זה יַכול לעזור לי.",
       "cues": {
@@ -2808,7 +3713,7 @@
       }
     },
     {
-      "id": 304,
+      "id": 369,
       "les": 24,
       "he": "הוא אמר לי לעשות את זה ,אז אני עשיתי את זה.",
       "cues": {
@@ -2817,7 +3722,7 @@
       }
     },
     {
-      "id": 305,
+      "id": 370,
       "les": 24,
       "he": "הוא קנה לי ואני קניתי לו.",
       "cues": {
@@ -2826,7 +3731,7 @@
       }
     },
     {
-      "id": 306,
+      "id": 371,
       "les": 24,
       "he": "אתה כבר גמרת לעבוד? אני עוד לא גמרתי לעבוד.",
       "cues": {
@@ -2835,7 +3740,7 @@
       }
     },
     {
-      "id": 307,
+      "id": 372,
       "les": 24,
       "he": "את יכולה לשלם לי היום?",
       "cues": {
@@ -2844,7 +3749,7 @@
       }
     },
     {
-      "id": 308,
+      "id": 373,
       "les": 24,
       "he": "הוא אמר לי ואני אמרתי לו.",
       "cues": {
@@ -2853,7 +3758,7 @@
       }
     },
     {
-      "id": 309,
+      "id": 374,
       "les": 24,
       "he": "כל יום היא אומרת לי שאני צריך ללמוד עברית.",
       "cues": {
@@ -2862,7 +3767,7 @@
       }
     },
     {
-      "id": 310,
+      "id": 375,
       "les": 24,
       "he": "הוא כבר שתה אבל אני עוד לא שתיתי.",
       "cues": {
@@ -2871,7 +3776,7 @@
       }
     },
     {
-      "id": 311,
+      "id": 376,
       "les": 24,
       "he": "משה ,מה אתה אָמַרְתָ לי? אני לא שָמַעתי אותךָ.",
       "cues": {
@@ -2880,7 +3785,7 @@
       }
     },
     {
-      "id": 312,
+      "id": 377,
       "les": 24,
       "he": "אתה יכול לעזור לי? אני צריך אותך.",
       "cues": {
@@ -2889,7 +3794,7 @@
       }
     },
     {
-      "id": 313,
+      "id": 378,
       "les": 24,
       "he": "שרה ,אני קניתי לך משהו לאכול.",
       "cues": {
@@ -2898,7 +3803,7 @@
       }
     },
     {
-      "id": 314,
+      "id": 379,
       "les": 25,
       "he": "יש  .אין .יש לי .אין לי.",
       "cues": {
@@ -2907,7 +3812,7 @@
       }
     },
     {
-      "id": 315,
+      "id": 380,
       "les": 25,
       "he": "יש לי בית ,אבל זה לא שלי.",
       "cues": {
@@ -2916,7 +3821,7 @@
       }
     },
     {
-      "id": 316,
+      "id": 381,
       "les": 25,
       "he": "יש לי כסף ,אני יכול לתת לך.",
       "cues": {
@@ -2925,7 +3830,7 @@
       }
     },
     {
-      "id": 317,
+      "id": 382,
       "les": 25,
       "he": "זה משה .זאת שרה.",
       "cues": {
@@ -2934,7 +3839,7 @@
       }
     },
     {
-      "id": 318,
+      "id": 383,
       "les": 25,
       "he": "מה אתה עושה אחרי האולפן?",
       "cues": {
@@ -2943,7 +3848,7 @@
       }
     },
     {
-      "id": 319,
+      "id": 384,
       "les": 25,
       "he": "יש לך זמן ללמוד איתי? היום ,אין לי זמן.",
       "cues": {
@@ -2952,7 +3857,7 @@
       }
     },
     {
-      "id": 320,
+      "id": 385,
       "les": 25,
       "he": "לפני האולפן לא ידעתי עברית ,עכשיו אני יודעת.",
       "cues": {
@@ -2961,7 +3866,7 @@
       }
     },
     {
-      "id": 321,
+      "id": 386,
       "les": 25,
       "he": "יש לי בעיה ! מישהו יכול לעזור לי?",
       "cues": {
@@ -2970,7 +3875,7 @@
       }
     },
     {
-      "id": 322,
+      "id": 387,
       "les": 25,
       "he": "אני ראיתי אותו ,שתיתי איתו ,וקניתי לו משהו.",
       "cues": {
@@ -2979,7 +3884,7 @@
       }
     },
     {
-      "id": 323,
+      "id": 388,
       "les": 25,
       "he": "הוא עובד איתי וזה עוזר לי.",
       "cues": {
@@ -2988,7 +3893,7 @@
       }
     },
     {
-      "id": 324,
+      "id": 389,
       "les": 25,
       "he": "יש לך זמן לעזור לי? אין לי זמן לעזור לך.",
       "cues": {
@@ -2997,7 +3902,7 @@
       }
     },
     {
-      "id": 325,
+      "id": 390,
       "les": 25,
       "he": "מה אתה אומר? אני לא שומע אותך.",
       "cues": {
@@ -3006,7 +3911,7 @@
       }
     },
     {
-      "id": 326,
+      "id": 391,
       "les": 25,
       "he": "יש לך זמן לדבר איתי? אין לי זמן לדבר איתך.",
       "cues": {
@@ -3015,7 +3920,7 @@
       }
     },
     {
-      "id": 327,
+      "id": 392,
       "les": 25,
       "he": "כל יום אני אוכלת אחרי האולפן ,אבל היום אכלתי לפני האולפן.",
       "cues": {
@@ -3024,7 +3929,7 @@
       }
     },
     {
-      "id": 328,
+      "id": 393,
       "les": 25,
       "he": "אני ראיתי אותה אחרי האולפן.",
       "cues": {
@@ -3033,7 +3938,7 @@
       }
     },
     {
-      "id": 329,
+      "id": 394,
       "les": 26,
       "he": "בישראל הכול יכול לקרות.",
       "cues": {
@@ -3042,7 +3947,7 @@
       }
     },
     {
-      "id": 330,
+      "id": 395,
       "les": 26,
       "he": "אין לי מושג לאן לפנות.",
       "cues": {
@@ -3051,7 +3956,7 @@
       }
     },
     {
-      "id": 331,
+      "id": 396,
       "les": 26,
       "he": "כמה כסף יש לך ? כמה כסף היה לך?",
       "cues": {
@@ -3060,7 +3965,7 @@
       }
     },
     {
-      "id": 332,
+      "id": 397,
       "les": 26,
       "he": "אין לי מושג מה קורה פה.",
       "cues": {
@@ -3069,7 +3974,7 @@
       }
     },
     {
-      "id": 333,
+      "id": 398,
       "les": 26,
       "he": "לא ידעתי לאן לפנות ,אז פניתי ימינה.",
       "cues": {
@@ -3078,7 +3983,7 @@
       }
     },
     {
-      "id": 334,
+      "id": 399,
       "les": 26,
       "he": "מתי זה קרה? זה קרה לפני שעה.",
       "cues": {
@@ -3087,7 +3992,7 @@
       }
     },
     {
-      "id": 335,
+      "id": 400,
       "les": 26,
       "he": "בדרך כלל אני עושה משהו אחרי האולפן ,אבל היום אני לא עשיתי שום דבר.",
       "cues": {
@@ -3096,7 +4001,7 @@
       }
     },
     {
-      "id": 336,
+      "id": 401,
       "les": 26,
       "he": "לאן את צריכה לפנות? לאן את פונה ? לאן את פנית?",
       "cues": {
@@ -3105,7 +4010,7 @@
       }
     },
     {
-      "id": 337,
+      "id": 402,
       "les": 26,
       "he": "הייתי שם ,ראיתי אותו ,אבל לא היה לי זמן לדבר איתו.",
       "cues": {
@@ -3114,7 +4019,7 @@
       }
     },
     {
-      "id": 338,
+      "id": 403,
       "les": 26,
       "he": "בדרך כלל הוא עוזר לי ,אבל היום אני עזרתי לו.",
       "cues": {
@@ -3123,7 +4028,7 @@
       }
     },
     {
-      "id": 339,
+      "id": 404,
       "les": 26,
       "he": "הוא לא קנה את זה ,כי לא היה לו כסף.",
       "cues": {
@@ -3132,7 +4037,7 @@
       }
     },
     {
-      "id": 340,
+      "id": 405,
       "les": 26,
       "he": "אנחנו תמיד משלמים בזמן.",
       "cues": {
@@ -3141,7 +4046,7 @@
       }
     },
     {
-      "id": 341,
+      "id": 406,
       "les": 26,
       "he": "כמה זה עולה? כמה זה עלה? כמה זה צריך לעלות?",
       "cues": {
@@ -3150,7 +4055,7 @@
       }
     },
     {
-      "id": 342,
+      "id": 407,
       "les": 26,
       "he": "מישהו יכול לתת לי שקל? זה יכול לעזור לי.",
       "cues": {
@@ -3159,7 +4064,7 @@
       }
     },
     {
-      "id": 343,
+      "id": 408,
       "les": 27,
       "he": "הוא פנה ימינה ואני פניתי שמאלה.",
       "cues": {
@@ -3168,7 +4073,7 @@
       }
     },
     {
-      "id": 344,
+      "id": 409,
       "les": 27,
       "he": "טוב לראות אותך .גם אותך.",
       "cues": {
@@ -3177,7 +4082,7 @@
       }
     },
     {
-      "id": 345,
+      "id": 410,
       "les": 27,
       "he": "איפה את הָייתְ? מה את קָניתְ?מה את עָשׂיתְ?",
       "cues": {
@@ -3186,7 +4091,7 @@
       }
     },
     {
-      "id": 346,
+      "id": 411,
       "les": 27,
       "he": "בדרך כלל הוא עוזר לי ,אבל הפעם ,אני עזרתי לו.",
       "cues": {
@@ -3195,7 +4100,7 @@
       }
     },
     {
-      "id": 347,
+      "id": 412,
       "les": 27,
       "he": "בדרך כלל אני שותה תה ,אבל היום שתיתי קפה.",
       "cues": {
@@ -3204,7 +4109,7 @@
       }
     },
     {
-      "id": 348,
+      "id": 413,
       "les": 27,
       "he": "אני שואל  ,אבל אף אחד לא יודע.",
       "cues": {
@@ -3213,7 +4118,7 @@
       }
     },
     {
-      "id": 349,
+      "id": 414,
       "les": 27,
       "he": "הוא אמר לי לחכות ,אז אני מְחַכה.",
       "cues": {
@@ -3222,7 +4127,7 @@
       }
     },
     {
-      "id": 350,
+      "id": 415,
       "les": 27,
       "he": "אני רציתי לבוא ,אבל לא היה לי זמן.",
       "cues": {
@@ -3231,7 +4136,7 @@
       }
     },
     {
-      "id": 351,
+      "id": 416,
       "les": 27,
       "he": "הייתי שם ,ראיתי אותו אבל לא היה לי זמן לדבר איתו.",
       "cues": {
@@ -3240,7 +4145,7 @@
       }
     },
     {
-      "id": 352,
+      "id": 417,
       "les": 27,
       "he": "זה דחוף .זה לא יכול לחכות.",
       "cues": {
@@ -3249,7 +4154,7 @@
       }
     },
     {
-      "id": 353,
+      "id": 418,
       "les": 27,
       "he": "זה עולה שקל ,פחות או יותר.",
       "cues": {
@@ -3258,7 +4163,7 @@
       }
     },
     {
-      "id": 354,
+      "id": 419,
       "les": 27,
       "he": "הוא בישראל פחות מחודש וכבר מדבר עברית.",
       "cues": {
@@ -3267,7 +4172,7 @@
       }
     },
     {
-      "id": 355,
+      "id": 420,
       "les": 27,
       "he": "איך היה? היה טעים ונעים.",
       "cues": {
@@ -3276,7 +4181,7 @@
       }
     },
     {
-      "id": 356,
+      "id": 421,
       "les": 27,
       "he": "כדי לדעת את זה ,צריך לחזור על זה בבית.",
       "cues": {
@@ -3285,7 +4190,7 @@
       }
     },
     {
-      "id": 357,
+      "id": 422,
       "les": 27,
       "he": "לאן אתה נָסַעתָ? מתי אתה חָזַרְתָ הביתה?",
       "cues": {
@@ -3294,7 +4199,7 @@
       }
     },
     {
-      "id": 358,
+      "id": 423,
       "les": 28,
       "he": "הוא רצה לסגור וסגר .מי סגר?",
       "cues": {
@@ -3303,7 +4208,7 @@
       }
     },
     {
-      "id": 359,
+      "id": 424,
       "les": 28,
       "he": "מי קונה? מי קנה? מי רוצה לקנות?",
       "cues": {
@@ -3312,7 +4217,7 @@
       }
     },
     {
-      "id": 360,
+      "id": 425,
       "les": 28,
       "he": "מי מדבר? מי דיבר? מי רוצה לדבר?",
       "cues": {
@@ -3321,7 +4226,7 @@
       }
     },
     {
-      "id": 361,
+      "id": 426,
       "les": 28,
       "he": "לא צריך לדאוג ,אני אף פעם לא דואגת.",
       "cues": {
@@ -3330,7 +4235,7 @@
       }
     },
     {
-      "id": 362,
+      "id": 427,
       "les": 28,
       "he": "אם אני לא טועָה ,הוא כבר נסע.",
       "cues": {
@@ -3339,7 +4244,7 @@
       }
     },
     {
-      "id": 363,
+      "id": 428,
       "les": 28,
       "he": "אם אני לא טועה ,מישהו חיּפֵש אותך.",
       "cues": {
@@ -3348,7 +4253,7 @@
       }
     },
     {
-      "id": 364,
+      "id": 429,
       "les": 28,
       "he": "אין לי מושג מה הוא אמר לך ,אבל זאת טעות.",
       "cues": {
@@ -3357,7 +4262,7 @@
       }
     },
     {
-      "id": 365,
+      "id": 430,
       "les": 28,
       "he": "אף אחד לא עזר ,לכן אני עזרתי.",
       "cues": {
@@ -3366,7 +4271,7 @@
       }
     },
     {
-      "id": 366,
+      "id": 431,
       "les": 28,
       "he": "כמה זמן אתה מחכה לי?",
       "cues": {
@@ -3375,7 +4280,7 @@
       }
     },
     {
-      "id": 367,
+      "id": 432,
       "les": 28,
       "he": "אני שאלתי,אבל אף אחד לא ענה.",
       "cues": {
@@ -3384,7 +4289,7 @@
       }
     },
     {
-      "id": 368,
+      "id": 433,
       "les": 28,
       "he": "בדרך כלל אני גומר לעבוד ב  , 3אבל הפעם גמרתי ב 4.",
       "cues": {
@@ -3393,7 +4298,7 @@
       }
     },
     {
-      "id": 369,
+      "id": 434,
       "les": 28,
       "he": "אני ביקשתי עוד פעם וקיבלתי את זה.",
       "cues": {
@@ -3402,7 +4307,7 @@
       }
     },
     {
-      "id": 370,
+      "id": 435,
       "les": 28,
       "he": "משה ,איפה קנית את זה? כמה שילַמת?",
       "cues": {
@@ -3411,7 +4316,7 @@
       }
     },
     {
-      "id": 371,
+      "id": 436,
       "les": 28,
       "he": "כדי לדבר עברית טוב ,צריך לישון טוב ולאכול טוב.",
       "cues": {
@@ -3420,7 +4325,7 @@
       }
     },
     {
-      "id": 372,
+      "id": 437,
       "les": 28,
       "he": "ראיתי אותו לפני  5דקות .הוא היה פה לפני  5דקות.",
       "cues": {
@@ -3429,7 +4334,7 @@
       }
     },
     {
-      "id": 373,
+      "id": 438,
       "les": 29,
       "he": "אני מחפשת את משה ,ראית אותו?",
       "cues": {
@@ -3438,7 +4343,7 @@
       }
     },
     {
-      "id": 374,
+      "id": 439,
       "les": 29,
       "he": "שרה ,את חיפשת אותי? אני לא חיפשתי אותך .היא חיפשה אותך.",
       "cues": {
@@ -3447,7 +4352,7 @@
       }
     },
     {
-      "id": 375,
+      "id": 440,
       "les": 29,
       "he": "היא רוצה לקבל מיליון ,אבל מקבלת רק שקל.",
       "cues": {
@@ -3456,7 +4361,7 @@
       }
     },
     {
-      "id": 376,
+      "id": 441,
       "les": 29,
       "he": "היא לא שילמה,לכן היא לא קיבלה.",
       "cues": {
@@ -3465,7 +4370,7 @@
       }
     },
     {
-      "id": 377,
+      "id": 442,
       "les": 29,
       "he": "מי מחבר את זה? מי חיבר את זה?",
       "cues": {
@@ -3474,7 +4379,7 @@
       }
     },
     {
-      "id": 378,
+      "id": 443,
       "les": 29,
       "he": "אני ביקשתי לחבר את זה ,אתה חיברת את זה ?",
       "cues": {
@@ -3483,7 +4388,7 @@
       }
     },
     {
-      "id": 379,
+      "id": 444,
       "les": 29,
       "he": "היא מחברת את זה .היא חיברה את זה.",
       "cues": {
@@ -3492,7 +4397,7 @@
       }
     },
     {
-      "id": 380,
+      "id": 445,
       "les": 29,
       "he": "צריך לבדוק את זה .אתה בּודֵק את זה?",
       "cues": {
@@ -3501,7 +4406,7 @@
       }
     },
     {
-      "id": 381,
+      "id": 446,
       "les": 29,
       "he": "אם אתה בדקת -אז אני לא צריך לבדוק.",
       "cues": {
@@ -3510,7 +4415,7 @@
       }
     },
     {
-      "id": 382,
+      "id": 447,
       "les": 29,
       "he": "היא בדקה ,היא שקלה את זה ,היא חשבה על זה.",
       "cues": {
@@ -3519,7 +4424,7 @@
       }
     },
     {
-      "id": 383,
+      "id": 448,
       "les": 29,
       "he": "בדרך כלל את לא טועה ,אבל הפעם את טעית.",
       "cues": {
@@ -3528,7 +4433,7 @@
       }
     },
     {
-      "id": 384,
+      "id": 449,
       "les": 29,
       "he": "זה משה ,זאת שרה .נעים מאוד.",
       "cues": {
@@ -3537,7 +4442,7 @@
       }
     },
     {
-      "id": 385,
+      "id": 450,
       "les": 29,
       "he": "קניתי את זה כי זה טעים.",
       "cues": {
@@ -3546,7 +4451,7 @@
       }
     },
     {
-      "id": 386,
+      "id": 451,
       "les": 29,
       "he": "הייתי שם ,והיה לי כסף לקנות את זה.",
       "cues": {
@@ -3555,7 +4460,7 @@
       }
     },
     {
-      "id": 387,
+      "id": 452,
       "les": 29,
       "he": "הוא ביקש לחכות לו ,אני מחכה לו.",
       "cues": {
@@ -3564,7 +4469,7 @@
       }
     },
     {
-      "id": 388,
+      "id": 453,
       "les": 30,
       "he": "אני רציתי לעשות את זה ,אבל לא היה לי זמן.",
       "cues": {
@@ -3573,7 +4478,7 @@
       }
     },
     {
-      "id": 389,
+      "id": 454,
       "les": 30,
       "he": "של מי זה? אני חושב שזה של שרה .זה שלה.",
       "cues": {
@@ -3582,7 +4487,7 @@
       }
     },
     {
-      "id": 390,
+      "id": 455,
       "les": 30,
       "he": "אמרו לי .מי אמר לך? היא אמרה לי.",
       "cues": {
@@ -3591,7 +4496,7 @@
       }
     },
     {
-      "id": 391,
+      "id": 456,
       "les": 30,
       "he": "עזרו לי .מי עזר לך? היא עזרה לי.",
       "cues": {
@@ -3600,7 +4505,7 @@
       }
     },
     {
-      "id": 392,
+      "id": 457,
       "les": 30,
       "he": "הם כבר שילמו .הם לא צריכים לשלם.",
       "cues": {
@@ -3609,7 +4514,7 @@
       }
     },
     {
-      "id": 393,
+      "id": 458,
       "les": 30,
       "he": "הם חיפשו אותי אבל הם לא מצאו.",
       "cues": {
@@ -3618,7 +4523,7 @@
       }
     },
     {
-      "id": 394,
+      "id": 459,
       "les": 30,
       "he": "כדי לבוא בזמן ,צריך לקום בזמן ,תקום בזמן!",
       "cues": {
@@ -3627,7 +4532,7 @@
       }
     },
     {
-      "id": 395,
+      "id": 460,
       "les": 30,
       "he": "הוא לא בדק את זה ,אז אני בדקתי את זה.",
       "cues": {
@@ -3636,7 +4541,7 @@
       }
     },
     {
-      "id": 396,
+      "id": 461,
       "les": 30,
       "he": "צריך לשים לב  -תשים לב !",
       "cues": {
@@ -3645,7 +4550,7 @@
       }
     },
     {
-      "id": 397,
+      "id": 462,
       "les": 30,
       "he": "זה לא פשוט ,תחשוב על זה.",
       "cues": {
@@ -3654,7 +4559,7 @@
       }
     },
     {
-      "id": 398,
+      "id": 463,
       "les": 30,
       "he": "אם אתה לא סידרת ,תסדר.",
       "cues": {
@@ -3663,7 +4568,7 @@
       }
     },
     {
-      "id": 399,
+      "id": 464,
       "les": 30,
       "he": "אם אתה רוצה לבוא ,תבוא .מתי אתה תבוא ?",
       "cues": {
@@ -3672,7 +4577,7 @@
       }
     },
     {
-      "id": 400,
+      "id": 465,
       "les": 30,
       "he": "היום אני עובד ,מחר אתה תעבוד.",
       "cues": {
@@ -3681,7 +4586,7 @@
       }
     },
     {
-      "id": 401,
+      "id": 466,
       "les": 30,
       "he": "אם אני לא טועה ,הוא עוד לא מצא עבודה .אתה כבר מצאת? אני כבר מצאתי.",
       "cues": {
@@ -3690,7 +4595,7 @@
       }
     },
     {
-      "id": 402,
+      "id": 467,
       "les": 30,
       "he": "אין טעם לעשות את זה .למה אתה עושה את זה?",
       "cues": {
@@ -3699,7 +4604,7 @@
       }
     },
     {
-      "id": 403,
+      "id": 468,
       "les": 31,
       "he": "ביקשו לחזור עד  3,תחזור עד 3.",
       "cues": {
@@ -3708,7 +4613,7 @@
       }
     },
     {
-      "id": 404,
+      "id": 469,
       "les": 31,
       "he": "אם אתה רוצה לסדר את הבית -תסדר.",
       "cues": {
@@ -3717,7 +4622,7 @@
       }
     },
     {
-      "id": 405,
+      "id": 470,
       "les": 31,
       "he": "אל תסדר את זה ,אני כבר סידרתי.",
       "cues": {
@@ -3726,7 +4631,7 @@
       }
     },
     {
-      "id": 406,
+      "id": 471,
       "les": 31,
       "he": "אם אתה רוצה לשתות  -תשתה.",
       "cues": {
@@ -3735,7 +4640,7 @@
       }
     },
     {
-      "id": 407,
+      "id": 472,
       "les": 31,
       "he": "תעשה לי טובה ,תשתה איתי.",
       "cues": {
@@ -3744,7 +4649,7 @@
       }
     },
     {
-      "id": 408,
+      "id": 473,
       "les": 31,
       "he": "אין טעם לחכות פה .אל תחכה.",
       "cues": {
@@ -3753,7 +4658,7 @@
       }
     },
     {
-      "id": 409,
+      "id": 474,
       "les": 31,
       "he": "אני ביקשתי לא לאחר ,למה את מאחרת?",
       "cues": {
@@ -3762,7 +4667,7 @@
       }
     },
     {
-      "id": 410,
+      "id": 475,
       "les": 31,
       "he": "אי אפשר לאחר ,אל תאחר !",
       "cues": {
@@ -3771,7 +4676,7 @@
       }
     },
     {
-      "id": 411,
+      "id": 476,
       "les": 31,
       "he": "צריך לנסות עוד פעם .את מנסה?",
       "cues": {
@@ -3780,7 +4685,7 @@
       }
     },
     {
-      "id": 412,
+      "id": 477,
       "les": 31,
       "he": "תנסה לא לאחר  -אני מנסה.",
       "cues": {
@@ -3789,7 +4694,7 @@
       }
     },
     {
-      "id": 413,
+      "id": 478,
       "les": 31,
       "he": "הוא מאחר לעבודה ,והיא מאחרת לאולפן.",
       "cues": {
@@ -3798,7 +4703,7 @@
       }
     },
     {
-      "id": 414,
+      "id": 479,
       "les": 31,
       "he": "אל תחכה לי ,אני לא יכול לבוא.",
       "cues": {
@@ -3807,7 +4712,7 @@
       }
     },
     {
-      "id": 415,
+      "id": 480,
       "les": 31,
       "he": "אי אפשר לחבר את זה .אל תחבר את זה.",
       "cues": {
@@ -3816,7 +4721,7 @@
       }
     },
     {
-      "id": 416,
+      "id": 481,
       "les": 31,
       "he": "אני מאחר ב 5דקות.",
       "cues": {
@@ -3825,7 +4730,7 @@
       }
     },
     {
-      "id": 417,
+      "id": 482,
       "les": 31,
       "he": "אני שאלתי אותך משהו  ,תַעֲנה לי !",
       "cues": {
@@ -3834,7 +4739,7 @@
       }
     },
     {
-      "id": 418,
+      "id": 483,
       "les": 32,
       "he": "אם אתה רוצה לפנות  -תפנה והוא יפנה.",
       "cues": {
@@ -3843,7 +4748,7 @@
       }
     },
     {
-      "id": 419,
+      "id": 484,
       "les": 32,
       "he": "לדבר  -הוא ידבר ,לחכות  -הוא יחכה ,לסגור  -הוא יסגור.",
       "cues": {
@@ -3852,7 +4757,7 @@
       }
     },
     {
-      "id": 420,
+      "id": 485,
       "les": 32,
       "he": "כדי למצוא עבודה ,צריך לדעת עברית טוב.",
       "cues": {
@@ -3861,7 +4766,7 @@
       }
     },
     {
-      "id": 421,
+      "id": 486,
       "les": 32,
       "he": "אני שאלתי ,אבל לא ענו לי.",
       "cues": {
@@ -3870,7 +4775,7 @@
       }
     },
     {
-      "id": 422,
+      "id": 487,
       "les": 32,
       "he": "ביקשו לבדוק את זה .הוא יבדוק את זה מחר.",
       "cues": {
@@ -3879,7 +4784,7 @@
       }
     },
     {
-      "id": 423,
+      "id": 488,
       "les": 32,
       "he": "הם לא ראו שום דבר ולא שמעו שום דבר.",
       "cues": {
@@ -3888,7 +4793,7 @@
       }
     },
     {
-      "id": 424,
+      "id": 489,
       "les": 32,
       "he": "אם אתה רוצה לעשות  -תעשה והוא יעשה.",
       "cues": {
@@ -3897,7 +4802,7 @@
       }
     },
     {
-      "id": 425,
+      "id": 490,
       "les": 32,
       "he": "תחכה לו ,הוא יעזור לך.",
       "cues": {
@@ -3906,7 +4811,7 @@
       }
     },
     {
-      "id": 426,
+      "id": 491,
       "les": 32,
       "he": "אם שום דבר לא יקרה ,הוא יחזור הביתה.",
       "cues": {
@@ -3915,7 +4820,7 @@
       }
     },
     {
-      "id": 427,
+      "id": 492,
       "les": 32,
       "he": "אין טעם לחבר את זה ,זה לא עובד.",
       "cues": {
@@ -3924,7 +4829,7 @@
       }
     },
     {
-      "id": 428,
+      "id": 493,
       "les": 32,
       "he": "תעשה לי טובה ,אל תאחר .וגם הוא לא יאחר.",
       "cues": {
@@ -3933,7 +4838,7 @@
       }
     },
     {
-      "id": 429,
+      "id": 494,
       "les": 33,
       "he": "לבטל .לבקש .לסדר",
       "cues": {
@@ -3942,7 +4847,7 @@
       }
     },
     {
-      "id": 430,
+      "id": 495,
       "les": 33,
       "he": "אם אתה תבוא ,הוא יבוא .",
       "cues": {
@@ -3951,7 +4856,7 @@
       }
     },
     {
-      "id": 431,
+      "id": 496,
       "les": 33,
       "he": "אם אתה תָגוּר בישראל הוא יָגוּר בישראל.",
       "cues": {
@@ -3960,7 +4865,7 @@
       }
     },
     {
-      "id": 432,
+      "id": 497,
       "les": 33,
       "he": "אם אתה תָקוּם בּזמן  ,גם הוא יקום בזמן.",
       "cues": {
@@ -3969,7 +4874,7 @@
       }
     },
     {
-      "id": 433,
+      "id": 498,
       "les": 33,
       "he": "אם הוא ישים לב ,גם אתה תשים לב.",
       "cues": {
@@ -3978,7 +4883,7 @@
       }
     },
     {
-      "id": 434,
+      "id": 499,
       "les": 33,
       "he": "לטעות -אני טעיתי לאחר -אני איחרתי.",
       "cues": {
@@ -3987,7 +4892,7 @@
       }
     },
     {
-      "id": 435,
+      "id": 500,
       "les": 33,
       "he": "מה אתה ביקשת? מה אתה מבקש? מה אתה תבקש?",
       "cues": {
@@ -3996,7 +4901,7 @@
       }
     },
     {
-      "id": 436,
+      "id": 501,
       "les": 33,
       "he": "תפנה ימינה .תנסה את זה! תעשה את זה!",
       "cues": {
@@ -4005,7 +4910,7 @@
       }
     },
     {
-      "id": 437,
+      "id": 502,
       "les": 33,
       "he": "אין טעם לקנות את זה ,הם כבר קנו את זה.",
       "cues": {
@@ -4014,7 +4919,7 @@
       }
     },
     {
-      "id": 438,
+      "id": 503,
       "les": 33,
       "he": "אי אפשר לראות את זה יותר.",
       "cues": {
@@ -4023,7 +4928,7 @@
       }
     },
     {
-      "id": 439,
+      "id": 504,
       "les": 33,
       "he": "אין טעם לבטל את זה.",
       "cues": {
@@ -4032,7 +4937,7 @@
       }
     },
     {
-      "id": 440,
+      "id": 505,
       "les": 33,
       "he": "אם אתה לא שתית  -תשתה ,וגם הוא ישתה.",
       "cues": {
@@ -4041,7 +4946,7 @@
       }
     },
     {
-      "id": 441,
+      "id": 506,
       "les": 33,
       "he": "איפה אני יכול לשים את זה? תשים את זה פה.",
       "cues": {
@@ -4050,7 +4955,7 @@
       }
     },
     {
-      "id": 442,
+      "id": 507,
       "les": 33,
       "he": "מתי אתה תבדוק את זה? בעוד  5דקות.",
       "cues": {
@@ -4059,7 +4964,7 @@
       }
     },
     {
-      "id": 443,
+      "id": 508,
       "les": 33,
       "he": "מי ביטל את זה? שרה ,את ביטלת? אני לא ביטלתי .היא ביטלה.",
       "cues": {
@@ -4068,7 +4973,7 @@
       }
     },
     {
-      "id": 444,
+      "id": 509,
       "les": 34,
       "he": "נראה לי שהוא יאחר.",
       "cues": {
@@ -4077,7 +4982,7 @@
       }
     },
     {
-      "id": 445,
+      "id": 510,
       "les": 34,
       "he": "לגור .איפה אתה גר? איפה אתה גרת ? איפה אתה תגור?",
       "cues": {
@@ -4086,7 +4991,7 @@
       }
     },
     {
-      "id": 446,
+      "id": 511,
       "les": 34,
       "he": "זה חשוב לשים לב  -אתה שם לב ?",
       "cues": {
@@ -4095,7 +5000,7 @@
       }
     },
     {
-      "id": 447,
+      "id": 512,
       "les": 34,
       "he": "הוא אמר שהוא יָקוּם,אבל הוא לא קָם.",
       "cues": {
@@ -4104,7 +5009,7 @@
       }
     },
     {
-      "id": 448,
+      "id": 513,
       "les": 34,
       "he": "חיפשו אותי? אף אחד לא חיפש אותך.",
       "cues": {
@@ -4113,7 +5018,7 @@
       }
     },
     {
-      "id": 449,
+      "id": 514,
       "les": 34,
       "he": "עזרו לך? אף אחד לא עזר לי.",
       "cues": {
@@ -4122,7 +5027,7 @@
       }
     },
     {
-      "id": 450,
+      "id": 515,
       "les": 34,
       "he": "נראה לי שהיא מצאה עבודה.",
       "cues": {
@@ -4131,7 +5036,7 @@
       }
     },
     {
-      "id": 451,
+      "id": 516,
       "les": 34,
       "he": "אתה בא? אתה באת? אתה תבוא?",
       "cues": {
@@ -4140,7 +5045,7 @@
       }
     },
     {
-      "id": 452,
+      "id": 517,
       "les": 34,
       "he": "הוּא אָמַר שֶהוּא יָבוֹא ולֹא בָּא.",
       "cues": {
@@ -4149,7 +5054,7 @@
       }
     },
     {
-      "id": 453,
+      "id": 518,
       "les": 34,
       "he": "אם אתה עוד לא קמת ,תקום !!",
       "cues": {
@@ -4158,7 +5063,7 @@
       }
     },
     {
-      "id": 454,
+      "id": 519,
       "les": 34,
       "he": "איפה הוא שם את זה? לא יודע ,אני לא שמתי לב.",
       "cues": {
@@ -4167,7 +5072,7 @@
       }
     },
     {
-      "id": 455,
+      "id": 520,
       "les": 34,
       "he": "היא אמרה שהיא כבר שילמה.",
       "cues": {
@@ -4176,7 +5081,7 @@
       }
     },
     {
-      "id": 456,
+      "id": 521,
       "les": 34,
       "he": "אני חושבת שזה חשוב.",
       "cues": {
@@ -4185,7 +5090,7 @@
       }
     },
     {
-      "id": 457,
+      "id": 522,
       "les": 34,
       "he": "בדרך כלל היא קמה ב  3,אבל הפעם היא קמה ב 4.",
       "cues": {
@@ -4194,7 +5099,7 @@
       }
     },
     {
-      "id": 458,
+      "id": 523,
       "les": 35,
       "he": "תקום .למה אתה לא קם?",
       "cues": {
@@ -4203,7 +5108,7 @@
       }
     },
     {
-      "id": 459,
+      "id": 524,
       "les": 35,
       "he": "תחכה לי ...אני בא.",
       "cues": {
@@ -4212,7 +5117,7 @@
       }
     },
     {
-      "id": 460,
+      "id": 525,
       "les": 35,
       "he": "אני מקווה שהוא יענה לי.",
       "cues": {
@@ -4221,7 +5126,7 @@
       }
     },
     {
-      "id": 461,
+      "id": 526,
       "les": 35,
       "he": "אם אני לא טועה ,זאת טעות.",
       "cues": {
@@ -4230,7 +5135,7 @@
       }
     },
     {
-      "id": 462,
+      "id": 527,
       "les": 35,
       "he": "לפני שנה גַרתי באמריקה .עכשיו אני גרה בישראל.",
       "cues": {
@@ -4239,7 +5144,7 @@
       }
     },
     {
-      "id": 463,
+      "id": 528,
       "les": 35,
       "he": "ביטלתי את התוכנית וחזרתי הביתה.",
       "cues": {
@@ -4248,7 +5153,7 @@
       }
     },
     {
-      "id": 464,
+      "id": 529,
       "les": 35,
       "he": "תבוא בזמן ואל תאחר.",
       "cues": {
@@ -4257,7 +5162,7 @@
       }
     },
     {
-      "id": 465,
+      "id": 530,
       "les": 35,
       "he": "אנחנו צריכים לדבר -בוא נדבר!",
       "cues": {
@@ -4266,7 +5171,7 @@
       }
     },
     {
-      "id": 466,
+      "id": 531,
       "les": 35,
       "he": "אני רוצה לשנות את העולם.",
       "cues": {
@@ -4275,7 +5180,7 @@
       }
     },
     {
-      "id": 467,
+      "id": 532,
       "les": 35,
       "he": "אני לא נולדתי אתמול...",
       "cues": {
@@ -4284,7 +5189,7 @@
       }
     },
     {
-      "id": 468,
+      "id": 533,
       "les": 35,
       "he": "אם לא פנית ,תפנה! תפנה שמאלה!",
       "cues": {
@@ -4293,7 +5198,7 @@
       }
     },
     {
-      "id": 469,
+      "id": 534,
       "les": 35,
       "he": "אני מחכה ואני מקווה שהכל יהיה בסדר.",
       "cues": {
@@ -4302,7 +5207,7 @@
       }
     },
     {
-      "id": 470,
+      "id": 535,
       "les": 35,
       "he": "אנחנו נִהְיֶה בבית ב  5.תבוא ב.5-",
       "cues": {
@@ -4311,7 +5216,7 @@
       }
     },
     {
-      "id": 471,
+      "id": 536,
       "les": 35,
       "he": "אני לא שמתי לב שאתה פה .מתי אתה באת?",
       "cues": {
@@ -4320,7 +5225,7 @@
       }
     },
     {
-      "id": 472,
+      "id": 537,
       "les": 36,
       "he": "כדי לדעת עברית ,כדאי לקרוא בבית.",
       "cues": {
@@ -4329,7 +5234,7 @@
       }
     },
     {
-      "id": 473,
+      "id": 538,
       "les": 36,
       "he": "אם אתה צריך משהו אתה יכול לקרוא לי.",
       "cues": {
@@ -4338,7 +5243,7 @@
       }
     },
     {
-      "id": 474,
+      "id": 539,
       "les": 36,
       "he": "מה קרה? מי קרא את זה ? מי קרא לי ? אף אחד לא קרא לך.",
       "cues": {
@@ -4347,7 +5252,7 @@
       }
     },
     {
-      "id": 475,
+      "id": 540,
       "les": 36,
       "he": "כדי לדעת עברית ,כדאי לשתות יין .בוא נשתה.",
       "cues": {
@@ -4356,7 +5261,7 @@
       }
     },
     {
-      "id": 476,
+      "id": 541,
       "les": 36,
       "he": "היא אמרה שהיא ביטלה את זה.",
       "cues": {
@@ -4365,7 +5270,7 @@
       }
     },
     {
-      "id": 477,
+      "id": 542,
       "les": 36,
       "he": "אם אתה תבטל הוא יבטל ואנחנו נבטל.",
       "cues": {
@@ -4374,7 +5279,7 @@
       }
     },
     {
-      "id": 478,
+      "id": 543,
       "les": 36,
       "he": "אנחנו נבדוק איך לפתוח חשבון.",
       "cues": {
@@ -4383,7 +5288,7 @@
       }
     },
     {
-      "id": 479,
+      "id": 544,
       "les": 36,
       "he": "אפשר לפתוח את החלון?",
       "cues": {
@@ -4392,7 +5297,7 @@
       }
     },
     {
-      "id": 480,
+      "id": 545,
       "les": 36,
       "he": "היה לי כסף אז פתחתי חשבון.",
       "cues": {
@@ -4401,7 +5306,7 @@
       }
     },
     {
-      "id": 481,
+      "id": 546,
       "les": 36,
       "he": "היא נסעה ,מצאה ,פתחה ,קראה.",
       "cues": {
@@ -4410,7 +5315,7 @@
       }
     },
     {
-      "id": 482,
+      "id": 547,
       "les": 36,
       "he": "נראה לי שטעיתי ,אבל זה לא משנה.",
       "cues": {
@@ -4419,7 +5324,7 @@
       }
     },
     {
-      "id": 483,
+      "id": 548,
       "les": 36,
       "he": "אנחנו נשנה את זה .אנחנו נשנה את התוכנית.",
       "cues": {
@@ -4428,7 +5333,7 @@
       }
     },
     {
-      "id": 484,
+      "id": 549,
       "les": 36,
       "he": "לא שמתי לב שאת פה .מתי את באת?",
       "cues": {
@@ -4437,7 +5342,7 @@
       }
     },
     {
-      "id": 485,
+      "id": 550,
       "les": 36,
       "he": "אנחנו נבוא ונעזור לך.",
       "cues": {
@@ -4446,7 +5351,7 @@
       }
     },
     {
-      "id": 486,
+      "id": 551,
       "les": 36,
       "he": "ביקשו לשלם היום .הם משלמים .הם שילמו.",
       "cues": {
@@ -4455,7 +5360,7 @@
       }
     },
     {
-      "id": 487,
+      "id": 552,
       "les": 37,
       "he": "אמרו לי לבטל את זה ,אז ביטלתי את זה.",
       "cues": {
@@ -4464,7 +5369,7 @@
       }
     },
     {
-      "id": 488,
+      "id": 553,
       "les": 37,
       "he": "אני מקווה שזה יעזור .אני מקווה שזה יעבור.",
       "cues": {
@@ -4473,7 +5378,7 @@
       }
     },
     {
-      "id": 489,
+      "id": 554,
       "les": 37,
       "he": "אתה מְחַכֶּה לי? אני מחכה לך.",
       "cues": {
@@ -4482,7 +5387,7 @@
       }
     },
     {
-      "id": 490,
+      "id": 555,
       "les": 37,
       "he": "אני ואתה נשנה את העולם.",
       "cues": {
@@ -4491,7 +5396,7 @@
       }
     },
     {
-      "id": 491,
+      "id": 556,
       "les": 37,
       "he": "אין לי כוח לעשות שום דבר.",
       "cues": {
@@ -4500,7 +5405,7 @@
       }
     },
     {
-      "id": 492,
+      "id": 557,
       "les": 37,
       "he": "תנסה לא לשכוח.",
       "cues": {
@@ -4509,7 +5414,7 @@
       }
     },
     {
-      "id": 493,
+      "id": 558,
       "les": 37,
       "he": "אני שכחתי לענות לך.",
       "cues": {
@@ -4518,7 +5423,7 @@
       }
     },
     {
-      "id": 494,
+      "id": 559,
       "les": 37,
       "he": "כדאי לך לקנות את זה ,תקנה את זה !",
       "cues": {
@@ -4527,7 +5432,7 @@
       }
     },
     {
-      "id": 495,
+      "id": 560,
       "les": 37,
       "he": "אני רוצה לפתוח חשבון .עם מי אני צריך לדבר?",
       "cues": {
@@ -4536,7 +5441,7 @@
       }
     },
     {
-      "id": 496,
+      "id": 561,
       "les": 37,
       "he": "תִשאַל אותה ,היא יודעת הכול.",
       "cues": {
@@ -4545,7 +5450,7 @@
       }
     },
     {
-      "id": 497,
+      "id": 562,
       "les": 37,
       "he": "בכל מקרה ,אל תדאג !",
       "cues": {
@@ -4554,7 +5459,7 @@
       }
     },
     {
-      "id": 498,
+      "id": 563,
       "les": 37,
       "he": "אם יקרֶה משהו ,תקרַא לי.",
       "cues": {
@@ -4563,7 +5468,7 @@
       }
     },
     {
-      "id": 499,
+      "id": 564,
       "les": 37,
       "he": "אֲנִי מְקַוֶּוה שֶהוּא יִמְצָא עֲבוֹדָה.",
       "cues": {
@@ -4572,7 +5477,7 @@
       }
     },
     {
-      "id": 500,
+      "id": 565,
       "les": 37,
       "he": "הוא אמר שהוא יקרא ולא קרא.",
       "cues": {
@@ -4581,7 +5486,7 @@
       }
     },
     {
-      "id": 501,
+      "id": 566,
       "les": 38,
       "he": "בכל מקרה ,תודה מראש.",
       "cues": {
@@ -4590,7 +5495,7 @@
       }
     },
     {
-      "id": 502,
+      "id": 567,
       "les": 38,
       "he": "אתה יכול לִשלוחַ לי אימייל?",
       "cues": {
@@ -4599,7 +5504,7 @@
       }
     },
     {
-      "id": 503,
+      "id": 568,
       "les": 38,
       "he": "יש לי כל כך הרבה דברים לעשות.",
       "cues": {
@@ -4608,7 +5513,7 @@
       }
     },
     {
-      "id": 504,
+      "id": 569,
       "les": 38,
       "he": "כל בוקר כשאני קמה ,אני לומדת עברית.",
       "cues": {
@@ -4617,7 +5522,7 @@
       }
     },
     {
-      "id": 505,
+      "id": 570,
       "les": 38,
       "he": "יש לך כסף? יש לי קצת כסף.",
       "cues": {
@@ -4626,7 +5531,7 @@
       }
     },
     {
-      "id": 506,
+      "id": 571,
       "les": 38,
       "he": "אל תדאג ,אנחנו לא נשכח לעשות את זה.",
       "cues": {
@@ -4635,7 +5540,7 @@
       }
     },
     {
-      "id": 507,
+      "id": 572,
       "les": 38,
       "he": "תשלח לי את זה.",
       "cues": {
@@ -4644,7 +5549,7 @@
       }
     },
     {
-      "id": 508,
+      "id": 573,
       "les": 38,
       "he": "תְחכה ! אני מחכֶּה .תְנסה ! אני מנסֶה .תְשנֶה ! אני משנֶה.",
       "cues": {
@@ -4653,7 +5558,7 @@
       }
     },
     {
-      "id": 509,
+      "id": 574,
       "les": 38,
       "he": "הוא אמר שהוא יִשְלַח,אבל הוא לא שָלַח.",
       "cues": {
@@ -4662,7 +5567,7 @@
       }
     },
     {
-      "id": 510,
+      "id": 575,
       "les": 38,
       "he": "כשאני באתי לישראל ,אני חיפשתי עבודה.",
       "cues": {
@@ -4671,7 +5576,7 @@
       }
     },
     {
-      "id": 511,
+      "id": 576,
       "les": 38,
       "he": "אל תדאג ,הכל יהיה בסדר.",
       "cues": {
@@ -4680,7 +5585,7 @@
       }
     },
     {
-      "id": 512,
+      "id": 577,
       "les": 38,
       "he": "נוֹלַדתי באמריקה ואני גרה בישראל.",
       "cues": {
@@ -4689,7 +5594,7 @@
       }
     },
     {
-      "id": 513,
+      "id": 578,
       "les": 38,
       "he": "אני מקווה שאתה תִמצָא עבודה.",
       "cues": {
@@ -4698,7 +5603,7 @@
       }
     },
     {
-      "id": 514,
+      "id": 579,
       "les": 38,
       "he": "מי הָלַך? אני הָלַכתי .לאן אתה הָלַכתָ?",
       "cues": {
@@ -4707,7 +5612,7 @@
       }
     },
     {
-      "id": 515,
+      "id": 580,
       "les": 38,
       "he": "כשבאתי לישראל ,גרתי בתל אביב .עכשיו אני גר בירושלים.",
       "cues": {
@@ -4716,7 +5621,7 @@
       }
     },
     {
-      "id": 516,
+      "id": 581,
       "les": 39,
       "he": "שרה ,אני רציתי להזמין אותך .איפה את היית?",
       "cues": {
@@ -4725,7 +5630,7 @@
       }
     },
     {
-      "id": 517,
+      "id": 582,
       "les": 39,
       "he": "אנחנו ננסה להזמין אותו.",
       "cues": {
@@ -4734,7 +5639,7 @@
       }
     },
     {
-      "id": 518,
+      "id": 583,
       "les": 39,
       "he": "כשהוא יבוא ,הוא יעשה את זה.",
       "cues": {
@@ -4743,7 +5648,7 @@
       }
     },
     {
-      "id": 519,
+      "id": 584,
       "les": 39,
       "he": "קוראים לי ...נולדתי ב...",
       "cues": {
@@ -4752,7 +5657,7 @@
       }
     },
     {
-      "id": 520,
+      "id": 585,
       "les": 39,
       "he": "תרגיש בבית!",
       "cues": {
@@ -4761,7 +5666,7 @@
       }
     },
     {
-      "id": 521,
+      "id": 586,
       "les": 39,
       "he": "אני מקווה שהוא לא יאחר.",
       "cues": {
@@ -4770,7 +5675,7 @@
       }
     },
     {
-      "id": 522,
+      "id": 587,
       "les": 39,
       "he": "לא כדאי לי לקנות את זה  -זה עולה הרבה כסף",
       "cues": {
@@ -4779,7 +5684,7 @@
       }
     },
     {
-      "id": 523,
+      "id": 588,
       "les": 39,
       "he": "הוא מזמין אותי ואני מזמין אותו.",
       "cues": {
@@ -4788,7 +5693,7 @@
       }
     },
     {
-      "id": 524,
+      "id": 589,
       "les": 39,
       "he": "אני שכחתי לִשלוח לה .אני לא שלַחתי לה.",
       "cues": {
@@ -4797,7 +5702,7 @@
       }
     },
     {
-      "id": 525,
+      "id": 590,
       "les": 39,
       "he": "שרה ,לאן את הולֶכֶת? אני הולכת הביתה.",
       "cues": {
@@ -4806,7 +5711,7 @@
       }
     },
     {
-      "id": 526,
+      "id": 591,
       "les": 39,
       "he": "הוא אמר שהוא יענה ולא ענה לכן אני עניתי.",
       "cues": {
@@ -4815,7 +5720,7 @@
       }
     },
     {
-      "id": 527,
+      "id": 592,
       "les": 40,
       "he": "פעל עזר לי ,פיעל דיבר איתי הפעיל הסביר לי.",
       "cues": {
@@ -4824,7 +5729,7 @@
       }
     },
     {
-      "id": 528,
+      "id": 593,
       "les": 40,
       "he": "הפעיל הסביר לי ,אני הסברתי לו.",
       "cues": {
@@ -4833,7 +5738,7 @@
       }
     },
     {
-      "id": 529,
+      "id": 594,
       "les": 40,
       "he": "אין לי מושג מה לעשות .תסביר לי מה לעשות.",
       "cues": {
@@ -4842,7 +5747,7 @@
       }
     },
     {
-      "id": 530,
+      "id": 595,
       "les": 40,
       "he": "הוא אמר שהוא יעשה את זה ולא עשה את זה .אני עשיתי את זה.",
       "cues": {
@@ -4851,7 +5756,7 @@
       }
     },
     {
-      "id": 531,
+      "id": 596,
       "les": 40,
       "he": "אני הזמנתי קפה .מה אתה הזמנת?",
       "cues": {
@@ -4860,7 +5765,7 @@
       }
     },
     {
-      "id": 532,
+      "id": 597,
       "les": 40,
       "he": "תזמין אותי ותזמין לי קפה.",
       "cues": {
@@ -4869,7 +5774,7 @@
       }
     },
     {
-      "id": 533,
+      "id": 598,
       "les": 40,
       "he": "זה טעים ,קשה להפסיק לאכול את זה! אני כבר הפסקתי.",
       "cues": {
@@ -4878,7 +5783,7 @@
       }
     },
     {
-      "id": 534,
+      "id": 599,
       "les": 40,
       "he": "תפסיק לדאוג.אל תדאג.",
       "cues": {
@@ -4887,7 +5792,7 @@
       }
     },
     {
-      "id": 535,
+      "id": 600,
       "les": 40,
       "he": "אל תשכח לשלוח לי אימייל.",
       "cues": {
@@ -4896,7 +5801,7 @@
       }
     },
     {
-      "id": 536,
+      "id": 601,
       "les": 40,
       "he": "הוא הלך לְשָם ואני הָלַכתי לַאולפן .לאן אתה הלכת ?",
       "cues": {
@@ -4905,7 +5810,7 @@
       }
     },
     {
-      "id": 537,
+      "id": 602,
       "les": 40,
       "he": "כדי להרגיש טוב צריך לחזור הביתה ולחזור על זה בבית.",
       "cues": {
@@ -4914,7 +5819,7 @@
       }
     },
     {
-      "id": 538,
+      "id": 603,
       "les": 40,
       "he": "אתמול הוא לא הרגיש טוב ,היום הוא מרגיש טוב ,מחר הוא ירגיש יותר טוב.",
       "cues": {
@@ -4923,7 +5828,7 @@
       }
     },
     {
-      "id": 539,
+      "id": 604,
       "les": 40,
       "he": "אני לא הרגשתי טוב  ,לכן לא הזמנתי אותה.",
       "cues": {
@@ -4932,7 +5837,7 @@
       }
     },
     {
-      "id": 540,
+      "id": 605,
       "les": 40,
       "he": "איך קוראים לך? איפה את גרה? בת כמה את?",
       "cues": {
@@ -4941,7 +5846,7 @@
       }
     },
     {
-      "id": 541,
+      "id": 606,
       "les": 40,
       "he": "אתה יכול לתת לי כסף? כמה אתה צריך?",
       "cues": {
@@ -4950,7 +5855,7 @@
       }
     },
     {
-      "id": 542,
+      "id": 607,
       "les": 41,
       "he": "לסגור .אנחנו סוגרים .אנחנו סגרנו .אנחנו נסגור.",
       "cues": {
@@ -4959,7 +5864,7 @@
       }
     },
     {
-      "id": 543,
+      "id": 608,
       "les": 41,
       "he": "אנחנו מסדרים ,אנחנו סידרנו ,אנחנו נסדר.",
       "cues": {
@@ -4968,7 +5873,7 @@
       }
     },
     {
-      "id": 544,
+      "id": 609,
       "les": 41,
       "he": "אנחנו עוד לא קנינו .אנחנו נקנה מחר.",
       "cues": {
@@ -4977,7 +5882,7 @@
       }
     },
     {
-      "id": 545,
+      "id": 610,
       "les": 41,
       "he": "איפה את רוצה לשבת? איפה את יושבת ?",
       "cues": {
@@ -4986,7 +5891,7 @@
       }
     },
     {
-      "id": 546,
+      "id": 611,
       "les": 41,
       "he": "אני יָשבתי בבית ולא עשיתי שום דבר.",
       "cues": {
@@ -4995,7 +5900,7 @@
       }
     },
     {
-      "id": 547,
+      "id": 612,
       "les": 41,
       "he": "לרדת .איפה אתה יורד? איפה אתה ירדת?",
       "cues": {
@@ -5004,7 +5909,7 @@
       }
     },
     {
-      "id": 548,
+      "id": 613,
       "les": 41,
       "he": "ירד גשם? יורד גשם? יכול לרדת גשם?",
       "cues": {
@@ -5013,7 +5918,7 @@
       }
     },
     {
-      "id": 549,
+      "id": 614,
       "les": 41,
       "he": "קניתי את זה כי הדולר ירד.",
       "cues": {
@@ -5022,7 +5927,7 @@
       }
     },
     {
-      "id": 550,
+      "id": 615,
       "les": 41,
       "he": "אני יושב בבית כי יורד גשם ואני לא יכול לצאת.",
       "cues": {
@@ -5031,7 +5936,7 @@
       }
     },
     {
-      "id": 551,
+      "id": 616,
       "les": 41,
       "he": "מי יודע? מי יושב? מי יורד? מי יוצא?",
       "cues": {
@@ -5040,7 +5945,7 @@
       }
     },
     {
-      "id": 552,
+      "id": 617,
       "les": 41,
       "he": "בכל מקרה אני מרגיש טוב היום אז אני יוצא מהבית.",
       "cues": {
@@ -5049,7 +5954,7 @@
       }
     },
     {
-      "id": 553,
+      "id": 618,
       "les": 41,
       "he": "אני חושב ששום דבר לא יצא מזה.",
       "cues": {
@@ -5058,7 +5963,7 @@
       }
     },
     {
-      "id": 554,
+      "id": 619,
       "les": 41,
       "he": "היא נתנה לי דולר ואני נתתי לה שקל.",
       "cues": {
@@ -5067,7 +5972,7 @@
       }
     },
     {
-      "id": 555,
+      "id": 620,
       "les": 41,
       "he": "תן לי לדבר! אתה לו נותן לי לדבר.",
       "cues": {
@@ -5076,7 +5981,7 @@
       }
     },
     {
-      "id": 556,
+      "id": 621,
       "les": 41,
       "he": "רציתי להפסיק ,אבל עוד לא הִפסַקתי.",
       "cues": {
@@ -5085,7 +5990,7 @@
       }
     },
     {
-      "id": 557,
+      "id": 622,
       "les": 42,
       "he": "כְּדֵי לִהיות שם בַּזמן ,אנחנו צריכים לָצֵאת מהבית בזמן.",
       "cues": {
@@ -5094,7 +5999,7 @@
       }
     },
     {
-      "id": 558,
+      "id": 623,
       "les": 42,
       "he": "אתמול ירד גשם ,לכן אני לא יצאתי מהבית.",
       "cues": {
@@ -5103,7 +6008,7 @@
       }
     },
     {
-      "id": 559,
+      "id": 624,
       "les": 42,
       "he": "היא אף פעם לא מזמינה אותי.",
       "cues": {
@@ -5112,7 +6017,7 @@
       }
     },
     {
-      "id": 560,
+      "id": 625,
       "les": 42,
       "he": "ישבתי בבית ולמדתי עברית .אני מקווה שזה יעזור לי.",
       "cues": {
@@ -5121,7 +6026,7 @@
       }
     },
     {
-      "id": 561,
+      "id": 626,
       "les": 42,
       "he": "אני הולך הביתה והולך לישון.",
       "cues": {
@@ -5130,7 +6035,7 @@
       }
     },
     {
-      "id": 562,
+      "id": 627,
       "les": 42,
       "he": "אם הוא יַרגיש יותר טוב הוא יַזמין אותך.",
       "cues": {
@@ -5139,7 +6044,7 @@
       }
     },
     {
-      "id": 563,
+      "id": 628,
       "les": 42,
       "he": "יש לי הרגשה שהוא ישכַּח.",
       "cues": {
@@ -5148,7 +6053,7 @@
       }
     },
     {
-      "id": 564,
+      "id": 629,
       "les": 42,
       "he": "אני לא קיבלתי הזמנה .אף אחד לא הזמין אותי.",
       "cues": {
@@ -5157,7 +6062,7 @@
       }
     },
     {
-      "id": 565,
+      "id": 630,
       "les": 42,
       "he": "להתחיל .מתי זה התחיל? מתי זה מתחיל? מתי זה יתחיל?",
       "cues": {
@@ -5166,7 +6071,7 @@
       }
     },
     {
-      "id": 566,
+      "id": 631,
       "les": 42,
       "he": "אנחנו בדקנו ,אנחנו בודקים ,אנחנו נבדוק.",
       "cues": {
@@ -5175,7 +6080,7 @@
       }
     },
     {
-      "id": 567,
+      "id": 632,
       "les": 42,
       "he": "אם אני לא טועה ,זה כבר התחיל.",
       "cues": {
@@ -5184,7 +6089,7 @@
       }
     },
     {
-      "id": 568,
+      "id": 633,
       "les": 42,
       "he": "אני צריכה לרדת פה ,אני יורדת פה.",
       "cues": {
@@ -5193,7 +6098,7 @@
       }
     },
     {
-      "id": 569,
+      "id": 634,
       "les": 42,
       "he": "אל תדאג הוא יבוא והוא יסביר הכול.",
       "cues": {
@@ -5202,7 +6107,7 @@
       }
     },
     {
-      "id": 570,
+      "id": 635,
       "les": 42,
       "he": "יש לי הרגשה שהכל יהיה בסדר",
       "cues": {
@@ -5211,7 +6116,7 @@
       }
     },
     {
-      "id": 571,
+      "id": 636,
       "les": 42,
       "he": "אני לא רוצה לשבת  ,אני רוצה לעמוד.",
       "cues": {
@@ -5220,7 +6125,7 @@
       }
     },
     {
-      "id": 572,
+      "id": 637,
       "les": 43,
       "he": "למה לא יצאת מהבית? בגלל הגשם.",
       "cues": {
@@ -5229,7 +6134,7 @@
       }
     },
     {
-      "id": 573,
+      "id": 638,
       "les": 43,
       "he": "אני יושבת בבית כי יורד גשם ואני לא יכולה לצאת.",
       "cues": {
@@ -5238,7 +6143,7 @@
       }
     },
     {
-      "id": 574,
+      "id": 639,
       "les": 43,
       "he": "תזמין מראש ,אחרת לא תקבל את זה .",
       "cues": {
@@ -5247,7 +6152,7 @@
       }
     },
     {
-      "id": 575,
+      "id": 640,
       "les": 43,
       "he": "ירד שלג? יורד שלג? יירד שלג?",
       "cues": {
@@ -5256,7 +6161,7 @@
       }
     },
     {
-      "id": 576,
+      "id": 641,
       "les": 43,
       "he": "לאן הוא הלך? לאן הוא הולך? לאן הוא ילך?",
       "cues": {
@@ -5265,7 +6170,7 @@
       }
     },
     {
-      "id": 577,
+      "id": 642,
       "les": 43,
       "he": "תרד ביפו ותלך לאולפן.",
       "cues": {
@@ -5274,7 +6179,7 @@
       }
     },
     {
-      "id": 578,
+      "id": 643,
       "les": 43,
       "he": "תשב ! למה אתה עומד? יש מקום.",
       "cues": {
@@ -5283,7 +6188,7 @@
       }
     },
     {
-      "id": 579,
+      "id": 644,
       "les": 43,
       "he": "תצא בזמן ,אחרת תאחר.",
       "cues": {
@@ -5292,7 +6197,7 @@
       }
     },
     {
-      "id": 580,
+      "id": 645,
       "les": 43,
       "he": "הוא יֵצא מפה ,ילך לשם ,יֵרד ויֵשב לחכות.",
       "cues": {
@@ -5301,7 +6206,7 @@
       }
     },
     {
-      "id": 581,
+      "id": 646,
       "les": 43,
       "he": "אם אתה עוד לא הָלכתָ ,תֵלֵך.",
       "cues": {
@@ -5310,7 +6215,7 @@
       }
     },
     {
-      "id": 582,
+      "id": 647,
       "les": 43,
       "he": "הוא התחיל ואני המשכתי.",
       "cues": {
@@ -5319,7 +6224,7 @@
       }
     },
     {
-      "id": 583,
+      "id": 648,
       "les": 43,
       "he": "הוא קנה את זה רק בגלל המחיר.",
       "cues": {
@@ -5328,7 +6233,7 @@
       }
     },
     {
-      "id": 584,
+      "id": 649,
       "les": 43,
       "he": "תפסיק לחשוב ותתחיל לעשות.",
       "cues": {
@@ -5337,7 +6242,7 @@
       }
     },
     {
-      "id": 585,
+      "id": 650,
       "les": 43,
       "he": "היא אמרה שהיא כבר בדקה את זה ,וסידרה את זה.",
       "cues": {
@@ -5346,7 +6251,7 @@
       }
     },
     {
-      "id": 586,
+      "id": 651,
       "les": 44,
       "he": "הוא רצה לשקול את זה ושקל ואני שקלתי.",
       "cues": {
@@ -5355,7 +6260,7 @@
       }
     },
     {
-      "id": 587,
+      "id": 652,
       "les": 44,
       "he": "הוא רצה לבטל וביטל ואני ביטלתי.",
       "cues": {
@@ -5364,7 +6269,7 @@
       }
     },
     {
-      "id": 588,
+      "id": 653,
       "les": 44,
       "he": "הוא רצה להמשיך והמשיך ,ואני המשכתי .גם אתה המשכת?",
       "cues": {
@@ -5373,7 +6278,7 @@
       }
     },
     {
-      "id": 589,
+      "id": 654,
       "les": 44,
       "he": "הוא רצה להתקשר והתקשר ואני התקשרתי.",
       "cues": {
@@ -5382,7 +6287,7 @@
       }
     },
     {
-      "id": 590,
+      "id": 655,
       "les": 44,
       "he": "אל תשכח להתקשר אליי.",
       "cues": {
@@ -5391,7 +6296,7 @@
       }
     },
     {
-      "id": 591,
+      "id": 656,
       "les": 44,
       "he": "הוא אמר שהוא יתקשר אליי ,אבל הוא לא התקשר אליי.",
       "cues": {
@@ -5400,7 +6305,7 @@
       }
     },
     {
-      "id": 592,
+      "id": 657,
       "les": 44,
       "he": "כשבאתי לישראל ,התחלתי ללמוד עברית.",
       "cues": {
@@ -5409,7 +6314,7 @@
       }
     },
     {
-      "id": 593,
+      "id": 658,
       "les": 44,
       "he": "מתי את הִתְחַלתְ ללמוד ? אני התחלתי לפני חודש.",
       "cues": {
@@ -5418,7 +6323,7 @@
       }
     },
     {
-      "id": 594,
+      "id": 659,
       "les": 44,
       "he": "אל תדאג .הכל יהיה בסדר .הכל יעבור.",
       "cues": {
@@ -5427,7 +6332,7 @@
       }
     },
     {
-      "id": 595,
+      "id": 660,
       "les": 44,
       "he": "יש לי הרגשה שמשהו קרה.",
       "cues": {
@@ -5436,7 +6341,7 @@
       }
     },
     {
-      "id": 596,
+      "id": 661,
       "les": 44,
       "he": "אם יקרה משהו ,תקרַא לו.",
       "cues": {
@@ -5445,7 +6350,7 @@
       }
     },
     {
-      "id": 597,
+      "id": 662,
       "les": 44,
       "he": "אם משהו יקרֶה ,תתקשר אליי.",
       "cues": {
@@ -5454,7 +6359,7 @@
       }
     },
     {
-      "id": 598,
+      "id": 663,
       "les": 44,
       "he": "תסביר לי איפה לרדת.",
       "cues": {
@@ -5463,7 +6368,7 @@
       }
     },
     {
-      "id": 599,
+      "id": 664,
       "les": 44,
       "he": "אם יירד גשם ,אנחנו לא נצא מהבית.",
       "cues": {
@@ -5472,7 +6377,7 @@
       }
     },
     {
-      "id": 600,
+      "id": 665,
       "les": 44,
       "he": "בגלל הגשם.. ...בגלל המחיר.",
       "cues": {
@@ -5481,7 +6386,7 @@
       }
     },
     {
-      "id": 601,
+      "id": 666,
       "les": 45,
       "he": "אתה צודק .זה נכון .אני מסכים איתך.",
       "cues": {
@@ -5490,7 +6395,7 @@
       }
     },
     {
-      "id": 602,
+      "id": 667,
       "les": 45,
       "he": "אפשר להגיד משהו? תגיד !",
       "cues": {
@@ -5499,7 +6404,7 @@
       }
     },
     {
-      "id": 603,
+      "id": 668,
       "les": 45,
       "he": "תגיד לו להתחיל ,אחרת הוא לא יתחיל.",
       "cues": {
@@ -5508,7 +6413,7 @@
       }
     },
     {
-      "id": 604,
+      "id": 669,
       "les": 45,
       "he": "הסברתי לו אבל זה לא עזר.",
       "cues": {
@@ -5517,7 +6422,7 @@
       }
     },
     {
-      "id": 605,
+      "id": 670,
       "les": 45,
       "he": "אני כבר פניתי אליו ,מתי אתה תפנה אליו?",
       "cues": {
@@ -5526,7 +6431,7 @@
       }
     },
     {
-      "id": 606,
+      "id": 671,
       "les": 45,
       "he": "אני אַתחיל ואתה תַמשיך.",
       "cues": {
@@ -5535,7 +6440,7 @@
       }
     },
     {
-      "id": 607,
+      "id": 672,
       "les": 45,
       "he": "אני התקדמתי בעברית .אתה התקדמת?",
       "cues": {
@@ -5544,7 +6449,7 @@
       }
     },
     {
-      "id": 608,
+      "id": 673,
       "les": 45,
       "he": "זאת התחלה טובה .זאת הרגשה טובה.",
       "cues": {
@@ -5553,7 +6458,7 @@
       }
     },
     {
-      "id": 609,
+      "id": 674,
       "les": 45,
       "he": "יש לי הרגשה שאנחנו נאחר.",
       "cues": {
@@ -5562,7 +6467,7 @@
       }
     },
     {
-      "id": 610,
+      "id": 675,
       "les": 45,
       "he": "הוא לומד טוב ,לכן הוא מתקדם.",
       "cues": {
@@ -5571,7 +6476,7 @@
       }
     },
     {
-      "id": 611,
+      "id": 676,
       "les": 45,
       "he": "אני מנסה להסביר לו,אבל זה לא כל כך פשוט.",
       "cues": {
@@ -5580,7 +6485,7 @@
       }
     },
     {
-      "id": 612,
+      "id": 677,
       "les": 45,
       "he": "אם אני אשלם ,אני אקבל.",
       "cues": {
@@ -5589,7 +6494,7 @@
       }
     },
     {
-      "id": 613,
+      "id": 678,
       "les": 45,
       "he": "היא אמרה שהיא חיפשה אבל היא לא מצאה.",
       "cues": {
@@ -5598,7 +6503,7 @@
       }
     },
     {
-      "id": 614,
+      "id": 679,
       "les": 45,
       "he": "אני רוצה לשאול אותך משהו אבל אתה לא נותן לי לדבר.",
       "cues": {
@@ -5607,7 +6512,7 @@
       }
     },
     {
-      "id": 615,
+      "id": 680,
       "les": 46,
       "he": "אני הסכמתי ואני מקווה שגם הוא יסכים.",
       "cues": {
@@ -5616,7 +6521,7 @@
       }
     },
     {
-      "id": 616,
+      "id": 681,
       "les": 46,
       "he": "אמרתי לה לבטל את זה והיא הסכימה.",
       "cues": {
@@ -5625,7 +6530,7 @@
       }
     },
     {
-      "id": 617,
+      "id": 682,
       "les": 46,
       "he": "הזמינו אותי .מי הזמין אותך?",
       "cues": {
@@ -5634,7 +6539,7 @@
       }
     },
     {
-      "id": 618,
+      "id": 683,
       "les": 46,
       "he": "אני לא רוצה לְהַפריע לו .הוא עובד.",
       "cues": {
@@ -5643,7 +6548,7 @@
       }
     },
     {
-      "id": 619,
+      "id": 684,
       "les": 46,
       "he": "תתקדם קצת! אתה מפריע לי לעבור.",
       "cues": {
@@ -5652,7 +6557,7 @@
       }
     },
     {
-      "id": 620,
+      "id": 685,
       "les": 46,
       "he": "הרעש מפריע לה.",
       "cues": {
@@ -5661,7 +6566,7 @@
       }
     },
     {
-      "id": 621,
+      "id": 686,
       "les": 46,
       "he": "אי אפשר לנוח בגלל הרעש.",
       "cues": {
@@ -5670,7 +6575,7 @@
       }
     },
     {
-      "id": 622,
+      "id": 687,
       "les": 46,
       "he": "לנוח .מי נח? מי נח? מי ינוח?",
       "cues": {
@@ -5679,7 +6584,7 @@
       }
     },
     {
-      "id": 623,
+      "id": 688,
       "les": 46,
       "he": "אני ביקשתי להסביר לי והיא הסבירה לי.",
       "cues": {
@@ -5688,7 +6593,7 @@
       }
     },
     {
-      "id": 624,
+      "id": 689,
       "les": 46,
       "he": "הם הסבירו לי איפה לרדת.",
       "cues": {
@@ -5697,7 +6602,7 @@
       }
     },
     {
-      "id": 625,
+      "id": 690,
       "les": 46,
       "he": "זאת התחלה קשה.",
       "cues": {
@@ -5706,7 +6611,7 @@
       }
     },
     {
-      "id": 626,
+      "id": 691,
       "les": 46,
       "he": "לאן לפנות?  -מה זה משנה?",
       "cues": {
@@ -5715,7 +6620,7 @@
       }
     },
     {
-      "id": 627,
+      "id": 692,
       "les": 46,
       "he": "לא התקשרתי אליו כי טעיתי במספר.",
       "cues": {
@@ -5724,7 +6629,7 @@
       }
     },
     {
-      "id": 628,
+      "id": 693,
       "les": 46,
       "he": "היא מרגישה שהיא התקדמה בעברית.",
       "cues": {
@@ -5733,7 +6638,7 @@
       }
     },
     {
-      "id": 629,
+      "id": 694,
       "les": 46,
       "he": "כּשֶגרתי באמריקה ,דיברתי אנגלית.",
       "cues": {
@@ -5742,7 +6647,7 @@
       }
     },
     {
-      "id": 630,
+      "id": 695,
       "les": 47,
       "he": "אפילו הוא מדבר עברית.",
       "cues": {
@@ -5751,7 +6656,7 @@
       }
     },
     {
-      "id": 631,
+      "id": 696,
       "les": 47,
       "he": "מאיפה אתה מכיר אותו? מהאולפן.",
       "cues": {
@@ -5760,7 +6665,7 @@
       }
     },
     {
-      "id": 632,
+      "id": 697,
       "les": 47,
       "he": "מי הגיע? מי מגיע? מי יגיע? מי צריך להגיע?",
       "cues": {
@@ -5769,7 +6674,7 @@
       }
     },
     {
-      "id": 633,
+      "id": 698,
       "les": 47,
       "he": "אפילו אל תחלום על זה.",
       "cues": {
@@ -5778,7 +6683,7 @@
       }
     },
     {
-      "id": 634,
+      "id": 699,
       "les": 47,
       "he": "אני יודע את זה ואני מכיר אותו.",
       "cues": {
@@ -5787,7 +6692,7 @@
       }
     },
     {
-      "id": 635,
+      "id": 700,
       "les": 47,
       "he": "אני רוצה ללכת ,בואי נֵלֵך.",
       "cues": {
@@ -5796,7 +6701,7 @@
       }
     },
     {
-      "id": 636,
+      "id": 701,
       "les": 47,
       "he": "הוא הגיע והפריע לי.",
       "cues": {
@@ -5805,7 +6710,7 @@
       }
     },
     {
-      "id": 637,
+      "id": 702,
       "les": 47,
       "he": "צריך להגיע בזמן .תגיע בזמן.",
       "cues": {
@@ -5814,7 +6719,7 @@
       }
     },
     {
-      "id": 638,
+      "id": 703,
       "les": 47,
       "he": "כדי להגיע לשם ,צריך לפנות ימינה.",
       "cues": {
@@ -5823,7 +6728,7 @@
       }
     },
     {
-      "id": 639,
+      "id": 704,
       "les": 47,
       "he": "אנחנו מַמְשיכים ללמוד כי אנחנו רוצים להתקדם בעברית.",
       "cues": {
@@ -5832,7 +6737,7 @@
       }
     },
     {
-      "id": 640,
+      "id": 705,
       "les": 47,
       "he": "איפה אני צריך לרדת? תרד פה!",
       "cues": {
@@ -5841,7 +6746,7 @@
       }
     },
     {
-      "id": 641,
+      "id": 706,
       "les": 47,
       "he": "אני אָקוּם,אני אָבוא ,אני אַתחיל לעבוד ואני אַגיד לך מה לעשות.",
       "cues": {
@@ -5850,7 +6755,7 @@
       }
     },
     {
-      "id": 642,
+      "id": 707,
       "les": 47,
       "he": "אל תשב פה ! שרה יושבת פה.",
       "cues": {
@@ -5859,7 +6764,7 @@
       }
     },
     {
-      "id": 643,
+      "id": 708,
       "les": 48,
       "he": "הגיע הזמן להתחיל ,בואו נתחיל.",
       "cues": {
@@ -5868,7 +6773,7 @@
       }
     },
     {
-      "id": 644,
+      "id": 709,
       "les": 48,
       "he": "תבין אותי ! אני מבין אותך.",
       "cues": {
@@ -5877,7 +6782,7 @@
       }
     },
     {
-      "id": 645,
+      "id": 710,
       "les": 48,
       "he": "אם המְחיר יֵירד ,אני אֶקנה את זה.",
       "cues": {
@@ -5886,7 +6791,7 @@
       }
     },
     {
-      "id": 646,
+      "id": 711,
       "les": 48,
       "he": "אתה תתקשר אליי? אני אתקשר אלייך.",
       "cues": {
@@ -5895,7 +6800,7 @@
       }
     },
     {
-      "id": 647,
+      "id": 712,
       "les": 48,
       "he": "זה קשה להבין את זה .אני לא מְבינה שום דבר.",
       "cues": {
@@ -5904,7 +6809,7 @@
       }
     },
     {
-      "id": 648,
+      "id": 713,
       "les": 48,
       "he": "עוד לא בדקתי את זה .אני אֶבדוק את זה אחרי האולפן.",
       "cues": {
@@ -5913,7 +6818,7 @@
       }
     },
     {
-      "id": 649,
+      "id": 714,
       "les": 48,
       "he": "אני כבר הגעתי .מתי הגַעת ?",
       "cues": {
@@ -5922,7 +6827,7 @@
       }
     },
     {
-      "id": 650,
+      "id": 715,
       "les": 48,
       "he": "אתה הבנת אותי ? אני הבנתי אותך.",
       "cues": {
@@ -5931,7 +6836,7 @@
       }
     },
     {
-      "id": 651,
+      "id": 716,
       "les": 48,
       "he": "אני בדרך אלייך  -אני אגיע בעוד  5דקות.",
       "cues": {
@@ -5940,7 +6845,7 @@
       }
     },
     {
-      "id": 652,
+      "id": 717,
       "les": 48,
       "he": "אני אֶפתַח את זה עכשיו ואני אֶסגור את זה אחרי האולפן.",
       "cues": {
@@ -5949,7 +6854,7 @@
       }
     },
     {
-      "id": 653,
+      "id": 718,
       "les": 48,
       "he": "יש לי הרגשה שאף אחד לא מבין אותי .את מבינה אותי?",
       "cues": {
@@ -5958,7 +6863,7 @@
       }
     },
     {
-      "id": 654,
+      "id": 719,
       "les": 48,
       "he": "שרה ,התקשרתי אלייך ,אבל את לא ענית לי.",
       "cues": {
@@ -5967,7 +6872,7 @@
       }
     },
     {
-      "id": 655,
+      "id": 720,
       "les": 48,
       "he": "אני אֶפנה אליו ואני אֶשאל אותו.",
       "cues": {
@@ -5976,7 +6881,7 @@
       }
     },
     {
-      "id": 656,
+      "id": 721,
       "les": 48,
       "he": "אפילו אנחנו כבר עלינו לישראל.",
       "cues": {
@@ -5985,7 +6890,7 @@
       }
     },
     {
-      "id": 657,
+      "id": 722,
       "les": 48,
       "he": "אם אתה לא הבנת ,תבין.",
       "cues": {
@@ -5994,7 +6899,7 @@
       }
     },
     {
-      "id": 658,
+      "id": 723,
       "les": 49,
       "he": "תכיר ,זאת שרה .נעים להכיר.",
       "cues": {
@@ -6003,7 +6908,7 @@
       }
     },
     {
-      "id": 659,
+      "id": 724,
       "les": 49,
       "he": "תסכים איתה .היא צודקת.",
       "cues": {
@@ -6012,7 +6917,7 @@
       }
     },
     {
-      "id": 660,
+      "id": 725,
       "les": 49,
       "he": "מי הפסיק? היא הפסיקה? מי התחיל? היא התחילה.",
       "cues": {
@@ -6021,7 +6926,7 @@
       }
     },
     {
-      "id": 661,
+      "id": 726,
       "les": 49,
       "he": "היא התקשרה אליי ,דיברה איתי והסבירה לי איך להגיע.",
       "cues": {
@@ -6030,7 +6935,7 @@
       }
     },
     {
-      "id": 662,
+      "id": 727,
       "les": 49,
       "he": "אם אני הבנתי אותך נכון ,את הגעת לשם בזמן.",
       "cues": {
@@ -6039,7 +6944,7 @@
       }
     },
     {
-      "id": 663,
+      "id": 728,
       "les": 49,
       "he": "אני אגיע ואגיד לך הכל.",
       "cues": {
@@ -6048,7 +6953,7 @@
       }
     },
     {
-      "id": 664,
+      "id": 729,
       "les": 49,
       "he": "אנחנו מאחרים .הגיע הזמן לצאת ,בוא נצא.",
       "cues": {
@@ -6057,7 +6962,7 @@
       }
     },
     {
-      "id": 665,
+      "id": 730,
       "les": 49,
       "he": "אני לא לקחתי שום דבר בגלל הבלגן.",
       "cues": {
@@ -6066,7 +6971,7 @@
       }
     },
     {
-      "id": 666,
+      "id": 731,
       "les": 49,
       "he": "היא לקחה את זה ונסעה לשם.",
       "cues": {
@@ -6075,7 +6980,7 @@
       }
     },
     {
-      "id": 667,
+      "id": 732,
       "les": 49,
       "he": "אם אני הבנתי אותך נכון ,את כבר מצאת עבודה.",
       "cues": {
@@ -6084,7 +6989,7 @@
       }
     },
     {
-      "id": 668,
+      "id": 733,
       "les": 49,
       "he": "מה אתם עשיתם? לאן אתם הלכתם?",
       "cues": {
@@ -6093,7 +6998,7 @@
       }
     },
     {
-      "id": 669,
+      "id": 734,
       "les": 49,
       "he": "יש לי הרגשה שאני התקדמתי בעברית.",
       "cues": {
@@ -6102,7 +7007,7 @@
       }
     },
     {
-      "id": 670,
+      "id": 735,
       "les": 49,
       "he": "אם אני אֶתקדם בעברית אני אתקשר אלַייך,שרה.",
       "cues": {
@@ -6111,7 +7016,7 @@
       }
     },
     {
-      "id": 671,
+      "id": 736,
       "les": 49,
       "he": "תפתח! למה אתה לא פותח?",
       "cues": {
@@ -6120,7 +7025,7 @@
       }
     },
     {
-      "id": 672,
+      "id": 737,
       "les": 49,
       "he": "הוא לוקח ,פותח ,שולח ושוכח.",
       "cues": {
@@ -6129,7 +7034,7 @@
       }
     },
     {
-      "id": 673,
+      "id": 738,
       "les": 50,
       "he": "אני פניתי אליך כי רק אתה יכול לעזור לי.",
       "cues": {
@@ -6138,7 +7043,7 @@
       }
     },
     {
-      "id": 674,
+      "id": 739,
       "les": 50,
       "he": "התכַּוונתי להגיע בזמן,אבל הגעתי ב.5",
       "cues": {
@@ -6147,7 +7052,7 @@
       }
     },
     {
-      "id": 675,
+      "id": 740,
       "les": 50,
       "he": "בוא נֵלך לשם בשבוע הבא.",
       "cues": {
@@ -6156,7 +7061,7 @@
       }
     },
     {
-      "id": 676,
+      "id": 741,
       "les": 50,
       "he": "הרעש הפריע לנו כל הזמן.",
       "cues": {
@@ -6165,7 +7070,7 @@
       }
     },
     {
-      "id": 677,
+      "id": 742,
       "les": 50,
       "he": "היא התקשרה אליו והסבּירה לו.",
       "cues": {
@@ -6174,7 +7079,7 @@
       }
     },
     {
-      "id": 678,
+      "id": 743,
       "les": 50,
       "he": "אני אתקשר אליך בחודש הבא.",
       "cues": {
@@ -6183,7 +7088,7 @@
       }
     },
     {
-      "id": 679,
+      "id": 744,
       "les": 50,
       "he": "היא לא הזמינה אותי כי היא לא הרגישה טוב.",
       "cues": {
@@ -6192,7 +7097,7 @@
       }
     },
     {
-      "id": 680,
+      "id": 745,
       "les": 50,
       "he": "אני מתכוונת להתקדם בעברית.",
       "cues": {
@@ -6201,7 +7106,7 @@
       }
     },
     {
-      "id": 681,
+      "id": 746,
       "les": 50,
       "he": "הוא אף פעם לא שוכח שום דבר.",
       "cues": {
@@ -6210,7 +7115,7 @@
       }
     },
     {
-      "id": 682,
+      "id": 747,
       "les": 50,
       "he": "נמשיך בפעם הבאה.",
       "cues": {
@@ -6219,7 +7124,7 @@
       }
     },
     {
-      "id": 683,
+      "id": 748,
       "les": 50,
       "he": "אני מכירה אותו .הוא תמיד מאחר.",
       "cues": {
@@ -6228,7 +7133,7 @@
       }
     },
     {
-      "id": 684,
+      "id": 749,
       "les": 50,
       "he": "הוא עוד לא הגיע .הוא יגיע בשבוע הבא.",
       "cues": {
@@ -6237,7 +7142,7 @@
       }
     },
     {
-      "id": 685,
+      "id": 750,
       "les": 50,
       "he": "בוא ננוח קצת .עבדנו קשה.",
       "cues": {
@@ -6246,7 +7151,7 @@
       }
     },
     {
-      "id": 686,
+      "id": 751,
       "les": 50,
       "he": "התקשרתי אליך אתמול ,למה לא ענית לי?",
       "cues": {
@@ -6255,7 +7160,7 @@
       }
     },
     {
-      "id": 687,
+      "id": 752,
       "les": 50,
       "he": "אני לא הֵבנתי מה הוא ביקש.",
       "cues": {
@@ -6264,7 +7169,7 @@
       }
     },
     {
-      "id": 688,
+      "id": 753,
       "les": 51,
       "he": "משה ,אני אתקשר אליך ואגיד לך מה קרה.",
       "cues": {
@@ -6273,7 +7178,7 @@
       }
     },
     {
-      "id": 689,
+      "id": 754,
       "les": 51,
       "he": "לא התכוונתי להפריע לך .אני מפריעה?",
       "cues": {
@@ -6282,7 +7187,7 @@
       }
     },
     {
-      "id": 690,
+      "id": 755,
       "les": 51,
       "he": "אני אֶתקשר אליו ואַזמין אותו.",
       "cues": {
@@ -6291,7 +7196,7 @@
       }
     },
     {
-      "id": 691,
+      "id": 756,
       "les": 51,
       "he": "היא הֵכינָה את זה בעצמה.",
       "cues": {
@@ -6300,7 +7205,7 @@
       }
     },
     {
-      "id": 692,
+      "id": 757,
       "les": 51,
       "he": "אני עוד לא שתיתי ,תכין לי משהו לשתות.",
       "cues": {
@@ -6309,7 +7214,7 @@
       }
     },
     {
-      "id": 693,
+      "id": 758,
       "les": 51,
       "he": "הסבירו לי ואני הבנתי הכול.",
       "cues": {
@@ -6318,7 +7223,7 @@
       }
     },
     {
-      "id": 694,
+      "id": 759,
       "les": 51,
       "he": "כדאי לך לזכור את זה .זה יעזור לך.",
       "cues": {
@@ -6327,7 +7232,7 @@
       }
     },
     {
-      "id": 695,
+      "id": 760,
       "les": 51,
       "he": "אף אחד לא הסביר לו ,הוא הבין בעצמו.",
       "cues": {
@@ -6336,7 +7241,7 @@
       }
     },
     {
-      "id": 696,
+      "id": 761,
       "les": 51,
       "he": "אני מכיר אותו .הוא יודע עברית .תפנה אליו ותשאל אותו.",
       "cues": {
@@ -6345,7 +7250,7 @@
       }
     },
     {
-      "id": 697,
+      "id": 762,
       "les": 51,
       "he": "אנחנו לומדים ואנחנו מתקדמים.",
       "cues": {
@@ -6354,7 +7259,7 @@
       }
     },
     {
-      "id": 698,
+      "id": 763,
       "les": 51,
       "he": "אני רוצה לעשות את זה בעצמי אבל אין לי מושג מאיפה להתחיל/",
       "cues": {
@@ -6363,7 +7268,7 @@
       }
     },
     {
-      "id": 699,
+      "id": 764,
       "les": 51,
       "he": "אם אני אראה אותו אני אשאל אותו/",
       "cues": {
@@ -6372,7 +7277,7 @@
       }
     },
     {
-      "id": 700,
+      "id": 765,
       "les": 52,
       "he": "אין לי מוּשָׂג איך להשתמש בזה.",
       "cues": {
@@ -6381,7 +7286,7 @@
       }
     },
     {
-      "id": 701,
+      "id": 766,
       "les": 52,
       "he": "אני בטוח שיירד גשם.",
       "cues": {
@@ -6390,7 +7295,7 @@
       }
     },
     {
-      "id": 702,
+      "id": 767,
       "les": 52,
       "he": "היא עשתה את זה בעצמה.",
       "cues": {
@@ -6399,7 +7304,7 @@
       }
     },
     {
-      "id": 703,
+      "id": 768,
       "les": 52,
       "he": "אני בדרך אליה .אני אגיע בעוד  5דקות.",
       "cues": {
@@ -6408,7 +7313,7 @@
       }
     },
     {
-      "id": 704,
+      "id": 769,
       "les": 52,
       "he": "כמה שקלים .כמה טעויות .כמה בעיות .כמה שנים.",
       "cues": {
@@ -6417,7 +7322,7 @@
       }
     },
     {
-      "id": 705,
+      "id": 770,
       "les": 52,
       "he": "אני שאלתי אותה והיא ענתה לי.",
       "cues": {
@@ -6426,7 +7331,7 @@
       }
     },
     {
-      "id": 706,
+      "id": 771,
       "les": 52,
       "he": "אני לא זוכרת מאיפה אני מכירה אותך.",
       "cues": {
@@ -6435,7 +7340,7 @@
       }
     },
     {
-      "id": 707,
+      "id": 772,
       "les": 52,
       "he": "איפה קניתם את זה? כמה שילמתם?",
       "cues": {
@@ -6444,7 +7349,7 @@
       }
     },
     {
-      "id": 708,
+      "id": 773,
       "les": 52,
       "he": "היא קנתה את זה אבל לא השתמשה בזה.",
       "cues": {
@@ -6453,7 +7358,7 @@
       }
     },
     {
-      "id": 709,
+      "id": 774,
       "les": 52,
       "he": "אנחנו עוד לא הגענו ,אנחנו נגיע בחודש הבא.",
       "cues": {
@@ -6462,7 +7367,7 @@
       }
     },
     {
-      "id": 710,
+      "id": 775,
       "les": 52,
       "he": "אני אֶפנה אליה ואַסביר לה.",
       "cues": {
@@ -6471,7 +7376,7 @@
       }
     },
     {
-      "id": 711,
+      "id": 776,
       "les": 52,
       "he": "אנחנו אף פעם לא השתמשנו בזה.",
       "cues": {
@@ -6480,7 +7385,7 @@
       }
     },
     {
-      "id": 712,
+      "id": 777,
       "les": 53,
       "he": "להבין ,מי מֵבין ? להכין ,מי מֵכין ? להרים .מי מֵרים?",
       "cues": {
@@ -6489,7 +7394,7 @@
       }
     },
     {
-      "id": 713,
+      "id": 778,
       "les": 53,
       "he": "מי הֵבין ? מי הֵכין ? מי הֵרים ?",
       "cues": {
@@ -6498,7 +7403,7 @@
       }
     },
     {
-      "id": 714,
+      "id": 779,
       "les": 53,
       "he": "אתה בטוח שאני יכול להשתמש בזה?",
       "cues": {
@@ -6507,7 +7412,7 @@
       }
     },
     {
-      "id": 715,
+      "id": 780,
       "les": 53,
       "he": "תשתדל להגיע בזמן ! אני משתדל.",
       "cues": {
@@ -6516,7 +7421,7 @@
       }
     },
     {
-      "id": 716,
+      "id": 781,
       "les": 53,
       "he": "הוא אמר שהוא ירים ולא הרים.",
       "cues": {
@@ -6525,7 +7430,7 @@
       }
     },
     {
-      "id": 717,
+      "id": 782,
       "les": 53,
       "he": "אנחנו לומדים באותו אולפן.",
       "cues": {
@@ -6534,7 +7439,7 @@
       }
     },
     {
-      "id": 718,
+      "id": 783,
       "les": 53,
       "he": "אנחנו גרים באותה דירה.",
       "cues": {
@@ -6543,7 +7448,7 @@
       }
     },
     {
-      "id": 719,
+      "id": 784,
       "les": 53,
       "he": "היא אמרה שהיא קנתה את זה",
       "cues": {
@@ -6552,7 +7457,7 @@
       }
     },
     {
-      "id": 720,
+      "id": 785,
       "les": 53,
       "he": "כל יום אני עושה אותה טעות.",
       "cues": {
@@ -6561,7 +7466,7 @@
       }
     },
     {
-      "id": 721,
+      "id": 786,
       "les": 53,
       "he": "אני לא יודע איך להשתמש בזה לכן אני לא משתמש בזה.",
       "cues": {
@@ -6570,7 +7475,7 @@
       }
     },
     {
-      "id": 722,
+      "id": 787,
       "les": 53,
       "he": "יש לי אותו מספר טלפון.",
       "cues": {
@@ -6579,7 +7484,7 @@
       }
     },
     {
-      "id": 723,
+      "id": 788,
       "les": 53,
       "he": "אותו סיפור .אותה שעה .אותו מקום .אותה בעיה.",
       "cues": {
@@ -6588,7 +7493,7 @@
       }
     },
     {
-      "id": 724,
+      "id": 789,
       "les": 53,
       "he": "בדרך כלל אני זוכר אבל הפעם שכחתי.",
       "cues": {
@@ -6597,7 +7502,7 @@
       }
     },
     {
-      "id": 725,
+      "id": 790,
       "les": 53,
       "he": "איפה אתם הייתם? עם מי דיברתם? מה הזמנתם?",
       "cues": {
@@ -6606,7 +7511,7 @@
       }
     },
     {
-      "id": 726,
+      "id": 791,
       "les": 53,
       "he": "בדרך כלל זה לוקח פחות משעה ,אבל הפעם זה לקח כמה שעות.",
       "cues": {
@@ -6615,7 +7520,7 @@
       }
     },
     {
-      "id": 727,
+      "id": 792,
       "les": 54,
       "he": "אני מבקש לא לאחר .אל תאחר !",
       "cues": {
@@ -6624,7 +7529,7 @@
       }
     },
     {
-      "id": 728,
+      "id": 793,
       "les": 54,
       "he": "היא אמרה שהיא רוצה לשלוח את זה.",
       "cues": {
@@ -6633,7 +7538,7 @@
       }
     },
     {
-      "id": 729,
+      "id": 794,
       "les": 54,
       "he": "אי אפשר לקבל את זה היום .אפשר לקבל את זה רק מחר.",
       "cues": {
@@ -6642,7 +7547,7 @@
       }
     },
     {
-      "id": 730,
+      "id": 795,
       "les": 54,
       "he": "חשוב לזכור ולא לשכוח.",
       "cues": {
@@ -6651,7 +7556,7 @@
       }
     },
     {
-      "id": 731,
+      "id": 796,
       "les": 54,
       "he": "אני משתדלת לזכור .אני משתדלת לא לשכוח.",
       "cues": {
@@ -6660,7 +7565,7 @@
       }
     },
     {
-      "id": 732,
+      "id": 797,
       "les": 54,
       "he": "תשתדלי לא להפריע לי .אני לא אפריע לך.",
       "cues": {
@@ -6669,7 +7574,7 @@
       }
     },
     {
-      "id": 733,
+      "id": 798,
       "les": 54,
       "he": "נראה לי שהבנתי את זה בעצמי.",
       "cues": {
@@ -6678,7 +7583,7 @@
       }
     },
     {
-      "id": 734,
+      "id": 799,
       "les": 54,
       "he": "תשב פה בלי להפריע.",
       "cues": {
@@ -6687,7 +7592,7 @@
       }
     },
     {
-      "id": 735,
+      "id": 800,
       "les": 54,
       "he": "צריך לשנות את זה .מי משנה את זה?",
       "cues": {
@@ -6696,7 +7601,7 @@
       }
     },
     {
-      "id": 736,
+      "id": 801,
       "les": 54,
       "he": "אל תנסה לשנות אותו.",
       "cues": {
@@ -6705,7 +7610,7 @@
       }
     },
     {
-      "id": 737,
+      "id": 802,
       "les": 54,
       "he": "להתקדם ,להשתמש ולהשתדל.",
       "cues": {
@@ -6714,7 +7619,7 @@
       }
     },
     {
-      "id": 738,
+      "id": 803,
       "les": 54,
       "he": "אין לי מושג איך להשתמש בזה.",
       "cues": {
@@ -6723,7 +7628,7 @@
       }
     },
     {
-      "id": 739,
+      "id": 804,
       "les": 54,
       "he": "תעזור לי למצוא אותו.",
       "cues": {
@@ -6732,7 +7637,7 @@
       }
     },
     {
-      "id": 740,
+      "id": 805,
       "les": 54,
       "he": "מתי את באת? מתי את באה? מתי את תבואי?",
       "cues": {
@@ -6741,7 +7646,7 @@
       }
     },
     {
-      "id": 741,
+      "id": 806,
       "les": 55,
       "he": "תשלמי ,אחרת את לא תקבלי.",
       "cues": {
@@ -6750,7 +7655,7 @@
       }
     },
     {
-      "id": 742,
+      "id": 807,
       "les": 55,
       "he": "שרה ,תחכי לי,אני אבוא ואסגור את זה.",
       "cues": {
@@ -6759,7 +7664,7 @@
       }
     },
     {
-      "id": 743,
+      "id": 808,
       "les": 55,
       "he": "אני מחכה פה במשך שעה.",
       "cues": {
@@ -6768,7 +7673,7 @@
       }
     },
     {
-      "id": 744,
+      "id": 809,
       "les": 55,
       "he": "אותו סיפור .אותם סיפורים.",
       "cues": {
@@ -6777,7 +7682,7 @@
       }
     },
     {
-      "id": 745,
+      "id": 810,
       "les": 55,
       "he": "אותן שיחות טלפון .אותן עוגות שוקולד.",
       "cues": {
@@ -6786,7 +7691,7 @@
       }
     },
     {
-      "id": 746,
+      "id": 811,
       "les": 55,
       "he": "לשמור .מי שומר? היא שומרת.",
       "cues": {
@@ -6795,7 +7700,7 @@
       }
     },
     {
-      "id": 747,
+      "id": 812,
       "les": 55,
       "he": "אני משתדלת לשמור על זה.",
       "cues": {
@@ -6804,7 +7709,7 @@
       }
     },
     {
-      "id": 748,
+      "id": 813,
       "les": 55,
       "he": "תשמור על קשר.",
       "cues": {
@@ -6813,7 +7718,7 @@
       }
     },
     {
-      "id": 749,
+      "id": 814,
       "les": 55,
       "he": "בדרך כלל זה לוקח שבועיים ,אבל הפעם זה לקח חודשיים.",
       "cues": {
@@ -6822,7 +7727,7 @@
       }
     },
     {
-      "id": 750,
+      "id": 815,
       "les": 55,
       "he": "זה קרה כבר פעמיים.",
       "cues": {
@@ -6831,7 +7736,7 @@
       }
     },
     {
-      "id": 751,
+      "id": 816,
       "les": 55,
       "he": "זה עוד לא ברור ,אני צריכה לברר.",
       "cues": {
@@ -6840,7 +7745,7 @@
       }
     },
     {
-      "id": 752,
+      "id": 817,
       "les": 55,
       "he": "כתבתי לך אבל אתה לא ענית לי.",
       "cues": {
@@ -6849,7 +7754,7 @@
       }
     },
     {
-      "id": 753,
+      "id": 818,
       "les": 55,
       "he": "בדרך כלל אני זוכרת אבל היום שכחתי.",
       "cues": {
@@ -6858,7 +7763,7 @@
       }
     },
     {
-      "id": 754,
+      "id": 819,
       "les": 55,
       "he": "אני התכוונתי להתקשר אליו אבל לא היה לי זמן.",
       "cues": {
@@ -6867,7 +7772,7 @@
       }
     },
     {
-      "id": 755,
+      "id": 820,
       "les": 55,
       "he": "הֵכנתי את זה בעצמי ,אף אחד לא עזר לי.",
       "cues": {
@@ -6876,7 +7781,7 @@
       }
     },
     {
-      "id": 756,
+      "id": 821,
       "les": 56,
       "he": "תביאי לי משהו מהשוק.",
       "cues": {
@@ -6885,7 +7790,7 @@
       }
     },
     {
-      "id": 757,
+      "id": 822,
       "les": 56,
       "he": "כמה זמן אתה חיכּית לי?",
       "cues": {
@@ -6894,7 +7799,7 @@
       }
     },
     {
-      "id": 758,
+      "id": 823,
       "les": 56,
       "he": "את הֵכנת את זה בעצמֵך?",
       "cues": {
@@ -6903,7 +7808,7 @@
       }
     },
     {
-      "id": 759,
+      "id": 824,
       "les": 56,
       "he": "מה היא הֵביאה לך?",
       "cues": {
@@ -6912,7 +7817,7 @@
       }
     },
     {
-      "id": 760,
+      "id": 825,
       "les": 56,
       "he": "לנסות .את מנסה .את ניסית .את תנסי.",
       "cues": {
@@ -6921,7 +7826,7 @@
       }
     },
     {
-      "id": 761,
+      "id": 826,
       "les": 56,
       "he": "אני לא בטוחה שזה יעזור.",
       "cues": {
@@ -6930,7 +7835,7 @@
       }
     },
     {
-      "id": 762,
+      "id": 827,
       "les": 56,
       "he": "אנחנו שינינו את התוכנית בגלל הבלגן.",
       "cues": {
@@ -6939,7 +7844,7 @@
       }
     },
     {
-      "id": 763,
+      "id": 828,
       "les": 56,
       "he": "אני עדיין בבית .אני עוד לא יצאתי מהבית.",
       "cues": {
@@ -6948,7 +7853,7 @@
       }
     },
     {
-      "id": 764,
+      "id": 829,
       "les": 56,
       "he": "תשתדלי להגיע בזמן  -אני אשתדל.",
       "cues": {
@@ -6957,7 +7862,7 @@
       }
     },
     {
-      "id": 765,
+      "id": 830,
       "les": 56,
       "he": "היא היתה שם והיא חיכְּתה הרבה זמן.",
       "cues": {
@@ -6966,7 +7871,7 @@
       }
     },
     {
-      "id": 766,
+      "id": 831,
       "les": 56,
       "he": "אני כתבתי לו אימֵייל אבל עוד לא שלחתי לו.",
       "cues": {
@@ -6975,7 +7880,7 @@
       }
     },
     {
-      "id": 767,
+      "id": 832,
       "les": 56,
       "he": "בדרך כלל הוא מביא משהו אבל הפעם הוא לא הביא שום דבר.",
       "cues": {
@@ -6984,7 +7889,7 @@
       }
     },
     {
-      "id": 768,
+      "id": 833,
       "les": 56,
       "he": "יש לי אותן בעיות.",
       "cues": {
@@ -6993,7 +7898,7 @@
       }
     },
     {
-      "id": 769,
+      "id": 834,
       "les": 56,
       "he": "אני ניסיתי להתקשר אליו ,אבל הוא לא ענה לי.",
       "cues": {
@@ -7002,7 +7907,7 @@
       }
     },
     {
-      "id": 770,
+      "id": 835,
       "les": 57,
       "he": "רשמו אותך ? אף אחד לא רשם אותי.",
       "cues": {
@@ -7011,7 +7916,7 @@
       }
     },
     {
-      "id": 771,
+      "id": 836,
       "les": 57,
       "he": "תרשום לי מה אני צריך לקנות.",
       "cues": {
@@ -7020,7 +7925,7 @@
       }
     },
     {
-      "id": 772,
+      "id": 837,
       "les": 57,
       "he": "סוף סוף הגענו.",
       "cues": {
@@ -7029,7 +7934,7 @@
       }
     },
     {
-      "id": 773,
+      "id": 838,
       "les": 57,
       "he": "תחזור ותחזיר את זה!",
       "cues": {
@@ -7038,7 +7943,7 @@
       }
     },
     {
-      "id": 774,
+      "id": 839,
       "les": 57,
       "he": "מה היא עשתה ? כמה זמן היא חיכתה ?",
       "cues": {
@@ -7047,7 +7952,7 @@
       }
     },
     {
-      "id": 775,
+      "id": 840,
       "les": 57,
       "he": "מי חוזר? מי מחזיר את זה?",
       "cues": {
@@ -7056,7 +7961,7 @@
       }
     },
     {
-      "id": 776,
+      "id": 841,
       "les": 57,
       "he": "אני ניסיתי להבין את זה.",
       "cues": {
@@ -7065,7 +7970,7 @@
       }
     },
     {
-      "id": 777,
+      "id": 842,
       "les": 57,
       "he": "אל תדבר בלי לחשוב !",
       "cues": {
@@ -7074,7 +7979,7 @@
       }
     },
     {
-      "id": 778,
+      "id": 843,
       "les": 57,
       "he": "סוף סוף המחיר ירד.",
       "cues": {
@@ -7083,7 +7988,7 @@
       }
     },
     {
-      "id": 779,
+      "id": 844,
       "les": 57,
       "he": "אתה בא? מה אתה מֵביא ?",
       "cues": {
@@ -7092,7 +7997,7 @@
       }
     },
     {
-      "id": 780,
+      "id": 845,
       "les": 57,
       "he": "אי אפשר לבוא בלי הזמנה .אל תבוא בלי הזמנה.",
       "cues": {
@@ -7101,7 +8006,7 @@
       }
     },
     {
-      "id": 781,
+      "id": 846,
       "les": 57,
       "he": "אני חיכיתי לך  -כמה זמן חיכית לי?",
       "cues": {
@@ -7110,7 +8015,7 @@
       }
     },
     {
-      "id": 782,
+      "id": 847,
       "les": 57,
       "he": "זה שלי .אתה מתכוון להחזיר לי את זה?",
       "cues": {
@@ -7119,7 +8024,7 @@
       }
     },
     {
-      "id": 783,
+      "id": 848,
       "les": 57,
       "he": "תבוא ותביא את זה.",
       "cues": {
@@ -7128,7 +8033,7 @@
       }
     },
     {
-      "id": 784,
+      "id": 849,
       "les": 57,
       "he": "שרה ,מתי את מחזירה לי את הכסף?",
       "cues": {
@@ -7137,7 +8042,7 @@
       }
     },
     {
-      "id": 785,
+      "id": 850,
       "les": 58,
       "he": "אל תפחד להשתמש בזה !",
       "cues": {
@@ -7146,7 +8051,7 @@
       }
     },
     {
-      "id": 786,
+      "id": 851,
       "les": 58,
       "he": "אין סיכוי שזה יקרה.",
       "cues": {
@@ -7155,7 +8060,7 @@
       }
     },
     {
-      "id": 787,
+      "id": 852,
       "les": 58,
       "he": "תשמור על עצמך.",
       "cues": {
@@ -7164,7 +8069,7 @@
       }
     },
     {
-      "id": 788,
+      "id": 853,
       "les": 58,
       "he": "סוף סוף מצאתי את עצמי באולפן.",
       "cues": {
@@ -7173,7 +8078,7 @@
       }
     },
     {
-      "id": 789,
+      "id": 854,
       "les": 58,
       "he": "אני פוחד שהיא ביטלה הכל.",
       "cues": {
@@ -7182,7 +8087,7 @@
       }
     },
     {
-      "id": 790,
+      "id": 855,
       "les": 58,
       "he": "אף אחד לא עוזר לו ,אז הוא עוזר לעצמו.",
       "cues": {
@@ -7191,7 +8096,7 @@
       }
     },
     {
-      "id": 791,
+      "id": 856,
       "les": 58,
       "he": "אני פוחדת שהוא יאחר .אין לי זמן לחכות.",
       "cues": {
@@ -7200,7 +8105,7 @@
       }
     },
     {
-      "id": 792,
+      "id": 857,
       "les": 58,
       "he": "אף אחד לא מבין אותי ,רק אני מבין את עצמי.",
       "cues": {
@@ -7209,7 +8114,7 @@
       }
     },
     {
-      "id": 793,
+      "id": 858,
       "les": 58,
       "he": "תבוא ותביא ,תחזור ותחזיר.",
       "cues": {
@@ -7218,7 +8123,7 @@
       }
     },
     {
-      "id": 794,
+      "id": 859,
       "les": 58,
       "he": "הוא חושב רק על עצמו ושומע רק את עצמו.",
       "cues": {
@@ -7227,7 +8132,7 @@
       }
     },
     {
-      "id": 795,
+      "id": 860,
       "les": 58,
       "he": "מי ניסה? היא ניסתה .מי נסע? היא נסעה.",
       "cues": {
@@ -7236,7 +8141,7 @@
       }
     },
     {
-      "id": 796,
+      "id": 861,
       "les": 58,
       "he": "אני פחדתי לנסות עוד פעם.",
       "cues": {
@@ -7245,7 +8150,7 @@
       }
     },
     {
-      "id": 797,
+      "id": 862,
       "les": 58,
       "he": "אין סיכוי שהמחיר יירד.",
       "cues": {
@@ -7254,7 +8159,7 @@
       }
     },
     {
-      "id": 798,
+      "id": 863,
       "les": 58,
       "he": "לפעמים היא מדברת עם עצמה.",
       "cues": {
@@ -7263,7 +8168,7 @@
       }
     },
     {
-      "id": 799,
+      "id": 864,
       "les": 59,
       "he": "הגיע הזמן להחליט ,בוא נחליט!",
       "cues": {
@@ -7272,7 +8177,7 @@
       }
     },
     {
-      "id": 800,
+      "id": 865,
       "les": 59,
       "he": "אין סיכוי שאני אֶשכַּח אותך.",
       "cues": {
@@ -7281,7 +8186,7 @@
       }
     },
     {
-      "id": 801,
+      "id": 866,
       "les": 59,
       "he": "שרה לוקַחַת ,פותַחַת ,שולַחַת ,ושוכַחַת הכל.",
       "cues": {
@@ -7290,7 +8195,7 @@
       }
     },
     {
-      "id": 802,
+      "id": 867,
       "les": 59,
       "he": "קשה לי להחליט בעצמי .תעזור לי להחליט.",
       "cues": {
@@ -7299,7 +8204,7 @@
       }
     },
     {
-      "id": 803,
+      "id": 868,
       "les": 59,
       "he": "אני קניתי את זה אבל לא השתמשתי בזה.",
       "cues": {
@@ -7308,7 +8213,7 @@
       }
     },
     {
-      "id": 804,
+      "id": 869,
       "les": 59,
       "he": "היא סוף סוף עלתה לישראל.",
       "cues": {
@@ -7317,7 +8222,7 @@
       }
     },
     {
-      "id": 805,
+      "id": 870,
       "les": 59,
       "he": "היא תמיד לוקחת והיא אף פעם לא מחזירה את זה.",
       "cues": {
@@ -7326,7 +8231,7 @@
       }
     },
     {
-      "id": 806,
+      "id": 871,
       "les": 59,
       "he": "היא משתדלת לא לאחר אבל לפעמים היא מאחרת.",
       "cues": {
@@ -7335,7 +8240,7 @@
       }
     },
     {
-      "id": 807,
+      "id": 872,
       "les": 59,
       "he": "אני מקווה שהוא יחליט להמשיך ללמוד.",
       "cues": {
@@ -7344,7 +8249,7 @@
       }
     },
     {
-      "id": 808,
+      "id": 873,
       "les": 59,
       "he": "תשתדל לשמור על קשר  -אני אשתדל.",
       "cues": {
@@ -7353,7 +8258,7 @@
       }
     },
     {
-      "id": 809,
+      "id": 874,
       "les": 59,
       "he": "לפעמים היא שוכחת לקחת מים.",
       "cues": {
@@ -7362,7 +8267,7 @@
       }
     },
     {
-      "id": 810,
+      "id": 875,
       "les": 59,
       "he": "כשאני אראה אותו ,אני אסביר לו הכול.",
       "cues": {
@@ -7371,7 +8276,7 @@
       }
     },
     {
-      "id": 811,
+      "id": 876,
       "les": 59,
       "he": "לפעמים אני שואל את עצמי ועונה לעצמי.",
       "cues": {
@@ -7380,7 +8285,7 @@
       }
     },
     {
-      "id": 812,
+      "id": 877,
       "les": 60,
       "he": "לעבור פה .להעביר את זה .לחזור לאולפן .להחזיר את זה.",
       "cues": {
@@ -7389,7 +8294,7 @@
       }
     },
     {
-      "id": 813,
+      "id": 878,
       "les": 60,
       "he": "סוף סוף היא הסבירה לי.",
       "cues": {
@@ -7398,7 +8303,7 @@
       }
     },
     {
-      "id": 814,
+      "id": 879,
       "les": 60,
       "he": "אפשר לדבר עם משה? כן ,אני מעביר אותך.",
       "cues": {
@@ -7407,7 +8312,7 @@
       }
     },
     {
-      "id": 815,
+      "id": 880,
       "les": 60,
       "he": "תרשום אותי  -כבר רשמתי אותך.",
       "cues": {
@@ -7416,7 +8321,7 @@
       }
     },
     {
-      "id": 816,
+      "id": 881,
       "les": 60,
       "he": "הוא מחליף את המחשב .היא מחליפה עבודה.",
       "cues": {
@@ -7425,7 +8330,7 @@
       }
     },
     {
-      "id": 817,
+      "id": 882,
       "les": 60,
       "he": "אי אפשר לקחת את זה בלי לשאול אותה.",
       "cues": {
@@ -7434,7 +8339,7 @@
       }
     },
     {
-      "id": 818,
+      "id": 883,
       "les": 60,
       "he": "הם התקשרו אלינו והזמינו אותנו.",
       "cues": {
@@ -7443,7 +8348,7 @@
       }
     },
     {
-      "id": 819,
+      "id": 884,
       "les": 60,
       "he": "הוא תמיד לוקח ואף פעם לא מחזיר.",
       "cues": {
@@ -7452,7 +8357,7 @@
       }
     },
     {
-      "id": 820,
+      "id": 885,
       "les": 60,
       "he": "זה מתאים לך ,אל תחליף את זה!",
       "cues": {
@@ -7461,7 +8366,7 @@
       }
     },
     {
-      "id": 821,
+      "id": 886,
       "les": 60,
       "he": "לפחוד .הוא פחד ,הוא פוחד ,הוא יפחד.",
       "cues": {
@@ -7470,7 +8375,7 @@
       }
     },
     {
-      "id": 822,
+      "id": 887,
       "les": 60,
       "he": "דיברנו בשבוע שעבר ,לא בחודש שעבר.",
       "cues": {
@@ -7479,7 +8384,7 @@
       }
     },
     {
-      "id": 823,
+      "id": 888,
       "les": 60,
       "he": "אין סיכוי שהוא יענה לך.",
       "cues": {
@@ -7488,7 +8393,7 @@
       }
     },
     {
-      "id": 824,
+      "id": 889,
       "les": 60,
       "he": "תעביר לי את הכסף היום ,זה דחוף - .כמה להעביר לך?",
       "cues": {
@@ -7497,7 +8402,7 @@
       }
     },
     {
-      "id": 825,
+      "id": 890,
       "les": 60,
       "he": "אף אחד לא מדבר איתי ,אני מדברת עם עצמי.",
       "cues": {
@@ -7506,7 +8411,7 @@
       }
     },
     {
-      "id": 826,
+      "id": 891,
       "les": 60,
       "he": "היא התקשרה אליו ואמרה לו שהוא צריך לשים לב.",
       "cues": {
@@ -7515,7 +8420,7 @@
       }
     },
     {
-      "id": 827,
+      "id": 892,
       "les": 61,
       "he": "אין סיכוי שהוא ישים לב.",
       "cues": {
@@ -7524,7 +8429,7 @@
       }
     },
     {
-      "id": 828,
+      "id": 893,
       "les": 61,
       "he": "תתקשרי אליו ,אחרת הוא ישכח.",
       "cues": {
@@ -7533,7 +8438,7 @@
       }
     },
     {
-      "id": 829,
+      "id": 894,
       "les": 61,
       "he": "תעביר אותי למנהל  -אני מעביר אותך.",
       "cues": {
@@ -7542,7 +8447,7 @@
       }
     },
     {
-      "id": 830,
+      "id": 895,
       "les": 61,
       "he": "היא ניסתה לתקן את זה בעצמה.",
       "cues": {
@@ -7551,7 +8456,7 @@
       }
     },
     {
-      "id": 831,
+      "id": 896,
       "les": 61,
       "he": "היא היתה שם ,היא דיברה איתי והזמינה אותי.",
       "cues": {
@@ -7560,7 +8465,7 @@
       }
     },
     {
-      "id": 832,
+      "id": 897,
       "les": 61,
       "he": "זה מה שרצית?  -זה מה שרציתי.",
       "cues": {
@@ -7569,7 +8474,7 @@
       }
     },
     {
-      "id": 833,
+      "id": 898,
       "les": 61,
       "he": "מי שקם בזמן  -מגיע בזמן.",
       "cues": {
@@ -7578,7 +8483,7 @@
       }
     },
     {
-      "id": 834,
+      "id": 899,
       "les": 61,
       "he": "תקנה מה שאתה צריך .אני אשלם.",
       "cues": {
@@ -7587,7 +8492,7 @@
       }
     },
     {
-      "id": 835,
+      "id": 900,
       "les": 61,
       "he": "תבטיחי לי שאת תשתדלי .אני מבטיחה.",
       "cues": {
@@ -7596,7 +8501,7 @@
       }
     },
     {
-      "id": 836,
+      "id": 901,
       "les": 61,
       "he": "מי שמבטיח צריך לקיים.",
       "cues": {
