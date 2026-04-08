@@ -74,9 +74,244 @@
   </div>
 
   <script>
-    /* ══════════════════════════════════════════════════════════
-       ALLE JAVASCRIPT HIER — modules A t/m N in volgorde
-       ══════════════════════════════════════════════════════════ */
+// ══════════════════════════════════════════════════════════════
+// MODULE A: Constanten en configuratie
+// ══════════════════════════════════════════════════════════════
+
+const APP_VERSIE        = '1.0.0';
+const APP_NAAM          = 'Ulpan Jes';
+const AZURE_REGIO       = 'eastus';
+const AZURE_RESOURCE    = 'ivriet-speech';
+const TTS_STEM_MAN      = 'he-IL-AvriNeural';
+const TTS_STEM_VROUW    = 'he-IL-HilaNeural';
+const MAX_LES           = 19;
+const CORS_PROXY_URL    = 'https://corsproxy.io/?';
+const OPSLAG_PREFIXEN   = {
+  voortgang:    'ujes_voortgang_',
+  srs:          'ujes_srs_',
+  lyric:        'ujes_lyric_',
+  spelScore:    'ujes_spelscore_',
+  streak:       'ujes_streak',
+  huidigeLes:   'ujes_huidigeles',
+  instellingen: 'ujes_instellingen',
+};
+
+// ══════════════════════════════════════════════════════════════
+// MODULE B: Hulpfuncties (stripNikud, kiesWillekeurig, etc.)
+// ══════════════════════════════════════════════════════════════
+
+/**
+ * Verwijdert nikud (vocalisatietekens) uit Hebreeuwse tekst.
+ * ALTIJD gebruiken voordat tekst naar Azure TTS wordt gestuurd.
+ * @param {string} tekst - Hebreeuwse tekst met of zonder nikud
+ * @returns {string} Tekst zonder nikud, lege string bij null/undefined
+ */
+function stripNikud(tekst) {
+  if (!tekst) return '';
+  return tekst.replace(/[\u0591-\u05C7]/g, '');
+}
+
+/**
+ * Selecteert n willekeurige unieke items uit een array.
+ * @param {Array} arr - De bronarray
+ * @param {number} n - Aantal te selecteren items
+ * @returns {Array} Willekeurige selectie, nooit meer dan arr.length
+ */
+function kiesWillekeurig(arr, n) {
+  if (!arr || arr.length === 0) return [];
+  if (arr.length <= n) return [...arr].sort(() => Math.random() - 0.5);
+  const kopie = [...arr];
+  const resultaat = [];
+  for (let i = 0; i < n; i++) {
+    const idx = Math.floor(Math.random() * kopie.length);
+    resultaat.push(kopie.splice(idx, 1)[0]);
+  }
+  return resultaat;
+}
+
+/**
+ * Geeft het huidige lesnummer van de leerder.
+ * @returns {number} Huidig lesnummer (1-19)
+ */
+function huidigeLes() {
+  return Opslag.laad(OPSLAG_PREFIXEN.huidigeLes, 1);
+}
+
+// ══════════════════════════════════════════════════════════════
+// MODULE C: AppLogger en toast-meldingen
+// ══════════════════════════════════════════════════════════════
+
+const AppLogger = {
+  DEBUG: new URLSearchParams(window.location.search).has('debug'),
+
+  info  (ctx, msg, data = null) { console.log  (`[${ctx}]`, msg, data ?? ''); },
+  warn  (ctx, msg, data = null) { console.warn (`[${ctx}]`, msg, data ?? ''); },
+  error (ctx, msg, fout = null) {
+    console.error(`[${ctx}]`, msg, fout ?? '');
+    toonToast(msg, 'error');
+  },
+  debug (ctx, msg, data = null) {
+    if (this.DEBUG) console.debug(`[${ctx}] DEBUG:`, msg, data ?? '');
+  }
+};
+
+/**
+ * Toont een niet-blokkerende melding rechtsonder in beeld.
+ * Verdwijnt automatisch na 5 seconden.
+ * @param {string} bericht - De te tonen tekst
+ * @param {'error'|'warning'|'info'|'success'} type - Type melding
+ */
+function toonToast(bericht, type = 'info') {
+  const KLEUREN = {
+    error:   'bg-red-100 border-red-400 text-red-800',
+    warning: 'bg-yellow-100 border-yellow-400 text-yellow-800',
+    info:    'bg-blue-100 border-blue-400 text-blue-800',
+    success: 'bg-green-100 border-green-400 text-green-800',
+  };
+  const toast = document.createElement('div');
+  toast.className = `fixed bottom-4 right-4 z-50 p-3 border rounded-lg shadow-lg
+                     ${KLEUREN[type]} text-sm max-w-xs transition-opacity duration-300`;
+  toast.textContent = bericht;
+  document.body.appendChild(toast);
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    setTimeout(() => toast.remove(), 300);
+  }, 4700);
+}
+
+// ══════════════════════════════════════════════════════════════
+// MODULE D: Database laden en vocabulaire-bewaking
+// ══════════════════════════════════════════════════════════════
+
+let VOCAB_DB  = null;
+let MUZIEK_DB = null;
+let SPEL_DB   = null;
+let OEFEN_DB  = null;
+
+/**
+ * Laadt alle vier databases bij app-start.
+ * Slaat ze op als window-variabelen voor globale toegang.
+ */
+async function laadAlleDatabases() {
+  try {
+    const [v, m, s, o] = await Promise.all([
+      fetch('vocab_database.json'),
+      fetch('muziek_database.json'),
+      fetch('spelletjes_database.json'),
+      fetch('oefenzinnen.json'),
+    ]);
+
+    if (!v.ok || !m.ok || !s.ok || !o.ok)
+      throw new Error('Een of meer databases niet beschikbaar');
+
+    VOCAB_DB  = await v.json();
+    MUZIEK_DB = await m.json();
+    SPEL_DB   = await s.json();
+    OEFEN_DB  = await o.json();
+
+    window.VOCAB_DB  = VOCAB_DB;
+    window.MUZIEK_DB = MUZIEK_DB;
+    window.SPEL_DB   = SPEL_DB;
+    window.OEFEN_DB  = OEFEN_DB;
+
+    AppLogger.info('DB', `Geladen: ${VOCAB_DB.woorden.length} woorden, ` +
+      `${MUZIEK_DB.liederen.length} liedjes, ${OEFEN_DB.zinnen.length} zinnen`);
+  } catch(fout) {
+    AppLogger.error('DB', 'Databases laden mislukt', fout);
+  }
+}
+
+/**
+ * Geeft alle woorden terug die de leerder kent na les N.
+ * Gebruikt vocab_database.json als enige bron van waarheid.
+ * @param {number} lesNummer - Lesnummer (1-19)
+ * @returns {Array<Object>} Array van woordobjecten
+ */
+function getBekendWoorden(lesNummer) {
+  if (!VOCAB_DB) return [];
+  const sleutel   = String(Math.min(lesNummer, MAX_LES));
+  const bekendSet = new Set(
+    (VOCAB_DB.bekendNaLes[sleutel] || []).map(w => stripNikud(w).toLowerCase())
+  );
+  return VOCAB_DB.woorden.filter(w =>
+    bekendSet.has(stripNikud(w.he_clean).toLowerCase())
+  );
+}
+
+/**
+ * Geeft de woorden terug die NIEUW zijn in les N
+ * (niet aanwezig in les N-1).
+ * @param {number} lesNummer - Lesnummer (1-19)
+ * @returns {Array<Object>} Nieuwe woorden voor deze les
+ */
+function getNieuweWoorden(lesNummer) {
+  const huidig  = getBekendWoorden(lesNummer);
+  const vorige  = lesNummer > 1 ? getBekendWoorden(lesNummer - 1) : [];
+  const vorigeIds = new Set(vorige.map(w => w.id));
+  return huidig.filter(w => !vorigeIds.has(w.id));
+}
+
+/**
+ * Geeft oefenzinnen terug die passen bij het lesniveau.
+ * Alleen zinnen met bekende woorden — nooit nieuwe woorden.
+ * @param {number} lesNummer - Huidig lesnummer
+ * @param {number} max - Maximum aantal zinnen
+ * @returns {Array<Object>} Geschikte oefenzinnen
+ */
+function getBekendZinnen(lesNummer, max = 5) {
+  if (!OEFEN_DB) return [];
+  return OEFEN_DB.zinnen
+    .filter(z => parseInt(z.les) <= lesNummer)
+    .slice(0, max);
+}
+
+// ══════════════════════════════════════════════════════════════
+// MODULE E: Lokale opslag (localStorage wrapper)
+// ══════════════════════════════════════════════════════════════
+
+const Opslag = {
+  /**
+   * Slaat een waarde op in localStorage.
+   * @param {string} sleutel - De opslagsleutel
+   * @param {any} waarde - De op te slaan waarde
+   */
+  slaOp(sleutel, waarde) {
+    try {
+      localStorage.setItem(sleutel, JSON.stringify(waarde));
+    } catch(fout) {
+      AppLogger.warn('Opslag', `Opslaan mislukt: ${sleutel}`, fout.message);
+    }
+  },
+
+  /**
+   * Laadt een waarde uit localStorage.
+   * @param {string} sleutel - De opslagsleutel
+   * @param {any} standaard - Standaardwaarde bij ontbreken
+   * @returns {any} Geladen waarde of standaard
+   */
+  laad(sleutel, standaard = null) {
+    try {
+      const raw = localStorage.getItem(sleutel);
+      return raw ? JSON.parse(raw) : standaard;
+    } catch(fout) {
+      AppLogger.warn('Opslag', `Laden mislukt: ${sleutel}`);
+      return standaard;
+    }
+  },
+
+  /**
+   * Verwijdert een waarde uit localStorage.
+   * @param {string} sleutel - De te verwijderen sleutel
+   */
+  verwijder(sleutel) {
+    localStorage.removeItem(sleutel);
+  }
+};
+
+// ══════════════════════════════════════════════════════════════
+// APP START
+// ══════════════════════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', () => laadAlleDatabases());
   </script>
 </body>
 </html>
