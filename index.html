@@ -163,7 +163,6 @@ function bepaalStem(woord) {
   const nl = woord.nl || '';
   const en = woord.en || '';
 
-  // Check nl EN en velden voor geslacht
   if (nl.includes('(m)') || en.includes('(m)')) return 'man';
   if (nl.includes('(f)') || en.includes('(f)')) return 'vrouw';
   if (he.startsWith('ל') && woord.soort === 'ww') return (_afwisselTeller++ % 2 === 0) ? 'man' : 'vrouw';
@@ -183,20 +182,65 @@ function bepaalStem(woord) {
  * @returns {Promise<boolean>}
  */
 async function spreekWoordUit(woord) {
-  // את als voornaamwoord — stuur met nikud zodat Azure "at" zegt
   if (woord.he_clean === 'את' && woord.soort === 'vw') {
     return AudioManager.spreekUit('אַת', 'vrouw');
   }
-
-  // Bepaal stem op basis van nl veld of bepaalStem()
-  const nl = woord.nl || '';
-  let stem;
-  if (nl.includes('(m)')) stem = 'man';
-  else if (nl.includes('(f)')) stem = 'vrouw';
-  else stem = bepaalStem(woord);
-
-  // Stuur Hebreeuwse tekst met nikud naar Azure — één aanroep per woord
+  const stem = bepaalStem(woord);
   return AudioManager.spreekUit(woord.he, stem);
+}
+
+/**
+ * Rendert Hebreeuws in twee regels: groot blokletters + klein schrijfletters.
+ * @param {Object} woord - Woordobject met he_clean en he
+ * @returns {string} HTML
+ */
+function renderHebreeuwsWoord(woord) {
+  return `
+    <div class="text-6xl font-bold mb-1" dir="rtl" lang="he"
+         style="font-family: Arial, sans-serif;">${woord.he_clean}</div>
+    <div class="font-hebrew text-2xl text-gray-400 mb-3" dir="rtl" lang="he">${woord.he}</div>`;
+}
+
+/**
+ * Rendert een Hebreeuwse zin in blokletters.
+ * @param {string} tekst - Hebreeuwse tekst
+ * @returns {string} HTML
+ */
+function renderHebreeuwsZin(tekst) {
+  return `
+    <div class="text-2xl font-bold text-right leading-relaxed mb-4
+                bg-blue-50 rounded-xl p-6 w-full max-w-md" dir="rtl" lang="he"
+         style="font-family: Arial, sans-serif;">${tekst}</div>`;
+}
+
+/**
+ * Rendert de fasekop met lesnummer en optionele terugknop.
+ * @param {number} fase - Huidig fasenummer
+ * @param {string} naam - Fasenaam
+ * @param {string} extra - Extra tekst (bijv. woord X/Y)
+ * @returns {string} HTML
+ */
+function faseKop(fase, naam, extra = '') {
+  const les = window.huidigeLesData.lesNummer;
+  const terug = fase > 1 ? `<button onclick="AudioManager.stop(); toonFase(${fase - 1})" class="text-sm text-gray-400 mb-2 block">← Previous phase</button>` : '';
+  return `${terug}<p class="text-sm text-gray-500 mb-4">Lesson ${les} — Phase ${fase} of 8 — ${naam}${extra ? ' ' + extra : ''}</p>`;
+}
+
+/**
+ * Rendert ← Back / 🔊 Repeat / Next → knoppen.
+ * @param {string} terugFn - Functienaam voor terug
+ * @param {string} herhaalCode - onclick code voor herhaal
+ * @param {string} volgendeFn - Functienaam voor volgende
+ * @param {boolean} eersteWoord - true als idx === 0
+ * @returns {string} HTML
+ */
+function drieKnoppen(terugFn, herhaalCode, volgendeFn, eersteWoord) {
+  return `
+    <div class="flex gap-3 mt-4">
+      <button onclick="AudioManager.stop(); ${terugFn}" ${eersteWoord ? 'disabled class="opacity-30 border border-gray-300 text-gray-600 rounded-xl px-5 py-3"' : 'class="border border-gray-300 text-gray-600 rounded-xl px-5 py-3"'}>← Back</button>
+      <button onclick="AudioManager.stop(); ${herhaalCode}" class="border border-blue-400 text-blue-600 rounded-xl px-5 py-3">🔊 Repeat</button>
+      <button onclick="AudioManager.stop(); ${volgendeFn}" class="bg-blue-600 text-white rounded-xl px-6 py-3">Next →</button>
+    </div>`;
 }
 
 /**
@@ -690,468 +734,196 @@ function toonFase(faseNummer) {
   AudioManager.stop();
   window.huidigeLesData.huidigeFase = faseNummer;
   const fasen = {
-    1: toonFase1,       // Listening
-    2: toonFase2,       // Look and repeat
-    3: toonFase3,       // Understanding
-    4: toonFase3b,      // Word image
-    5: toonFase4,       // Practice sentences
-    6: toonFase5a,      // Music
-    7: toonFase7Video,  // Video
-    8: toonFase8Woorden,// Word list
+    1: faseListening,
+    2: faseLookRepeat,
+    3: faseUnderstanding,
+    4: faseWordImage,
+    5: fasePractice,
+    6: faseMusic,
+    7: faseVideo,
+    8: faseWordList,
   };
   const fn = fasen[faseNummer];
   if (fn) fn();
   else AppLogger.error('Les', `Ongeldige fase: ${faseNummer}`);
 }
 
-/**
- * Fase 1: Hila spreekt elk nieuw woord minimaal 3x voor.
- * Leerder hoort + ziet Nederlandse betekenis. Geen Hebreeuws schrift prominent.
- * Geslachtsindicator altijd als onderdeel van de auditieve presentatie.
- * Geen productie gevraagd — affectieve filter laag houden.
- * Vereist Azure API key — zonder audio heeft deze fase geen zin.
- */
-async function toonFase1() {
-  const woorden   = window.huidigeLesData.nieuweWoorden;
-  const container = document.getElementById('les-fase-container');
-  if (!container) return;
-
+// ── Phase 1: Listening ───────────────────────────────────────
+async function faseListening() {
+  const W = window.huidigeLesData.nieuweWoorden;
+  const C = document.getElementById('les-fase-container');
   let idx = 0;
-
-  const render = async () => {
-    if (idx >= woorden.length) { toonFase(2); return; }
-    const woord = woorden[idx];
-    const betekenis = woord.en || woord.nl;
-
-    container.innerHTML = `
-      <div class="min-h-screen bg-blue-50 flex flex-col items-center justify-center p-6">
-        <p class="text-sm text-gray-500 mb-1">Lesson ${window.huidigeLesData.lesNummer} — Phase 1 of 8 — Listening</p>
-        <p class="text-gray-600 mb-6 text-center">
-          Listen and understand. You don't need to do anything yet.
-        </p>
-        <div class="text-5xl mb-4">🔊</div>
-        <div class="text-2xl font-semibold mb-2">${betekenis}</div>
-        <div class="text-sm text-gray-400 mb-6">${idx + 1} / ${woorden.length}</div>
-        <div class="flex gap-3 mt-2">
-          <button onclick="AudioManager.stop(); fase1Terug()" ${idx === 0 ? 'disabled class="opacity-30 border border-gray-300 text-gray-600 rounded-xl px-5 py-3"' : 'class="border border-gray-300 text-gray-600 rounded-xl px-5 py-3"'}>
-            ← Back
-          </button>
-          <button onclick="AudioManager.stop(); fase1Herhaal()"
-                  class="border border-blue-400 text-blue-600 rounded-xl px-5 py-3">
-            🔊 Repeat
-          </button>
-          <button onclick="AudioManager.stop(); fase1Volgende()"
-                  class="bg-blue-600 text-white rounded-xl px-6 py-3">
-            Next →
-          </button>
-        </div>
-      </div>`;
-
-    window.fase1Volgende = () => { idx++; render(); };
-    window.fase1Terug = () => { if (idx > 0) { idx--; render(); } };
-    window.fase1Herhaal = async () => {
-      AudioManager._stopRequested = false;
-      for (let h = 0; h < 3; h++) {
-        if (AudioManager._stopRequested) break;
-        await spreekWoordUit(woord);
-        if (AudioManager._stopRequested) break;
-        await new Promise(r => setTimeout(r, 800));
-      }
-    };
-
-    // Automatisch 3x uitspreken bij verschijnen
-    AudioManager._stopRequested = false;
-    for (let h = 0; h < 3; h++) {
-      if (AudioManager._stopRequested) break;
-      await spreekWoordUit(woord);
-      if (AudioManager._stopRequested) break;
-      await new Promise(r => setTimeout(r, 800));
-    }
-  };
-
-  render();
-}
-
-/**
- * Fase 2: Woord wordt getoond met nikud + uitspraak + betekenis.
- * Hila spreekt voor, leerder spreekt na (shadowing).
- * Motorisch geheugenspoor opbouwen via imitatie.
- */
-async function toonFase2() {
-  const woorden   = window.huidigeLesData.nieuweWoorden;
-  const container = document.getElementById('les-fase-container');
-  let idx = 0;
-
-  const render = async () => {
-    if (idx >= woorden.length) { toonFase(3); return; }
-    const woord = woorden[idx];
-    const betekenis = woord.en || woord.nl;
-
-    container.innerHTML = `
-      <div class="min-h-screen flex flex-col items-center justify-center p-6">
-        <p class="text-sm text-gray-500 mb-4">
-          Lesson ${window.huidigeLesData.lesNummer} — Phase 2 of 8 — Look and repeat (${idx + 1}/${woorden.length})
-        </p>
-        <div class="text-6xl font-bold mb-1" dir="rtl" lang="he"
-             style="font-family: Arial, sans-serif;">${woord.he_clean}</div>
-        <div class="font-hebrew text-2xl text-gray-400 mb-3" dir="rtl" lang="he">${woord.he}</div>
-        <div class="text-2xl text-blue-600 mb-1">${woord.uitspraak}</div>
-        <div class="text-xl text-gray-700 mb-2">${betekenis}</div>
-        <div class="text-sm text-gray-400 mb-4">
-          ${woord.soort === 'ww' && woord.shoresh ? `<span dir="rtl" lang="he">שורש: ${woord.shoresh}</span>` : ''}
-        </div>
-        <p class="text-gray-500 text-sm mb-4">Repeat after you hear it</p>
-        <div class="flex gap-3 mt-2">
-          <button onclick="AudioManager.stop(); fase2Terug()" ${idx === 0 ? 'disabled class="opacity-30 border border-gray-300 text-gray-600 rounded-xl px-5 py-3"' : 'class="border border-gray-300 text-gray-600 rounded-xl px-5 py-3"'}>
-            ← Back
-          </button>
-          <button onclick="AudioManager.stop(); spreekWoordUit(window.huidigeLesData.nieuweWoorden[${idx}])"
-                  class="border border-blue-400 text-blue-600 rounded-xl px-5 py-3">
-            🔊 Repeat
-          </button>
-          <button onclick="AudioManager.stop(); fase2Volgende()"
-                  class="bg-blue-600 text-white rounded-xl px-6 py-3">
-            Next →
-          </button>
-        </div>
-      </div>`;
-
-    window.fase2Volgende = () => { idx++; render(); };
-    window.fase2Terug = () => { if (idx > 0) { idx--; render(); } };
-    await spreekWoordUit(woord);
-  };
-
-  render();
-}
-
-/**
- * Fase 3: Dezelfde woorden, nu zonder Nederlandse vertaling.
- * Leerder reconstrueert de betekenis zelfstandig — noticing-moment.
- * Desirable Difficulty: weghalen van het vangnet verdiept retentie.
- */
-async function toonFase3() {
-  const woorden   = window.huidigeLesData.nieuweWoorden;
-  const container = document.getElementById('les-fase-container');
-  let idx = 0;
-
-  const render = async () => {
-    if (idx >= woorden.length) { toonFase(5); return; }
-    const woord = woorden[idx];
-
-    container.innerHTML = `
-      <div class="min-h-screen flex flex-col items-center justify-center p-6">
-        <p class="text-sm text-gray-500 mb-4">
-          Lesson ${window.huidigeLesData.lesNummer} — Phase 3 of 8 — Understanding (${idx + 1}/${woorden.length})
-        </p>
-        <div class="text-6xl font-bold mb-1" dir="rtl" lang="he"
-             style="font-family: Arial, sans-serif;">${woord.he_clean}</div>
-        <div class="font-hebrew text-2xl text-gray-400 mb-3" dir="rtl" lang="he">${woord.he}</div>
-        <div class="text-2xl text-blue-600 mb-6">${woord.uitspraak}</div>
-        <button onclick="fase3ToonBetekenis()" id="toon-btn"
-                class="px-6 py-2 border border-gray-300 text-gray-500 rounded-lg mb-4
-                       hover:bg-gray-50 text-sm">
-          Show meaning
-        </button>
-        <div id="fase3-betekenis" class="hidden text-xl text-gray-700 mb-6">${woord.en || woord.nl}</div>
-        <div class="flex gap-3 mt-2">
-          <button onclick="AudioManager.stop(); fase3Terug()" ${idx === 0 ? 'disabled class="opacity-30 border border-gray-300 text-gray-600 rounded-xl px-5 py-3"' : 'class="border border-gray-300 text-gray-600 rounded-xl px-5 py-3"'}>
-            ← Back
-          </button>
-          <button onclick="AudioManager.stop(); spreekWoordUit(window.huidigeLesData.nieuweWoorden[${idx}])"
-                  class="border border-blue-400 text-blue-600 rounded-xl px-5 py-3">
-            🔊 Repeat
-          </button>
-          <button onclick="AudioManager.stop(); fase3Volgende()"
-                  class="bg-blue-600 text-white rounded-xl px-6 py-3">
-            Next →
-          </button>
-        </div>
-      </div>`;
-
-    window.fase3ToonBetekenis = () => {
-      document.getElementById('fase3-betekenis').classList.remove('hidden');
-      document.getElementById('toon-btn').classList.add('hidden');
-    };
-    window.fase3Volgende = () => { idx++; render(); };
-    window.fase3Terug = () => { if (idx > 0) { idx--; render(); } };
-
-    await spreekWoordUit(woord);
-  };
-
-  render();
-}
-
-/**
- * Fase 3b: Hebreeuwse letters en shoresh zichtbaar maken.
- * De shoresh wordt visueel gemarkeerd in het woord.
- * Twee woorden met dezelfde shoresh naast elkaar = noticing-moment.
- * Dual Coding: auditief geheugenspoor + visuele verankering.
- */
-function toonFase3b() {
-  const woorden   = window.huidigeLesData.nieuweWoorden.filter(w => w.shoresh);
-  const container = document.getElementById('les-fase-container');
-  let idx = 0;
-
-  if (woorden.length === 0) { toonFase(5); return; }
-
-  const render = () => {
-    if (idx >= woorden.length) { toonFase(5); return; }
-    const woord = woorden[idx];
-
-    container.innerHTML = `
-      <div class="min-h-screen flex flex-col items-center justify-center p-6">
-        <p class="text-sm text-gray-500 mb-4">
-          Lesson ${window.huidigeLesData.lesNummer} — Phase 4 of 8 — Word image (${idx + 1}/${woorden.length})
-        </p>
-        <div class="font-hebrew text-7xl mb-2 tracking-wider"
-             dir="rtl" lang="he">${woord.he}</div>
-        <div class="text-blue-600 text-lg mb-1">${woord.uitspraak}</div>
-        <div class="text-gray-700 mb-4">${woord.nl}</div>
-        ${woord.shoresh ? `
-          <div class="bg-orange-50 border border-orange-200 rounded-lg p-3 mb-6 text-center">
-            <p class="text-xs text-orange-600 mb-1" dir="rtl" lang="he">שורש / word root</p>
-            <p class="font-hebrew text-2xl text-orange-700"
-               dir="rtl" lang="he">${woord.shoresh}</p>
-          </div>
-        ` : '<div class="mb-6"></div>'}
-        <div class="flex gap-3 mt-2">
-          <button onclick="AudioManager.stop(); fase3bTerug()" ${idx === 0 ? 'disabled class="opacity-30 border border-gray-300 text-gray-600 rounded-xl px-5 py-3"' : 'class="border border-gray-300 text-gray-600 rounded-xl px-5 py-3"'}>
-            ← Back
-          </button>
-          <button onclick="AudioManager.stop(); spreekWoordUit(window.huidigeLesData.nieuweWoorden.filter(w=>w.shoresh)[${idx}])"
-                  class="border border-blue-400 text-blue-600 rounded-xl px-5 py-3">
-            🔊 Repeat
-          </button>
-          <button onclick="AudioManager.stop(); fase3bVolgende()"
-                  class="bg-blue-600 text-white rounded-xl px-6 py-3">
-            Next →
-          </button>
-        </div>
-      </div>`;
-
-    window.fase3bVolgende = () => { idx++; render(); };
-    window.fase3bTerug = () => { if (idx > 0) { idx--; render(); } };
-    spreekWoordUit(woord);
-  };
-
-  render();
-}
-
-/**
- * Fase 4: Maximaal 5 oefenzinnen uit oefenzinnen.json.
- * ALLEEN zinnen met woorden die de leerder al kent.
- * Gelaagd: receptief eerst, dan productief.
- * Alle zinnen worden door Hila uitgesproken.
- */
-async function toonFase4() {
-  const zinnen    = OEFEN_DB ? OEFEN_DB.zinnen
-    .filter(z => parseInt(z.les) === window.huidigeLesData.lesNummer)
-    .sort((a, b) => (a.niveau || 99) - (b.niveau || 99)) : [];
-  const container = document.getElementById('les-fase-container');
-  let zinIndex    = 0;
-
-  if (zinnen.length === 0) {
-    toonFase(6);
-    return;
-  }
-
-  const toonVolgend = async () => {
-    if (zinIndex >= zinnen.length) {
-      toonFase(6);
-      return;
-    }
-    const zin = zinnen[zinIndex++];
-    const heTekst = zin.he || zin.zin || '';
-    const enCue = zin.cues?.en || '';
-    const nlCue = zin.cues?.nl || '';
-
-    container.innerHTML = `
-      <div class="min-h-screen flex flex-col items-center justify-center p-6">
-        <p class="text-sm text-gray-500 mb-4">
-          Lesson ${window.huidigeLesData.lesNummer} — Phase 5 of 8 — Practice sentences (${zinIndex}/${zinnen.length})
-        </p>
-        <div class="font-hebrew text-2xl text-right leading-relaxed mb-4
-                    bg-blue-50 rounded-xl p-6 w-full max-w-md"
-             dir="rtl" lang="he">${heTekst}</div>
-        <button onclick="AudioManager.stop(); AudioManager.spreekUit('${heTekst.replace(/'/g, "\\'")}', 'vrouw')"
-                class="border border-blue-400 text-blue-600 rounded-xl px-5 py-2 mb-4">
-          🔊 Listen
-        </button>
-        ${enCue || nlCue ? `
-        <button onclick="document.getElementById('fase4-nl').classList.remove('hidden'); this.classList.add('hidden')"
-                class="px-6 py-2 border border-gray-300 text-gray-500 rounded-lg mb-4 text-sm hover:bg-gray-50"
-                id="fase4-toon-nl">
-          Show translation
-        </button>
-        <p id="fase4-nl" class="hidden text-gray-600 mb-4 text-center">${enCue || nlCue}</p>
-        ` : ''}
-        <div class="flex gap-3 mt-4">
-          <button onclick="AudioManager.stop(); fase4Volgende()"
-                  class="bg-blue-600 text-white rounded-xl px-6 py-3">
-            Next →
-        </button>
-      </div>
-    `;
-
-    window.fase4Volgende = toonVolgend;
-    await AudioManager.spreekUit(heTekst, 'vrouw');
-  };
-
-  toonVolgend();
-}
-
-/**
- * Fase 5a: Consolidatie — overzicht geleerde woorden.
- * Succeservaring aan het einde van elke les.
- * Klik op woord = uitspreken met juiste stem via spreekWoordUit().
- */
-function toonFase5a() {
-  const les       = window.huidigeLesData.lesNummer;
-  const container = document.getElementById('les-fase-container');
-  const woorden   = window.huidigeLesData.nieuweWoorden;
-
-  // Sla voortgang op
-  Opslag.slaOp(`${OPSLAG_PREFIXEN.voortgang}${les}`,
-    { voltooid: true, datum: new Date().toISOString() });
-
-  container.innerHTML = `
-    <div class="min-h-screen flex flex-col p-6">
-      <p class="text-sm text-gray-500 mb-2 text-center">Lesson ${window.huidigeLesData.lesNummer} — Phase 6 of 8 — Music</p>
-      <div class="text-center mb-6">
-        <p class="text-3xl font-bold text-green-700">🎉</p>
-        <p class="text-xl font-bold text-green-700 mt-2">Lesson ${les} complete!</p>
-        <p class="text-sm text-gray-500 mt-1">${woorden.length} new words learned</p>
-      </div>
-      <div class="space-y-2 mb-6 max-w-md mx-auto w-full" id="fase5a-woorden"></div>
-      <button onclick="toonFase(7)"
-              class="w-full max-w-md mx-auto py-3 bg-blue-600 text-white rounded-xl font-semibold mt-auto">
-        Continue to Video →
-      </button>
+  const show = async () => {
+    if (idx >= W.length) { toonFase(2); return; }
+    const w = W[idx];
+    C.innerHTML = `<div class="min-h-screen bg-blue-50 flex flex-col items-center justify-center p-6">
+      ${faseKop(1, 'Listening', `(${idx+1}/${W.length})`)}
+      <p class="text-gray-600 mb-6 text-center">Listen and understand. You don't need to do anything yet.</p>
+      <div class="text-5xl mb-4">🔊</div>
+      <div class="text-2xl font-semibold mb-2">${w.en || w.nl}</div>
+      ${drieKnoppen('window._f1Back()', 'window._f1Repeat()', 'window._f1Next()', idx===0)}
     </div>`;
-
-  // Render woorden met klikbare TTS via spreekWoordUit
-  document.getElementById('fase5a-woorden').innerHTML = woorden.map((w, i) => `
-    <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg cursor-pointer"
-         onclick="AudioManager.stop(); spreekWoordUit(window.huidigeLesData.nieuweWoorden[${i}])">
-      <span class="font-hebrew text-xl" dir="rtl" lang="he">${w.he_clean}</span>
-      <span class="text-gray-500 text-sm">${w.uitspraak}</span>
-      <span class="text-gray-700 text-sm">${w.nl}</span>
-    </div>`).join('');
+    window._f1Next = () => { idx++; show(); };
+    window._f1Back = () => { if(idx>0){idx--;show();} };
+    window._f1Repeat = async () => {
+      AudioManager._stopRequested = false;
+      for(let h=0;h<3;h++){if(AudioManager._stopRequested)break;await spreekWoordUit(w);if(AudioManager._stopRequested)break;await new Promise(r=>setTimeout(r,800));}
+    };
+    AudioManager._stopRequested = false;
+    for(let h=0;h<3;h++){if(AudioManager._stopRequested)break;await spreekWoordUit(w);if(AudioManager._stopRequested)break;await new Promise(r=>setTimeout(r,800));}
+  };
+  show();
 }
 
-/**
- * Fase 5b: Consolidatie via een liedje uit muziek_database.json.
- * Alleen liedjes waarvan ≥70% van de woorden bekend zijn.
- * Als geen geschikt liedje beschikbaar is: terugval naar fase 5a.
- */
-function toonFase5b() {
-  const les       = window.huidigeLesData.lesNummer;
-  const container = document.getElementById('les-fase-container');
-  let liedHTML = '';
+// ── Phase 2: Look and repeat ─────────────────────────────────
+async function faseLookRepeat() {
+  const W = window.huidigeLesData.nieuweWoorden;
+  const C = document.getElementById('les-fase-container');
+  let idx = 0;
+  const show = async () => {
+    if (idx >= W.length) { toonFase(3); return; }
+    const w = W[idx];
+    C.innerHTML = `<div class="min-h-screen flex flex-col items-center justify-center p-6">
+      ${faseKop(2, 'Look and repeat', '(' + (idx+1) + '/' + W.length + ')')}
+      ${renderHebreeuwsWoord(w)}
+      <div class="text-2xl text-blue-600 mb-1">${w.uitspraak}</div>
+      <div class="text-xl text-gray-700 mb-2">${w.en || w.nl}</div>
+      ${w.soort === 'ww' && w.shoresh ? '<div class="text-sm text-gray-400 mb-4"><span dir="rtl" lang="he">\u05E9\u05D5\u05E8\u05E9: ' + w.shoresh + '</span></div>' : ''}
+      <p class="text-gray-500 text-sm mb-4">Repeat after you hear it</p>
+      ${drieKnoppen('window._f2Back()', 'spreekWoordUit(window.huidigeLesData.nieuweWoorden[' + idx + '])', 'window._f2Next()', idx===0)}
+    </div>`;
+    window._f2Next = () => { idx++; show(); };
+    window._f2Back = () => { if(idx>0){idx--;show();} };
+    await spreekWoordUit(w);
+  };
+  show();
+}
 
+async function faseUnderstanding() {
+  const W = window.huidigeLesData.nieuweWoorden;
+  const C = document.getElementById('les-fase-container');
+  let idx = 0;
+  const show = async () => {
+    if (idx >= W.length) { toonFase(4); return; }
+    const w = W[idx];
+    C.innerHTML = `<div class="min-h-screen flex flex-col items-center justify-center p-6">
+      ${faseKop(3, 'Understanding', '(' + (idx+1) + '/' + W.length + ')')}
+      ${renderHebreeuwsWoord(w)}
+      <div class="text-2xl text-blue-600 mb-6">${w.uitspraak}</div>
+      <button onclick="document.getElementById('f3m').classList.remove('hidden');this.classList.add('hidden')"
+              class="px-6 py-2 border border-gray-300 text-gray-500 rounded-lg mb-4 hover:bg-gray-50 text-sm">Show meaning</button>
+      <div id="f3m" class="hidden text-xl text-gray-700 mb-6">${w.en || w.nl}</div>
+      ${drieKnoppen('window._f3Back()', 'spreekWoordUit(window.huidigeLesData.nieuweWoorden[' + idx + '])', 'window._f3Next()', idx===0)}
+    </div>`;
+    window._f3Next = () => { idx++; show(); };
+    window._f3Back = () => { if(idx>0){idx--;show();} };
+    await spreekWoordUit(w);
+  };
+  show();
+}
+
+function faseWordImage() {
+  const W = window.huidigeLesData.nieuweWoorden.filter(w => w.shoresh);
+  const C = document.getElementById('les-fase-container');
+  let idx = 0;
+  if (W.length === 0) { toonFase(5); return; }
+  const show = () => {
+    if (idx >= W.length) { toonFase(5); return; }
+    const w = W[idx];
+    C.innerHTML = `<div class="min-h-screen flex flex-col items-center justify-center p-6">
+      ${faseKop(4, 'Word image', '(' + (idx+1) + '/' + W.length + ')')}
+      ${renderHebreeuwsWoord(w)}
+      <div class="text-blue-600 text-lg mb-1">${w.uitspraak}</div>
+      <button onclick="document.getElementById('f4m').classList.remove('hidden');this.classList.add('hidden')"
+              class="px-6 py-2 border border-gray-300 text-gray-500 rounded-lg mb-4 hover:bg-gray-50 text-sm">Show meaning</button>
+      <div id="f4m" class="hidden text-gray-700 mb-4">${w.en || w.nl}</div>
+      ${w.shoresh ? '<div class="bg-orange-50 border border-orange-200 rounded-lg p-3 mb-6 text-center"><p class="text-xs text-orange-600 mb-1" dir="rtl" lang="he">\u05E9\u05D5\u05E8\u05E9 / word root</p><p class="font-hebrew text-2xl text-orange-700" dir="rtl" lang="he">' + w.shoresh + '</p></div>' : ''}
+      ${drieKnoppen('window._f4Back()', 'spreekWoordUit(window.huidigeLesData.nieuweWoorden.filter(x=>x.shoresh)[' + idx + '])', 'window._f4Next()', idx===0)}
+    </div>`;
+    window._f4Next = () => { idx++; show(); };
+    window._f4Back = () => { if(idx>0){idx--;show();} };
+    spreekWoordUit(w);
+  };
+  show();
+}
+
+async function fasePractice() {
+  const zinnen = OEFEN_DB ? OEFEN_DB.zinnen.filter(z => parseInt(z.les) === window.huidigeLesData.lesNummer).sort((a,b) => (a.niveau||99) - (b.niveau||99)) : [];
+  const C = document.getElementById('les-fase-container');
+  let idx = 0;
+  if (zinnen.length === 0) { toonFase(6); return; }
+  const show = async () => {
+    if (idx >= zinnen.length) { toonFase(6); return; }
+    const z = zinnen[idx];
+    const he = z.he || z.zin || '';
+    const tr = z.cues?.en || z.cues?.nl || '';
+    C.innerHTML = `<div class="min-h-screen flex flex-col items-center justify-center p-6">
+      ${faseKop(5, 'Practice sentences', '(' + (idx+1) + '/' + zinnen.length + ')')}
+      ${renderHebreeuwsZin(he)}
+      <button onclick="AudioManager.stop(); AudioManager.spreekUit(document.getElementById('f5he').textContent,'vrouw')"
+              class="border border-blue-400 text-blue-600 rounded-xl px-5 py-2 mb-4">🔊 Listen</button>
+      <span id="f5he" class="hidden">${he}</span>
+      ${tr ? '<button onclick="document.getElementById(\'f5tr\').classList.remove(\'hidden\');this.classList.add(\'hidden\')" class="px-6 py-2 border border-gray-300 text-gray-500 rounded-lg mb-4 hover:bg-gray-50 text-sm">Show translation</button><p id="f5tr" class="hidden text-gray-600 mb-4 text-center">' + tr + '</p>' : ''}
+      <div class="flex gap-3 mt-4">
+        <button onclick="AudioManager.stop(); window._f5Back()" ${idx===0 ? 'disabled class="opacity-30 border border-gray-300 text-gray-600 rounded-xl px-5 py-3"' : 'class="border border-gray-300 text-gray-600 rounded-xl px-5 py-3"'}>← Back</button>
+        <button onclick="AudioManager.stop(); window._f5Next()" class="bg-blue-600 text-white rounded-xl px-6 py-3">Next →</button>
+      </div>
+    </div>`;
+    window._f5Next = () => { idx++; show(); };
+    window._f5Back = () => { if(idx>0){idx--;show();} };
+    await AudioManager.spreekUit(he, 'vrouw');
+  };
+  show();
+}
+
+function faseMusic() {
+  const les = window.huidigeLesData.lesNummer;
+  const C = document.getElementById('les-fase-container');
+  Opslag.slaOp(`${OPSLAG_PREFIXEN.voortgang}${les}`, { voltooid: true, datum: new Date().toISOString() });
+  let liedHTML = '';
   if (MUZIEK_DB) {
-    const geschikt = MUZIEK_DB.liederen.filter(l =>
-      l.vanaf_les !== 'gimel' && parseInt(l.vanaf_les) <= les
-    );
+    const geschikt = MUZIEK_DB.liederen.filter(l => l.vanaf_les !== 'gimel' && parseInt(l.vanaf_les) <= les);
     if (geschikt.length > 0) {
       const lied = kiesWillekeurig(geschikt, 1)[0];
-      liedHTML = `
-        <div class="bg-purple-50 rounded-xl p-4 mb-6 text-center">
-          <p class="text-sm text-purple-600 mb-2">🎵 Suggested song</p>
-          <p class="font-hebrew text-2xl mb-1" dir="rtl" lang="he">${lied.he}</p>
-          <p class="text-gray-600 text-sm">${lied.artiest}</p>
-          <button onclick="openMuziekLes(${lied.id})"
-                  class="mt-3 px-4 py-2 bg-purple-600 text-white rounded-lg text-sm">
-            Open song
-          </button>
-        </div>`;
+      liedHTML = `<div class="bg-purple-50 rounded-xl p-4 mb-6 text-center"><p class="text-sm text-purple-600 mb-2">🎵 Suggested song</p><p class="font-hebrew text-2xl mb-1" dir="rtl" lang="he">${lied.he}</p><p class="text-gray-600 text-sm">${lied.artiest}</p><button onclick="openMuziekLes(${lied.id})" class="mt-3 px-4 py-2 bg-purple-600 text-white rounded-lg text-sm">Open song</button></div>`;
     }
   }
-
-  container.innerHTML = `
-    <div class="min-h-screen flex flex-col p-6">
-      <p class="text-sm text-gray-500 mb-4 text-center">Lesson ${les} — Phase 6 of 8 — Music</p>
-      <button onclick="toonFase(5)" class="text-sm text-gray-400 mb-4">← Previous phase</button>
-      ${liedHTML || '<p class="text-gray-400 text-center mb-6">No songs available for this level yet.</p>'}
-      <button onclick="toonFase(7)"
-              class="w-full max-w-md mx-auto py-3 bg-blue-600 text-white rounded-xl font-semibold mt-auto">
-        Continue to Video →
-      </button>
-    </div>`;
+  C.innerHTML = `<div class="min-h-screen flex flex-col p-6">
+    ${faseKop(6, 'Music')}
+    ${liedHTML || '<p class="text-gray-400 text-center mb-6">No songs available for this level yet.</p>'}
+    <button onclick="toonFase(7)" class="w-full max-w-md mx-auto py-3 bg-blue-600 text-white rounded-xl font-semibold mt-auto">Continue to Video →</button>
+  </div>`;
 }
 
-/**
- * Phase 7: Video — YouTube embed relevant to the lesson.
- */
-function toonFase7Video() {
-  const les       = window.huidigeLesData.lesNummer;
-  const container = document.getElementById('les-fase-container');
-
-  // Video per les — les 1 = Alef-Bet
-  const videoPerLes = {
-    1: 'Z1q3NW5Hs3M',
-  };
-  const videoId = videoPerLes[les] || 'Z1q3NW5Hs3M';
-
-  container.innerHTML = `
-    <div class="min-h-screen flex flex-col p-6">
-      <p class="text-sm text-gray-500 mb-2 text-center">Lesson ${les} — Phase 7 of 8 — Video</p>
-      <button onclick="toonFase(6)" class="text-sm text-gray-400 mb-4">← Previous phase</button>
-      <div class="w-full max-w-md mx-auto mb-6" style="aspect-ratio:16/9;">
-        <iframe src="https://www.youtube.com/embed/${videoId}"
-                class="w-full h-full rounded-xl"
-                frameborder="0" allowfullscreen
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
-        </iframe>
-      </div>
-      <button onclick="toonFase(8)"
-              class="w-full max-w-md mx-auto py-3 bg-blue-600 text-white rounded-xl font-semibold mt-auto">
-        Continue to Word list →
-      </button>
-    </div>`;
+function faseVideo() {
+  const les = window.huidigeLesData.lesNummer;
+  const C = document.getElementById('les-fase-container');
+  const vids = { 1: 'Z1q3NW5Hs3M' };
+  const vid = vids[les] || 'Z1q3NW5Hs3M';
+  C.innerHTML = `<div class="min-h-screen flex flex-col p-6">
+    ${faseKop(7, 'Video')}
+    <div class="w-full max-w-md mx-auto mb-6" style="aspect-ratio:16/9;">
+      <iframe src="https://www.youtube.com/embed/${vid}" class="w-full h-full rounded-xl" frameborder="0" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+    </div>
+    <button onclick="toonFase(8)" class="w-full max-w-md mx-auto py-3 bg-blue-600 text-white rounded-xl font-semibold mt-auto">Continue to Word list →</button>
+  </div>`;
 }
 
-/**
- * Phase 8: Word list — overview of all words from the lesson with audio.
- */
-function toonFase8Woorden() {
-  const les       = window.huidigeLesData.lesNummer;
-  const woorden   = window.huidigeLesData.nieuweWoorden;
-  const container = document.getElementById('les-fase-container');
-
-  container.innerHTML = `
-    <div class="min-h-screen flex flex-col p-6">
-      <p class="text-sm text-gray-500 mb-2 text-center">Lesson ${les} — Phase 8 of 8 — Word list</p>
-      <button onclick="toonFase(7)" class="text-sm text-gray-400 mb-4">← Previous phase</button>
-      <div class="text-center mb-4">
-        <p class="text-xl font-bold text-green-700">🎉 Lesson ${les} complete!</p>
-        <p class="text-sm text-gray-500 mt-1">${woorden.length} new words</p>
-      </div>
-      <div class="space-y-2 mb-6 max-w-md mx-auto w-full" id="fase8-woorden"></div>
-      <div class="grid grid-cols-2 gap-3 max-w-md mx-auto w-full mt-auto">
-        <button onclick="renderGamesMenu(huidigeLes()); toonScherm('screen-games')"
-                class="py-3 bg-purple-600 text-white rounded-xl font-semibold">
-          🎮 Games
-        </button>
-        <button onclick="startLes(${les + 1}); toonScherm('screen-lesson')"
-                class="py-3 bg-blue-600 text-white rounded-xl font-semibold">
-          Next lesson →
-        </button>
-      </div>
-    </div>`;
-
-  document.getElementById('fase8-woorden').innerHTML = woorden.map((w, i) => `
-    <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg cursor-pointer"
-         onclick="AudioManager.stop(); spreekWoordUit(window.huidigeLesData.nieuweWoorden[${i}])">
-      <span class="font-hebrew text-xl" dir="rtl" lang="he">${w.he_clean}</span>
-      <span class="text-gray-500 text-sm">${w.uitspraak}</span>
-      <span class="text-gray-700 text-sm">${w.en || w.nl}</span>
-    </div>`).join('');
+function faseWordList() {
+  const les = window.huidigeLesData.lesNummer;
+  const W = window.huidigeLesData.nieuweWoorden;
+  const C = document.getElementById('les-fase-container');
+  C.innerHTML = `<div class="min-h-screen flex flex-col p-6">
+    ${faseKop(8, 'Word list')}
+    <div class="text-center mb-4"><p class="text-xl font-bold text-green-700">🎉 Lesson ${les} complete!</p><p class="text-sm text-gray-500 mt-1">${W.length} new words</p></div>
+    <div class="space-y-2 mb-6 max-w-md mx-auto w-full" id="f8w"></div>
+    <div class="grid grid-cols-2 gap-3 max-w-md mx-auto w-full mt-auto">
+      <button onclick="renderGamesMenu(huidigeLes()); toonScherm('screen-games')" class="py-3 bg-purple-600 text-white rounded-xl font-semibold">🎮 Games</button>
+      <button onclick="startLes(${les + 1}); toonScherm('screen-lesson')" class="py-3 bg-blue-600 text-white rounded-xl font-semibold">Next lesson →</button>
+    </div>
+  </div>`;
+  document.getElementById('f8w').innerHTML = W.map((w, i) => `<div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg cursor-pointer" onclick="AudioManager.stop(); spreekWoordUit(window.huidigeLesData.nieuweWoorden[${i}])"><span class="text-xl font-bold" dir="rtl" lang="he" style="font-family:Arial,sans-serif;">${w.he_clean}</span><span class="text-gray-500 text-sm">${w.uitspraak}</span><span class="text-gray-700 text-sm">${w.en || w.nl}</span></div>`).join('');
 }
-
-// ══════════════════════════════════════════════════════════════
-// MODULE J: Games-engine + 7 spelletjes
-// ══════════════════════════════════════════════════════════════
 
 const SRS_GEWICHTEN = {
   memory:        0.5,
