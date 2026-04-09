@@ -472,20 +472,24 @@ const AudioManager = {
   AZURE_ENDPOINT: `https://${AZURE_REGIO}.tts.speech.microsoft.com/cognitiveservices/v1`,
   bezig: false,
   huidigAudio: null,
-  _stopRequested: false,
+  _token: 0,
 
   /**
-   * Stopt de huidige audio onmiddellijk.
+   * Stopt de huidige audio onmiddellijk en verhoogt token zodat
+   * lopende async aanroepen worden genegeerd.
    */
   stop() {
+    this._token++;
     if (this.huidigAudio) {
-      this.huidigAudio.pause();
-      this.huidigAudio.src = '';
+      try {
+        this.huidigAudio.pause();
+        this.huidigAudio.src = '';
+        this.huidigAudio.load();
+      } catch(e) {}
       this.huidigAudio = null;
     }
     if (window.speechSynthesis) speechSynthesis.cancel();
     this.bezig = false;
-    this._stopRequested = true;
   },
 
   /**
@@ -501,13 +505,14 @@ const AudioManager = {
       return false;
     }
 
-    this._stopRequested = false;
+    // Elk nieuw aanroep krijgt een token — als stop() wordt aangeroepen
+    // of een andere spreekUit() start, wordt dit token ongeldig
+    const mijnToken = ++this._token;
     const stemNaam    = stem === 'man' ? TTS_STEM_MAN : TTS_STEM_VROUW;
     const schoneTekst = tekst.trim();
     AppLogger.debug('TTS', `${stem}:${schoneTekst}`);
     const apiSleutel  = window.AZURE_API_SLEUTEL || null;
 
-    // Probeer Azure TTS als API-sleutel beschikbaar is
     if (apiSleutel) {
       const ssml = `<speak version='1.0' xml:lang='he-IL'>
         <voice name='${stemNaam}'>${schoneTekst}</voice>
@@ -515,7 +520,6 @@ const AudioManager = {
 
       try {
         this.bezig = true;
-        AppLogger.debug('TTS', 'SSML', ssml);
         const resp = await fetch(this.AZURE_ENDPOINT, {
           method: 'POST',
           headers: {
@@ -526,21 +530,26 @@ const AudioManager = {
           body: ssml,
         });
 
+        // Check token na fetch — als inmiddels stop() is aangeroepen, stop hier
+        if (mijnToken !== this._token) { this.bezig = false; return false; }
         if (!resp.ok) throw new Error(`Azure TTS HTTP ${resp.status}`);
 
         const blob  = await resp.blob();
+        if (mijnToken !== this._token) { this.bezig = false; return false; }
+
         const url   = URL.createObjectURL(blob);
         const audio = new Audio(url);
         this.huidigAudio = audio;
 
         await new Promise((resolve, reject) => {
-          audio.onended = () => { this.huidigAudio = null; resolve(); };
-          audio.onerror = () => { this.huidigAudio = null; reject(); };
-          audio.play();
+          audio.onended = () => { if (mijnToken === this._token) this.huidigAudio = null; resolve(); };
+          audio.onerror = () => { if (mijnToken === this._token) this.huidigAudio = null; resolve(); };
+          audio.play().catch(e => resolve());
         });
 
         URL.revokeObjectURL(url);
         this.bezig = false;
+        if (mijnToken !== this._token) return false;
         return true;
 
       } catch(fout) {
