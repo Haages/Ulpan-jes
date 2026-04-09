@@ -821,8 +821,11 @@ async function faseListening() {
   }
 
   let idx = 0;
+  let versie = 0;
   const show = async () => {
     if (idx >= W.length) { toonFase(2); return; }
+    AudioManager.stop();
+    const mijnVersie = ++versie;
     const w = W[idx];
     C.innerHTML = `<div class="min-h-screen bg-blue-50 flex flex-col items-center justify-center p-6">
       ${faseKop(1, 'Listening', `(${idx+1}/${W.length})`)}
@@ -832,14 +835,24 @@ async function faseListening() {
       <div class="text-2xl font-semibold mb-2">${w.en || w.nl}</div>
       ${drieKnoppen('window._f1Back()', 'window._f1Repeat()', 'window._f1Next()', idx===0)}
     </div>`;
-    window._f1Next = () => { idx++; show(); };
-    window._f1Back = () => { if(idx>0){idx--;show();} };
+    window._f1Next = () => { AudioManager.stop(); idx++; show(); };
+    window._f1Back = () => { AudioManager.stop(); if(idx>0){idx--;show();} };
     window._f1Repeat = async () => {
-      AudioManager._stopRequested = false;
-      for(let h=0;h<3;h++){if(AudioManager._stopRequested)break;await spreekWoordUit(w);if(AudioManager._stopRequested)break;await new Promise(r=>setTimeout(r,800));}
+      AudioManager.stop();
+      const repVersie = ++versie;
+      for(let h=0;h<3;h++){
+        if(repVersie !== versie)return;
+        await spreekWoordUit(w);
+        if(repVersie !== versie)return;
+        await new Promise(r=>setTimeout(r,800));
+      }
     };
-    AudioManager._stopRequested = false;
-    for(let h=0;h<3;h++){if(AudioManager._stopRequested)break;await spreekWoordUit(w);if(AudioManager._stopRequested)break;await new Promise(r=>setTimeout(r,800));}
+    for(let h=0;h<3;h++){
+      if(mijnVersie !== versie)return;
+      await spreekWoordUit(w);
+      if(mijnVersie !== versie)return;
+      await new Promise(r=>setTimeout(r,800));
+    }
   };
   show();
 }
@@ -849,8 +862,11 @@ async function faseLookRepeat() {
   const W = window.huidigeLesData.nieuweWoorden;
   const C = document.getElementById('les-fase-container');
   let idx = 0;
+  let versie = 0;
   const show = async () => {
     if (idx >= W.length) { toonFase(3); return; }
+    AudioManager.stop();
+    const mijnVersie = ++versie;
     const w = W[idx];
     C.innerHTML = `<div class="min-h-screen flex flex-col items-center justify-center p-6">
       ${faseKop(2, 'Look and repeat', '(' + (idx+1) + '/' + W.length + ')')}
@@ -860,10 +876,11 @@ async function faseLookRepeat() {
       <div class="text-xl text-gray-700 mb-2">${w.en || w.nl}</div>
       ${w.soort === 'ww' && w.shoresh ? '<div class="text-sm text-gray-400 mb-4"><span dir="rtl" lang="he">\u05E9\u05D5\u05E8\u05E9: ' + w.shoresh + '</span></div>' : ''}
       <p class="text-gray-500 text-sm mb-4">Repeat after you hear it</p>
-      ${drieKnoppen('window._f2Back()', 'spreekWoordUit(window.huidigeLesData.nieuweWoorden[' + idx + '])', 'window._f2Next()', idx===0)}
+      ${drieKnoppen('window._f2Back()', 'AudioManager.stop(); spreekWoordUit(window.huidigeLesData.nieuweWoorden[' + idx + '])', 'window._f2Next()', idx===0)}
     </div>`;
-    window._f2Next = () => { idx++; show(); };
-    window._f2Back = () => { if(idx>0){idx--;show();} };
+    window._f2Next = () => { AudioManager.stop(); idx++; show(); };
+    window._f2Back = () => { AudioManager.stop(); if(idx>0){idx--;show();} };
+    if (mijnVersie !== versie) return;
     await spreekWoordUit(w);
   };
   show();
@@ -873,8 +890,11 @@ async function faseUnderstanding() {
   const W = window.huidigeLesData.nieuweWoorden;
   const C = document.getElementById('les-fase-container');
   let idx = 0;
+  let versie = 0;
   const show = async () => {
     if (idx >= W.length) { toonFase(4); return; }
+    AudioManager.stop();
+    const mijnVersie = ++versie;
     const w = W[idx];
     C.innerHTML = `<div class="min-h-screen flex flex-col items-center justify-center p-6">
       ${faseKop(3, 'Understanding', '(' + (idx+1) + '/' + W.length + ')')}
@@ -883,10 +903,11 @@ async function faseUnderstanding() {
       <button onclick="document.getElementById('f3m').classList.remove('hidden');this.classList.add('hidden')"
               class="px-6 py-2 border border-gray-300 text-gray-500 rounded-lg mb-4 hover:bg-gray-50 text-sm">Show meaning</button>
       <div id="f3m" class="hidden text-xl text-gray-700 mb-6">${w.en || w.nl}</div>
-      ${drieKnoppen('window._f3Back()', 'spreekWoordUit(window.huidigeLesData.nieuweWoorden[' + idx + '])', 'window._f3Next()', idx===0)}
+      ${drieKnoppen('window._f3Back()', 'AudioManager.stop(); spreekWoordUit(window.huidigeLesData.nieuweWoorden[' + idx + '])', 'window._f3Next()', idx===0)}
     </div>`;
-    window._f3Next = () => { idx++; show(); };
-    window._f3Back = () => { if(idx>0){idx--;show();} };
+    window._f3Next = () => { AudioManager.stop(); idx++; show(); };
+    window._f3Back = () => { AudioManager.stop(); if(idx>0){idx--;show();} };
+    if (mijnVersie !== versie) return;
     await spreekWoordUit(w);
   };
   show();
@@ -899,6 +920,7 @@ function faseWordImage() {
   if (W.length === 0) { toonFase(5); return; }
   const show = () => {
     if (idx >= W.length) { toonFase(5); return; }
+    AudioManager.stop();
     const w = W[idx];
     C.innerHTML = `<div class="min-h-screen flex flex-col items-center justify-center p-6">
       ${faseKop(4, 'Word image', '(' + (idx+1) + '/' + W.length + ')')}
@@ -908,10 +930,10 @@ function faseWordImage() {
               class="px-6 py-2 border border-gray-300 text-gray-500 rounded-lg mb-4 hover:bg-gray-50 text-sm">Show meaning</button>
       <div id="f4m" class="hidden text-gray-700 mb-4">${w.en || w.nl}</div>
       ${w.shoresh ? '<div class="bg-orange-50 border border-orange-200 rounded-lg p-3 mb-6 text-center"><p class="text-xs text-orange-600 mb-1" dir="rtl" lang="he">\u05E9\u05D5\u05E8\u05E9 / word root</p><p class="font-hebrew text-2xl text-orange-700" dir="rtl" lang="he">' + w.shoresh + '</p></div>' : ''}
-      ${drieKnoppen('window._f4Back()', 'spreekWoordUit(window.huidigeLesData.nieuweWoorden.filter(x=>x.shoresh)[' + idx + '])', 'window._f4Next()', idx===0)}
+      ${drieKnoppen('window._f4Back()', 'AudioManager.stop(); spreekWoordUit(window.huidigeLesData.nieuweWoorden.filter(x=>x.shoresh)[' + idx + '])', 'window._f4Next()', idx===0)}
     </div>`;
-    window._f4Next = () => { idx++; show(); };
-    window._f4Back = () => { if(idx>0){idx--;show();} };
+    window._f4Next = () => { AudioManager.stop(); idx++; show(); };
+    window._f4Back = () => { AudioManager.stop(); if(idx>0){idx--;show();} };
     spreekWoordUit(w);
   };
   show();
@@ -923,8 +945,11 @@ async function fasePractice() {
   const C = document.getElementById('les-fase-container');
   let idx = 0;
   if (zinnen.length === 0) { toonFase(6); return; }
+  let versie = 0;
   const show = async () => {
     if (idx >= zinnen.length) { toonFase(6); return; }
+    AudioManager.stop();
+    const mijnVersie = ++versie;
     const z = zinnen[idx];
     const heOrig = z.he || z.zin || '';
     let tr = z.cues?.en || z.cues?.nl || '';
@@ -953,8 +978,9 @@ async function fasePractice() {
         <button onclick="AudioManager.stop(); window._f5Next()" class="bg-blue-600 text-white rounded-xl px-6 py-3">Next →</button>
       </div>
     </div>`;
-    window._f5Next = () => { idx++; show(); };
-    window._f5Back = () => { if(idx>0){idx--;show();} };
+    window._f5Next = () => { AudioManager.stop(); idx++; show(); };
+    window._f5Back = () => { AudioManager.stop(); if(idx>0){idx--;show();} };
+    if (mijnVersie !== versie) return;
     await AudioManager.spreekUit(he, zinStem);
   };
   show();
