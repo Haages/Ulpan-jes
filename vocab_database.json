@@ -10,7 +10,7 @@
       "soort": "vw",
       "shoresh": null,
       "en": "I",
-      "svg": "<svg viewBox=\"0 0 110 115\" xmlns=\"http://www.w3.org/2000/svg\">\n  <circle cx=\"55\" cy=\"57\" r=\"53\" fill=\"#E1F5EE\"/>\n  <circle cx=\"55\" cy=\"28\" r=\"14\" fill=\"#F5C4B3\"/>\n  <path d=\"M41 24 C41 15 69 15 69 24 C69 17 41 17 41 24Z\" fill=\"#5DCAA5\"/>\n  <circle cx=\"49\" cy=\"26\" r=\"2.5\" fill=\"#444\"/>\n  <circle cx=\"61\" cy=\"26\" r=\"2.5\" fill=\"#444\"/>\n  <path d=\"M48 34 Q55 38 62 34\" stroke=\"#C8967A\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\"/>\n  <rect x=\"41\" y=\"42\" width=\"28\" height=\"26\" rx=\"8\" fill=\"#1D9E75\"/>\n  <rect x=\"41\" y=\"65\" width=\"12\" height=\"24\" rx=\"6\" fill=\"#1D9E75\"/>\n  <rect x=\"57\" y=\"65\" width=\"12\" height=\"24\" rx=\"6\" fill=\"#1D9E75\"/>\n  <rect x=\"28\" y=\"42\" width=\"13\" height=\"22\" rx=\"6\" fill=\"#F5C4B3\"/>\n  <rect x=\"69\" y=\"26\" width=\"13\" height=\"18\" rx=\"6\" fill=\"#F5C4B3\"/>\n  <ellipse cx=\"75\" cy=\"21\" rx=\"6\" ry=\"7\" fill=\"#F5C4B3\"/>\n  <line x1=\"71\" y1=\"15\" x2=\"70\" y2=\"8\" stroke=\"#F5C4B3\" stroke-width=\"3\" stroke-linecap=\"round\"/>\n  <line x1=\"75\" y1=\"13\" x2=\"75\" y2=\"6\" stroke=\"#F5C4B3\" stroke-width=\"3\" stroke-linecap=\"round\"/>\n  <line x1=\"79\" y1=\"15\" x2=\"80\" y2=\"8\" stroke=\"#F5C4B3\" stroke-width=\"3\" stroke-linecap=\"round\"/>\n</svg>"
+      "svg": "<svg viewBox=\"0 0 110 115\" xmlns=\"http://www.w3.org/2000/svg\">\n  <circle cx=\"55\" cy=\"57\" r=\"53\" fill=\"#E1F5EE\"/>\n  <circle cx=\"55\" cy=\"28\" r=\"13\" fill=\"#F5C4B3\"/>\n  <path d=\"M42 24 C42 15 68 15 68 24 C68 17 42 17 42 24Z\" fill=\"#5DCAA5\"/>\n  <circle cx=\"49\" cy=\"26\" r=\"2\" fill=\"#444\"/>\n  <circle cx=\"61\" cy=\"26\" r=\"2\" fill=\"#444\"/>\n  <path d=\"M48 34 Q55 38 62 34\" stroke=\"#C8967A\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\"/>\n  <rect x=\"41\" y=\"42\" width=\"28\" height=\"26\" rx=\"8\" fill=\"#1D9E75\"/>\n  <rect x=\"41\" y=\"65\" width=\"12\" height=\"24\" rx=\"6\" fill=\"#1D9E75\"/>\n  <rect x=\"57\" y=\"65\" width=\"12\" height=\"24\" rx=\"6\" fill=\"#1D9E75\"/>\n  <rect x=\"28\" y=\"42\" width=\"13\" height=\"22\" rx=\"6\" fill=\"#F5C4B3\"/>\n  <rect x=\"69\" y=\"26\" width=\"13\" height=\"18\" rx=\"6\" fill=\"#F5C4B3\"/>\n  <ellipse cx=\"75\" cy=\"21\" rx=\"6\" ry=\"7\" fill=\"#F5C4B3\"/>\n  <line x1=\"71\" y1=\"15\" x2=\"70\" y2=\"8\" stroke=\"#F5C4B3\" stroke-width=\"3\" stroke-linecap=\"round\"/>\n  <line x1=\"75\" y1=\"13\" x2=\"75\" y2=\"6\" stroke=\"#F5C4B3\" stroke-width=\"3\" stroke-linecap=\"round\"/>\n  <line x1=\"79\" y1=\"15\" x2=\"80\" y2=\"8\" stroke=\"#F5C4B3\" stroke-width=\"3\" stroke-linecap=\"round\"/>\n</svg>"
     },
     {
       "id": 2,
@@ -34,7 +34,7 @@
       "soort": "vw",
       "shoresh": null,
       "en": "you (f)",
-      "svg": "<svg viewBox=\"0 0 110 110\" xmlns=\"http://www.w3.org/2000/svg\">\n  <circle cx=\"55\" cy=\"55\" r=\"53\" fill=\"#FBEAF0\"/>\n  <circle cx=\"24\" cy=\"28\" r=\"11\" fill=\"#F5C4B3\"/>\n  <path d=\"M13 24 C13 16 35 16 35 24 C35 18 13 18 13 24Z\" fill=\"#D4537E\"/>\n  <circle cx=\"13\" cy=\"31\" r=\"3\" fill=\"#FAC775\" stroke=\"#EF9F27\" stroke-width=\"1\"/>\n  <circle cx=\"35\" cy=\"31\" r=\"3\" fill=\"#FAC775\" stroke=\"#EF9F27\" stroke-width=\"1\"/>\n  <circle cx=\"19\" cy=\"26\" r=\"2\" fill=\"#444\"/>\n  <circle cx=\"29\" cy=\"26\" r=\"2\" fill=\"#444\"/>\n  <path d=\"M18 33 Q24 37 30 33\" stroke=\"#C8967A\" stroke-width=\"1.5\" fill=\"none\" stroke-linecap=\"round\"/>\n  <path d=\"M16 39 L12 52 L4 88 L44 88 L36 52 L32 39 Z\" fill=\"#D4537E\"/>\n  <line x1=\"12\" y1=\"52\" x2=\"36\" y2=\"52\" stroke=\"#F4C0D1\" stroke-width=\"1.5\"/>\n  <path d=\"M18 39 L24 45 L30 39\" fill=\"none\" stroke=\"#F4C0D1\" stroke-width=\"1.5\"/>\n  <rect x=\"3\" y=\"39\" width=\"9\" height=\"15\" rx=\"4\" fill=\"#F5C4B3\"/>\n  <rect x=\"34\" y=\"42\" width=\"18\" height=\"8\" rx=\"4\" fill=\"#F5C4B3\"/>\n  <ellipse cx=\"55\" cy=\"46\" rx=\"5\" ry=\"4\" fill=\"#F5C4B3\"/>\n  <line x1=\"57\" y1=\"44\" x2=\"63\" y2=\"42\" stroke=\"#F5C4B3\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n  <path d=\"M65 39 L70 43 L65 47 Z\" fill=\"#D4537E\"/>\n  <circle cx=\"84\" cy=\"28\" r=\"11\" fill=\"#F5C4B3\"/>\n  <path d=\"M73 24 C73 16 95 16 95 24 C95 18 73 18 73 24Z\" fill=\"#ED93B1\"/>\n  <circle cx=\"73\" cy=\"31\" r=\"3\" fill=\"#FAC775\" stroke=\"#EF9F27\" stroke-width=\"1\"/>\n  <circle cx=\"95\" cy=\"31\" r=\"3\" fill=\"#FAC775\" stroke=\"#EF9F27\" stroke-width=\"1\"/>\n  <circle cx=\"79\" cy=\"26\" r=\"2\" fill=\"#444\"/>\n  <circle cx=\"89\" cy=\"26\" r=\"2\" fill=\"#444\"/>\n  <path d=\"M78 33 Q84 37 90 33\" stroke=\"#C8967A\" stroke-width=\"1.5\" fill=\"none\" stroke-linecap=\"round\"/>\n  <path d=\"M76 39 L72 52 L64 88 L104 88 L96 52 L92 39 Z\" fill=\"#ED93B1\"/>\n  <line x1=\"72\" y1=\"52\" x2=\"96\" y2=\"52\" stroke=\"#F4C0D1\" stroke-width=\"1.5\"/>\n  <path d=\"M78 39 L84 45 L90 39\" fill=\"none\" stroke=\"#F4C0D1\" stroke-width=\"1.5\"/>\n  <rect x=\"94\" y=\"39\" width=\"9\" height=\"15\" rx=\"4\" fill=\"#F5C4B3\"/>\n  <rect x=\"63\" y=\"39\" width=\"9\" height=\"15\" rx=\"4\" fill=\"#F5C4B3\"/>\n</svg>"
+      "svg": "<svg viewBox=\"0 0 110 110\" xmlns=\"http://www.w3.org/2000/svg\">\n  <circle cx=\"55\" cy=\"55\" r=\"53\" fill=\"#FBEAF0\"/>\n  <circle cx=\"22\" cy=\"28\" r=\"11\" fill=\"#F5C4B3\"/>\n  <path d=\"M11 24 C11 16 33 16 33 24 C33 18 11 18 11 24Z\" fill=\"#D4537E\"/>\n  <circle cx=\"11\" cy=\"31\" r=\"3\" fill=\"#FAC775\" stroke=\"#EF9F27\" stroke-width=\"1\"/>\n  <circle cx=\"33\" cy=\"31\" r=\"3\" fill=\"#FAC775\" stroke=\"#EF9F27\" stroke-width=\"1\"/>\n  <circle cx=\"17\" cy=\"26\" r=\"2\" fill=\"#444\"/>\n  <circle cx=\"27\" cy=\"26\" r=\"2\" fill=\"#444\"/>\n  <path d=\"M16 33 Q22 37 28 33\" stroke=\"#C8967A\" stroke-width=\"1.5\" fill=\"none\" stroke-linecap=\"round\"/>\n  <path d=\"M13 39 L9 52 L1 86 L43 86 L35 52 L31 39 Z\" fill=\"#D4537E\"/>\n  <line x1=\"9\" y1=\"52\" x2=\"33\" y2=\"52\" stroke=\"#F4C0D1\" stroke-width=\"1.5\"/>\n  <path d=\"M15 39 L22 45 L29 39\" fill=\"none\" stroke=\"#F4C0D1\" stroke-width=\"1.5\"/>\n  <rect x=\"1\" y=\"39\" width=\"8\" height=\"14\" rx=\"4\" fill=\"#F5C4B3\"/>\n  <rect x=\"31\" y=\"41\" width=\"18\" height=\"8\" rx=\"4\" fill=\"#F5C4B3\"/>\n  <ellipse cx=\"52\" cy=\"45\" rx=\"5\" ry=\"4\" fill=\"#F5C4B3\"/>\n  <line x1=\"54\" y1=\"43\" x2=\"60\" y2=\"41\" stroke=\"#F5C4B3\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n  <path d=\"M62 38 L67 42 L62 46 Z\" fill=\"#D4537E\"/>\n  <circle cx=\"82\" cy=\"28\" r=\"11\" fill=\"#F5C4B3\"/>\n  <path d=\"M71 24 C71 16 93 16 93 24 C93 18 71 18 71 24Z\" fill=\"#ED93B1\"/>\n  <circle cx=\"71\" cy=\"31\" r=\"3\" fill=\"#FAC775\" stroke=\"#EF9F27\" stroke-width=\"1\"/>\n  <circle cx=\"93\" cy=\"31\" r=\"3\" fill=\"#FAC775\" stroke=\"#EF9F27\" stroke-width=\"1\"/>\n  <circle cx=\"77\" cy=\"26\" r=\"2\" fill=\"#444\"/>\n  <circle cx=\"87\" cy=\"26\" r=\"2\" fill=\"#444\"/>\n  <path d=\"M76 33 Q82 37 88 33\" stroke=\"#C8967A\" stroke-width=\"1.5\" fill=\"none\" stroke-linecap=\"round\"/>\n  <path d=\"M73 39 L69 52 L61 86 L103 86 L95 52 L91 39 Z\" fill=\"#ED93B1\"/>\n  <line x1=\"69\" y1=\"52\" x2=\"91\" y2=\"52\" stroke=\"#F4C0D1\" stroke-width=\"1.5\"/>\n  <path d=\"M75 39 L82 45 L89 39\" fill=\"none\" stroke=\"#F4C0D1\" stroke-width=\"1.5\"/>\n  <rect x=\"60\" y=\"39\" width=\"8\" height=\"14\" rx=\"4\" fill=\"#F5C4B3\"/>\n  <rect x=\"92\" y=\"39\" width=\"8\" height=\"14\" rx=\"4\" fill=\"#F5C4B3\"/>\n</svg>"
     },
     {
       "id": 4,
@@ -47,7 +47,7 @@
       "soort": "ww",
       "shoresh": "ר-צ-ה",
       "he_v": null,
-      "svg": "<svg viewBox=\"0 0 110 110\" xmlns=\"http://www.w3.org/2000/svg\">\n  <circle cx=\"55\" cy=\"55\" r=\"53\" fill=\"#FCEBEB\"/>\n  <circle cx=\"36\" cy=\"52\" r=\"14\" fill=\"#F5C4B3\"/>\n  <path d=\"M22 48 C22 39 50 39 50 48 C50 41 22 41 22 48Z\" fill=\"#85B7EB\"/>\n  <circle cx=\"30\" cy=\"50\" r=\"2.5\" fill=\"#444\"/>\n  <circle cx=\"42\" cy=\"50\" r=\"2.5\" fill=\"#444\"/>\n  <path d=\"M29 58 Q36 62 43 58\" stroke=\"#C8967A\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\"/>\n  <rect x=\"26\" y=\"66\" width=\"20\" height=\"26\" rx=\"7\" fill=\"#378ADD\"/>\n  <rect x=\"26\" y=\"89\" width=\"9\" height=\"18\" rx=\"4\" fill=\"#185FA5\"/>\n  <rect x=\"37\" y=\"89\" width=\"9\" height=\"18\" rx=\"4\" fill=\"#185FA5\"/>\n  <rect x=\"14\" y=\"66\" width=\"12\" height=\"22\" rx=\"5\" fill=\"#F5C4B3\"/>\n  <rect x=\"46\" y=\"66\" width=\"12\" height=\"22\" rx=\"5\" fill=\"#F5C4B3\"/>\n  <circle cx=\"56\" cy=\"42\" r=\"3.5\" fill=\"white\" stroke=\"#E24B4A\" stroke-width=\"1.5\"/>\n  <circle cx=\"66\" cy=\"34\" r=\"5\" fill=\"white\" stroke=\"#E24B4A\" stroke-width=\"1.5\"/>\n  <ellipse cx=\"82\" cy=\"23\" rx=\"18\" ry=\"12\" fill=\"white\" stroke=\"#E24B4A\" stroke-width=\"2\"/>\n  <path d=\"M76 21 C76 18 80 17 82 20 C84 17 88 18 88 21 C88 24 82 28 82 28 C82 28 76 24 76 21Z\" fill=\"#E24B4A\"/>\n</svg>"
+      "svg": "<svg viewBox=\"0 0 110 110\" xmlns=\"http://www.w3.org/2000/svg\">\n  <circle cx=\"55\" cy=\"55\" r=\"53\" fill=\"#FCEBEB\"/>\n  <circle cx=\"32\" cy=\"58\" r=\"13\" fill=\"#F5C4B3\"/>\n  <path d=\"M19 54 C19 46 45 46 45 54 C45 48 19 48 19 54Z\" fill=\"#85B7EB\"/>\n  <circle cx=\"27\" cy=\"56\" r=\"2\" fill=\"#444\"/>\n  <circle cx=\"37\" cy=\"56\" r=\"2\" fill=\"#444\"/>\n  <path d=\"M26 63 Q32 67 38 63\" stroke=\"#C8967A\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\"/>\n  <rect x=\"22\" y=\"71\" width=\"18\" height=\"22\" rx=\"6\" fill=\"#378ADD\"/>\n  <rect x=\"22\" y=\"90\" width=\"8\" height=\"16\" rx=\"4\" fill=\"#185FA5\"/>\n  <rect x=\"32\" y=\"90\" width=\"8\" height=\"16\" rx=\"4\" fill=\"#185FA5\"/>\n  <rect x=\"10\" y=\"71\" width=\"12\" height=\"18\" rx=\"5\" fill=\"#F5C4B3\"/>\n  <rect x=\"40\" y=\"71\" width=\"12\" height=\"18\" rx=\"5\" fill=\"#F5C4B3\"/>\n  <circle cx=\"50\" cy=\"48\" r=\"3\" fill=\"white\" stroke=\"#5DCAA5\" stroke-width=\"1.5\"/>\n  <circle cx=\"60\" cy=\"38\" r=\"5\" fill=\"white\" stroke=\"#5DCAA5\" stroke-width=\"1.5\"/>\n  <ellipse cx=\"82\" cy=\"23\" rx=\"23\" ry=\"16\" fill=\"white\" stroke=\"#5DCAA5\" stroke-width=\"2\"/>\n  <circle cx=\"82\" cy=\"19\" r=\"6\" fill=\"#F09595\"/>\n  <circle cx=\"79\" cy=\"17\" r=\"2\" fill=\"white\" opacity=\"0.5\"/>\n  <polygon points=\"78,24 82,33 86,24\" fill=\"#FAC775\"/>\n  <line x1=\"79\" y1=\"26\" x2=\"85\" y2=\"26\" stroke=\"#EF9F27\" stroke-width=\"1\"/>\n  <line x1=\"79\" y1=\"29\" x2=\"85\" y2=\"29\" stroke=\"#EF9F27\" stroke-width=\"1\"/>\n  <line x1=\"82\" y1=\"24\" x2=\"82\" y2=\"32\" stroke=\"#EF9F27\" stroke-width=\"1\"/>\n</svg>"
     },
     {
       "id": 1004,
@@ -60,7 +60,7 @@
       "soort": "ww",
       "shoresh": "ר-צ-ה",
       "he_v": null,
-      "svg": "<svg viewBox=\"0 0 110 110\" xmlns=\"http://www.w3.org/2000/svg\">\n  <circle cx=\"55\" cy=\"55\" r=\"53\" fill=\"#FBEAF0\"/>\n  <circle cx=\"34\" cy=\"48\" r=\"12\" fill=\"#F5C4B3\"/>\n  <path d=\"M22 44 C22 36 46 36 46 44 C46 38 22 38 22 44Z\" fill=\"#D4537E\"/>\n  <circle cx=\"22\" cy=\"51\" r=\"3.5\" fill=\"#FAC775\" stroke=\"#EF9F27\" stroke-width=\"1\"/>\n  <circle cx=\"46\" cy=\"51\" r=\"3.5\" fill=\"#FAC775\" stroke=\"#EF9F27\" stroke-width=\"1\"/>\n  <circle cx=\"29\" cy=\"46\" r=\"2\" fill=\"#444\"/>\n  <circle cx=\"39\" cy=\"46\" r=\"2\" fill=\"#444\"/>\n  <path d=\"M28 53 Q34 57 40 53\" stroke=\"#C8967A\" stroke-width=\"1.5\" fill=\"none\" stroke-linecap=\"round\"/>\n  <path d=\"M24 60 L20 72 L12 105 L56 105 L48 72 L44 60 Z\" fill=\"#D4537E\"/>\n  <line x1=\"20\" y1=\"72\" x2=\"44\" y2=\"72\" stroke=\"#F4C0D1\" stroke-width=\"2\"/>\n  <path d=\"M26 60 L34 66 L42 60\" fill=\"none\" stroke=\"#F4C0D1\" stroke-width=\"1.5\"/>\n  <rect x=\"11\" y=\"60\" width=\"9\" height=\"16\" rx=\"4\" fill=\"#F5C4B3\"/>\n  <rect x=\"45\" y=\"60\" width=\"9\" height=\"16\" rx=\"4\" fill=\"#F5C4B3\"/>\n  <circle cx=\"54\" cy=\"38\" r=\"3.5\" fill=\"white\" stroke=\"#E24B4A\" stroke-width=\"1.5\"/>\n  <circle cx=\"64\" cy=\"30\" r=\"5\" fill=\"white\" stroke=\"#E24B4A\" stroke-width=\"1.5\"/>\n  <ellipse cx=\"80\" cy=\"19\" rx=\"18\" ry=\"12\" fill=\"white\" stroke=\"#E24B4A\" stroke-width=\"2\"/>\n  <path d=\"M74 17 C74 14 78 13 80 16 C82 13 86 14 86 17 C86 20 80 24 80 24 C80 24 74 20 74 17Z\" fill=\"#E24B4A\"/>\n</svg>"
+      "svg": "<svg viewBox=\"0 0 110 110\" xmlns=\"http://www.w3.org/2000/svg\">\n  <circle cx=\"55\" cy=\"55\" r=\"53\" fill=\"#FBEAF0\"/>\n  <circle cx=\"32\" cy=\"60\" r=\"11\" fill=\"#F5C4B3\"/>\n  <path d=\"M21 56 C21 49 43 49 43 56 C43 51 21 51 21 56Z\" fill=\"#D4537E\"/>\n  <circle cx=\"21\" cy=\"63\" r=\"3\" fill=\"#FAC775\" stroke=\"#EF9F27\" stroke-width=\"1\"/>\n  <circle cx=\"43\" cy=\"63\" r=\"3\" fill=\"#FAC775\" stroke=\"#EF9F27\" stroke-width=\"1\"/>\n  <circle cx=\"27\" cy=\"58\" r=\"2\" fill=\"#444\"/>\n  <circle cx=\"37\" cy=\"58\" r=\"2\" fill=\"#444\"/>\n  <path d=\"M26 65 Q32 69 38 65\" stroke=\"#C8967A\" stroke-width=\"1.5\" fill=\"none\" stroke-linecap=\"round\"/>\n  <path d=\"M23 71 L19 82 L12 108 L52 108 L45 82 L41 71 Z\" fill=\"#D4537E\"/>\n  <line x1=\"19\" y1=\"82\" x2=\"41\" y2=\"82\" stroke=\"#F4C0D1\" stroke-width=\"1.5\"/>\n  <path d=\"M25 71 L32 77 L39 71\" fill=\"none\" stroke=\"#F4C0D1\" stroke-width=\"1.5\"/>\n  <rect x=\"10\" y=\"71\" width=\"9\" height=\"13\" rx=\"4\" fill=\"#F5C4B3\"/>\n  <rect x=\"43\" y=\"71\" width=\"9\" height=\"13\" rx=\"4\" fill=\"#F5C4B3\"/>\n  <circle cx=\"50\" cy=\"48\" r=\"3\" fill=\"white\" stroke=\"#5DCAA5\" stroke-width=\"1.5\"/>\n  <circle cx=\"60\" cy=\"38\" r=\"5\" fill=\"white\" stroke=\"#5DCAA5\" stroke-width=\"1.5\"/>\n  <ellipse cx=\"82\" cy=\"23\" rx=\"23\" ry=\"16\" fill=\"white\" stroke=\"#5DCAA5\" stroke-width=\"2\"/>\n  <circle cx=\"82\" cy=\"19\" r=\"6\" fill=\"#ED93B1\"/>\n  <circle cx=\"79\" cy=\"17\" r=\"2\" fill=\"white\" opacity=\"0.5\"/>\n  <polygon points=\"78,24 82,33 86,24\" fill=\"#FAC775\"/>\n  <line x1=\"79\" y1=\"26\" x2=\"85\" y2=\"26\" stroke=\"#EF9F27\" stroke-width=\"1\"/>\n  <line x1=\"79\" y1=\"29\" x2=\"85\" y2=\"29\" stroke=\"#EF9F27\" stroke-width=\"1\"/>\n  <line x1=\"82\" y1=\"24\" x2=\"82\" y2=\"32\" stroke=\"#EF9F27\" stroke-width=\"1\"/>\n</svg>"
     },
     {
       "id": 6,
@@ -72,7 +72,7 @@
       "soort": "ww",
       "shoresh": "צ-ר-כ",
       "en": "need (m)",
-      "svg": "<svg viewBox=\"0 0 110 110\" xmlns=\"http://www.w3.org/2000/svg\">\n  <circle cx=\"55\" cy=\"55\" r=\"53\" fill=\"#EAF3DE\"/>\n  <circle cx=\"36\" cy=\"52\" r=\"14\" fill=\"#F5C4B3\"/>\n  <path d=\"M22 48 C22 39 50 39 50 48 C50 41 22 41 22 48Z\" fill=\"#85B7EB\"/>\n  <circle cx=\"30\" cy=\"50\" r=\"2.5\" fill=\"#444\"/>\n  <circle cx=\"42\" cy=\"50\" r=\"2.5\" fill=\"#444\"/>\n  <path d=\"M29 58 Q36 62 43 58\" stroke=\"#C8967A\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\"/>\n  <rect x=\"26\" y=\"66\" width=\"20\" height=\"26\" rx=\"7\" fill=\"#3B6D11\"/>\n  <rect x=\"26\" y=\"89\" width=\"9\" height=\"18\" rx=\"4\" fill=\"#27500A\"/>\n  <rect x=\"37\" y=\"89\" width=\"9\" height=\"18\" rx=\"4\" fill=\"#27500A\"/>\n  <rect x=\"14\" y=\"66\" width=\"12\" height=\"22\" rx=\"5\" fill=\"#F5C4B3\"/>\n  <rect x=\"46\" y=\"66\" width=\"12\" height=\"22\" rx=\"5\" fill=\"#F5C4B3\"/>\n  <circle cx=\"56\" cy=\"42\" r=\"3.5\" fill=\"white\" stroke=\"#639922\" stroke-width=\"1.5\"/>\n  <circle cx=\"66\" cy=\"34\" r=\"5\" fill=\"white\" stroke=\"#639922\" stroke-width=\"1.5\"/>\n  <ellipse cx=\"82\" cy=\"23\" rx=\"18\" ry=\"12\" fill=\"white\" stroke=\"#639922\" stroke-width=\"2\"/>\n  <line x1=\"82\" y1=\"16\" x2=\"82\" y2=\"25\" stroke=\"#3B6D11\" stroke-width=\"4\" stroke-linecap=\"round\"/>\n  <circle cx=\"82\" cy=\"29\" r=\"3\" fill=\"#3B6D11\"/>\n</svg>"
+      "svg": "<svg viewBox=\"0 0 110 110\" xmlns=\"http://www.w3.org/2000/svg\">\n  <circle cx=\"55\" cy=\"55\" r=\"53\" fill=\"#EAF3DE\"/>\n  <circle cx=\"34\" cy=\"52\" r=\"13\" fill=\"#F5C4B3\"/>\n  <path d=\"M21 48 C21 39 47 39 47 48 C47 41 21 41 21 48Z\" fill=\"#85B7EB\"/>\n  <circle cx=\"29\" cy=\"50\" r=\"2\" fill=\"#444\"/>\n  <circle cx=\"39\" cy=\"50\" r=\"2\" fill=\"#444\"/>\n  <path d=\"M28 57 Q34 61 40 57\" stroke=\"#C8967A\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\"/>\n  <rect x=\"24\" y=\"65\" width=\"18\" height=\"24\" rx=\"7\" fill=\"#3B6D11\"/>\n  <rect x=\"24\" y=\"86\" width=\"8\" height=\"18\" rx=\"4\" fill=\"#27500A\"/>\n  <rect x=\"34\" y=\"86\" width=\"8\" height=\"18\" rx=\"4\" fill=\"#27500A\"/>\n  <rect x=\"12\" y=\"65\" width=\"12\" height=\"20\" rx=\"5\" fill=\"#F5C4B3\"/>\n  <rect x=\"42\" y=\"65\" width=\"12\" height=\"20\" rx=\"5\" fill=\"#F5C4B3\"/>\n  <circle cx=\"54\" cy=\"42\" r=\"3.5\" fill=\"white\" stroke=\"#639922\" stroke-width=\"1.5\"/>\n  <circle cx=\"64\" cy=\"33\" r=\"5\" fill=\"white\" stroke=\"#639922\" stroke-width=\"1.5\"/>\n  <ellipse cx=\"82\" cy=\"21\" rx=\"18\" ry=\"12\" fill=\"white\" stroke=\"#639922\" stroke-width=\"2\"/>\n  <line x1=\"82\" y1=\"13\" x2=\"82\" y2=\"20\" stroke=\"#3B6D11\" stroke-width=\"4\" stroke-linecap=\"round\"/>\n  <circle cx=\"82\" cy=\"26\" r=\"3\" fill=\"#3B6D11\"/>\n</svg>"
     },
     {
       "id": 7,
@@ -84,7 +84,7 @@
       "soort": "ww",
       "shoresh": "צ-ר-כ",
       "en": "need (f)",
-      "svg": "<svg viewBox=\"0 0 110 110\" xmlns=\"http://www.w3.org/2000/svg\">\n  <circle cx=\"55\" cy=\"55\" r=\"53\" fill=\"#EAF3DE\"/>\n  <circle cx=\"34\" cy=\"48\" r=\"12\" fill=\"#F5C4B3\"/>\n  <path d=\"M22 44 C22 36 46 36 46 44 C46 38 22 38 22 44Z\" fill=\"#D4537E\"/>\n  <circle cx=\"22\" cy=\"51\" r=\"3.5\" fill=\"#FAC775\" stroke=\"#EF9F27\" stroke-width=\"1\"/>\n  <circle cx=\"46\" cy=\"51\" r=\"3.5\" fill=\"#FAC775\" stroke=\"#EF9F27\" stroke-width=\"1\"/>\n  <circle cx=\"29\" cy=\"46\" r=\"2\" fill=\"#444\"/>\n  <circle cx=\"39\" cy=\"46\" r=\"2\" fill=\"#444\"/>\n  <path d=\"M28 53 Q34 57 40 53\" stroke=\"#C8967A\" stroke-width=\"1.5\" fill=\"none\" stroke-linecap=\"round\"/>\n  <path d=\"M24 60 L20 72 L12 105 L56 105 L48 72 L44 60 Z\" fill=\"#D4537E\"/>\n  <line x1=\"20\" y1=\"72\" x2=\"44\" y2=\"72\" stroke=\"#F4C0D1\" stroke-width=\"2\"/>\n  <path d=\"M26 60 L34 66 L42 60\" fill=\"none\" stroke=\"#F4C0D1\" stroke-width=\"1.5\"/>\n  <rect x=\"11\" y=\"60\" width=\"9\" height=\"16\" rx=\"4\" fill=\"#F5C4B3\"/>\n  <rect x=\"45\" y=\"60\" width=\"9\" height=\"16\" rx=\"4\" fill=\"#F5C4B3\"/>\n  <circle cx=\"54\" cy=\"38\" r=\"3.5\" fill=\"white\" stroke=\"#639922\" stroke-width=\"1.5\"/>\n  <circle cx=\"64\" cy=\"30\" r=\"5\" fill=\"white\" stroke=\"#639922\" stroke-width=\"1.5\"/>\n  <ellipse cx=\"80\" cy=\"19\" rx=\"18\" ry=\"12\" fill=\"white\" stroke=\"#639922\" stroke-width=\"2\"/>\n  <line x1=\"80\" y1=\"12\" x2=\"80\" y2=\"21\" stroke=\"#3B6D11\" stroke-width=\"4\" stroke-linecap=\"round\"/>\n  <circle cx=\"80\" cy=\"25\" r=\"3\" fill=\"#3B6D11\"/>\n</svg>"
+      "svg": "<svg viewBox=\"0 0 110 110\" xmlns=\"http://www.w3.org/2000/svg\">\n  <circle cx=\"55\" cy=\"55\" r=\"53\" fill=\"#EAF3DE\"/>\n  <circle cx=\"32\" cy=\"52\" r=\"11\" fill=\"#F5C4B3\"/>\n  <path d=\"M21 48 C21 40 43 40 43 48 C43 42 21 42 21 48Z\" fill=\"#D4537E\"/>\n  <circle cx=\"21\" cy=\"55\" r=\"3\" fill=\"#FAC775\" stroke=\"#EF9F27\" stroke-width=\"1\"/>\n  <circle cx=\"43\" cy=\"55\" r=\"3\" fill=\"#FAC775\" stroke=\"#EF9F27\" stroke-width=\"1\"/>\n  <circle cx=\"27\" cy=\"50\" r=\"2\" fill=\"#444\"/>\n  <circle cx=\"37\" cy=\"50\" r=\"2\" fill=\"#444\"/>\n  <path d=\"M26 57 Q32 61 38 57\" stroke=\"#C8967A\" stroke-width=\"1.5\" fill=\"none\" stroke-linecap=\"round\"/>\n  <path d=\"M22 63 L18 75 L10 105 L54 105 L46 75 L42 63 Z\" fill=\"#3B6D11\"/>\n  <line x1=\"18\" y1=\"75\" x2=\"42\" y2=\"75\" stroke=\"#5DCAA5\" stroke-width=\"1.5\"/>\n  <path d=\"M24 63 L32 69 L40 63\" fill=\"none\" stroke=\"#5DCAA5\" stroke-width=\"1.5\"/>\n  <rect x=\"9\" y=\"63\" width=\"9\" height=\"13\" rx=\"4\" fill=\"#F5C4B3\"/>\n  <rect x=\"43\" y=\"63\" width=\"9\" height=\"13\" rx=\"4\" fill=\"#F5C4B3\"/>\n  <circle cx=\"54\" cy=\"42\" r=\"3.5\" fill=\"white\" stroke=\"#639922\" stroke-width=\"1.5\"/>\n  <circle cx=\"64\" cy=\"33\" r=\"5\" fill=\"white\" stroke=\"#639922\" stroke-width=\"1.5\"/>\n  <ellipse cx=\"82\" cy=\"21\" rx=\"18\" ry=\"12\" fill=\"white\" stroke=\"#639922\" stroke-width=\"2\"/>\n  <line x1=\"82\" y1=\"13\" x2=\"82\" y2=\"20\" stroke=\"#3B6D11\" stroke-width=\"4\" stroke-linecap=\"round\"/>\n  <circle cx=\"82\" cy=\"26\" r=\"3\" fill=\"#3B6D11\"/>\n</svg>"
     },
     {
       "id": 8,
@@ -96,7 +96,7 @@
       "soort": "ww",
       "shoresh": "ל-מ-ד",
       "en": "to learn",
-      "svg": "<svg viewBox=\"0 0 110 110\" xmlns=\"http://www.w3.org/2000/svg\">\n  <circle cx=\"55\" cy=\"55\" r=\"53\" fill=\"#E6F1FB\"/>\n  <rect x=\"12\" y=\"68\" width=\"86\" height=\"7\" rx=\"3\" fill=\"#85B7EB\"/>\n  <line x1=\"22\" y1=\"75\" x2=\"22\" y2=\"96\" stroke=\"#85B7EB\" stroke-width=\"5\" stroke-linecap=\"round\"/>\n  <line x1=\"88\" y1=\"75\" x2=\"88\" y2=\"96\" stroke=\"#85B7EB\" stroke-width=\"5\" stroke-linecap=\"round\"/>\n  <path d=\"M14 44 L14 68 C14 68 36 62 55 68 L55 44 C36 38 14 44 14 44Z\" fill=\"#E6F1FB\" stroke=\"#378ADD\" stroke-width=\"2\"/>\n  <path d=\"M55 44 L55 68 C55 68 74 62 96 68 L96 44 C74 38 55 44 55 44Z\" fill=\"#B5D4F4\" stroke=\"#378ADD\" stroke-width=\"2\"/>\n  <line x1=\"55\" y1=\"44\" x2=\"55\" y2=\"68\" stroke=\"#378ADD\" stroke-width=\"1.5\"/>\n  <line x1=\"22\" y1=\"52\" x2=\"50\" y2=\"52\" stroke=\"#B5D4F4\" stroke-width=\"1.5\"/>\n  <line x1=\"22\" y1=\"58\" x2=\"50\" y2=\"58\" stroke=\"#B5D4F4\" stroke-width=\"1.5\"/>\n  <line x1=\"22\" y1=\"64\" x2=\"44\" y2=\"64\" stroke=\"#B5D4F4\" stroke-width=\"1.5\"/>\n  <line x1=\"60\" y1=\"52\" x2=\"88\" y2=\"52\" stroke=\"#85B7EB\" stroke-width=\"1.5\"/>\n  <line x1=\"60\" y1=\"58\" x2=\"88\" y2=\"58\" stroke=\"#85B7EB\" stroke-width=\"1.5\"/>\n  <circle cx=\"55\" cy=\"28\" r=\"14\" fill=\"#F5C4B3\"/>\n  <path d=\"M41 24 C41 14 69 14 69 24 C69 17 41 17 41 24Z\" fill=\"#85B7EB\"/>\n  <circle cx=\"48\" cy=\"26\" r=\"2.5\" fill=\"#444\"/>\n  <circle cx=\"62\" cy=\"26\" r=\"2.5\" fill=\"#444\"/>\n  <ellipse cx=\"38\" cy=\"46\" rx=\"8\" ry=\"5\" fill=\"#F5C4B3\"/>\n  <ellipse cx=\"72\" cy=\"46\" rx=\"8\" ry=\"5\" fill=\"#F5C4B3\"/>\n</svg>"
+      "svg": "<svg viewBox=\"0 0 110 110\" xmlns=\"http://www.w3.org/2000/svg\">\n  <circle cx=\"55\" cy=\"55\" r=\"53\" fill=\"#E6F1FB\"/>\n  <rect x=\"12\" y=\"68\" width=\"86\" height=\"7\" rx=\"3\" fill=\"#85B7EB\"/>\n  <line x1=\"22\" y1=\"75\" x2=\"22\" y2=\"96\" stroke=\"#85B7EB\" stroke-width=\"5\" stroke-linecap=\"round\"/>\n  <line x1=\"88\" y1=\"75\" x2=\"88\" y2=\"96\" stroke=\"#85B7EB\" stroke-width=\"5\" stroke-linecap=\"round\"/>\n  <path d=\"M14 44 L14 68 C14 68 36 62 55 68 L55 44 C36 38 14 44 14 44Z\" fill=\"#E6F1FB\" stroke=\"#378ADD\" stroke-width=\"2\"/>\n  <path d=\"M55 44 L55 68 C55 68 74 62 96 68 L96 44 C74 38 55 44 55 44Z\" fill=\"#B5D4F4\" stroke=\"#378ADD\" stroke-width=\"2\"/>\n  <line x1=\"55\" y1=\"44\" x2=\"55\" y2=\"68\" stroke=\"#378ADD\" stroke-width=\"1.5\"/>\n  <line x1=\"22\" y1=\"52\" x2=\"50\" y2=\"52\" stroke=\"#B5D4F4\" stroke-width=\"1.5\"/>\n  <line x1=\"22\" y1=\"58\" x2=\"50\" y2=\"58\" stroke=\"#B5D4F4\" stroke-width=\"1.5\"/>\n  <line x1=\"22\" y1=\"64\" x2=\"44\" y2=\"64\" stroke=\"#B5D4F4\" stroke-width=\"1.5\"/>\n  <line x1=\"60\" y1=\"52\" x2=\"88\" y2=\"52\" stroke=\"#85B7EB\" stroke-width=\"1.5\"/>\n  <line x1=\"60\" y1=\"58\" x2=\"88\" y2=\"58\" stroke=\"#85B7EB\" stroke-width=\"1.5\"/>\n  <circle cx=\"55\" cy=\"28\" r=\"13\" fill=\"#F5C4B3\"/>\n  <path d=\"M42 24 C42 14 68 14 68 24 C68 17 42 17 42 24Z\" fill=\"#85B7EB\"/>\n  <circle cx=\"49\" cy=\"26\" r=\"2\" fill=\"#444\"/>\n  <circle cx=\"61\" cy=\"26\" r=\"2\" fill=\"#444\"/>\n  <ellipse cx=\"38\" cy=\"46\" rx=\"8\" ry=\"5\" fill=\"#F5C4B3\"/>\n  <ellipse cx=\"72\" cy=\"46\" rx=\"8\" ry=\"5\" fill=\"#F5C4B3\"/>\n</svg>"
     },
     {
       "id": 9,
@@ -108,7 +108,7 @@
       "soort": "ww",
       "shoresh": "ש-ל-מ",
       "en": "to pay",
-      "svg": "<svg viewBox=\"0 0 110 110\" xmlns=\"http://www.w3.org/2000/svg\">\n  <circle cx=\"55\" cy=\"55\" r=\"53\" fill=\"#FAEEDA\"/>\n  <circle cx=\"30\" cy=\"26\" r=\"14\" fill=\"#F5C4B3\"/>\n  <path d=\"M16 22 C16 13 44 13 44 22 C44 15 16 15 16 22Z\" fill=\"#EF9F27\"/>\n  <circle cx=\"25\" cy=\"24\" r=\"2.5\" fill=\"#444\"/>\n  <circle cx=\"35\" cy=\"24\" r=\"2.5\" fill=\"#444\"/>\n  <path d=\"M24 32 Q30 36 36 32\" stroke=\"#C8967A\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\"/>\n  <rect x=\"20\" y=\"40\" width=\"20\" height=\"26\" rx=\"7\" fill=\"#BA7517\"/>\n  <rect x=\"20\" y=\"63\" width=\"9\" height=\"22\" rx=\"4\" fill=\"#7A4F10\"/>\n  <rect x=\"31\" y=\"63\" width=\"9\" height=\"22\" rx=\"4\" fill=\"#7A4F10\"/>\n  <rect x=\"8\" y=\"40\" width=\"12\" height=\"22\" rx=\"5\" fill=\"#F5C4B3\"/>\n  <rect x=\"40\" y=\"44\" width=\"20\" height=\"9\" rx=\"4\" fill=\"#F5C4B3\"/>\n  <ellipse cx=\"63\" cy=\"48\" rx=\"6\" ry=\"5\" fill=\"#F5C4B3\"/>\n  <circle cx=\"84\" cy=\"36\" r=\"18\" fill=\"#FAC775\" stroke=\"#EF9F27\" stroke-width=\"2.5\"/>\n  <circle cx=\"84\" cy=\"36\" r=\"12\" fill=\"#FAC775\" stroke=\"#EF9F27\" stroke-width=\"1\" opacity=\"0.4\"/>\n  <text x=\"84\" y=\"43\" text-anchor=\"middle\" font-size=\"18\" fill=\"#BA7517\" font-family=\"Arial\" font-weight=\"bold\">$</text>\n  <line x1=\"94\" y1=\"24\" x2=\"98\" y2=\"20\" stroke=\"white\" stroke-width=\"2\" stroke-linecap=\"round\"/>\n</svg>"
+      "svg": "<svg viewBox=\"0 0 110 110\" xmlns=\"http://www.w3.org/2000/svg\">\n  <circle cx=\"55\" cy=\"55\" r=\"53\" fill=\"#FAEEDA\"/>\n  <circle cx=\"30\" cy=\"26\" r=\"13\" fill=\"#F5C4B3\"/>\n  <path d=\"M17 22 C17 13 43 13 43 22 C43 15 17 15 17 22Z\" fill=\"#EF9F27\"/>\n  <circle cx=\"25\" cy=\"24\" r=\"2\" fill=\"#444\"/>\n  <circle cx=\"35\" cy=\"24\" r=\"2\" fill=\"#444\"/>\n  <path d=\"M24 31 Q30 35 36 31\" stroke=\"#C8967A\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\"/>\n  <rect x=\"20\" y=\"40\" width=\"18\" height=\"24\" rx=\"7\" fill=\"#BA7517\"/>\n  <rect x=\"20\" y=\"61\" width=\"8\" height=\"22\" rx=\"4\" fill=\"#7A4F10\"/>\n  <rect x=\"30\" y=\"61\" width=\"8\" height=\"22\" rx=\"4\" fill=\"#7A4F10\"/>\n  <rect x=\"8\" y=\"40\" width=\"12\" height=\"20\" rx=\"5\" fill=\"#F5C4B3\"/>\n  <rect x=\"38\" y=\"44\" width=\"20\" height=\"9\" rx=\"4\" fill=\"#F5C4B3\"/>\n  <ellipse cx=\"61\" cy=\"48\" rx=\"6\" ry=\"5\" fill=\"#F5C4B3\"/>\n  <circle cx=\"82\" cy=\"34\" r=\"18\" fill=\"#FAC775\" stroke=\"#EF9F27\" stroke-width=\"2.5\"/>\n  <circle cx=\"82\" cy=\"34\" r=\"12\" fill=\"#FAC775\" stroke=\"#EF9F27\" stroke-width=\"1\" opacity=\"0.4\"/>\n  <text x=\"82\" y=\"41\" text-anchor=\"middle\" font-size=\"18\" fill=\"#BA7517\" font-family=\"Arial\" font-weight=\"bold\">$</text>\n  <line x1=\"92\" y1=\"22\" x2=\"96\" y2=\"18\" stroke=\"white\" stroke-width=\"2\" stroke-linecap=\"round\"/>\n</svg>"
     },
     {
       "id": 10,
@@ -120,7 +120,7 @@
       "soort": "ww",
       "shoresh": "ד-ב-ר",
       "en": "to speak",
-      "svg": "<svg viewBox=\"0 0 110 110\" xmlns=\"http://www.w3.org/2000/svg\">\n  <circle cx=\"55\" cy=\"55\" r=\"53\" fill=\"#EAF3DE\"/>\n  <circle cx=\"32\" cy=\"54\" r=\"14\" fill=\"#F5C4B3\"/>\n  <path d=\"M18 50 C18 41 46 41 46 50 C46 43 18 43 18 50Z\" fill=\"#97C459\"/>\n  <circle cx=\"26\" cy=\"52\" r=\"2.5\" fill=\"#444\"/>\n  <circle cx=\"38\" cy=\"52\" r=\"2.5\" fill=\"#444\"/>\n  <path d=\"M25 60 Q32 64 39 60\" stroke=\"#C8967A\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\"/>\n  <rect x=\"22\" y=\"68\" width=\"20\" height=\"26\" rx=\"7\" fill=\"#3B6D11\"/>\n  <rect x=\"22\" y=\"91\" width=\"9\" height=\"16\" rx=\"4\" fill=\"#27500A\"/>\n  <rect x=\"33\" y=\"91\" width=\"9\" height=\"16\" rx=\"4\" fill=\"#27500A\"/>\n  <rect x=\"10\" y=\"68\" width=\"12\" height=\"22\" rx=\"5\" fill=\"#F5C4B3\"/>\n  <rect x=\"42\" y=\"68\" width=\"12\" height=\"22\" rx=\"5\" fill=\"#F5C4B3\"/>\n  <path d=\"M52 22 C52 14 100 14 100 22 L100 54 C100 62 52 62 52 54 L52 62 L42 54 Z\" fill=\"white\" stroke=\"#639922\" stroke-width=\"2.5\"/>\n  <line x1=\"62\" y1=\"30\" x2=\"90\" y2=\"30\" stroke=\"#639922\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n  <line x1=\"62\" y1=\"39\" x2=\"90\" y2=\"39\" stroke=\"#639922\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n  <line x1=\"62\" y1=\"48\" x2=\"78\" y2=\"48\" stroke=\"#9FE1CB\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n</svg>"
+      "svg": "<svg viewBox=\"0 0 110 110\" xmlns=\"http://www.w3.org/2000/svg\">\n  <circle cx=\"55\" cy=\"55\" r=\"53\" fill=\"#EAF3DE\"/>\n  <circle cx=\"30\" cy=\"52\" r=\"13\" fill=\"#F5C4B3\"/>\n  <path d=\"M17 48 C17 39 43 39 43 48 C43 41 17 41 17 48Z\" fill=\"#97C459\"/>\n  <circle cx=\"25\" cy=\"50\" r=\"2\" fill=\"#444\"/>\n  <circle cx=\"35\" cy=\"50\" r=\"2\" fill=\"#444\"/>\n  <path d=\"M24 57 Q30 61 36 57\" stroke=\"#C8967A\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\"/>\n  <rect x=\"20\" y=\"65\" width=\"18\" height=\"24\" rx=\"7\" fill=\"#3B6D11\"/>\n  <rect x=\"20\" y=\"86\" width=\"8\" height=\"18\" rx=\"4\" fill=\"#27500A\"/>\n  <rect x=\"30\" y=\"86\" width=\"8\" height=\"18\" rx=\"4\" fill=\"#27500A\"/>\n  <rect x=\"8\" y=\"65\" width=\"12\" height=\"20\" rx=\"5\" fill=\"#F5C4B3\"/>\n  <rect x=\"38\" y=\"65\" width=\"12\" height=\"20\" rx=\"5\" fill=\"#F5C4B3\"/>\n  <path d=\"M50 20 C50 12 100 12 100 20 L100 52 C100 60 50 60 50 52 L50 60 L40 52 Z\" fill=\"white\" stroke=\"#639922\" stroke-width=\"2.5\"/>\n  <line x1=\"60\" y1=\"28\" x2=\"90\" y2=\"28\" stroke=\"#639922\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n  <line x1=\"60\" y1=\"37\" x2=\"90\" y2=\"37\" stroke=\"#639922\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n  <line x1=\"60\" y1=\"46\" x2=\"76\" y2=\"46\" stroke=\"#9FE1CB\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n</svg>"
     },
     {
       "id": 11,
@@ -132,7 +132,7 @@
       "soort": "vrg",
       "shoresh": null,
       "en": "who",
-      "svg": "<svg viewBox=\"0 0 110 110\" xmlns=\"http://www.w3.org/2000/svg\">\n  <circle cx=\"55\" cy=\"55\" r=\"53\" fill=\"#EEEDFE\"/>\n  <circle cx=\"28\" cy=\"44\" r=\"13\" fill=\"#AFA9EC\"/>\n  <path d=\"M15 40 C15 32 41 32 41 40 C41 34 15 34 15 40Z\" fill=\"#7F77DD\"/>\n  <circle cx=\"23\" cy=\"42\" r=\"2\" fill=\"#444\"/>\n  <circle cx=\"33\" cy=\"42\" r=\"2\" fill=\"#444\"/>\n  <path d=\"M22 49 Q28 53 34 49\" stroke=\"#8878CC\" stroke-width=\"1.5\" fill=\"none\" stroke-linecap=\"round\"/>\n  <rect x=\"18\" y=\"57\" width=\"20\" height=\"22\" rx=\"6\" fill=\"#534AB7\"/>\n  <rect x=\"18\" y=\"76\" width=\"9\" height=\"18\" rx=\"4\" fill=\"#3C3489\"/>\n  <rect x=\"29\" y=\"76\" width=\"9\" height=\"18\" rx=\"4\" fill=\"#3C3489\"/>\n  <rect x=\"7\" y=\"57\" width=\"11\" height=\"20\" rx=\"5\" fill=\"#CECBF6\"/>\n  <rect x=\"38\" y=\"57\" width=\"11\" height=\"20\" rx=\"5\" fill=\"#CECBF6\"/>\n  <circle cx=\"76\" cy=\"44\" r=\"13\" fill=\"#AFA9EC\"/>\n  <path d=\"M63 40 C63 32 89 32 89 40 C89 34 63 34 63 40Z\" fill=\"#7F77DD\"/>\n  <circle cx=\"71\" cy=\"42\" r=\"2\" fill=\"#444\"/>\n  <circle cx=\"81\" cy=\"42\" r=\"2\" fill=\"#444\"/>\n  <path d=\"M70 49 Q76 53 82 49\" stroke=\"#8878CC\" stroke-width=\"1.5\" fill=\"none\" stroke-linecap=\"round\"/>\n  <rect x=\"66\" y=\"57\" width=\"20\" height=\"22\" rx=\"6\" fill=\"#534AB7\"/>\n  <rect x=\"66\" y=\"76\" width=\"9\" height=\"18\" rx=\"4\" fill=\"#3C3489\"/>\n  <rect x=\"77\" y=\"76\" width=\"9\" height=\"18\" rx=\"4\" fill=\"#3C3489\"/>\n  <rect x=\"55\" y=\"57\" width=\"11\" height=\"20\" rx=\"5\" fill=\"#CECBF6\"/>\n  <rect x=\"86\" y=\"57\" width=\"11\" height=\"20\" rx=\"5\" fill=\"#CECBF6\"/>\n  <path d=\"M46 14 C46 7 64 5 64 14 C64 19 55 21 55 26\" stroke=\"#534AB7\" stroke-width=\"4.5\" fill=\"none\" stroke-linecap=\"round\"/>\n  <circle cx=\"55\" cy=\"32\" r=\"3.5\" fill=\"#534AB7\"/>\n</svg>"
+      "svg": "<svg viewBox=\"0 0 110 110\" xmlns=\"http://www.w3.org/2000/svg\">\n  <circle cx=\"55\" cy=\"55\" r=\"53\" fill=\"#EEEDFE\"/>\n  <circle cx=\"26\" cy=\"44\" r=\"13\" fill=\"#AFA9EC\"/>\n  <path d=\"M13 40 C13 31 39 31 39 40 C39 33 13 33 13 40Z\" fill=\"#7F77DD\"/>\n  <circle cx=\"21\" cy=\"42\" r=\"2\" fill=\"#444\"/>\n  <circle cx=\"31\" cy=\"42\" r=\"2\" fill=\"#444\"/>\n  <path d=\"M20 49 Q26 53 32 49\" stroke=\"#8878CC\" stroke-width=\"1.5\" fill=\"none\" stroke-linecap=\"round\"/>\n  <rect x=\"16\" y=\"57\" width=\"20\" height=\"22\" rx=\"6\" fill=\"#534AB7\"/>\n  <rect x=\"16\" y=\"76\" width=\"9\" height=\"18\" rx=\"4\" fill=\"#3C3489\"/>\n  <rect x=\"27\" y=\"76\" width=\"9\" height=\"18\" rx=\"4\" fill=\"#3C3489\"/>\n  <rect x=\"5\" y=\"57\" width=\"11\" height=\"20\" rx=\"5\" fill=\"#CECBF6\"/>\n  <rect x=\"36\" y=\"57\" width=\"11\" height=\"20\" rx=\"5\" fill=\"#CECBF6\"/>\n  <circle cx=\"76\" cy=\"44\" r=\"13\" fill=\"#AFA9EC\"/>\n  <path d=\"M63 40 C63 31 89 31 89 40 C89 33 63 33 63 40Z\" fill=\"#7F77DD\"/>\n  <circle cx=\"71\" cy=\"42\" r=\"2\" fill=\"#444\"/>\n  <circle cx=\"81\" cy=\"42\" r=\"2\" fill=\"#444\"/>\n  <path d=\"M70 49 Q76 53 82 49\" stroke=\"#8878CC\" stroke-width=\"1.5\" fill=\"none\" stroke-linecap=\"round\"/>\n  <rect x=\"66\" y=\"57\" width=\"20\" height=\"22\" rx=\"6\" fill=\"#534AB7\"/>\n  <rect x=\"66\" y=\"76\" width=\"9\" height=\"18\" rx=\"4\" fill=\"#3C3489\"/>\n  <rect x=\"77\" y=\"76\" width=\"9\" height=\"18\" rx=\"4\" fill=\"#3C3489\"/>\n  <rect x=\"55\" y=\"57\" width=\"11\" height=\"20\" rx=\"5\" fill=\"#CECBF6\"/>\n  <rect x=\"86\" y=\"57\" width=\"11\" height=\"20\" rx=\"5\" fill=\"#CECBF6\"/>\n  <path d=\"M44 12 C44 5 66 3 66 12 C66 17 55 19 55 24\" stroke=\"#534AB7\" stroke-width=\"4.5\" fill=\"none\" stroke-linecap=\"round\"/>\n  <circle cx=\"55\" cy=\"30\" r=\"3.5\" fill=\"#534AB7\"/>\n</svg>"
     },
     {
       "id": 12,
@@ -156,7 +156,7 @@
       "soort": "bw",
       "shoresh": null,
       "en": "not / no",
-      "svg": "<svg viewBox=\"0 0 110 110\" xmlns=\"http://www.w3.org/2000/svg\">\n  <circle cx=\"55\" cy=\"55\" r=\"53\" fill=\"#FCEBEB\"/>\n  <circle cx=\"36\" cy=\"28\" r=\"14\" fill=\"#F5C4B3\"/>\n  <path d=\"M22 24 C22 15 50 15 50 24 C50 17 22 17 22 24Z\" fill=\"#F09595\"/>\n  <circle cx=\"30\" cy=\"26\" r=\"2.5\" fill=\"#444\"/>\n  <circle cx=\"42\" cy=\"26\" r=\"2.5\" fill=\"#444\"/>\n  <path d=\"M29 34 Q36 38 43 34\" stroke=\"#C8967A\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\"/>\n  <rect x=\"26\" y=\"42\" width=\"20\" height=\"26\" rx=\"7\" fill=\"#E24B4A\"/>\n  <rect x=\"26\" y=\"65\" width=\"9\" height=\"22\" rx=\"4\" fill=\"#A32D2D\"/>\n  <rect x=\"37\" y=\"65\" width=\"9\" height=\"22\" rx=\"4\" fill=\"#A32D2D\"/>\n  <rect x=\"14\" y=\"42\" width=\"12\" height=\"20\" rx=\"5\" fill=\"#F5C4B3\" transform=\"rotate(22 20 52)\"/>\n  <rect x=\"46\" y=\"42\" width=\"12\" height=\"20\" rx=\"5\" fill=\"#F5C4B3\" transform=\"rotate(-22 52 52)\"/>\n  <circle cx=\"82\" cy=\"42\" r=\"20\" fill=\"white\" stroke=\"#E24B4A\" stroke-width=\"2.5\"/>\n  <line x1=\"70\" y1=\"30\" x2=\"94\" y2=\"54\" stroke=\"#E24B4A\" stroke-width=\"4.5\" stroke-linecap=\"round\"/>\n  <line x1=\"94\" y1=\"30\" x2=\"70\" y2=\"54\" stroke=\"#E24B4A\" stroke-width=\"4.5\" stroke-linecap=\"round\"/>\n</svg>"
+      "svg": "<svg viewBox=\"0 0 110 110\" xmlns=\"http://www.w3.org/2000/svg\">\n  <circle cx=\"55\" cy=\"55\" r=\"53\" fill=\"#FCEBEB\"/>\n  <circle cx=\"34\" cy=\"26\" r=\"13\" fill=\"#F5C4B3\"/>\n  <path d=\"M21 22 C21 13 47 13 47 22 C47 15 21 15 21 22Z\" fill=\"#F09595\"/>\n  <circle cx=\"29\" cy=\"24\" r=\"2\" fill=\"#444\"/>\n  <circle cx=\"39\" cy=\"24\" r=\"2\" fill=\"#444\"/>\n  <path d=\"M28 31 Q34 35 40 31\" stroke=\"#C8967A\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\"/>\n  <rect x=\"24\" y=\"39\" width=\"20\" height=\"26\" rx=\"7\" fill=\"#E24B4A\"/>\n  <rect x=\"24\" y=\"62\" width=\"9\" height=\"20\" rx=\"4\" fill=\"#A32D2D\"/>\n  <rect x=\"35\" y=\"62\" width=\"9\" height=\"20\" rx=\"4\" fill=\"#A32D2D\"/>\n  <rect x=\"12\" y=\"39\" width=\"12\" height=\"20\" rx=\"5\" fill=\"#F5C4B3\" transform=\"rotate(22 18 49)\"/>\n  <rect x=\"44\" y=\"39\" width=\"12\" height=\"20\" rx=\"5\" fill=\"#F5C4B3\" transform=\"rotate(-22 50 49)\"/>\n  <circle cx=\"82\" cy=\"42\" r=\"20\" fill=\"white\" stroke=\"#E24B4A\" stroke-width=\"2.5\"/>\n  <line x1=\"70\" y1=\"30\" x2=\"94\" y2=\"54\" stroke=\"#E24B4A\" stroke-width=\"4.5\" stroke-linecap=\"round\"/>\n  <line x1=\"94\" y1=\"30\" x2=\"70\" y2=\"54\" stroke=\"#E24B4A\" stroke-width=\"4.5\" stroke-linecap=\"round\"/>\n</svg>"
     },
     {
       "id": 14,
@@ -168,7 +168,7 @@
       "soort": "zn",
       "shoresh": null,
       "en": "Hebrew",
-      "svg": "<svg viewBox=\"0 0 110 110\" xmlns=\"http://www.w3.org/2000/svg\">\n  <circle cx=\"55\" cy=\"55\" r=\"53\" fill=\"#E6F1FB\"/>\n  <circle cx=\"28\" cy=\"60\" r=\"13\" fill=\"#F5C4B3\"/>\n  <path d=\"M15 56 C15 48 41 48 41 56 C41 50 15 50 15 56Z\" fill=\"#85B7EB\"/>\n  <circle cx=\"23\" cy=\"58\" r=\"2.5\" fill=\"#444\"/>\n  <circle cx=\"33\" cy=\"58\" r=\"2.5\" fill=\"#444\"/>\n  <path d=\"M22 66 Q28 70 34 66\" stroke=\"#C8967A\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\"/>\n  <rect x=\"18\" y=\"73\" width=\"20\" height=\"26\" rx=\"7\" fill=\"#378ADD\"/>\n  <rect x=\"18\" y=\"96\" width=\"9\" height=\"12\" rx=\"4\" fill=\"#185FA5\"/>\n  <rect x=\"29\" y=\"96\" width=\"9\" height=\"12\" rx=\"4\" fill=\"#185FA5\"/>\n  <rect x=\"6\" y=\"73\" width=\"12\" height=\"22\" rx=\"5\" fill=\"#F5C4B3\"/>\n  <rect x=\"38\" y=\"73\" width=\"12\" height=\"22\" rx=\"5\" fill=\"#F5C4B3\"/>\n  <path d=\"M44 18 C44 10 102 10 102 18 L102 54 C102 62 44 62 44 54 L44 62 L34 54 Z\" fill=\"white\" stroke=\"#378ADD\" stroke-width=\"2\"/>\n  <rect x=\"50\" y=\"16\" width=\"46\" height=\"32\" rx=\"2\" fill=\"white\" stroke=\"#ccc\" stroke-width=\"1\"/>\n  <rect x=\"50\" y=\"18\" width=\"46\" height=\"7\" fill=\"#0038B8\"/>\n  <rect x=\"50\" y=\"35\" width=\"46\" height=\"7\" fill=\"#0038B8\"/>\n  <polygon points=\"73,23 77,30 69,30\" fill=\"#0038B8\"/>\n  <polygon points=\"73,37 77,30 69,30\" fill=\"#0038B8\"/>\n  <circle cx=\"73\" cy=\"30\" r=\"5\" fill=\"none\" stroke=\"#0038B8\" stroke-width=\"1.5\"/>\n</svg>"
+      "svg": "<svg viewBox=\"0 0 110 110\" xmlns=\"http://www.w3.org/2000/svg\">\n  <circle cx=\"55\" cy=\"55\" r=\"53\" fill=\"#E6F1FB\"/>\n  <circle cx=\"26\" cy=\"60\" r=\"13\" fill=\"#F5C4B3\"/>\n  <path d=\"M13 56 C13 48 39 48 39 56 C39 50 13 50 13 56Z\" fill=\"#85B7EB\"/>\n  <circle cx=\"21\" cy=\"58\" r=\"2.5\" fill=\"#444\"/>\n  <circle cx=\"31\" cy=\"58\" r=\"2.5\" fill=\"#444\"/>\n  <path d=\"M20 65 Q26 69 32 65\" stroke=\"#C8967A\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\"/>\n  <rect x=\"16\" y=\"73\" width=\"18\" height=\"22\" rx=\"6\" fill=\"#378ADD\"/>\n  <rect x=\"16\" y=\"92\" width=\"8\" height=\"14\" rx=\"4\" fill=\"#185FA5\"/>\n  <rect x=\"26\" y=\"92\" width=\"8\" height=\"14\" rx=\"4\" fill=\"#185FA5\"/>\n  <rect x=\"4\" y=\"73\" width=\"12\" height=\"18\" rx=\"5\" fill=\"#F5C4B3\"/>\n  <rect x=\"34\" y=\"73\" width=\"12\" height=\"18\" rx=\"5\" fill=\"#F5C4B3\"/>\n  <path d=\"M40 14 C40 6 106 6 106 14 L106 60 C106 68 40 68 40 60 L40 68 L30 60 Z\" fill=\"white\" stroke=\"#378ADD\" stroke-width=\"2\"/>\n  <rect x=\"46\" y=\"11\" width=\"54\" height=\"40\" rx=\"2\" fill=\"white\" stroke=\"#ddd\" stroke-width=\"0.5\"/>\n  <rect x=\"46\" y=\"13\" width=\"54\" height=\"8\" fill=\"#0038B8\"/>\n  <rect x=\"46\" y=\"39\" width=\"54\" height=\"8\" fill=\"#0038B8\"/>\n  <polygon points=\"73,21 80,33 66,33\" fill=\"none\" stroke=\"#0038B8\" stroke-width=\"2.5\"/>\n  <polygon points=\"73,37 80,25 66,25\" fill=\"none\" stroke=\"#0038B8\" stroke-width=\"2.5\"/>\n</svg>"
     },
     {
       "id": 15,
@@ -178,8 +178,7 @@
       "uitspraak": "hu",
       "nl": "hij",
       "soort": "vw",
-      "shoresh": null,
-      "en": "he"
+      "shoresh": null
     },
     {
       "id": 16,
@@ -189,8 +188,7 @@
       "uitspraak": "hi",
       "nl": "zij",
       "soort": "vw",
-      "shoresh": null,
-      "en": "she"
+      "shoresh": null
     },
     {
       "id": 17,
@@ -200,8 +198,7 @@
       "uitspraak": "yachol",
       "nl": "kunnen (mannelijk)",
       "soort": "ww",
-      "shoresh": "י-כ-ל",
-      "en": "can (m)"
+      "shoresh": "י-כ-ל"
     },
     {
       "id": 18,
@@ -211,8 +208,7 @@
       "uitspraak": "yechola",
       "nl": "kunnen (vrouwelijk)",
       "soort": "ww",
-      "shoresh": "י-כ-ל",
-      "en": "can (f)"
+      "shoresh": "י-כ-ל"
     },
     {
       "id": 19,
@@ -222,8 +218,7 @@
       "uitspraak": "lekabel",
       "nl": "ontvangen/krijgen (infinitief)",
       "soort": "ww",
-      "shoresh": "ק-ב-ל",
-      "en": "to receive"
+      "shoresh": "ק-ב-ל"
     },
     {
       "id": 20,
@@ -233,8 +228,7 @@
       "uitspraak": "lavo",
       "nl": "komen (infinitief)",
       "soort": "ww",
-      "shoresh": "ב-ו-א",
-      "en": "to come"
+      "shoresh": "ב-ו-א"
     },
     {
       "id": 21,
@@ -244,8 +238,7 @@
       "uitspraak": "eifo",
       "nl": "waar",
       "soort": "vrg",
-      "shoresh": null,
-      "en": "where"
+      "shoresh": null
     },
     {
       "id": 22,
@@ -255,8 +248,7 @@
       "uitspraak": "matai",
       "nl": "wanneer",
       "soort": "vrg",
-      "shoresh": null,
-      "en": "when"
+      "shoresh": null
     },
     {
       "id": 23,
@@ -266,8 +258,7 @@
       "uitspraak": "kama",
       "nl": "hoeveel",
       "soort": "vrg",
-      "shoresh": null,
-      "en": "how much / how many"
+      "shoresh": null
     },
     {
       "id": 24,
@@ -277,8 +268,7 @@
       "uitspraak": "po",
       "nl": "hier",
       "soort": "bw",
-      "shoresh": null,
-      "en": "here"
+      "shoresh": null
     },
     {
       "id": 25,
@@ -288,8 +278,7 @@
       "uitspraak": "sham",
       "nl": "daar",
       "soort": "bw",
-      "shoresh": null,
-      "en": "there"
+      "shoresh": null
     },
     {
       "id": 26,
@@ -299,8 +288,7 @@
       "uitspraak": "babayit",
       "nl": "thuis",
       "soort": "bw",
-      "shoresh": null,
-      "en": "at home"
+      "shoresh": null
     },
     {
       "id": 27,
@@ -310,8 +298,7 @@
       "uitspraak": "be'ulpan",
       "nl": "in het ulpan",
       "soort": "bw",
-      "shoresh": null,
-      "en": "in the ulpan"
+      "shoresh": null
     },
     {
       "id": 28,
@@ -321,8 +308,7 @@
       "uitspraak": "hayom",
       "nl": "vandaag",
       "soort": "bw",
-      "shoresh": null,
-      "en": "today"
+      "shoresh": null
     },
     {
       "id": 29,
@@ -332,8 +318,7 @@
       "uitspraak": "machar",
       "nl": "morgen",
       "soort": "bw",
-      "shoresh": null,
-      "en": "tomorrow"
+      "shoresh": null
     },
     {
       "id": 30,
@@ -343,8 +328,7 @@
       "uitspraak": "im",
       "nl": "als/indien",
       "soort": "vgw",
-      "shoresh": null,
-      "en": "if"
+      "shoresh": null
     },
     {
       "id": 31,
@@ -354,8 +338,7 @@
       "uitspraak": "shekel",
       "nl": "sjekel",
       "soort": "zn",
-      "shoresh": null,
-      "en": "shekel"
+      "shoresh": null
     },
     {
       "id": 32,
@@ -365,8 +348,7 @@
       "uitspraak": "ze",
       "nl": "dit/dat/het",
       "soort": "vw",
-      "shoresh": null,
-      "en": "this / that"
+      "shoresh": null
     },
     {
       "id": 33,
@@ -376,8 +358,7 @@
       "uitspraak": "tov",
       "nl": "goed",
       "soort": "bn",
-      "shoresh": null,
-      "en": "good"
+      "shoresh": null
     },
     {
       "id": 34,
@@ -387,8 +368,7 @@
       "uitspraak": "kashe",
       "nl": "moeilijk/zwaar",
       "soort": "bn",
-      "shoresh": null,
-      "en": "difficult / heavy"
+      "shoresh": null
     },
     {
       "id": 35,
@@ -398,8 +378,7 @@
       "uitspraak": "yoter",
       "nl": "meer/-er",
       "soort": "bw",
-      "shoresh": null,
-      "en": "more"
+      "shoresh": null
     },
     {
       "id": 36,
@@ -409,8 +388,7 @@
       "uitspraak": "ohev",
       "nl": "houden van (mannelijk)",
       "soort": "ww",
-      "shoresh": "א-ה-ב",
-      "en": "love (m)"
+      "shoresh": "א-ה-ב"
     },
     {
       "id": 37,
@@ -420,8 +398,7 @@
       "uitspraak": "ohevet",
       "nl": "houden van (vrouwelijk)",
       "soort": "ww",
-      "shoresh": "א-ה-ב",
-      "en": "love (f)"
+      "shoresh": "א-ה-ב"
     },
     {
       "id": 38,
@@ -431,8 +408,7 @@
       "uitspraak": "kesef",
       "nl": "geld",
       "soort": "zn",
-      "shoresh": null,
-      "en": "money"
+      "shoresh": null
     },
     {
       "id": 39,
@@ -442,8 +418,7 @@
       "uitspraak": "yode'a",
       "nl": "weten/kennen (mannelijk)",
       "soort": "ww",
-      "shoresh": "י-ד-ע",
-      "en": "know (m)"
+      "shoresh": "י-ד-ע"
     },
     {
       "id": 40,
@@ -453,8 +428,7 @@
       "uitspraak": "yoda'at",
       "nl": "weten/kennen (vrouwelijk)",
       "soort": "ww",
-      "shoresh": "י-ד-ע",
-      "en": "know (f)"
+      "shoresh": "י-ד-ע"
     },
     {
       "id": 41,
@@ -464,8 +438,7 @@
       "uitspraak": "shome'a",
       "nl": "horen (mannelijk)",
       "soort": "ww",
-      "shoresh": "ש-מ-ע",
-      "en": "hear (m)"
+      "shoresh": "ש-מ-ע"
     },
     {
       "id": 42,
@@ -475,8 +448,7 @@
       "uitspraak": "shoma'at",
       "nl": "horen (vrouwelijk)",
       "soort": "ww",
-      "shoresh": "ש-מ-ע",
-      "en": "hear (f)"
+      "shoresh": "ש-מ-ע"
     },
     {
       "id": 43,
@@ -486,8 +458,7 @@
       "uitspraak": "lesader",
       "nl": "ordenen/regelen (infinitief)",
       "soort": "ww",
-      "shoresh": "ס-ד-ר",
-      "en": "to arrange"
+      "shoresh": "ס-ד-ר"
     },
     {
       "id": 44,
@@ -497,8 +468,7 @@
       "uitspraak": "aval",
       "nl": "maar",
       "soort": "vgw",
-      "shoresh": null,
-      "en": "but"
+      "shoresh": null
     },
     {
       "id": 45,
@@ -508,8 +478,7 @@
       "uitspraak": "rak",
       "nl": "alleen/slechts",
       "soort": "bw",
-      "shoresh": null,
-      "en": "only / just"
+      "shoresh": null
     },
     {
       "id": 46,
@@ -519,8 +488,7 @@
       "uitspraak": "shum davar",
       "nl": "niets",
       "soort": "uitdr",
-      "shoresh": null,
-      "en": "nothing"
+      "shoresh": null
     },
     {
       "id": 47,
@@ -530,8 +498,7 @@
       "uitspraak": "mashehu",
       "nl": "iets",
       "soort": "vw",
-      "shoresh": null,
-      "en": "something"
+      "shoresh": null
     },
     {
       "id": 48,
@@ -541,8 +508,7 @@
       "uitspraak": "lama",
       "nl": "waarom",
       "soort": "vrg",
-      "shoresh": null,
-      "en": "why"
+      "shoresh": null
     },
     {
       "id": 49,
@@ -552,8 +518,7 @@
       "uitspraak": "ki",
       "nl": "omdat/want",
       "soort": "vgw",
-      "shoresh": null,
-      "en": "because"
+      "shoresh": null
     },
     {
       "id": 50,
@@ -563,8 +528,7 @@
       "uitspraak": "me'eifo",
       "nl": "vanwaar",
       "soort": "vrg",
-      "shoresh": null,
-      "en": "from where"
+      "shoresh": null
     },
     {
       "id": 51,
@@ -574,8 +538,7 @@
       "uitspraak": "le'an",
       "nl": "waarheen",
       "soort": "vrg",
-      "shoresh": null,
-      "en": "where to"
+      "shoresh": null
     },
     {
       "id": 52,
@@ -585,8 +548,7 @@
       "uitspraak": "im",
       "nl": "met",
       "soort": "vz",
-      "shoresh": null,
-      "en": "with"
+      "shoresh": null
     },
     {
       "id": 53,
@@ -596,8 +558,7 @@
       "uitspraak": "efshar",
       "nl": "het is mogelijk/men kan",
       "soort": "uitdr",
-      "shoresh": null,
-      "en": "it is possible / one can"
+      "shoresh": null
     },
     {
       "id": 54,
@@ -607,8 +568,7 @@
       "uitspraak": "lish'ol",
       "nl": "vragen (infinitief)",
       "soort": "ww",
-      "shoresh": "ש-א-ל",
-      "en": "to ask"
+      "shoresh": "ש-א-ל"
     },
     {
       "id": 55,
@@ -618,8 +578,7 @@
       "uitspraak": "lachshov",
       "nl": "denken (infinitief)",
       "soort": "ww",
-      "shoresh": "ח-ש-ב",
-      "en": "to think"
+      "shoresh": "ח-ש-ב"
     },
     {
       "id": 56,
@@ -629,8 +588,7 @@
       "uitspraak": "le'echol",
       "nl": "eten (infinitief)",
       "soort": "ww",
-      "shoresh": "א-כ-ל",
-      "en": "to eat"
+      "shoresh": "א-כ-ל"
     },
     {
       "id": 57,
@@ -640,8 +598,7 @@
       "uitspraak": "la'avod",
       "nl": "werken (infinitief)",
       "soort": "ww",
-      "shoresh": "ע-ב-ד",
-      "en": "to work"
+      "shoresh": "ע-ב-ד"
     },
     {
       "id": 58,
@@ -651,8 +608,7 @@
       "uitspraak": "lechapes",
       "nl": "zoeken (infinitief)",
       "soort": "ww",
-      "shoresh": "ח-פ-ש",
-      "en": "to search"
+      "shoresh": "ח-פ-ש"
     },
     {
       "id": 59,
@@ -662,8 +618,7 @@
       "uitspraak": "lisgoor",
       "nl": "sluiten (infinitief)",
       "soort": "ww",
-      "shoresh": "ס-ג-ר",
-      "en": "to close"
+      "shoresh": "ס-ג-ר"
     },
     {
       "id": 60,
@@ -673,8 +628,7 @@
       "uitspraak": "mishehu",
       "nl": "iemand",
       "soort": "vw",
-      "shoresh": null,
-      "en": "someone"
+      "shoresh": null
     },
     {
       "id": 61,
@@ -684,8 +638,7 @@
       "uitspraak": "al",
       "nl": "over/op",
       "soort": "vz",
-      "shoresh": null,
-      "en": "on / about"
+      "shoresh": null
     },
     {
       "id": 62,
@@ -695,8 +648,7 @@
       "uitspraak": "ad",
       "nl": "tot/totdat",
       "soort": "vz",
-      "shoresh": null,
-      "en": "until"
+      "shoresh": null
     },
     {
       "id": 63,
