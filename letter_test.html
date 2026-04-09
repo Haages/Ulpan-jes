@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Letter TTS Test</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: sans-serif; }
+    .he { direction: rtl; font-family: Arial, sans-serif; }
+  </style>
+</head>
+<body class="bg-gray-50 p-6">
+  <div class="max-w-md mx-auto">
+    <h1 class="text-2xl font-bold mb-2">Letter TTS test</h1>
+    <p class="text-sm text-gray-600 mb-4">
+      Test welke Hebreeuwse tekst Azure TTS (Hila stem) correct uitspreekt per letter.
+    </p>
+
+    <!-- Azure key -->
+    <div class="bg-white rounded-xl p-4 mb-4 shadow-sm">
+      <label class="block text-sm font-semibold mb-1">Azure API sleutel</label>
+      <input id="azure-key" type="password" placeholder="Plak je sleutel hier"
+             class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm">
+      <p id="key-status" class="text-xs text-gray-500 mt-1"></p>
+    </div>
+
+    <!-- Test rijen -->
+    <div id="rijen" class="space-y-2"></div>
+
+    <div id="log" class="mt-4 text-xs text-gray-500"></div>
+  </div>
+
+  <script>
+    const AZURE_REGIO    = 'eastus';
+    const AZURE_ENDPOINT = `https://${AZURE_REGIO}.tts.speech.microsoft.com/cognitiveservices/v1`;
+    const HILA           = 'he-IL-HilaNeural';
+
+    const LETTERS = [
+      { blok: 'א',  beschrijving: 'Alef',           tts: 'אָלֶף' },
+      { blok: 'בּ', beschrijving: 'Bet (met dagesh)',   tts: 'בֵּית' },
+      { blok: 'ב',  beschrijving: 'Vet (zonder dagesh)', tts: 'וֵית' },
+      { blok: 'ג',  beschrijving: 'Gimel',          tts: 'גִּימֶל' },
+      { blok: 'ד',  beschrijving: 'Dalet',          tts: 'דָּלֶת' },
+      { blok: 'ה',  beschrijving: 'He',             tts: 'הֵא' },
+      { blok: 'ו',  beschrijving: 'Vav',            tts: 'וָו' },
+    ];
+
+    // Laad opgeslagen sleutel (gebruikt dezelfde key als de hoofd-app)
+    const keyInput  = document.getElementById('azure-key');
+    const keyStatus = document.getElementById('key-status');
+    const opgeslagen = localStorage.getItem('ujes_azure_key') || '';
+    if (opgeslagen) {
+      keyInput.value = opgeslagen;
+      keyStatus.textContent = 'Sleutel geladen uit localStorage (ujes_azure_key)';
+    } else {
+      keyStatus.textContent = 'Geen sleutel gevonden — vul er een in';
+    }
+    keyInput.addEventListener('change', () => {
+      localStorage.setItem('ujes_azure_key', keyInput.value.trim());
+      keyStatus.textContent = 'Sleutel opgeslagen';
+    });
+
+    function log(msg) {
+      const el = document.getElementById('log');
+      el.textContent = msg;
+    }
+
+    async function speel(tekst, btn) {
+      const sleutel = keyInput.value.trim();
+      if (!sleutel) { log('Geen Azure sleutel ingevuld'); return; }
+
+      btn.disabled = true;
+      btn.textContent = '⏳';
+      log(`Sturen naar Azure: "${tekst}"`);
+
+      const ssml = `<speak version='1.0' xml:lang='he-IL'>
+        <voice name='${HILA}'>${tekst}</voice>
+      </speak>`;
+
+      try {
+        const resp = await fetch(AZURE_ENDPOINT, {
+          method: 'POST',
+          headers: {
+            'Ocp-Apim-Subscription-Key': sleutel,
+            'Content-Type': 'application/ssml+xml',
+            'X-Microsoft-OutputFormat': 'audio-16khz-128kbitrate-mono-mp3',
+          },
+          body: ssml,
+        });
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        const blob = await resp.blob();
+        const url  = URL.createObjectURL(blob);
+        const audio = new Audio(url);
+        await new Promise(res => { audio.onended = res; audio.onerror = res; audio.play().catch(res); });
+        URL.revokeObjectURL(url);
+        log(`OK: "${tekst}"`);
+      } catch (e) {
+        log(`Fout: ${e.message}`);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = '🔊';
+      }
+    }
+
+    // Render rijen
+    const container = document.getElementById('rijen');
+    LETTERS.forEach((l, i) => {
+      const rij = document.createElement('div');
+      rij.className = 'bg-white rounded-xl p-3 shadow-sm flex items-center gap-3';
+      rij.innerHTML = `
+        <div class="he text-4xl font-bold w-12 text-center">${l.blok}</div>
+        <div class="flex-1">
+          <div class="text-sm font-semibold">${l.beschrijving}</div>
+          <div class="he text-lg text-gray-600">${l.tts}</div>
+        </div>
+        <button data-i="${i}" class="text-3xl px-3 py-2">🔊</button>
+      `;
+      container.appendChild(rij);
+    });
+    container.addEventListener('click', (e) => {
+      const btn = e.target.closest('button[data-i]');
+      if (!btn) return;
+      const l = LETTERS[+btn.dataset.i];
+      speel(l.tts, btn);
+    });
+  </script>
+</body>
+</html>
