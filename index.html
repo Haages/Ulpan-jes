@@ -198,11 +198,10 @@ let _afwisselTeller = 0;
  */
 function bepaalStem(woord) {
   const he = stripNikud(woord.he_clean || '');
-  const nl = woord.nl || '';
   const en = woord.en || '';
 
-  if (nl.includes('(m)') || en.includes('(m)')) return 'man';
-  if (nl.includes('(f)') || en.includes('(f)')) return 'vrouw';
+  if (en.includes('(m)')) return 'man';
+  if (en.includes('(f)')) return 'vrouw';
   if (he.startsWith('ל') && woord.soort === 'ww') return (_afwisselTeller++ % 2 === 0) ? 'man' : 'vrouw';
   if (woord.soort === 'vw') {
     if (he === 'אתה' || he === 'הוא') return 'man';
@@ -890,7 +889,7 @@ async function faseListening() {
       <p class="text-gray-600 mb-6 text-center">Listen and understand. You don't need to do anything yet.</p>
       ${toonAfbeelding(w, 110)}
       <div class="text-3xl mb-3">🔊</div>
-      <div class="text-2xl font-semibold mb-2">${w.en || w.nl}</div>
+      <div class="text-2xl font-semibold mb-2">${w.en || ''}</div>
       ${drieKnoppen('window._f1Back()', 'window._f1Repeat()', 'window._f1Next()', idx===0)}
     </div>`;
     window._f1Next = () => { versie++; AudioManager.stop(); idx++; show(); };
@@ -931,7 +930,7 @@ async function faseLookRepeat() {
       ${toonAfbeelding(w, 90)}
       ${renderHebreeuwsWoord(w)}
       <div class="text-2xl text-blue-600 mb-1">${w.uitspraak}</div>
-      <div class="text-xl text-gray-700 mb-2">${w.en || w.nl}</div>
+      <div class="text-xl text-gray-700 mb-2">${w.en || ''}</div>
       ${w.soort === 'ww' && w.shoresh ? '<div class="text-sm text-gray-400 mb-4"><span dir="rtl" lang="he">\u05E9\u05D5\u05E8\u05E9: ' + w.shoresh + '</span></div>' : ''}
       <p class="text-gray-500 text-sm mb-4">Repeat after you hear it</p>
       ${drieKnoppen('window._f2Back()', 'AudioManager.stop(); spreekWoordUit(window.huidigeLesData.nieuweWoorden[' + idx + '])', 'window._f2Next()', idx===0)}
@@ -960,7 +959,7 @@ async function faseUnderstanding() {
       <div class="text-2xl text-blue-600 mb-6">${w.uitspraak}</div>
       <button onclick="document.getElementById('f3m').classList.remove('hidden');this.classList.add('hidden')"
               class="px-6 py-2 border border-gray-300 text-gray-500 rounded-lg mb-4 hover:bg-gray-50 text-sm">Show meaning</button>
-      <div id="f3m" class="hidden text-xl text-gray-700 mb-6">${w.en || w.nl}</div>
+      <div id="f3m" class="hidden text-xl text-gray-700 mb-6">${w.en || ''}</div>
       ${drieKnoppen('window._f3Back()', 'AudioManager.stop(); spreekWoordUit(window.huidigeLesData.nieuweWoorden[' + idx + '])', 'window._f3Next()', idx===0)}
     </div>`;
     window._f3Next = () => { versie++; AudioManager.stop(); idx++; show(); };
@@ -986,7 +985,7 @@ function faseWordImage() {
       <div class="text-blue-600 text-lg mb-1">${w.uitspraak}</div>
       <button onclick="document.getElementById('f4m').classList.remove('hidden');this.classList.add('hidden')"
               class="px-6 py-2 border border-gray-300 text-gray-500 rounded-lg mb-4 hover:bg-gray-50 text-sm">Show meaning</button>
-      <div id="f4m" class="hidden text-gray-700 mb-4">${w.en || w.nl}</div>
+      <div id="f4m" class="hidden text-gray-700 mb-4">${w.en || ''}</div>
       ${w.shoresh ? '<div class="bg-orange-50 border border-orange-200 rounded-lg p-3 mb-6 text-center"><p class="text-xs text-orange-600 mb-1" dir="rtl" lang="he">\u05E9\u05D5\u05E8\u05E9 / word root</p><p class="font-hebrew text-2xl text-orange-700" dir="rtl" lang="he">' + w.shoresh + '</p></div>' : ''}
       ${drieKnoppen('window._f4Back()', 'AudioManager.stop(); spreekWoordUit(window.huidigeLesData.nieuweWoorden.filter(x=>x.shoresh)[' + idx + '])', 'window._f4Next()', idx===0)}
     </div>`;
@@ -1123,7 +1122,7 @@ function faseWordList() {
          onclick="AudioManager.stop(); spreekWoordUit(window.huidigeLesData.nieuweWoorden[${i}])">
       <span class="text-xl font-bold" dir="rtl" lang="he" style="font-family:Arial,sans-serif;">${w.he_clean}</span>
       <span class="text-gray-500 text-sm">${w.uitspraak}</span>
-      <span class="text-gray-700 text-sm">${w.en || w.nl}</span>
+      <span class="text-gray-700 text-sm">${w.en || ''}</span>
     </div>`).join('');
 }
 
@@ -1296,7 +1295,7 @@ function startMemory(lesNummer) {
       uitspraak: paar.uitspraak, woordId: paar.id, omgedraaid: false, gevonden: false
     });
     kaartjes.push({
-      id: `nl_${i}`, paarId: i, inhoud: paar.nl, type: 'nl',
+      id: `nl_${i}`, paarId: i, inhoud: paar.en, type: 'nl',
       uitspraak: paar.uitspraak, woordId: paar.id, omgedraaid: false, gevonden: false
     });
   });
@@ -1479,7 +1478,7 @@ function renderVertaalkeuze() {
                   class="vertaal-btn w-full p-4 border-2 border-gray-200 rounded-xl text-left
                          hover:border-blue-400 transition-colors bg-white"
                   data-id="${k.id}">
-            ${k.nl}
+            ${k.en}
           </button>
         `).join('')}
       </div>
@@ -1668,7 +1667,7 @@ function renderWoordzoeker() {
     const found = gevonden.has(key);
     return `<div class="flex justify-between p-2 rounded ${found ? 'bg-green-50 line-through' : 'bg-white'}">
       <span class="font-hebrew" dir="rtl" lang="he">${w.he_clean}</span>
-      <span class="text-sm text-gray-500">${w.nl}</span>
+      <span class="text-sm text-gray-500">${w.en}</span>
     </div>`;
   }).join('');
 
@@ -1801,7 +1800,7 @@ function renderWordle() {
 
   // Hint
   const hintHTML = klaar ? '' : `<p class="text-sm text-gray-500 mb-2 text-center">
-    ${doelwoord.nl} — ${woordLengte} letters</p>`;
+    ${doelwoord.en} — ${woordLengte} letters</p>`;
 
   // Keyboard
   let keyboardHTML = HE_KEYBOARD.map(rij =>
@@ -1832,7 +1831,7 @@ function renderWordle() {
         ${gewonnen ? '🎉 Correct!' : '💪 Better luck next time!'}
       </p>
       <p class="font-hebrew text-2xl mb-1" dir="rtl" lang="he">${doelwoord.he_clean}</p>
-      <p class="text-gray-600 text-sm mb-3">${doelwoord.uitspraak} — ${doelwoord.nl}</p>
+      <p class="text-gray-600 text-sm mb-3">${doelwoord.uitspraak} — ${doelwoord.en}</p>
       <div class="flex gap-2 justify-center">
         <button onclick="startWordle(huidigeLes())" class="px-4 py-2 bg-blue-600 text-white rounded-xl text-sm">Again</button>
         <button onclick="terugNaarSpelMenu()" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-xl text-sm">← Back</button>
