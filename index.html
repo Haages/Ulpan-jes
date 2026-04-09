@@ -6,11 +6,20 @@
   <meta name="theme-color" content="#1d4ed8">
   <title>Ulpan Jes</title>
   <link rel="manifest" href="manifest.json">
-  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="preload" href="GveretLevinAlefAlefAlef-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
+    /* ── Hebreeuws lettertype — self-hosted, werkt ook offline ── */
+    @font-face {
+      font-family: 'GveretLevin';
+      src: url('GveretLevinAlefAlefAlef-Regular.woff2') format('woff2'),
+           url('GveretLevinAlefAlefAlef-Regular.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
     .font-hebrew {
-      font-family: 'Frank Ruhl Libre', serif;
+      font-family: 'GveretLevin', 'Times New Roman', serif;
       direction: rtl;
     }
     [dir="rtl"] { direction: rtl; }
@@ -2801,6 +2810,18 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Laad opgeslagen Azure API key
   window.AZURE_API_SLEUTEL = localStorage.getItem('ujes_azure_key') || null;
+
+  // Forceer font laden vóór UI rendering
+  try {
+    const font = new FontFace('GveretLevin',
+      "url('GveretLevinAlefAlefAlef-Regular.woff2') format('woff2'), " +
+      "url('GveretLevinAlefAlefAlef-Regular.woff') format('woff')");
+    const loaded = await font.load();
+    document.fonts.add(loaded);
+    AppLogger.info('Font', 'GveretLevin geladen');
+  } catch(e) {
+    AppLogger.warn('Font', 'GveretLevin laden mislukt', e.message);
+  }
 
   await laadAlleDatabases();
 
