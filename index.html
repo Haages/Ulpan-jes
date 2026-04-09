@@ -29,6 +29,8 @@
   <div id="app" class="max-w-md mx-auto min-h-screen">
 
     <div id="screen-start"></div>
+    <div id="screen-letters" class="hidden"></div>
+    <div id="screen-numbers" class="hidden"></div>
     <div id="screen-onboarding" class="hidden"></div>
 
     <div id="screen-lesson" class="hidden">
@@ -2458,7 +2460,8 @@ function toonScherm(schermId) {
   const SCHERMEN = [
     'screen-start', 'screen-onboarding', 'screen-lesson',
     'screen-review', 'screen-games', 'screen-music',
-    'screen-progress', 'screen-settings'
+    'screen-progress', 'screen-settings',
+    'screen-letters', 'screen-numbers'
   ];
   SCHERMEN.forEach(id => {
     const el = document.getElementById(id);
@@ -2518,12 +2521,14 @@ function renderStartScherm() {
       </div>` : ''}
 
       <!-- Navigation -->
-      <div class="grid grid-cols-4 gap-2 mt-6">
+      <div class="grid grid-cols-3 gap-2 mt-6">
         ${[
-          { icon: '🎮', label: 'Games', actie: "renderGamesMenu(huidigeLes()); toonScherm('screen-games')" },
+          { icon: '🔤', label: 'Letters',   actie: "renderLettersScherm(); toonScherm('screen-letters')" },
+          { icon: '🔢', label: 'Numbers',   actie: "renderNumbersScherm(); toonScherm('screen-numbers')" },
+          { icon: '🎮', label: 'Games',     actie: "renderGamesMenu(huidigeLes()); toonScherm('screen-games')" },
           { icon: '🎵', label: 'Music',     actie: "renderMusicLijst()" },
           { icon: '📊', label: 'Progress',  actie: "toonScherm('screen-progress')" },
-          { icon: '⚙️', label: 'Settings', actie: "renderSettingsScherm(); toonScherm('screen-settings')" },
+          { icon: '⚙️', label: 'Settings',  actie: "renderSettingsScherm(); toonScherm('screen-settings')" },
         ].map(nav => `
           <button onclick="${nav.actie}"
                   class="flex flex-col items-center p-3 bg-white rounded-xl shadow-sm
@@ -2533,6 +2538,146 @@ function renderStartScherm() {
           </button>
         `).join('')}
       </div>
+    </div>
+  `;
+}
+
+// ══════════════════════════════════════════════════════════════
+// MODULE L: Letters (Alef-Bet)
+// ══════════════════════════════════════════════════════════════
+const ALEFBET = [
+  { blok:'א', nikud:'אָ', naam:'Alef', klank:'a' },
+  { blok:'בּ', nikud:'בָּ', naam:'Bet', klank:'b' },
+  { blok:'ב', nikud:'בָ', naam:'Vet', klank:'v' },
+  { blok:'גּ', nikud:'גָּ', naam:'Gimel', klank:'g' },
+  { blok:'דּ', nikud:'דָּ', naam:'Dalet', klank:'d' },
+  { blok:'ה', nikud:'הָ', naam:'He', klank:'h' },
+  { blok:'ו', nikud:'וֹ', naam:'Vav', klank:'v/o/u' },
+  { blok:'ז', nikud:'זָ', naam:'Zayin', klank:'z' },
+  { blok:'ח', nikud:'חָ', naam:'Chet', klank:'ch' },
+  { blok:'ט', nikud:'טָ', naam:'Tet', klank:'t' },
+  { blok:'י', nikud:'יִ', naam:'Yod', klank:'y' },
+  { blok:'כּ', nikud:'כָּ', naam:'Kaf', klank:'k' },
+  { blok:'כ', nikud:'כָ', naam:'Chaf', klank:'ch' },
+  { blok:'ך', nikud:'ךְ', naam:'Chaf sofit', klank:'ch' },
+  { blok:'ל', nikud:'לָ', naam:'Lamed', klank:'l' },
+  { blok:'מ', nikud:'מָ', naam:'Mem', klank:'m' },
+  { blok:'ם', nikud:'מָ', naam:'Mem sofit', klank:'m' },
+  { blok:'נ', nikud:'נָ', naam:'Nun', klank:'n' },
+  { blok:'ן', nikud:'נָ', naam:'Nun sofit', klank:'n' },
+  { blok:'ס', nikud:'סָ', naam:'Samech', klank:'s' },
+  { blok:'ע', nikud:'עָ', naam:'Ayin', klank:'a/e' },
+  { blok:'פּ', nikud:'פָּ', naam:'Pe', klank:'p' },
+  { blok:'פ', nikud:'פָ', naam:'Fe', klank:'f' },
+  { blok:'ף', nikud:'פָ', naam:'Fe sofit', klank:'f' },
+  { blok:'צ', nikud:'צָ', naam:'Tsadi', klank:'ts' },
+  { blok:'ץ', nikud:'צָ', naam:'Tsadi sofit', klank:'ts' },
+  { blok:'ק', nikud:'קָ', naam:'Kof', klank:'k' },
+  { blok:'ר', nikud:'רָ', naam:'Resh', klank:'r' },
+  { blok:'שׁ', nikud:'שָׁ', naam:'Shin', klank:'sh' },
+  { blok:'שׂ', nikud:'שָׂ', naam:'Sin', klank:'s' },
+  { blok:'תּ', nikud:'תָּ', naam:'Tav', klank:'t' },
+];
+
+function renderLettersScherm() {
+  const container = document.getElementById('screen-letters');
+  if (!container) return;
+
+  const kaarten = ALEFBET.map((l, i) => `
+    <div class="bg-white rounded-2xl shadow-sm p-4 flex flex-col items-center">
+      <div dir="rtl" lang="he" style="font-family: Arial, sans-serif; font-size: 48px; line-height: 1;">${l.blok}</div>
+      <div class="font-hebrew text-gray-500 mt-1" dir="rtl" lang="he" style="font-size: 32px; line-height: 1.2;">${l.nikud}</div>
+      <div class="text-sm font-semibold text-gray-800 mt-2">${l.naam}</div>
+      <div class="text-xs text-gray-500">${l.klank}</div>
+      <button onclick="AudioManager.stop(); AudioManager.spreekUit(ALEFBET[${i}].nikud, 'vrouw')"
+              class="mt-2 text-2xl">🔊</button>
+    </div>
+  `).join('');
+
+  container.innerHTML = `
+    <div class="min-h-screen bg-gradient-to-b from-blue-50 to-white p-4 max-w-md mx-auto">
+      <div class="flex items-center gap-4 mb-4">
+        <button onclick="toonScherm('screen-start')" class="text-2xl text-gray-400">←</button>
+        <h2 class="text-xl font-bold">Letters</h2>
+      </div>
+      <p class="text-sm text-gray-500 mb-4">Alef-Bet — block and cursive (GveretLevin), with dagesh variants</p>
+      <div class="grid grid-cols-2 gap-3">
+        ${kaarten}
+      </div>
+    </div>
+  `;
+}
+
+// ══════════════════════════════════════════════════════════════
+// MODULE M: Numbers
+// ══════════════════════════════════════════════════════════════
+const GETALLEN = [
+  { n:0, he:'אֶפֶס', uitspraak:'efes' },
+  { n:1, he:'אֶחָד', uitspraak:'echad' },
+  { n:2, he:'שְׁנַיִם', uitspraak:'shnayim' },
+  { n:3, he:'שְׁלוֹשָׁה', uitspraak:'shlosha' },
+  { n:4, he:'אַרְבָּעָה', uitspraak:'arba' },
+  { n:5, he:'חֲמִישָׁה', uitspraak:'chamisha' },
+  { n:6, he:'שִׁשָּׁה', uitspraak:'shisha' },
+  { n:7, he:'שִׁבְעָה', uitspraak:'shiva' },
+  { n:8, he:'שְׁמוֹנָה', uitspraak:'shmona' },
+  { n:9, he:'תִּשְׁעָה', uitspraak:'tisha' },
+  { n:10, he:'עֲשָׂרָה', uitspraak:'asara' },
+  { n:20, he:'עֶשְׂרִים', uitspraak:'esrim' },
+  { n:30, he:'שְׁלוֹשִׁים', uitspraak:'shloshim' },
+  { n:40, he:'אַרְבָּעִים', uitspraak:"arba'im" },
+  { n:50, he:'חֲמִישִׁים', uitspraak:'chamishim' },
+  { n:60, he:'שִׁשִּׁים', uitspraak:'shishim' },
+  { n:70, he:'שִׁבְעִים', uitspraak:"shiv'im" },
+  { n:80, he:'שְׁמוֹנִים', uitspraak:'shmonim' },
+  { n:90, he:'תִּשְׁעִים', uitspraak:"tish'im" },
+  { n:100, he:'מֵאָה', uitspraak:'mea' },
+  { n:200, he:'מָאתַיִם', uitspraak:'matayim' },
+  { n:300, he:'שְׁלוֹשׁ מֵאוֹת', uitspraak:'shlosh meot' },
+  { n:1000, he:'אֶלֶף', uitspraak:'elef' },
+  { n:2000, he:'אַלְפַּיִם', uitspraak:'alpayim' },
+];
+
+function renderNumbersScherm() {
+  const container = document.getElementById('screen-numbers');
+  if (!container) return;
+
+  const groepen = [
+    { titel: '0 – 10', items: GETALLEN.filter(g => g.n <= 10) },
+    { titel: 'Tens',   items: GETALLEN.filter(g => g.n >= 20 && g.n < 100) },
+    { titel: 'Hundreds', items: GETALLEN.filter(g => g.n >= 100 && g.n < 1000) },
+    { titel: 'Thousands', items: GETALLEN.filter(g => g.n >= 1000) },
+  ];
+
+  const kaart = (g) => {
+    const idx = GETALLEN.indexOf(g);
+    return `
+      <div class="bg-white rounded-2xl shadow-sm p-4 flex flex-col items-center">
+        <div class="text-3xl font-bold text-blue-800">${g.n}</div>
+        <div class="font-hebrew text-2xl mt-1" dir="rtl" lang="he">${g.he}</div>
+        <div class="text-xs text-gray-500 mt-1">${g.uitspraak}</div>
+        <button onclick="AudioManager.stop(); AudioManager.spreekUit(GETALLEN[${idx}].he, 'vrouw')"
+                class="mt-2 text-2xl">🔊</button>
+      </div>
+    `;
+  };
+
+  const groepenHtml = groepen.map(gr => `
+    <div class="mb-6">
+      <h3 class="text-sm font-semibold text-gray-600 mb-2">${gr.titel}</h3>
+      <div class="grid grid-cols-2 gap-3">
+        ${gr.items.map(kaart).join('')}
+      </div>
+    </div>
+  `).join('');
+
+  container.innerHTML = `
+    <div class="min-h-screen bg-gradient-to-b from-blue-50 to-white p-4 max-w-md mx-auto">
+      <div class="flex items-center gap-4 mb-4">
+        <button onclick="toonScherm('screen-start')" class="text-2xl text-gray-400">←</button>
+        <h2 class="text-xl font-bold">Numbers</h2>
+      </div>
+      ${groepenHtml}
     </div>
   `;
 }
@@ -2863,6 +3008,15 @@ document.addEventListener('DOMContentLoaded', async () => {
   renderStartScherm();
   toonScherm('screen-start');
   renderGamesMenu(huidigeLes());
+
+  // Blokkeer hardware/browser terugknop zodat die de app niet afsluit.
+  // Afsluiten kan alleen via het kruisje (systeemknop) van het toestel.
+  // De "← Back" knoppen binnen de app blijven gewoon werken.
+  history.pushState({ ujes: true }, '');
+  window.addEventListener('popstate', () => {
+    history.pushState({ ujes: true }, '');
+    AppLogger.info('App', 'Terugknop genegeerd — gebruik het kruisje om af te sluiten');
+  });
 
   AppLogger.info('App', 'Klaar');
 });
