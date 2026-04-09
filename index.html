@@ -2622,30 +2622,29 @@ function renderLettersScherm() {
 // MODULE M: Numbers
 // ══════════════════════════════════════════════════════════════
 const GETALLEN = [
-  { n:0, he:'אֶפֶס', uitspraak:'efes' },
-  { n:1, he:'אֶחָד', uitspraak:'echad' },
-  { n:2, he:'שְׁנַיִם', uitspraak:'shnayim' },
-  { n:3, he:'שְׁלוֹשָׁה', uitspraak:'shlosha' },
-  { n:4, he:'אַרְבָּעָה', uitspraak:'arba' },
-  { n:5, he:'חֲמִישָׁה', uitspraak:'chamisha' },
-  { n:6, he:'שִׁשָּׁה', uitspraak:'shisha' },
-  { n:7, he:'שִׁבְעָה', uitspraak:'shiva' },
-  { n:8, he:'שְׁמוֹנָה', uitspraak:'shmona' },
-  { n:9, he:'תִּשְׁעָה', uitspraak:'tisha' },
-  { n:10, he:'עֲשָׂרָה', uitspraak:'asara' },
-  { n:20, he:'עֶשְׂרִים', uitspraak:'esrim' },
-  { n:30, he:'שְׁלוֹשִׁים', uitspraak:'shloshim' },
-  { n:40, he:'אַרְבָּעִים', uitspraak:"arba'im" },
-  { n:50, he:'חֲמִישִׁים', uitspraak:'chamishim' },
-  { n:60, he:'שִׁשִּׁים', uitspraak:'shishim' },
-  { n:70, he:'שִׁבְעִים', uitspraak:"shiv'im" },
-  { n:80, he:'שְׁמוֹנִים', uitspraak:'shmonim' },
-  { n:90, he:'תִּשְׁעִים', uitspraak:"tish'im" },
-  { n:100, he:'מֵאָה', uitspraak:'mea' },
-  { n:200, he:'מָאתַיִם', uitspraak:'matayim' },
-  { n:300, he:'שְׁלוֹשׁ מֵאוֹת', uitspraak:'shlosh meot' },
-  { n:1000, he:'אֶלֶף', uitspraak:'elef' },
-  { n:2000, he:'אַלְפַּיִם', uitspraak:'alpayim' },
+  { n:0,    en:'zero',    m:{ he:'אֶפֶס',         uitspraak:'efes' },       v:null },
+  { n:1,    en:'one',     m:{ he:'אֶחָד',         uitspraak:'echad' },      v:{ he:'אַחַת',        uitspraak:'achat' } },
+  { n:2,    en:'two',     m:{ he:'שְׁנַיִם',      uitspraak:'shnayim' },    v:{ he:'שְׁתַּיִם',   uitspraak:'shtayim' } },
+  { n:3,    en:'three',   m:{ he:'שְׁלוֹשָׁה',    uitspraak:'shlosha' },    v:{ he:'שָׁלוֹשׁ',    uitspraak:'shalosh' } },
+  { n:4,    en:'four',    m:{ he:'אַרְבָּעָה',    uitspraak:"arba'a" },     v:{ he:'אַרְבַּע',    uitspraak:'arba' } },
+  { n:5,    en:'five',    m:{ he:'חֲמִישָׁה',     uitspraak:'chamisha' },   v:{ he:'חָמֵשׁ',      uitspraak:'chamesh' } },
+  { n:6,    en:'six',     m:{ he:'שִׁשָּׁה',      uitspraak:'shisha' },     v:{ he:'שֵׁשׁ',       uitspraak:'shesh' } },
+  { n:7,    en:'seven',   m:{ he:'שִׁבְעָה',      uitspraak:"shiv'a" },     v:{ he:'שֶׁבַע',      uitspraak:'sheva' } },
+  { n:8,    en:'eight',   m:{ he:'שְׁמוֹנָה',     uitspraak:'shmona' },     v:{ he:'שְׁמוֹנֶה',   uitspraak:'shmone' } },
+  { n:9,    en:'nine',    m:{ he:'תִּשְׁעָה',     uitspraak:"tish'a" },     v:{ he:'תֵּשַׁע',     uitspraak:'tesha' } },
+  { n:10,   en:'ten',     m:{ he:'עֲשָׂרָה',      uitspraak:'asara' },      v:{ he:'עֶשֶׂר',      uitspraak:'eser' } },
+  { n:20,   en:'twenty',  m:{ he:'עֶשְׂרִים',     uitspraak:'esrim' },      v:null },
+  { n:30,   en:'thirty',  m:{ he:'שְׁלוֹשִׁים',   uitspraak:'shloshim' },   v:null },
+  { n:40,   en:'forty',   m:{ he:'אַרְבָּעִים',   uitspraak:"arba'im" },    v:null },
+  { n:50,   en:'fifty',   m:{ he:'חֲמִישִׁים',    uitspraak:'chamishim' },  v:null },
+  { n:60,   en:'sixty',   m:{ he:'שִׁשִּׁים',     uitspraak:'shishim' },    v:null },
+  { n:70,   en:'seventy', m:{ he:'שִׁבְעִים',     uitspraak:"shiv'im" },    v:null },
+  { n:80,   en:'eighty',  m:{ he:'שְׁמוֹנִים',    uitspraak:'shmonim' },    v:null },
+  { n:90,   en:'ninety',  m:{ he:'תִּשְׁעִים',    uitspraak:"tish'im" },    v:null },
+  { n:100,  en:'hundred', m:{ he:'מֵאָה',         uitspraak:'mea' },        v:null },
+  { n:200,  en:'two hundred',   m:{ he:'מָאתַיִם',    uitspraak:'matayim' },    v:null },
+  { n:1000, en:'thousand',      m:{ he:'אֶלֶף',       uitspraak:'elef' },       v:null },
+  { n:2000, en:'two thousand',  m:{ he:'אַלְפַּיִם', uitspraak:'alpayim' },    v:null },
 ];
 
 function renderNumbersScherm() {
@@ -2653,33 +2652,66 @@ function renderNumbersScherm() {
   if (!container) return;
 
   const groepen = [
-    { titel: '0 – 10', items: GETALLEN.filter(g => g.n <= 10) },
-    { titel: 'Tens',   items: GETALLEN.filter(g => g.n >= 20 && g.n < 100) },
-    { titel: 'Hundreds', items: GETALLEN.filter(g => g.n >= 100 && g.n < 1000) },
-    { titel: 'Thousands', items: GETALLEN.filter(g => g.n >= 1000) },
+    { titel: '0 – 10',        filter: g => g.n <= 10 },
+    { titel: 'Tens',          filter: g => g.n >= 20 && g.n < 100 },
+    { titel: 'Hundreds',      filter: g => g.n >= 100 && g.n < 1000 },
+    { titel: 'Thousands',     filter: g => g.n >= 1000 },
   ];
 
-  const kaart = (g) => {
+  // Een mini-kaart voor m of v
+  const geslachtKaart = (vorm, kleur, stem, idx, veld) => `
+    <div class="flex-1 rounded-2xl p-3 flex flex-col items-center" style="background:${kleur.bg};">
+      <div class="text-xs font-bold" style="color:${kleur.tekst};">${kleur.label}</div>
+      <div dir="rtl" lang="he" style="font-family: Arial, sans-serif; font-weight: bold; font-size: 34px; line-height: 1.1;">${vorm.he}</div>
+      <div class="font-hebrew text-gray-500" dir="rtl" lang="he" style="font-size: 26px; line-height: 1.1;">${vorm.he}</div>
+      <div class="mt-1" style="font-size:12px; color:${kleur.tekst};">${vorm.uitspraak}</div>
+      <button onclick="AudioManager.stop(); AudioManager.spreekUit(GETALLEN[${idx}].${veld}.he, '${stem}')"
+              class="mt-2 text-2xl">🔊</button>
+    </div>
+  `;
+
+  // Brede kaart voor neutrale getallen (tientallen, etc.)
+  const breedKaart = (g, idx) => `
+    <div class="bg-white rounded-2xl shadow-sm p-4 flex flex-col items-center">
+      <div dir="rtl" lang="he" style="font-family: Arial, sans-serif; font-weight: bold; font-size: 34px; line-height: 1.1;">${g.m.he}</div>
+      <div class="font-hebrew text-gray-500" dir="rtl" lang="he" style="font-size: 26px; line-height: 1.1;">${g.m.he}</div>
+      <div class="text-gray-500 mt-1" style="font-size:12px;">${g.m.uitspraak}</div>
+      <button onclick="AudioManager.stop(); AudioManager.spreekUit(GETALLEN[${idx}].m.he, 'vrouw')"
+              class="mt-2 text-2xl">🔊</button>
+    </div>
+  `;
+
+  // Volledig blok per getal: cijfer + engels + 1 of 2 kaarten
+  const getalBlok = (g) => {
     const idx = GETALLEN.indexOf(g);
+    const kaarten = g.v
+      ? `
+        <div class="flex gap-3">
+          ${geslachtKaart(g.m, { bg:'#DBEAFE', tekst:'#1E40AF', label:'♂ male' }, 'man', idx, 'm')}
+          ${geslachtKaart(g.v, { bg:'#FCE7F3', tekst:'#9D174D', label:'♀ female' }, 'vrouw', idx, 'v')}
+        </div>
+      `
+      : breedKaart(g, idx);
+
     return `
-      <div class="bg-white rounded-2xl shadow-sm p-4 flex flex-col items-center">
-        <div class="text-3xl font-bold text-blue-800">${g.n}</div>
-        <div class="font-hebrew text-2xl mt-1" dir="rtl" lang="he">${g.he}</div>
-        <div class="text-xs text-gray-500 mt-1">${g.uitspraak}</div>
-        <button onclick="AudioManager.stop(); AudioManager.spreekUit(GETALLEN[${idx}].he, 'vrouw')"
-                class="mt-2 text-2xl">🔊</button>
+      <div class="mb-5">
+        <div class="text-center" style="font-size:72px; font-weight:bold; line-height:1; color:#1E3A8A;">${g.n}</div>
+        <div class="text-center text-gray-500 mb-2" style="font-size:13px;">${g.en}</div>
+        ${kaarten}
       </div>
     `;
   };
 
-  const groepenHtml = groepen.map(gr => `
-    <div class="mb-6">
-      <h3 class="text-sm font-semibold text-gray-600 mb-2">${gr.titel}</h3>
-      <div class="grid grid-cols-2 gap-3">
-        ${gr.items.map(kaart).join('')}
+  const groepenHtml = groepen.map(gr => {
+    const items = GETALLEN.filter(gr.filter);
+    if (!items.length) return '';
+    return `
+      <div class="mb-6">
+        <h3 class="text-sm font-bold text-gray-600 uppercase tracking-wide mb-3">${gr.titel}</h3>
+        ${items.map(getalBlok).join('')}
       </div>
-    </div>
-  `).join('');
+    `;
+  }).join('');
 
   container.innerHTML = `
     <div class="min-h-screen bg-gradient-to-b from-blue-50 to-white p-4 max-w-md mx-auto">
