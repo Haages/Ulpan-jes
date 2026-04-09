@@ -550,8 +550,9 @@ const AudioManager = {
       }
     }
 
-    // Fallback: Web Speech API (gratis, geen sleutel nodig)
-    return this._webSpeechFallback(schoneTekst, stem);
+    // Geen fallback — Web Speech API ondersteunt geen m/v keuze voor Hebreeuws
+    AppLogger.debug('TTS', 'No Azure key configured');
+    return false;
   },
 
   /**
@@ -796,6 +797,30 @@ function toonFase(faseNummer) {
 async function faseListening() {
   const W = window.huidigeLesData.nieuweWoorden;
   const C = document.getElementById('les-fase-container');
+
+  // Azure sleutel verplicht — de app heeft m/v stemmen nodig die Web Speech niet biedt
+  if (!window.AZURE_API_SLEUTEL) {
+    C.innerHTML = `
+      <div class="min-h-screen flex flex-col items-center justify-center p-6">
+        <div class="text-5xl mb-6">🔇</div>
+        <h2 class="text-xl font-bold text-gray-800 mb-4 text-center">Azure API key required</h2>
+        <p class="text-gray-600 text-center mb-2">
+          This app needs Avri (male) and Hila (female) voices for correct pronunciation.
+        </p>
+        <p class="text-gray-600 text-center mb-6">
+          The browser's built-in speech only has one voice — not enough for gender-specific Hebrew.
+        </p>
+        <p class="text-sm text-gray-400 text-center mb-6">
+          Get your key: portal.azure.com → ivriet-speech → Keys and Endpoint
+        </p>
+        <button onclick="renderSettingsScherm(); toonScherm('screen-settings')"
+                class="px-8 py-3 bg-blue-600 text-white rounded-xl text-lg hover:bg-blue-700">
+          ⚙️ Go to Settings
+        </button>
+      </div>`;
+    return;
+  }
+
   let idx = 0;
   const show = async () => {
     if (idx >= W.length) { toonFase(2); return; }
