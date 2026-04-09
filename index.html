@@ -2633,6 +2633,15 @@ const GETALLEN = [
   { n:8,    en:'eight',   m:{ he:'שְׁמוֹנָה',     uitspraak:'shmona' },     v:{ he:'שְׁמוֹנֶה',   uitspraak:'shmone' } },
   { n:9,    en:'nine',    m:{ he:'תִּשְׁעָה',     uitspraak:"tish'a" },     v:{ he:'תֵּשַׁע',     uitspraak:'tesha' } },
   { n:10,   en:'ten',     m:{ he:'עֲשָׂרָה',      uitspraak:'asara' },      v:{ he:'עֶשֶׂר',      uitspraak:'eser' } },
+  { n:11,   en:'eleven',    m:{ he:'אַחַד עָשָׂר',      uitspraak:'achad asar' },    v:{ he:'אַחַת עֶשְׂרֵה',      uitspraak:'achat esre' } },
+  { n:12,   en:'twelve',    m:{ he:'שְׁנֵים עָשָׂר',    uitspraak:'shneim asar' },   v:{ he:'שְׁתֵּים עֶשְׂרֵה',   uitspraak:'shteim esre' } },
+  { n:13,   en:'thirteen',  m:{ he:'שְׁלוֹשָׁה עָשָׂר', uitspraak:'shlosha asar' },  v:{ he:'שְׁלוֹשׁ עֶשְׂרֵה',   uitspraak:'shlosh esre' } },
+  { n:14,   en:'fourteen',  m:{ he:'אַרְבָּעָה עָשָׂר', uitspraak:'arba asar' },     v:{ he:'אַרְבַּע עֶשְׂרֵה',   uitspraak:'arba esre' } },
+  { n:15,   en:'fifteen',   m:{ he:'חֲמִישָׁה עָשָׂר', uitspraak:'chamisha asar' },  v:{ he:'חָמֵשׁ עֶשְׂרֵה',      uitspraak:'chamesh esre' } },
+  { n:16,   en:'sixteen',   m:{ he:'שִׁשָּׁה עָשָׂר',   uitspraak:'shisha asar' },   v:{ he:'שֵׁשׁ עֶשְׂרֵה',       uitspraak:'shesh esre' } },
+  { n:17,   en:'seventeen', m:{ he:'שִׁבְעָה עָשָׂר',   uitspraak:'shiva asar' },    v:{ he:'שְׁבַע עֶשְׂרֵה',      uitspraak:'shva esre' } },
+  { n:18,   en:'eighteen',  m:{ he:'שְׁמוֹנָה עָשָׂר',  uitspraak:'shmona asar' },   v:{ he:'שְׁמוֹנֶה עֶשְׂרֵה',  uitspraak:'shmone esre' } },
+  { n:19,   en:'nineteen',  m:{ he:'תִּשְׁעָה עָשָׂר',  uitspraak:'tisha asar' },    v:{ he:'תֵּשַׁע עֶשְׂרֵה',    uitspraak:'tesha esre' } },
   { n:20,   en:'twenty',  m:{ he:'עֶשְׂרִים',     uitspraak:'esrim' },      v:null },
   { n:30,   en:'thirty',  m:{ he:'שְׁלוֹשִׁים',   uitspraak:'shloshim' },   v:null },
   { n:40,   en:'forty',   m:{ he:'אַרְבָּעִים',   uitspraak:"arba'im" },    v:null },
@@ -2653,6 +2662,7 @@ function renderNumbersScherm() {
 
   const groepen = [
     { titel: '0 – 10',        filter: g => g.n <= 10 },
+    { titel: '11 – 19',       filter: g => g.n >= 11 && g.n <= 19 },
     { titel: 'Tens',          filter: g => g.n >= 20 && g.n < 100 },
     { titel: 'Hundreds',      filter: g => g.n >= 100 && g.n < 1000 },
     { titel: 'Thousands',     filter: g => g.n >= 1000 },
