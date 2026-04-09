@@ -270,9 +270,20 @@ async function spreekWoordUit(woord) {
  * @returns {string} HTML of lege string
  */
 function toonAfbeelding(woord, breedte = 110) {
-  if (!woord.svg) return '';
-  const svg = woord.svg.replace('<svg ', `<svg width="${breedte}" height="${breedte}" `);
-  return `<div style="display:flex; justify-content:center; margin-bottom:12px;">${svg}</div>`;
+  // Altijd dezelfde hoogte — placeholder als geen SVG/afbeelding
+  const hoogte = breedte + 12; // breedte + margin
+  const wrapper = (inhoud) =>
+    `<div style="height:${hoogte}px; display:flex; align-items:center; justify-content:center;">${inhoud}</div>`;
+
+  if (!woord.svg && !woord.afbeelding) {
+    return wrapper('<!-- geen illustratie -->');
+  }
+  if (woord.svg) {
+    const svg = woord.svg.replace('<svg ', `<svg width="${breedte}" height="${breedte}" `);
+    return wrapper(svg);
+  }
+  const url = `https://cdn.jsdelivr.net/gh/hfg-gmuend/openmoji/color/svg/${woord.afbeelding}.svg`;
+  return wrapper(`<img src="${url}" width="${breedte}" height="${breedte}" onerror="this.style.display='none'">`);
 }
 
 function renderHebreeuwsWoord(woord) {
