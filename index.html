@@ -189,12 +189,13 @@ function bepaalStem(woord) {
 function bepaalZinStem(zin) {
   const type = zin.type || '';
   const en = zin.cues?.en || '';
-  if (type.endsWith('_v') || type.includes('vrouw') || en.includes('(f)')) return 'vrouw';
-  if (type.endsWith('_m') || en.includes('(m)')) return 'man';
-  const he = zin.he || zin.zin || '';
-  const eersteWoord = stripNikud(he.trim().split(/\s+/)[0] || '');
-  const vrouwIndic = ['את', 'היא', 'צריכה', 'יכולה', 'רוצה'];
-  if (vrouwIndic.some(v => eersteWoord === v)) return 'vrouw';
+  const he = stripNikud(zin.he || zin.zin || '');
+  // Vrouwelijk: expliciet type/cue, of vrouwelijke werkwoordsvormen, of את/היא als eerste woord
+  if (type.endsWith('_v') || en.includes('(f)') || he.includes('צריכה') || he.includes('יכולה')) return 'vrouw';
+  const eerste = he.trim().split(/\s+/)[0] || '';
+  if (eerste === 'את' || eerste === 'היא') return 'vrouw';
+  // Mannelijk
+  if (type.endsWith('_m') || en.includes('(m)') || he.includes('צריך') || he.includes('אתה') || he.includes('הוא')) return 'man';
   return 'man';
 }
 
@@ -887,8 +888,14 @@ async function fasePractice() {
     if (idx >= zinnen.length) { toonFase(6); return; }
     const z = zinnen[idx];
     const heOrig = z.he || z.zin || '';
-    const tr = z.cues?.en || z.cues?.nl || '';
+    let tr = z.cues?.en || z.cues?.nl || '';
     const zinStem = bepaalZinStem(z);
+    // Voeg (m) of (f) toe aan cue als die ontbreekt
+    if (tr && !tr.includes('(m)') && !tr.includes('(f)')) {
+      const heNoNikud = stripNikud(heOrig);
+      if (heNoNikud.includes('צריכה') || heNoNikud.includes('יכולה')) tr += ' (f)';
+      else if (heNoNikud.includes('צריך') || heNoNikud.includes('רוצה')) tr += ' (m)';
+    }
     // Als stem vrouwelijk en zin bevat רוצה, vervang door vrouwelijke vorm
     let he = heOrig;
     if (zinStem === 'vrouw' && he.includes('רוצה')) {
