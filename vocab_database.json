@@ -178,7 +178,8 @@
       "uitspraak": "hu",
       "nl": "hij",
       "soort": "vw",
-      "shoresh": null
+      "shoresh": null,
+      "en": "he"
     },
     {
       "id": 16,
@@ -188,7 +189,8 @@
       "uitspraak": "hi",
       "nl": "zij",
       "soort": "vw",
-      "shoresh": null
+      "shoresh": null,
+      "en": "she"
     },
     {
       "id": 17,
@@ -198,7 +200,8 @@
       "uitspraak": "yachol",
       "nl": "kunnen (mannelijk)",
       "soort": "ww",
-      "shoresh": "י-כ-ל"
+      "shoresh": "י-כ-ל",
+      "en": "can (m)"
     },
     {
       "id": 18,
@@ -208,7 +211,8 @@
       "uitspraak": "yechola",
       "nl": "kunnen (vrouwelijk)",
       "soort": "ww",
-      "shoresh": "י-כ-ל"
+      "shoresh": "י-כ-ל",
+      "en": "can (f)"
     },
     {
       "id": 19,
@@ -218,7 +222,8 @@
       "uitspraak": "lekabel",
       "nl": "ontvangen/krijgen (infinitief)",
       "soort": "ww",
-      "shoresh": "ק-ב-ל"
+      "shoresh": "ק-ב-ל",
+      "en": "to receive"
     },
     {
       "id": 20,
@@ -228,7 +233,8 @@
       "uitspraak": "lavo",
       "nl": "komen (infinitief)",
       "soort": "ww",
-      "shoresh": "ב-ו-א"
+      "shoresh": "ב-ו-א",
+      "en": "to come"
     },
     {
       "id": 21,
@@ -238,7 +244,8 @@
       "uitspraak": "eifo",
       "nl": "waar",
       "soort": "vrg",
-      "shoresh": null
+      "shoresh": null,
+      "en": "where"
     },
     {
       "id": 22,
@@ -248,7 +255,8 @@
       "uitspraak": "matai",
       "nl": "wanneer",
       "soort": "vrg",
-      "shoresh": null
+      "shoresh": null,
+      "en": "when"
     },
     {
       "id": 23,
@@ -258,7 +266,8 @@
       "uitspraak": "kama",
       "nl": "hoeveel",
       "soort": "vrg",
-      "shoresh": null
+      "shoresh": null,
+      "en": "how much / how many"
     },
     {
       "id": 24,
@@ -268,7 +277,8 @@
       "uitspraak": "po",
       "nl": "hier",
       "soort": "bw",
-      "shoresh": null
+      "shoresh": null,
+      "en": "here"
     },
     {
       "id": 25,
@@ -278,7 +288,8 @@
       "uitspraak": "sham",
       "nl": "daar",
       "soort": "bw",
-      "shoresh": null
+      "shoresh": null,
+      "en": "there"
     },
     {
       "id": 26,
@@ -288,7 +299,8 @@
       "uitspraak": "babayit",
       "nl": "thuis",
       "soort": "bw",
-      "shoresh": null
+      "shoresh": null,
+      "en": "at home"
     },
     {
       "id": 27,
@@ -298,7 +310,8 @@
       "uitspraak": "be'ulpan",
       "nl": "in het ulpan",
       "soort": "bw",
-      "shoresh": null
+      "shoresh": null,
+      "en": "in the ulpan"
     },
     {
       "id": 28,
@@ -308,7 +321,8 @@
       "uitspraak": "hayom",
       "nl": "vandaag",
       "soort": "bw",
-      "shoresh": null
+      "shoresh": null,
+      "en": "today"
     },
     {
       "id": 29,
@@ -318,7 +332,8 @@
       "uitspraak": "machar",
       "nl": "morgen",
       "soort": "bw",
-      "shoresh": null
+      "shoresh": null,
+      "en": "tomorrow"
     },
     {
       "id": 30,
@@ -328,7 +343,8 @@
       "uitspraak": "im",
       "nl": "als/indien",
       "soort": "vgw",
-      "shoresh": null
+      "shoresh": null,
+      "en": "if"
     },
     {
       "id": 31,
@@ -338,7 +354,8 @@
       "uitspraak": "shekel",
       "nl": "sjekel",
       "soort": "zn",
-      "shoresh": null
+      "shoresh": null,
+      "en": "shekel"
     },
     {
       "id": 32,
@@ -348,7 +365,8 @@
       "uitspraak": "ze",
       "nl": "dit/dat/het",
       "soort": "vw",
-      "shoresh": null
+      "shoresh": null,
+      "en": "this / that"
     },
     {
       "id": 33,
@@ -358,7 +376,8 @@
       "uitspraak": "tov",
       "nl": "goed",
       "soort": "bn",
-      "shoresh": null
+      "shoresh": null,
+      "en": "good"
     },
     {
       "id": 34,
@@ -368,7 +387,8 @@
       "uitspraak": "kashe",
       "nl": "moeilijk/zwaar",
       "soort": "bn",
-      "shoresh": null
+      "shoresh": null,
+      "en": "difficult / heavy"
     },
     {
       "id": 35,
@@ -378,7 +398,8 @@
       "uitspraak": "yoter",
       "nl": "meer/-er",
       "soort": "bw",
-      "shoresh": null
+      "shoresh": null,
+      "en": "more"
     },
     {
       "id": 36,
@@ -388,7 +409,8 @@
       "uitspraak": "ohev",
       "nl": "houden van (mannelijk)",
       "soort": "ww",
-      "shoresh": "א-ה-ב"
+      "shoresh": "א-ה-ב",
+      "en": "love (m)"
     },
     {
       "id": 37,
@@ -398,7 +420,8 @@
       "uitspraak": "ohevet",
       "nl": "houden van (vrouwelijk)",
       "soort": "ww",
-      "shoresh": "א-ה-ב"
+      "shoresh": "א-ה-ב",
+      "en": "love (f)"
     },
     {
       "id": 38,
@@ -408,7 +431,8 @@
       "uitspraak": "kesef",
       "nl": "geld",
       "soort": "zn",
-      "shoresh": null
+      "shoresh": null,
+      "en": "money"
     },
     {
       "id": 39,
@@ -418,7 +442,8 @@
       "uitspraak": "yode'a",
       "nl": "weten/kennen (mannelijk)",
       "soort": "ww",
-      "shoresh": "י-ד-ע"
+      "shoresh": "י-ד-ע",
+      "en": "know (m)"
     },
     {
       "id": 40,
@@ -428,7 +453,8 @@
       "uitspraak": "yoda'at",
       "nl": "weten/kennen (vrouwelijk)",
       "soort": "ww",
-      "shoresh": "י-ד-ע"
+      "shoresh": "י-ד-ע",
+      "en": "know (f)"
     },
     {
       "id": 41,
@@ -438,7 +464,8 @@
       "uitspraak": "shome'a",
       "nl": "horen (mannelijk)",
       "soort": "ww",
-      "shoresh": "ש-מ-ע"
+      "shoresh": "ש-מ-ע",
+      "en": "hear (m)"
     },
     {
       "id": 42,
@@ -448,7 +475,8 @@
       "uitspraak": "shoma'at",
       "nl": "horen (vrouwelijk)",
       "soort": "ww",
-      "shoresh": "ש-מ-ע"
+      "shoresh": "ש-מ-ע",
+      "en": "hear (f)"
     },
     {
       "id": 43,
@@ -458,7 +486,8 @@
       "uitspraak": "lesader",
       "nl": "ordenen/regelen (infinitief)",
       "soort": "ww",
-      "shoresh": "ס-ד-ר"
+      "shoresh": "ס-ד-ר",
+      "en": "to arrange"
     },
     {
       "id": 44,
@@ -468,7 +497,8 @@
       "uitspraak": "aval",
       "nl": "maar",
       "soort": "vgw",
-      "shoresh": null
+      "shoresh": null,
+      "en": "but"
     },
     {
       "id": 45,
@@ -478,7 +508,8 @@
       "uitspraak": "rak",
       "nl": "alleen/slechts",
       "soort": "bw",
-      "shoresh": null
+      "shoresh": null,
+      "en": "only / just"
     },
     {
       "id": 46,
@@ -488,7 +519,8 @@
       "uitspraak": "shum davar",
       "nl": "niets",
       "soort": "uitdr",
-      "shoresh": null
+      "shoresh": null,
+      "en": "nothing"
     },
     {
       "id": 47,
@@ -498,7 +530,8 @@
       "uitspraak": "mashehu",
       "nl": "iets",
       "soort": "vw",
-      "shoresh": null
+      "shoresh": null,
+      "en": "something"
     },
     {
       "id": 48,
@@ -508,7 +541,8 @@
       "uitspraak": "lama",
       "nl": "waarom",
       "soort": "vrg",
-      "shoresh": null
+      "shoresh": null,
+      "en": "why"
     },
     {
       "id": 49,
@@ -518,7 +552,8 @@
       "uitspraak": "ki",
       "nl": "omdat/want",
       "soort": "vgw",
-      "shoresh": null
+      "shoresh": null,
+      "en": "because"
     },
     {
       "id": 50,
@@ -528,7 +563,8 @@
       "uitspraak": "me'eifo",
       "nl": "vanwaar",
       "soort": "vrg",
-      "shoresh": null
+      "shoresh": null,
+      "en": "from where"
     },
     {
       "id": 51,
@@ -538,7 +574,8 @@
       "uitspraak": "le'an",
       "nl": "waarheen",
       "soort": "vrg",
-      "shoresh": null
+      "shoresh": null,
+      "en": "where to"
     },
     {
       "id": 52,
@@ -548,7 +585,8 @@
       "uitspraak": "im",
       "nl": "met",
       "soort": "vz",
-      "shoresh": null
+      "shoresh": null,
+      "en": "with"
     },
     {
       "id": 53,
@@ -558,7 +596,8 @@
       "uitspraak": "efshar",
       "nl": "het is mogelijk/men kan",
       "soort": "uitdr",
-      "shoresh": null
+      "shoresh": null,
+      "en": "it is possible / one can"
     },
     {
       "id": 54,
@@ -568,7 +607,8 @@
       "uitspraak": "lish'ol",
       "nl": "vragen (infinitief)",
       "soort": "ww",
-      "shoresh": "ש-א-ל"
+      "shoresh": "ש-א-ל",
+      "en": "to ask"
     },
     {
       "id": 55,
@@ -578,7 +618,8 @@
       "uitspraak": "lachshov",
       "nl": "denken (infinitief)",
       "soort": "ww",
-      "shoresh": "ח-ש-ב"
+      "shoresh": "ח-ש-ב",
+      "en": "to think"
     },
     {
       "id": 56,
@@ -588,7 +629,8 @@
       "uitspraak": "le'echol",
       "nl": "eten (infinitief)",
       "soort": "ww",
-      "shoresh": "א-כ-ל"
+      "shoresh": "א-כ-ל",
+      "en": "to eat"
     },
     {
       "id": 57,
@@ -598,7 +640,8 @@
       "uitspraak": "la'avod",
       "nl": "werken (infinitief)",
       "soort": "ww",
-      "shoresh": "ע-ב-ד"
+      "shoresh": "ע-ב-ד",
+      "en": "to work"
     },
     {
       "id": 58,
@@ -608,7 +651,8 @@
       "uitspraak": "lechapes",
       "nl": "zoeken (infinitief)",
       "soort": "ww",
-      "shoresh": "ח-פ-ש"
+      "shoresh": "ח-פ-ש",
+      "en": "to search"
     },
     {
       "id": 59,
@@ -618,7 +662,8 @@
       "uitspraak": "lisgoor",
       "nl": "sluiten (infinitief)",
       "soort": "ww",
-      "shoresh": "ס-ג-ר"
+      "shoresh": "ס-ג-ר",
+      "en": "to close"
     },
     {
       "id": 60,
@@ -628,7 +673,8 @@
       "uitspraak": "mishehu",
       "nl": "iemand",
       "soort": "vw",
-      "shoresh": null
+      "shoresh": null,
+      "en": "someone"
     },
     {
       "id": 61,
@@ -638,7 +684,8 @@
       "uitspraak": "al",
       "nl": "over/op",
       "soort": "vz",
-      "shoresh": null
+      "shoresh": null,
+      "en": "on / about"
     },
     {
       "id": 62,
@@ -648,7 +695,8 @@
       "uitspraak": "ad",
       "nl": "tot/totdat",
       "soort": "vz",
-      "shoresh": null
+      "shoresh": null,
+      "en": "until"
     },
     {
       "id": 63,
