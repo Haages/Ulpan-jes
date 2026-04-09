@@ -2546,37 +2546,37 @@ function renderStartScherm() {
 // MODULE L: Letters (Alef-Bet)
 // ══════════════════════════════════════════════════════════════
 const ALEFBET = [
-  { blok:'א', schrijf:'אָ',  tts:'אָ',  naam:'Alef',        klank:'a',  heNaam:'אָלֶף' },
-  { blok:'בּ', schrijf:'בָּ', tts:'בְּ', naam:'Bet',         klank:'b',  heNaam:'בֵּית' },
-  { blok:'ב',  schrijf:'בָ',  tts:'בְ',  naam:'Vet',         klank:'v',  heNaam:'בֵית' },
-  { blok:'גּ', schrijf:'גָּ', tts:'גְּ', naam:'Gimel',       klank:'g',  heNaam:'גִּימֶל' },
-  { blok:'דּ', schrijf:'דָּ', tts:'דְּ', naam:'Dalet',       klank:'d',  heNaam:'דָּלֶת' },
-  { blok:'ה',  schrijf:'הָ',  tts:'הְ',  naam:'He',          klank:'h',  heNaam:'הֵא' },
-  { blok:'ו',  schrijf:'וֹ',  tts:'וֹ',  naam:'Vav',         klank:'v',  heNaam:'וָו' },
-  { blok:'ז',  schrijf:'זָ',  tts:'זְ',  naam:'Zayin',       klank:'z',  heNaam:'זַיִן' },
-  { blok:'ח',  schrijf:'חָ',  tts:'חְ',  naam:'Chet',        klank:'ch', heNaam:'חֵית' },
-  { blok:'ט',  schrijf:'טָ',  tts:'טְ',  naam:'Tet',         klank:'t',  heNaam:'טֵית' },
-  { blok:'י',  schrijf:'יִ',  tts:'יְ',  naam:'Yod',         klank:'y',  heNaam:'יוֹד' },
-  { blok:'כּ', schrijf:'כָּ', tts:'כְּ', naam:'Kaf',         klank:'k',  heNaam:'כַּף' },
-  { blok:'כ',  schrijf:'כָ',  tts:'כְ',  naam:'Chaf',        klank:'ch', heNaam:'כָף' },
-  { blok:'ך',  schrijf:'ךְ',  tts:'כְ',  naam:'Chaf sofit',  klank:'ch', heNaam:'כָף סוֹפִית' },
-  { blok:'ל',  schrijf:'לָ',  tts:'לְ',  naam:'Lamed',       klank:'l',  heNaam:'לָמֶד' },
-  { blok:'מ',  schrijf:'מָ',  tts:'מְ',  naam:'Mem',         klank:'m',  heNaam:'מֵם' },
-  { blok:'ם',  schrijf:'מָ',  tts:'מְ',  naam:'Mem sofit',   klank:'m',  heNaam:'מֵם סוֹפִית' },
-  { blok:'נ',  schrijf:'נָ',  tts:'נְ',  naam:'Nun',         klank:'n',  heNaam:'נוּן' },
-  { blok:'ן',  schrijf:'נָ',  tts:'נְ',  naam:'Nun sofit',   klank:'n',  heNaam:'נוּן סוֹפִית' },
-  { blok:'ס',  schrijf:'סָ',  tts:'סְ',  naam:'Samech',      klank:'s',  heNaam:'סָמֶךְ' },
-  { blok:'ע',  schrijf:'עָ',  tts:'עָ',  naam:'Ayin',        klank:'a',  heNaam:'עַיִן' },
-  { blok:'פּ', schrijf:'פָּ', tts:'פְּ', naam:'Pe',          klank:'p',  heNaam:'פֵּא' },
-  { blok:'פ',  schrijf:'פָ',  tts:'פְ',  naam:'Fe',          klank:'f',  heNaam:'פֵא' },
-  { blok:'ף',  schrijf:'פָ',  tts:'פְ',  naam:'Fe sofit',    klank:'f',  heNaam:'פֵא סוֹפִית' },
-  { blok:'צ',  schrijf:'צָ',  tts:'צְ',  naam:'Tsadi',       klank:'ts', heNaam:'צָדִי' },
-  { blok:'ץ',  schrijf:'צָ',  tts:'צְ',  naam:'Tsadi sofit', klank:'ts', heNaam:'צָדִי סוֹפִית' },
-  { blok:'ק',  schrijf:'קָ',  tts:'קְ',  naam:'Kof',         klank:'k',  heNaam:'קוֹף' },
-  { blok:'ר',  schrijf:'רָ',  tts:'רְ',  naam:'Resh',        klank:'r',  heNaam:'רֵישׁ' },
-  { blok:'שׁ', schrijf:'שָׁ', tts:'שְׁ', naam:'Shin',        klank:'sh', heNaam:'שִׁין' },
-  { blok:'שׂ', schrijf:'שָׂ', tts:'שְׂ', naam:'Sin',         klank:'s',  heNaam:'שִׂין' },
-  { blok:'תּ', schrijf:'תָּ', tts:'תְּ', naam:'Tav',         klank:'t',  heNaam:'תָּו' },
+  { blok:'א',  schrijf:'אָ',  tts:'אָלֶף',        naam:'Alef',        klank:'a/silent' },
+  { blok:'בּ', schrijf:'בָּ', tts:'בֵּית',        naam:'Bet',         klank:'b' },
+  { blok:'ב',  schrijf:'בָ',  tts:'וֵית',         naam:'Vet',         klank:'v' },
+  { blok:'גּ', schrijf:'גָּ', tts:'גִּימֶל',      naam:'Gimel',       klank:'g' },
+  { blok:'דּ', schrijf:'דָּ', tts:'דָּלֶת',       naam:'Dalet',       klank:'d' },
+  { blok:'ה',  schrijf:'הָ',  tts:'הֵא',          naam:'He',          klank:'h' },
+  { blok:'ו',  schrijf:'וֹ',  tts:'וָו',          naam:'Vav',         klank:'v' },
+  { blok:'ז',  schrijf:'זָ',  tts:'זַיִן',        naam:'Zayin',       klank:'z' },
+  { blok:'ח',  schrijf:'חָ',  tts:'חֵית',         naam:'Chet',        klank:'ch' },
+  { blok:'ט',  schrijf:'טָ',  tts:'טֵית',         naam:'Tet',         klank:'t' },
+  { blok:'י',  schrijf:'יִ',  tts:'יוֹד',         naam:'Yod',         klank:'y' },
+  { blok:'כּ', schrijf:'כָּ', tts:'כַּף',         naam:'Kaf',         klank:'k' },
+  { blok:'כ',  schrijf:'כָ',  tts:'כַף',          naam:'Chaf',        klank:'ch' },
+  { blok:'ך',  schrijf:'ךְ',  tts:'כַף סוֹפִית',  naam:'Chaf sofit',  klank:'ch' },
+  { blok:'ל',  schrijf:'לָ',  tts:'לָמֶד',        naam:'Lamed',       klank:'l' },
+  { blok:'מ',  schrijf:'מָ',  tts:'מֵם',          naam:'Mem',         klank:'m' },
+  { blok:'ם',  schrijf:'מָ',  tts:'מֵם סוֹפִית',  naam:'Mem sofit',   klank:'m' },
+  { blok:'נ',  schrijf:'נָ',  tts:'נוּן',         naam:'Nun',         klank:'n' },
+  { blok:'ן',  schrijf:'נָ',  tts:'נוּן סוֹפִית', naam:'Nun sofit',   klank:'n' },
+  { blok:'ס',  schrijf:'סָ',  tts:'סָמֶך',        naam:'Samech',      klank:'s' },
+  { blok:'ע',  schrijf:'עָ',  tts:'עַיִן',        naam:'Ayin',        klank:'a/silent' },
+  { blok:'פּ', schrijf:'פָּ', tts:'פֵּא',         naam:'Pe',          klank:'p' },
+  { blok:'פ',  schrijf:'פָ',  tts:'פֵא',          naam:'Fe',          klank:'f' },
+  { blok:'ף',  schrijf:'פָ',  tts:'פֵא סוֹפִית',  naam:'Fe sofit',    klank:'f' },
+  { blok:'צ',  schrijf:'צָ',  tts:'צַדִּי',       naam:'Tsadi',       klank:'ts' },
+  { blok:'ץ',  schrijf:'צָ',  tts:'צַדִּי סוֹפִית', naam:'Tsadi sofit', klank:'ts' },
+  { blok:'ק',  schrijf:'קָ',  tts:'קוֹף',         naam:'Kof',         klank:'k' },
+  { blok:'ר',  schrijf:'רָ',  tts:'רֵישׁ',        naam:'Resh',        klank:'r' },
+  { blok:'שׁ', schrijf:'שָׁ', tts:'שִׁין',        naam:'Shin',        klank:'sh' },
+  { blok:'שׂ', schrijf:'שָׂ', tts:'שִׂין',        naam:'Sin',         klank:'s' },
+  { blok:'תּ', schrijf:'תָּ', tts:'תָּו',         naam:'Tav',         klank:'t' },
 ];
 
 function renderLettersScherm() {
@@ -2585,22 +2585,12 @@ function renderLettersScherm() {
 
   const kaarten = ALEFBET.map((l, i) => `
     <div class="bg-white rounded-2xl shadow-sm p-4 flex flex-col items-center">
-      <div dir="rtl" lang="he" style="font-family: Arial, sans-serif; font-size: 48px; line-height: 1;">${l.blok}</div>
+      <div dir="rtl" lang="he" style="font-family: Arial, sans-serif; font-weight: bold; font-size: 48px; line-height: 1;">${l.blok}</div>
       <div class="font-hebrew text-gray-500 mt-1" dir="rtl" lang="he" style="font-size: 32px; line-height: 1.2;">${l.schrijf}</div>
       <div class="text-sm font-semibold text-gray-800 mt-2">${l.naam}</div>
       <div class="text-xs text-gray-500">${l.klank}</div>
-      <div class="flex gap-3 mt-2">
-        <button onclick="AudioManager.stop(); AudioManager.spreekUit(ALEFBET[${i}].tts, 'vrouw')"
-                class="flex flex-col items-center text-blue-600">
-          <span class="text-2xl leading-none">🔊</span>
-          <span class="text-[10px] text-gray-500">sound</span>
-        </button>
-        <button onclick="AudioManager.stop(); AudioManager.spreekUit(ALEFBET[${i}].heNaam, 'vrouw')"
-                class="flex flex-col items-center text-purple-600">
-          <span class="text-2xl leading-none">🔊</span>
-          <span class="text-[10px] text-gray-500">name</span>
-        </button>
-      </div>
+      <button onclick="AudioManager.stop(); AudioManager.spreekUit(ALEFBET[${i}].tts, 'vrouw')"
+              class="mt-2 text-2xl">🔊</button>
     </div>
   `).join('');
 
