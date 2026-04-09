@@ -24,41 +24,6 @@
     }
     [dir="rtl"] { direction: rtl; }
 
-    /* ── Les fasen — consistente layout zodat niets verspringt ── */
-    .fase-root {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      padding: 16px;
-    }
-    .fase-kop {
-      min-height: 80px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-    .fase-content {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 12px 0;
-    }
-    .fase-onder {
-      min-height: 80px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .slot-illu    { height: 130px; display: flex; align-items: center; justify-content: center; }
-    .slot-blok    { height: 80px;  display: flex; align-items: center; justify-content: center; }
-    .slot-schrijf { height: 60px;  display: flex; align-items: center; justify-content: center; }
-    .slot-uit     { height: 40px;  display: flex; align-items: center; justify-content: center; }
-    .slot-bet     { min-height: 50px; display: flex; align-items: center; justify-content: center; }
-
     /* ── Numbers scherm — uniforme kaart layout ── */
     .getal-kaart {
       min-height: 200px;
@@ -349,22 +314,8 @@ function renderHebreeuwsZin(tekst) {
  */
 function faseKop(fase, naam, extra = '') {
   const les = window.huidigeLesData.lesNummer;
-  const terug = fase > 1
-    ? `<button onclick="AudioManager.stop(); toonFase(${fase - 1})" class="text-sm text-gray-400 block">← Previous phase</button>`
-    : `<div class="text-sm block" style="visibility:hidden;">← Previous phase</div>`;
-  return `${terug}<p class="text-sm text-gray-500 mt-1">Lesson ${les} — Phase ${fase} of 8 — ${naam}${extra ? ' ' + extra : ''}</p>`;
-}
-
-/**
- * Wrapt een fase in een vaste layout: bovenbalk (80px) + content area + onderbalk (80px).
- * Zo staan kop, content-start en knoppen altijd op dezelfde positie tussen fasen.
- */
-function faseLayout(kopHtml, contentHtml, onderHtml) {
-  return `<div class="fase-root">
-    <div class="fase-kop">${kopHtml}</div>
-    <div class="fase-content">${contentHtml}</div>
-    <div class="fase-onder">${onderHtml}</div>
-  </div>`;
+  const terug = fase > 1 ? `<button onclick="AudioManager.stop(); toonFase(${fase - 1})" class="text-sm text-gray-400 mb-2 block">← Previous phase</button>` : '';
+  return `${terug}<p class="text-sm text-gray-500 mb-4">Lesson ${les} — Phase ${fase} of 8 — ${naam}${extra ? ' ' + extra : ''}</p>`;
 }
 
 /**
@@ -934,16 +885,14 @@ async function faseListening() {
     AudioManager.stop();
     const mijnVersie = ++versie;
     const w = W[idx];
-    C.innerHTML = `<div class="bg-blue-50">${faseLayout(
-      faseKop(1, 'Listening', `(${idx+1}/${W.length})`),
-      `<p class="text-gray-600 mb-4 text-center">Listen and understand. You don't need to do anything yet.</p>
-       <div class="slot-illu">${toonAfbeelding(w, 110)}</div>
-       <div class="slot-blok text-3xl">🔊</div>
-       <div class="slot-schrijf"></div>
-       <div class="slot-uit text-2xl font-semibold">${w.en || w.nl}</div>
-       <div class="slot-bet"></div>`,
-      drieKnoppen('window._f1Back()', 'window._f1Repeat()', 'window._f1Next()', idx===0)
-    )}</div>`;
+    C.innerHTML = `<div class="min-h-screen bg-blue-50 flex flex-col items-center justify-center p-6">
+      ${faseKop(1, 'Listening', `(${idx+1}/${W.length})`)}
+      <p class="text-gray-600 mb-6 text-center">Listen and understand. You don't need to do anything yet.</p>
+      ${toonAfbeelding(w, 110)}
+      <div class="text-3xl mb-3">🔊</div>
+      <div class="text-2xl font-semibold mb-2">${w.en || w.nl}</div>
+      ${drieKnoppen('window._f1Back()', 'window._f1Repeat()', 'window._f1Next()', idx===0)}
+    </div>`;
     window._f1Next = () => { versie++; AudioManager.stop(); idx++; show(); };
     window._f1Back = () => { versie++; AudioManager.stop(); if(idx>0){idx--;show();} };
     window._f1Repeat = async () => {
@@ -977,17 +926,16 @@ async function faseLookRepeat() {
     AudioManager.stop();
     const mijnVersie = ++versie;
     const w = W[idx];
-    C.innerHTML = faseLayout(
-      faseKop(2, 'Look and repeat', '(' + (idx+1) + '/' + W.length + ')'),
-      `<div class="slot-illu">${toonAfbeelding(w, 110)}</div>
-       <div class="slot-blok"><div dir="rtl" lang="he" style="font-family: Arial, sans-serif; font-size: 48px; font-weight: bold; line-height: 1;">${displayHe(w.he_clean)}</div></div>
-       <div class="slot-schrijf"><div class="font-hebrew text-gray-400" dir="rtl" lang="he" style="font-size: 28px; line-height: 1;">${displayHe(w.he)}</div></div>
-       <div class="slot-uit text-2xl text-blue-600">${w.uitspraak}</div>
-       <div class="slot-bet text-xl text-gray-700">${w.en || w.nl}</div>
-       ${w.soort === 'ww' && w.shoresh ? '<div class="text-sm text-gray-400 mt-2"><span dir="rtl" lang="he">\u05E9\u05D5\u05E8\u05E9: ' + w.shoresh + '</span></div>' : ''}
-       <p class="text-gray-500 text-sm mt-2">Repeat after you hear it</p>`,
-      drieKnoppen('window._f2Back()', 'AudioManager.stop(); spreekWoordUit(window.huidigeLesData.nieuweWoorden[' + idx + '])', 'window._f2Next()', idx===0)
-    );
+    C.innerHTML = `<div class="min-h-screen flex flex-col items-center justify-center p-6">
+      ${faseKop(2, 'Look and repeat', '(' + (idx+1) + '/' + W.length + ')')}
+      ${toonAfbeelding(w, 90)}
+      ${renderHebreeuwsWoord(w)}
+      <div class="text-2xl text-blue-600 mb-1">${w.uitspraak}</div>
+      <div class="text-xl text-gray-700 mb-2">${w.en || w.nl}</div>
+      ${w.soort === 'ww' && w.shoresh ? '<div class="text-sm text-gray-400 mb-4"><span dir="rtl" lang="he">\u05E9\u05D5\u05E8\u05E9: ' + w.shoresh + '</span></div>' : ''}
+      <p class="text-gray-500 text-sm mb-4">Repeat after you hear it</p>
+      ${drieKnoppen('window._f2Back()', 'AudioManager.stop(); spreekWoordUit(window.huidigeLesData.nieuweWoorden[' + idx + '])', 'window._f2Next()', idx===0)}
+    </div>`;
     window._f2Next = () => { versie++; AudioManager.stop(); idx++; show(); };
     window._f2Back = () => { versie++; AudioManager.stop(); if(idx>0){idx--;show();} };
     if (mijnVersie !== versie || window.huidigeLesData.huidigeFase !== 2) return;
@@ -1006,19 +954,15 @@ async function faseUnderstanding() {
     AudioManager.stop();
     const mijnVersie = ++versie;
     const w = W[idx];
-    C.innerHTML = faseLayout(
-      faseKop(3, 'Understanding', '(' + (idx+1) + '/' + W.length + ')'),
-      `<div class="slot-illu"></div>
-       <div class="slot-blok"><div dir="rtl" lang="he" style="font-family: Arial, sans-serif; font-size: 48px; font-weight: bold; line-height: 1;">${displayHe(w.he_clean)}</div></div>
-       <div class="slot-schrijf"><div class="font-hebrew text-gray-400" dir="rtl" lang="he" style="font-size: 28px; line-height: 1;">${displayHe(w.he)}</div></div>
-       <div class="slot-uit text-2xl text-blue-600">${w.uitspraak}</div>
-       <div class="slot-bet">
-         <button onclick="document.getElementById('f3m').classList.remove('hidden');this.classList.add('hidden')"
-                 class="px-6 py-2 border border-gray-300 text-gray-500 rounded-lg hover:bg-gray-50 text-sm">Show meaning</button>
-         <div id="f3m" class="hidden text-xl text-gray-700">${w.en || w.nl}</div>
-       </div>`,
-      drieKnoppen('window._f3Back()', 'AudioManager.stop(); spreekWoordUit(window.huidigeLesData.nieuweWoorden[' + idx + '])', 'window._f3Next()', idx===0)
-    );
+    C.innerHTML = `<div class="min-h-screen flex flex-col items-center justify-center p-6">
+      ${faseKop(3, 'Understanding', '(' + (idx+1) + '/' + W.length + ')')}
+      ${renderHebreeuwsWoord(w)}
+      <div class="text-2xl text-blue-600 mb-6">${w.uitspraak}</div>
+      <button onclick="document.getElementById('f3m').classList.remove('hidden');this.classList.add('hidden')"
+              class="px-6 py-2 border border-gray-300 text-gray-500 rounded-lg mb-4 hover:bg-gray-50 text-sm">Show meaning</button>
+      <div id="f3m" class="hidden text-xl text-gray-700 mb-6">${w.en || w.nl}</div>
+      ${drieKnoppen('window._f3Back()', 'AudioManager.stop(); spreekWoordUit(window.huidigeLesData.nieuweWoorden[' + idx + '])', 'window._f3Next()', idx===0)}
+    </div>`;
     window._f3Next = () => { versie++; AudioManager.stop(); idx++; show(); };
     window._f3Back = () => { versie++; AudioManager.stop(); if(idx>0){idx--;show();} };
     if (mijnVersie !== versie || window.huidigeLesData.huidigeFase !== 3) return;
@@ -1036,20 +980,16 @@ function faseWordImage() {
     if (idx >= W.length) { toonFase(5); return; }
     AudioManager.stop();
     const w = W[idx];
-    C.innerHTML = faseLayout(
-      faseKop(4, 'Word image', '(' + (idx+1) + '/' + W.length + ')'),
-      `<div class="slot-illu"></div>
-       <div class="slot-blok"><div dir="rtl" lang="he" style="font-family: Arial, sans-serif; font-size: 48px; font-weight: bold; line-height: 1;">${displayHe(w.he_clean)}</div></div>
-       <div class="slot-schrijf"><div class="font-hebrew text-gray-400" dir="rtl" lang="he" style="font-size: 28px; line-height: 1;">${displayHe(w.he)}</div></div>
-       <div class="slot-uit text-blue-600 text-lg">${w.uitspraak}</div>
-       <div class="slot-bet">
-         <button onclick="document.getElementById('f4m').classList.remove('hidden');this.classList.add('hidden')"
-                 class="px-6 py-2 border border-gray-300 text-gray-500 rounded-lg hover:bg-gray-50 text-sm">Show meaning</button>
-         <div id="f4m" class="hidden text-gray-700">${w.en || w.nl}</div>
-       </div>
-       ${w.shoresh ? '<div class="bg-orange-50 border border-orange-200 rounded-lg p-3 mt-3 text-center"><p class="text-xs text-orange-600 mb-1" dir="rtl" lang="he">\u05E9\u05D5\u05E8\u05E9 / word root</p><p class="font-hebrew text-2xl text-orange-700" dir="rtl" lang="he">' + w.shoresh + '</p></div>' : ''}`,
-      drieKnoppen('window._f4Back()', 'AudioManager.stop(); spreekWoordUit(window.huidigeLesData.nieuweWoorden.filter(x=>x.shoresh)[' + idx + '])', 'window._f4Next()', idx===0)
-    );
+    C.innerHTML = `<div class="min-h-screen flex flex-col items-center justify-center p-6">
+      ${faseKop(4, 'Word image', '(' + (idx+1) + '/' + W.length + ')')}
+      ${renderHebreeuwsWoord(w)}
+      <div class="text-blue-600 text-lg mb-1">${w.uitspraak}</div>
+      <button onclick="document.getElementById('f4m').classList.remove('hidden');this.classList.add('hidden')"
+              class="px-6 py-2 border border-gray-300 text-gray-500 rounded-lg mb-4 hover:bg-gray-50 text-sm">Show meaning</button>
+      <div id="f4m" class="hidden text-gray-700 mb-4">${w.en || w.nl}</div>
+      ${w.shoresh ? '<div class="bg-orange-50 border border-orange-200 rounded-lg p-3 mb-6 text-center"><p class="text-xs text-orange-600 mb-1" dir="rtl" lang="he">\u05E9\u05D5\u05E8\u05E9 / word root</p><p class="font-hebrew text-2xl text-orange-700" dir="rtl" lang="he">' + w.shoresh + '</p></div>' : ''}
+      ${drieKnoppen('window._f4Back()', 'AudioManager.stop(); spreekWoordUit(window.huidigeLesData.nieuweWoorden.filter(x=>x.shoresh)[' + idx + '])', 'window._f4Next()', idx===0)}
+    </div>`;
     window._f4Next = () => { AudioManager.stop(); idx++; show(); };
     window._f4Back = () => { AudioManager.stop(); if(idx>0){idx--;show();} };
     spreekWoordUit(w);
@@ -1084,18 +1024,18 @@ async function fasePractice() {
       he = he.replace(/רוֹצֶה/g, 'רוֹצָה').replace(/רוצה/g, 'רוֹצָה');
     }
     window._f5Stem = zinStem;
-    C.innerHTML = faseLayout(
-      faseKop(5, 'Practice sentences', '(' + (idx+1) + '/' + zinnen.length + ')'),
-      `${renderHebreeuwsZin(he)}
-       <button onclick="AudioManager.stop(); AudioManager.spreekUit(document.getElementById('f5he').textContent, window._f5Stem)"
-               class="border border-blue-400 text-blue-600 rounded-xl px-5 py-2 mb-4">🔊 Listen</button>
-       <span id="f5he" class="hidden">${he}</span>
-       ${tr ? '<button onclick="document.getElementById(\'f5tr\').classList.remove(\'hidden\');this.classList.add(\'hidden\')" class="px-6 py-2 border border-gray-300 text-gray-500 rounded-lg mb-4 hover:bg-gray-50 text-sm">Show translation</button><p id="f5tr" class="hidden text-gray-600 mb-4 text-center">' + tr + '</p>' : ''}`,
-      `<div class="flex gap-3">
-         <button onclick="AudioManager.stop(); window._f5Back()" ${idx===0 ? 'disabled class="opacity-30 border border-gray-300 text-gray-600 rounded-xl px-5 py-3"' : 'class="border border-gray-300 text-gray-600 rounded-xl px-5 py-3"'}>← Back</button>
-         <button onclick="AudioManager.stop(); window._f5Next()" class="bg-blue-600 text-white rounded-xl px-6 py-3">Next →</button>
-       </div>`
-    );
+    C.innerHTML = `<div class="min-h-screen flex flex-col items-center justify-center p-6">
+      ${faseKop(5, 'Practice sentences', '(' + (idx+1) + '/' + zinnen.length + ')')}
+      ${renderHebreeuwsZin(he)}
+      <button onclick="AudioManager.stop(); AudioManager.spreekUit(document.getElementById('f5he').textContent, window._f5Stem)"
+              class="border border-blue-400 text-blue-600 rounded-xl px-5 py-2 mb-4">🔊 Listen</button>
+      <span id="f5he" class="hidden">${he}</span>
+      ${tr ? '<button onclick="document.getElementById(\'f5tr\').classList.remove(\'hidden\');this.classList.add(\'hidden\')" class="px-6 py-2 border border-gray-300 text-gray-500 rounded-lg mb-4 hover:bg-gray-50 text-sm">Show translation</button><p id="f5tr" class="hidden text-gray-600 mb-4 text-center">' + tr + '</p>' : ''}
+      <div class="flex gap-3 mt-4">
+        <button onclick="AudioManager.stop(); window._f5Back()" ${idx===0 ? 'disabled class="opacity-30 border border-gray-300 text-gray-600 rounded-xl px-5 py-3"' : 'class="border border-gray-300 text-gray-600 rounded-xl px-5 py-3"'}>← Back</button>
+        <button onclick="AudioManager.stop(); window._f5Next()" class="bg-blue-600 text-white rounded-xl px-6 py-3">Next →</button>
+      </div>
+    </div>`;
     window._f5Next = () => { versie++; AudioManager.stop(); idx++; show(); };
     window._f5Back = () => { versie++; AudioManager.stop(); if(idx>0){idx--;show();} };
     if (mijnVersie !== versie || window.huidigeLesData.huidigeFase !== 5) return;
