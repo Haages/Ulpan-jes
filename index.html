@@ -2546,37 +2546,37 @@ function renderStartScherm() {
 // MODULE L: Letters (Alef-Bet)
 // ══════════════════════════════════════════════════════════════
 const ALEFBET = [
-  { blok:'א', nikud:'אָ', naam:'Alef', klank:'a' },
-  { blok:'בּ', nikud:'בָּ', naam:'Bet', klank:'b' },
-  { blok:'ב', nikud:'בָ', naam:'Vet', klank:'v' },
-  { blok:'גּ', nikud:'גָּ', naam:'Gimel', klank:'g' },
-  { blok:'דּ', nikud:'דָּ', naam:'Dalet', klank:'d' },
-  { blok:'ה', nikud:'הָ', naam:'He', klank:'h' },
-  { blok:'ו', nikud:'וֹ', naam:'Vav', klank:'v/o/u' },
-  { blok:'ז', nikud:'זָ', naam:'Zayin', klank:'z' },
-  { blok:'ח', nikud:'חָ', naam:'Chet', klank:'ch' },
-  { blok:'ט', nikud:'טָ', naam:'Tet', klank:'t' },
-  { blok:'י', nikud:'יִ', naam:'Yod', klank:'y' },
-  { blok:'כּ', nikud:'כָּ', naam:'Kaf', klank:'k' },
-  { blok:'כ', nikud:'כָ', naam:'Chaf', klank:'ch' },
-  { blok:'ך', nikud:'ךְ', naam:'Chaf sofit', klank:'ch' },
-  { blok:'ל', nikud:'לָ', naam:'Lamed', klank:'l' },
-  { blok:'מ', nikud:'מָ', naam:'Mem', klank:'m' },
-  { blok:'ם', nikud:'מָ', naam:'Mem sofit', klank:'m' },
-  { blok:'נ', nikud:'נָ', naam:'Nun', klank:'n' },
-  { blok:'ן', nikud:'נָ', naam:'Nun sofit', klank:'n' },
-  { blok:'ס', nikud:'סָ', naam:'Samech', klank:'s' },
-  { blok:'ע', nikud:'עָ', naam:'Ayin', klank:'a/e' },
-  { blok:'פּ', nikud:'פָּ', naam:'Pe', klank:'p' },
-  { blok:'פ', nikud:'פָ', naam:'Fe', klank:'f' },
-  { blok:'ף', nikud:'פָ', naam:'Fe sofit', klank:'f' },
-  { blok:'צ', nikud:'צָ', naam:'Tsadi', klank:'ts' },
-  { blok:'ץ', nikud:'צָ', naam:'Tsadi sofit', klank:'ts' },
-  { blok:'ק', nikud:'קָ', naam:'Kof', klank:'k' },
-  { blok:'ר', nikud:'רָ', naam:'Resh', klank:'r' },
-  { blok:'שׁ', nikud:'שָׁ', naam:'Shin', klank:'sh' },
-  { blok:'שׂ', nikud:'שָׂ', naam:'Sin', klank:'s' },
-  { blok:'תּ', nikud:'תָּ', naam:'Tav', klank:'t' },
+  { blok:'א', nikud:'אָ', naam:'Alef', klank:'a', heNaam:'אָלֶף' },
+  { blok:'בּ', nikud:'בָּ', naam:'Bet', klank:'b', heNaam:'בֵּית' },
+  { blok:'ב', nikud:'בָ', naam:'Vet', klank:'v', heNaam:'בֵית' },
+  { blok:'גּ', nikud:'גָּ', naam:'Gimel', klank:'g', heNaam:'גִּימֶל' },
+  { blok:'דּ', nikud:'דָּ', naam:'Dalet', klank:'d', heNaam:'דָּלֶת' },
+  { blok:'ה', nikud:'הָ', naam:'He', klank:'h', heNaam:'הֵא' },
+  { blok:'ו', nikud:'וֹ', naam:'Vav', klank:'v/o/u', heNaam:'וָו' },
+  { blok:'ז', nikud:'זָ', naam:'Zayin', klank:'z', heNaam:'זַיִן' },
+  { blok:'ח', nikud:'חָ', naam:'Chet', klank:'ch', heNaam:'חֵית' },
+  { blok:'ט', nikud:'טָ', naam:'Tet', klank:'t', heNaam:'טֵית' },
+  { blok:'י', nikud:'יִ', naam:'Yod', klank:'y', heNaam:'יוֹד' },
+  { blok:'כּ', nikud:'כָּ', naam:'Kaf', klank:'k', heNaam:'כַּף' },
+  { blok:'כ', nikud:'כָ', naam:'Chaf', klank:'ch', heNaam:'כָף' },
+  { blok:'ך', nikud:'ךְ', naam:'Chaf sofit', klank:'ch', heNaam:'כָף סוֹפִית' },
+  { blok:'ל', nikud:'לָ', naam:'Lamed', klank:'l', heNaam:'לָמֶד' },
+  { blok:'מ', nikud:'מָ', naam:'Mem', klank:'m', heNaam:'מֵם' },
+  { blok:'ם', nikud:'מָ', naam:'Mem sofit', klank:'m', heNaam:'מֵם סוֹפִית' },
+  { blok:'נ', nikud:'נָ', naam:'Nun', klank:'n', heNaam:'נוּן' },
+  { blok:'ן', nikud:'נָ', naam:'Nun sofit', klank:'n', heNaam:'נוּן סוֹפִית' },
+  { blok:'ס', nikud:'סָ', naam:'Samech', klank:'s', heNaam:'סָמֶךְ' },
+  { blok:'ע', nikud:'עָ', naam:'Ayin', klank:'a/e', heNaam:'עַיִן' },
+  { blok:'פּ', nikud:'פָּ', naam:'Pe', klank:'p', heNaam:'פֵּא' },
+  { blok:'פ', nikud:'פָ', naam:'Fe', klank:'f', heNaam:'פֵא' },
+  { blok:'ף', nikud:'פָ', naam:'Fe sofit', klank:'f', heNaam:'פֵא סוֹפִית' },
+  { blok:'צ', nikud:'צָ', naam:'Tsadi', klank:'ts', heNaam:'צָדִי' },
+  { blok:'ץ', nikud:'צָ', naam:'Tsadi sofit', klank:'ts', heNaam:'צָדִי סוֹפִית' },
+  { blok:'ק', nikud:'קָ', naam:'Kof', klank:'k', heNaam:'קוֹף' },
+  { blok:'ר', nikud:'רָ', naam:'Resh', klank:'r', heNaam:'רֵישׁ' },
+  { blok:'שׁ', nikud:'שָׁ', naam:'Shin', klank:'sh', heNaam:'שִׁין' },
+  { blok:'שׂ', nikud:'שָׂ', naam:'Sin', klank:'s', heNaam:'שִׂין' },
+  { blok:'תּ', nikud:'תָּ', naam:'Tav', klank:'t', heNaam:'תָּו' },
 ];
 
 function renderLettersScherm() {
@@ -2589,8 +2589,18 @@ function renderLettersScherm() {
       <div class="font-hebrew text-gray-500 mt-1" dir="rtl" lang="he" style="font-size: 32px; line-height: 1.2;">${l.nikud}</div>
       <div class="text-sm font-semibold text-gray-800 mt-2">${l.naam}</div>
       <div class="text-xs text-gray-500">${l.klank}</div>
-      <button onclick="AudioManager.stop(); AudioManager.spreekUit(ALEFBET[${i}].nikud, 'vrouw')"
-              class="mt-2 text-2xl">🔊</button>
+      <div class="flex gap-3 mt-2">
+        <button onclick="AudioManager.stop(); AudioManager.spreekUit(ALEFBET[${i}].nikud, 'vrouw')"
+                class="flex flex-col items-center text-blue-600">
+          <span class="text-2xl leading-none">🔊</span>
+          <span class="text-[10px] text-gray-500">sound</span>
+        </button>
+        <button onclick="AudioManager.stop(); AudioManager.spreekUit(ALEFBET[${i}].heNaam, 'vrouw')"
+                class="flex flex-col items-center text-purple-600">
+          <span class="text-2xl leading-none">🔊</span>
+          <span class="text-[10px] text-gray-500">name</span>
+        </button>
+      </div>
     </div>
   `).join('');
 
