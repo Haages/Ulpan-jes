@@ -181,6 +181,33 @@ function bepaalStem(woord) {
  * @param {Object} woord - Woordobject
  * @returns {Promise<boolean>}
  */
+/**
+ * Bepaalt de stem voor een oefenzin op basis van type, cues en eerste woord.
+ * @param {Object} zin - Zinobject uit oefenzinnen.json
+ * @returns {string} 'man' of 'vrouw'
+ */
+function bepaalZinStem(zin) {
+  const type = zin.type || '';
+  const en = zin.cues?.en || '';
+  if (type.endsWith('_v') || type.includes('vrouw') || en.includes('(f)')) return 'vrouw';
+  if (type.endsWith('_m') || en.includes('(m)')) return 'man';
+  const he = zin.he || zin.zin || '';
+  const eersteWoord = stripNikud(he.trim().split(/\s+/)[0] || '');
+  const vrouwIndic = ['את', 'היא', 'צריכה', 'יכולה', 'רוצה'];
+  if (vrouwIndic.some(v => eersteWoord === v)) return 'vrouw';
+  return 'man';
+}
+
+/**
+ * Vervangt sluit-chaf met rafé (ךְ) door gewone sluit-chaf (ך) voor betere weergave.
+ * @param {string} tekst - Hebreeuwse tekst
+ * @returns {string}
+ */
+function displayHe(tekst) {
+  if (!tekst) return '';
+  return tekst.replace(/\u05DA\u05BF/g, '\u05DA');
+}
+
 async function spreekWoordUit(woord) {
   if (woord.he_clean === 'את' && woord.soort === 'vw') {
     return AudioManager.spreekUit('אַת', 'vrouw');
@@ -200,8 +227,8 @@ async function spreekWoordUit(woord) {
 function renderHebreeuwsWoord(woord) {
   return `
     <div class="text-6xl font-bold mb-1" dir="rtl" lang="he"
-         style="font-family: Arial, sans-serif;">${woord.he_clean}</div>
-    <div class="font-hebrew text-2xl text-gray-400 mb-3" dir="rtl" lang="he">${woord.he}</div>`;
+         style="font-family: Arial, sans-serif;">${displayHe(woord.he_clean)}</div>
+    <div class="font-hebrew text-2xl text-gray-400 mb-3" dir="rtl" lang="he">${displayHe(woord.he)}</div>`;
 }
 
 /**
@@ -213,7 +240,7 @@ function renderHebreeuwsZin(tekst) {
   return `
     <div class="text-2xl font-bold text-right leading-relaxed mb-4
                 bg-blue-50 rounded-xl p-6 w-full max-w-md" dir="rtl" lang="he"
-         style="font-family: Arial, sans-serif;">${tekst}</div>`;
+         style="font-family: Arial, sans-serif;">${displayHe(tekst)}</div>`;
 }
 
 /**
@@ -859,15 +886,14 @@ async function fasePractice() {
   const show = async () => {
     if (idx >= zinnen.length) { toonFase(6); return; }
     const z = zinnen[idx];
-    const he = z.he || z.zin || '';
+    const heOrig = z.he || z.zin || '';
     const tr = z.cues?.en || z.cues?.nl || '';
-    // Bepaal stem op basis van eerste woord
-    const eersteWoord = he.split(/\s+/)[0].replace(/[\u0591-\u05C7]/g, '');
-    const manWoorden = ['אני', 'אתה', 'הוא', 'צריך', 'רוצה'];
-    const vrouwWoorden = ['את', 'היא', 'צריכה'];
-    const zinStem = manWoorden.includes(eersteWoord) ? 'man' :
-                    vrouwWoorden.includes(eersteWoord) ? 'vrouw' :
-                    (idx % 2 === 0) ? 'man' : 'vrouw';
+    const zinStem = bepaalZinStem(z);
+    // Als stem vrouwelijk en zin bevat רוצה, vervang door vrouwelijke vorm
+    let he = heOrig;
+    if (zinStem === 'vrouw' && he.includes('רוצה')) {
+      he = he.replace(/רוֹצֶה/g, 'רוֹצָה').replace(/רוצה/g, 'רוֹצָה');
+    }
     window._f5Stem = zinStem;
     C.innerHTML = `<div class="min-h-screen flex flex-col items-center justify-center p-6">
       ${faseKop(5, 'Practice sentences', '(' + (idx+1) + '/' + zinnen.length + ')')}
