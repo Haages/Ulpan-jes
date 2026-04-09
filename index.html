@@ -858,10 +858,18 @@ async function fasePractice() {
     const z = zinnen[idx];
     const he = z.he || z.zin || '';
     const tr = z.cues?.en || z.cues?.nl || '';
+    // Bepaal stem op basis van eerste woord
+    const eersteWoord = he.split(/\s+/)[0].replace(/[\u0591-\u05C7]/g, '');
+    const manWoorden = ['אני', 'אתה', 'הוא', 'צריך', 'רוצה'];
+    const vrouwWoorden = ['את', 'היא', 'צריכה'];
+    const zinStem = manWoorden.includes(eersteWoord) ? 'man' :
+                    vrouwWoorden.includes(eersteWoord) ? 'vrouw' :
+                    (idx % 2 === 0) ? 'man' : 'vrouw';
+    window._f5Stem = zinStem;
     C.innerHTML = `<div class="min-h-screen flex flex-col items-center justify-center p-6">
       ${faseKop(5, 'Practice sentences', '(' + (idx+1) + '/' + zinnen.length + ')')}
       ${renderHebreeuwsZin(he)}
-      <button onclick="AudioManager.stop(); AudioManager.spreekUit(document.getElementById('f5he').textContent,'vrouw')"
+      <button onclick="AudioManager.stop(); AudioManager.spreekUit(document.getElementById('f5he').textContent, window._f5Stem)"
               class="border border-blue-400 text-blue-600 rounded-xl px-5 py-2 mb-4">🔊 Listen</button>
       <span id="f5he" class="hidden">${he}</span>
       ${tr ? '<button onclick="document.getElementById(\'f5tr\').classList.remove(\'hidden\');this.classList.add(\'hidden\')" class="px-6 py-2 border border-gray-300 text-gray-500 rounded-lg mb-4 hover:bg-gray-50 text-sm">Show translation</button><p id="f5tr" class="hidden text-gray-600 mb-4 text-center">' + tr + '</p>' : ''}
@@ -872,13 +880,6 @@ async function fasePractice() {
     </div>`;
     window._f5Next = () => { idx++; show(); };
     window._f5Back = () => { if(idx>0){idx--;show();} };
-    // Bepaal stem op basis van eerste woord van de zin
-    const eersteWoord = he.split(/\s+/)[0].replace(/[\u0591-\u05C7]/g, '');
-    const manWoorden = ['אני', 'אתה', 'הוא', 'צריך', 'רוצה'];
-    const vrouwWoorden = ['את', 'היא', 'צריכה'];
-    let zinStem = manWoorden.includes(eersteWoord) ? 'man' :
-                  vrouwWoorden.includes(eersteWoord) ? 'vrouw' :
-                  (idx % 2 === 0) ? 'man' : 'vrouw';
     await AudioManager.spreekUit(he, zinStem);
   };
   show();
@@ -909,7 +910,10 @@ function faseMusic() {
               frameborder="0" allowfullscreen></iframe>
     </div>
     ${liedHTML}
-    <button onclick="toonFase(7)" class="w-full max-w-md mx-auto py-3 bg-blue-600 text-white rounded-xl font-semibold mt-auto">Continue to Video →</button>
+    <div class="flex gap-3 max-w-md mx-auto w-full mt-auto">
+      <button onclick="toonFase(5)" class="flex-1 py-3 border border-gray-300 text-gray-700 rounded-xl font-semibold">← Back</button>
+      <button onclick="toonFase(7)" class="flex-1 py-3 bg-blue-600 text-white rounded-xl font-semibold">Next →</button>
+    </div>
   </div>`;
 }
 
@@ -925,7 +929,10 @@ function faseVideo() {
       <iframe width="100%" height="300" src="https://www.youtube.com/embed/${vid}"
               frameborder="0" allowfullscreen class="rounded-xl"></iframe>
     </div>
-    <button onclick="toonFase(8)" class="w-full max-w-md mx-auto py-3 bg-blue-600 text-white rounded-xl font-semibold mt-auto">Continue to Word list →</button>
+    <div class="flex gap-3 max-w-md mx-auto w-full mt-auto">
+      <button onclick="toonFase(6)" class="flex-1 py-3 border border-gray-300 text-gray-700 rounded-xl font-semibold">← Back</button>
+      <button onclick="toonFase(8)" class="flex-1 py-3 bg-blue-600 text-white rounded-xl font-semibold">Next →</button>
+    </div>
   </div>`;
 }
 
@@ -941,8 +948,11 @@ function faseWordList() {
     </div>
     <div class="space-y-2 mb-6 max-w-md mx-auto w-full" id="f8w"></div>
     <div class="space-y-3 max-w-md mx-auto w-full mt-auto">
-      <button onclick="renderStartScherm(); toonScherm('screen-start')"
-              class="w-full py-3 bg-green-600 text-white rounded-xl font-semibold">✓ Complete lesson</button>
+      <div class="flex gap-3">
+        <button onclick="toonFase(7)" class="flex-1 py-3 border border-gray-300 text-gray-700 rounded-xl font-semibold">← Back</button>
+        <button onclick="renderStartScherm(); toonScherm('screen-start')"
+                class="flex-1 py-3 bg-green-600 text-white rounded-xl font-semibold">✓ Complete lesson</button>
+      </div>
       <button onclick="startLes(${les + 1}); toonScherm('screen-lesson')"
               class="w-full py-3 bg-blue-600 text-white rounded-xl font-semibold">Next lesson →</button>
       <button onclick="renderGamesMenu(huidigeLes()); toonScherm('screen-games')"
